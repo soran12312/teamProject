@@ -4,6 +4,15 @@
  */
 /* FONT PATH
  * -------------------------- */
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+
+body {
+font-family	: 'NanumSquare', sans-serif;
+font-weight : 400;
+}
+/* ===========다빈이가 바꿈==================== */
+
 @font-face {
   font-family: 'FontAwesome';
   src: url('../fonts/fontawesome-webfont.eot?v=4.6.3');

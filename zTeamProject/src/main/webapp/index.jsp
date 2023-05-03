@@ -13,7 +13,7 @@
    <meta name="description" content="">
    <meta name="author" content="">
    <!-- Site Icons -->
-   <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+   <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
    <link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
@@ -57,27 +57,24 @@
                <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                      <li><a data-scroll href="#home">Home</a></li>
-                     <li><a data-scroll href="#features">Features <span class="hidden-xs">*</span></a></li>
-                     <li><a data-scroll href="#agent">The Agent</a></li>
-                     <li><a data-scroll href="#gallery">Gallery</a></li>
-                     <li><a data-scroll href="#testimonials">Testimonials</a></li>
-                     <li><a data-scroll href="#support">Contact</a></li>
-                     <li class="social-links"><a href="#"><i class="fa fa-twitter global-radius"></i></a></li>
-                     <li class="social-links"><a href="#"><i class="fa fa-facebook global-radius"></i></a></li>
-                     <li class="social-links"><a href="#"><i class="fa fa-linkedin global-radius"></i></a></li>
+                     <li><a data-scroll href="#features">오늘의 장인<span class="hidden-xs">*</span></a></li>
+                     <li><a data-scroll href="#agent">오늘의 리뷰</a></li>
+                     <li><a data-scroll href="#gallery">오늘의 기부</a></li>
+                     <li><a data-scroll href="#testimonials">오늘의 수업</a></li>
+                     <li><a data-scroll href="#support">고객센터</a></li>
                   </ul>
                </div>
             </div>
          </nav>
       </header>
-      <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/parallax.jpg');">
+      <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
          <div class="container">
             <div class="row">
                <div class="col-md-6 col-sm-12">
                   <div class="big-tagline clearfix">
-                     <h2>Sell Your Property with Aven</h2>
-                     <p class="lead">With Aven responsive landing page template, you can promote your all property & real estate projects. </p>
-                     <a data-scroll href="#gallery" class="btn btn-light btn-radius grd1 btn-brd">View Gallery</a>
+                     <h2 id='main_info' class='main_info'>
+                     품i에서 재능을 판매하고 <br/>
+                     기부도 시작하세요!</h2>
                   </div>
                </div>
                <div class="col-md-6 wow slideInRight hidden-xs hidden-sm">
@@ -90,7 +87,7 @@
                            </div>
                            <br/>
                            <div class="text-center">
-                           		<a>카카오톡으로 1초만에 회원되기</a>
+                           		<a><br/>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>
@@ -101,49 +98,17 @@
          </div>
          <!-- end container -->
       </div>
-      <!-- end section -->
+      <!-- end section ================================================== 메인 1페이지====================================================== -->
       <div id="features" class="section wb">
          <div class="container">
             <div class="section-title row text-center">
                <div class="col-md-8 col-md-offset-2">
-                  <small>All Awesome Property Details</small>
-                  <h3>Property Details</h3>
-                  <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                  <small>오늘의 인기글을 둘러보세요</small>
+                  <h3 class="lead">오늘의 추천 게시글</h3>
                </div>
                <!-- end col -->
             </div>
             <!-- end title -->
-            <div class="property-detail row clearfix">
-               <div class="col-md-2 col-sm-3 col-xs-6">
-                  <i class="flaticon-coupon effect-1"></i>
-                  <h4>Square Feet : 3200</h4>
-               </div>
-               <!-- end col -->
-               <div class="col-md-2 col-sm-3 col-xs-6">
-                  <i class="flaticon-family-room effect-1"></i>
-                  <h4>Ideal for Family</h4>
-               </div>
-               <!-- end col -->
-               <div class="col-md-2 col-sm-3 col-xs-6">
-                  <i class="flaticon-house effect-1"></i>
-                  <h4>Garage : 2</h4>
-               </div>
-               <!-- end col -->  
-               <div class="col-md-2 col-sm-3 col-xs-6">
-                  <i class="flaticon-full-bed effect-1"></i>
-                  <h4>Bedrooms : 3</h4>
-               </div>
-               <!-- end col -->  
-               <div class="col-md-2 col-sm-3 col-xs-6">
-                  <i class="flaticon-swimming-pool effect-1"></i>
-                  <h4>Pool : Yes</h4>
-               </div>
-               <!-- end col -->
-               <div class="col-md-2 col-sm-3 col-xs-6">
-                  <i class="flaticon-calendar effect-1"></i>
-                  <h4>Build in : 2015</h4>
-               </div>
-               <!-- end col -->  
             </div>
             <!-- end how-its-work -->
             <hr class="invis">
@@ -192,8 +157,8 @@
          <div class="container">
             <div class="section-title row text-center">
                <div class="col-md-8 col-md-offset-2">
-                  <h3>Agent Details</h3>
-                  <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+               		<p class="lead">오늘의 인기리뷰를 둘러보세요!</p>
+                  	<h3>오늘의 리뷰☞pick!</h3>
                </div>
                <!-- end col -->
             </div>
@@ -240,8 +205,8 @@
          <div class="container">
             <div class="section-title row text-center">
                <div class="col-md-8 col-md-offset-2">
-                  <h3>Property Gallery</h3>
-                  <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                  <p class="lead">오늘의 인기리뷰를 둘러보세요!</p>
+                  <h3>오늘의 기부☞Pick!</h3>
                </div>
                <!-- end col -->
             </div>
@@ -305,8 +270,8 @@
          <div class="container">
             <div class="section-title row text-center">
                <div class="col-md-8 col-md-offset-2">
-                  <h3>Happy Customers</h3>
-                  <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
+                  <p class="lead">오늘의 인기강의를 둘러보세요!</p>
+                  <h3>오늘의 동네수업☞Pick!</h3>
                </div>
                <!-- end col -->
             </div>
@@ -399,8 +364,8 @@
       <div id="support" class="section wb">
          <div class="container">
             <div class="section-title text-center">
-               <h3>Get an Appointment Today</h3>
-               <p class="lead">Let us give you more details about the special offer website you want us. Please fill out the form below. <br>We have million of website owners who happy to work with us!</p>
+               <h3>고객센터</h3>
+               <p class="lead">평일 9:00 ~ 6:00 고객센터 운영</p>
             </div>
             <!-- end title -->
             <div class="row">
@@ -409,40 +374,36 @@
                      <div id="message"></div>
                      <form id="contactform" class="row" action="contact.php" name="contactform" method="post">
                         <fieldset class="row-fluid">
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Phone">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label class="sr-only">Select Time</label>
-                              <select name="select_service" id="select_service" class="selectpicker form-control" data-style="btn-white">
-                                 <option value="selecttime">Select Time</option>
-                                 <option value="Weekdays">Weekdays</option>
-                                 <option value="Weekend">Weekend</option>
-                              </select>
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label class="sr-only">What is max price?</label>
-                              <select name="select_price" id="select_price" class="selectpicker form-control" data-style="btn-white">
-                                 <option value="$100 - $2000">$100 - $2000</option>
-                                 <option value="$2000 - $4000">$2000 - $4000</option>
-                                 <option value="$4000 - $10000">$4000 - $10000</option>
-                              </select>
-                           </div>
-                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                              <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Give us more details.."></textarea>
-                           </div>
-                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Get Appointment</button>
-                           </div>
+                        <div class="col-xs-12">
+                        <div class="col-md-6 col-sm-6">
+                       		문의유형 <select name="select_service" id="select_service" class="selectpicker form-control " data-style="btn-white">
+                                 <option value="q_buisness">사업자신청</option>
+                                 <option value="q_paid_member">유료회원신청</option>
+                                 <option value="q_lesson">강좌신고</option>
+                                 <option value="q_select_guild">모임신고</option>
+                                 <option value="q_review">리뷰신고</option>
+                                 <option value="q_etc">기타문의</option>
+                            </select>
+                            </div>
+                            </div>
+                          		 <div class="col-xs-12">
+                             		제목 <input type="text" name="q_title" id="q_title" class="form-control" placeholder="제목을 입력해주세요">
+                           		 </div>
+                           		 <div class="col-xs-12">
+                             		 이메일 <input type="email" name="q_email" id="q_email" class="form-control" placeholder="이메일을 입력해주세요">
+                             	 </div>
+                              	 <div class="col-xs-12">
+                               		내용 <textarea name="q_textarea" id="q_textarea" class="form-control" placeholder="내용을 입력해주세요"></textarea>
+                               	 </div>
+                               	 <div class=" col-xs-12">
+                               	 첨부파일 <input type='file' name="q_file" id="q_file" class="form-control"/>
+                           		 </div>
+                           		 <div class="col-md-6 col-sm-6">
+                           		 	<button type="reset" name="q_delete_btn" id="q_delete_btn" class="q_delete_btn form-control">취소</button>
+                           		 </div>
+                           		 <div class="col-md-6 col-sm-6">
+                           		 	<button type="submit" name="q_submit_btn" id="q_submit_btn" class="q_submit_btn form-control">보내기</button>
+                        		</div>
                         </fieldset>
                      </form>
                   </div>
@@ -454,75 +415,7 @@
          <!-- end container -->
       </div>
       <!-- end section -->
-      <footer class="footer">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4 col-sm-4 col-xs-12">
-                  <div class="widget clearfix">
-                     <div class="widget-title">
-                        <img src="resources/images/logos/logo.png" width="210" alt="">
-                     </div>
-                     <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
-                     <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
-                  </div>
-                  <!-- end clearfix -->
-               </div>
-               <!-- end col -->
-               <div class="col-md-3 col-sm-3 col-xs-12">
-                  <div class="widget clearfix">
-                     <div class="widget-title">
-                        <h3>Contact Details</h3>
-                     </div>
-                     <ul class="footer-links">
-                        <li><a href="mailto:#">info@yoursite.com</a></li>
-                        <li><a href="#">www.yoursite.com</a></li>
-                        <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                        <li>+61 3 8376 6284</li>
-                     </ul>
-                     <!-- end links -->
-                  </div>
-                  <!-- end clearfix -->
-               </div>
-               <!-- end col -->
-               <div class="col-md-3 col-sm-3 col-xs-12">
-                  <div class="widget clearfix">
-                     <div class="widget-title">
-                        <h3>Twitter Feed</h3>
-                     </div>
-                     <ul class="twitter-widget footer-links">
-                        <li><a href="#"><i class="fa fa-twitter"></i> @Rt_miOnline o zaman en yakın Apple Store seni bekler geçmiş olsun</a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> @Harry - Thanks you so much for your help. Still waiting update for my Ticket!</a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> @MedyaPet - Welcome to the our community dude! You are awesome!</a></li>
-                     </ul>
-                     <!-- end links -->
-                  </div>
-                  <!-- end clearfix -->
-               </div>
-               <!-- end col -->
-               <div class="col-md-2 col-sm-2 col-xs-12">
-                  <div class="widget clearfix">
-                     <div class="widget-title">
-                        <h3>Social</h3>
-                     </div>
-                     <ul class="footer-links">
-                        <li><a href="#"><i class="fa fa-facebook"></i> 22.543 Likes</a></li>
-                        <li><a href="#"><i class="fa fa-github"></i> 128 Projects</a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> 12.860 Followers</a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i> 3312 Shots</a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i>3331 Pins</a></li>
-                     </ul>
-                     <!-- end links -->
-                  </div>
-                  <!-- end clearfix -->
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end row -->
-         </div>
-         <!-- end container -->
-      </footer>
-      <!-- end footer -->
-      <div class="copyrights">
+      <div class="copyrights"><!-- ===========================================================================================카테고리 연결해야함 -->
          <div class="container">
             <div class="footer-distributed">
                <div class="footer-left">
@@ -534,7 +427,7 @@
                      <a href="#">Faq</a>
                      <a href="#">Contact</a>
                   </p>
-                  <p class="footer-company-name">All Rights Reserved. <a href="https://html.design/">html.design</a> &copy; 2021</p>
+                  <p class="footer-company-name">All Rights Reserved. <a href="https://html.design/">html.design</a> &copy; 2023</p>
                </div>
                <div class="footer-right">
                   <form method="get" action="#">

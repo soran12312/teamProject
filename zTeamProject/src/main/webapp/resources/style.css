@@ -46,15 +46,21 @@
 @import url(css/prettyPhoto.css);
 @import url(css/owl.carousel.css);
 @import url(css/font-awesome.min.css);
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css); /*나눔폰트*/
 
 /*------------------------------------------------------------------
     SKELETON
 -------------------------------------------------------------------*/
 
+
+.lead.prev(){
+	font-weight: 800;
+}
+
 body {
     color: #999;
     font-size: 15px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'NanumSquare', sans-serif;/* ===========다빈이가 바꿈==================== */
     line-height: 1.80857;
 }
 
@@ -379,7 +385,7 @@ a img.aligncenter {
 
 .header_style_01 .navbar-default .navbar-nav > li > a {
     border-radius: 0;
-    color: #ffffff !important;
+    color: #333332 !important;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -1772,6 +1778,7 @@ select.mobile-device {
     border: 1px solid #ebebeb;
     box-sizing: border-box;
     color: #bcbcbc;
+    font-family : font-family: 'NanumSquare', sans-serif;
     font-size: 16px;
     outline: 0 none;
     padding: 10px 25px;
@@ -1781,6 +1788,19 @@ select.mobile-device {
     width: 100%;
 }
 
+.row .contact_form .q_submit_btn{
+	background-color: #98B25C;
+	color: white;
+	font-weight: 600;
+	font-size: 25px;
+}
+
+.row .contact_form .q_delete_btn{
+	background-color: #c8c8c8;
+	color: white;
+	font-size: 25px;
+	font-weight: 600;
+}
 .contact_form textarea {
     color: #bcbcbc;
     padding: 20px 25px !important;
