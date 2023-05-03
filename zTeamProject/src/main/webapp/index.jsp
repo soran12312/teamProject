@@ -8,7 +8,7 @@
    <!-- Mobile Metas -->
    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
    <!-- Site Metas -->
-   <title>Aven - Real Estate Responsive HTML5 Landing Page Template</title>
+   <title>품-i</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -82,39 +82,15 @@
                </div>
                <div class="col-md-6 wow slideInRight hidden-xs hidden-sm">
                   <div class="contact_form">
-                     <h3><i class="fa fa-envelope-o grd1 global-radius"></i> QUICK APPOINTMENT</h3>
-                     <form id="contactform1" class="row" name="contactform" method="post">
+                     <h3><i class="fa fa-envelope-o grd1 global-radius"></i> Login</h3>
+                     <form id="loginForm" class="row" name="contactform" method="post">
                         <fieldset class="row-fluid">
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="first_name1" id="first_name1" class="form-control" placeholder="First Name">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="last_name1" id="last_name1" class="form-control" placeholder="Last Name">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="email" name="email1" id="email1" class="form-control" placeholder="Your Email">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" name="phone1" id="phone1" class="form-control" placeholder="Your Phone">
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label class="sr-only">Select Time</label>
-                              <select name="select_service1" id="select_service1" class="selectpicker form-control" data-style="btn-white">
-                                 <option value="selecttime">Select Time</option>
-                                 <option value="Weekdays">Weekdays</option>
-                                 <option value="Weekend">Weekend</option>
-                              </select>
-                           </div>
-                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <label class="sr-only">What is max price?</label>
-                              <select name="select_price1" id="select_price1" class="selectpicker form-control" data-style="btn-white">
-                                 <option value="$100 - $2000">$100 - $2000</option>
-                                 <option value="$2000 - $4000">$2000 - $4000</option>
-                                 <option value="$4000 - $10000">$4000 - $10000</option>
-                              </select>
-                           </div>
                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <button type="submit" value="SEND" id="submit1" class="btn kakao-login"></button>
+                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://localhost:8080/zTeamProject/login.do&response_type=code" target="_blank"></a>
+                           </div>
+                           <br/>
+                           <div class="text-center">
+                           		<a>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>
