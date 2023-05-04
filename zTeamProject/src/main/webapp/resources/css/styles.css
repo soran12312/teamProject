@@ -78,12 +78,23 @@
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
 }
+.first-section .container .insert_sample_img  {
+	width: 300px;
+	height: 300px;
+}
+
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+.insert_lesson_frm{
+	background: #c8c8c8;
+	height: 
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   :root {
