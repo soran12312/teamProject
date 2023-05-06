@@ -52,6 +52,58 @@
 /*------------------------------------------------------------------
     SKELETON
 -------------------------------------------------------------------*/
+
+
+<!-- 여기부터 회원가입페이지 css -->
+select.new_member_addr1{ <!-- 이거 작동은 안되는데 이거 없어지니까 +버튼이 안댐;;; -->
+	width: 100px;
+	height: 100px;
+	margin: 20px;
+}
+
+.new_member_plusbtn{
+	background-color : #f38f84;
+	color: #333332;
+	margin: 10px;
+	width: 30px;
+	height: 30px;
+	border: none;
+}
+
+body h2.new_member_name_h2{
+ color: black;
+ }
+.contact_form .new_member_form_div {
+	align-items: center;
+}
+.new_member_name_h2,
+.new_member_info_h2,
+.new_member_addr_h2{
+	color : #333332;
+}
+
+.new_member_submit{
+	background-color : #f38f84;
+	position: relative;
+	top :40px;
+	right : 20px;
+	float: right;
+	font-family: 'TheJamsil', sans-serif;
+	margin: 20px;
+	color : black;
+	width: 30%;
+	height: 50px;
+	font-size: 30px;
+	border: none;
+	
+}
+ .new_member_form{
+	align-content: center;
+}
+<!-- 여기까지 회원가입페이지 css -->
+
+
+<!-- 여기부터 작성페이지 css-->
 .insert_review_frm,
 .insert_guild_frm,
 .insert_lesson_frm{
@@ -126,6 +178,8 @@
 	top: 10px;
 	display: inline-block;
 }
+
+<!-- 여기까지 작성페이지 css-->
 .lead.prev(){
 	font-weight: 800;
 }
@@ -187,7 +241,6 @@ h6 {
     padding: 0 0 10px 0;
     font-weight: normal;
     line-height: 120% !important;
-    color: #1f1f1f;
     margin: 0
 }
 
@@ -615,7 +668,7 @@ li.social-links a {
 }
 
 .first-section h2 {
-    color: #ffffff;
+    
     font-size: 55px;
     font-weight: 900;
     text-transform: capitalize;
