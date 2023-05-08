@@ -64,15 +64,7 @@
       </div>
       <!-- end copyrights -->
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-      <!-- ALL JS FILES -->
-      <script src="resources/js/all.js"></script>
-      <!-- ALL PLUGINS -->
-      <script src="resources/js/custom.js"></script>
-      <script src="resources/js/portfolio.js"></script>
-      <script src="resources/js/hoverdir.js"></script>    
-      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-      <!-- MAP & CONTACT -->
-      <script src="resources/js/map.js"></script>
+      
    </body>
 
 </html>

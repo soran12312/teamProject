@@ -14,24 +14,10 @@
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-   <!-- Site Icons -->
-   <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
-   <link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-   <!-- Site CSS -->
-   <link rel="stylesheet" href="resources/style.css">
-   <!-- Colors CSS -->
-   <link rel="stylesheet" href="resources/css/colors.css">
-   <!-- ALL VERSION CSS -->
-   <link rel="stylesheet" href="resources/css/versions.css">
-   <!-- Responsive CSS -->
-   <link rel="stylesheet" href="resources/css/responsive.css">
-   <!-- Custom CSS -->
-   <link rel="stylesheet" href="resources/css/custom.css">
-   <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
-
    
+   <!-- Site CSS -->
+   <link rel="stylesheet" href="resources/new_Css_Sibal.css">
+	
    <!-- Modernizer for Portfolio -->
    <script src="resources/js/modernizer.js"></script>
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -162,58 +148,24 @@
 	}); // end of $
 	</script>
    </head>
-   <body class="realestate_version">
-      <!-- LOADER -->
-      <div id="preloader">
-         <img class="preloader" src="resources/images/loaders/loader-realestate.gif" alt="">
-      </div>
-      <!-- end loader -->
-      <!-- END LOADER -->
-      <header class="header header_style_01">
-         <nav class="megamenu navbar navbar-default" data-spy="affix">
-            <div class="container-fluid">
-               <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="index-real-estate.html"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
-               </div>
-               <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                     <li><a data-scroll href="#home">Home</a></li>
-                     <li><a data-scroll href="#features">오늘의 장인<span class="hidden-xs">*</span></a></li>
-                     <li><a data-scroll href="#agent">오늘의 리뷰</a></li>
-                     <li><a data-scroll href="#gallery">오늘의 기부</a></li>
-                     <li><a data-scroll href="#testimonials">오늘의 수업</a></li>
-                     <li><a data-scroll href="#support">고객센터</a></li>
-                  </ul>
-               </div>
-            </div>
-         </nav>
-      </header><!--=====END of header========================================================================================================= -->
-      <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
-         <div class="container">
-            <div class="row">
-            <div class="col-md-6 col-sm-12">
-                  <div class="big-tagline clearfix">
+   <body class="main">
+       <!-- header -->
+   <jsp:include page="../../new_header.jsp"></jsp:include>
+   <!-- end header --><!--=====END of header========================================================================================================= -->
+      <div class = "background">
+	      <div class="background_img">
+	      	<div class="main_info_div">
                      <h2 id='main_info' class='main_info'>
                      회원정보를 알려주세요 </br>
                      동네정보를 데려올게요!</h2>
-                  </div>
-               </div>
-               <div class="col-md-6 wow slideInRight hidden-xs hidden-sm">
-                  <div class="contact_form new_member_form">
-                     <form id="new_member_form " name="new_member_form" class="new_member_form row  method="post">
-                        <fieldset class="row-fluid">
+            
+            	<form id="new_member_form " name="new_member_form" class="new_member_form  method="post">
                         	<div class="new_member_form_div">
             				<h2 class="new_member_name_h2">닉네임</h2>
             						<input type="hidden" name="email" value="${member.email}">
 				            		<input id="new_member_name" name="nickname" class="new_member_namel" value="${member.nickname}">
 				            <h2 class="new_member_info_h2">자기소개</h2>
-				            <div class='col-xs-12'>
+				            <div>
 				            		<textarea id="new_member_info" name="introduce" class="new_member_info form-control" ></textarea>
 				            </div>
 				            <div>
@@ -228,10 +180,7 @@
 				            			<option value="${loc1.addr1}">${loc1.addr1}</option>
 				            		</c:forEach>
 				            		</select>
-				            	</span>	
-				            	
-					            	<!-- <button type="button" id="new_member_plusbtn" name="new_member_plusbtn" class="new_member_plusbtn">+</button>
-					            	<br/> -->
+				            	</span>
 				       		</div>
 				       		<div>
 				       		<span id="location2" class="select_location">
@@ -256,51 +205,16 @@
 				       		</div>
 				           <button  type="submit" name="new_member_submit" class="new_member_submit" id="new_member_submit">가입하기</button>
 							</div>                       
-                        </fieldset>
                      </form>
-                  </div>
-               </div>
             </div>
-            <!-- end row -->
-         </div>
-         <!-- end container -->
-      </div>
+	      </div>
+	      </div>
         
-            
-      <div class="copyrights"><!-- ===========================================================================================카테고리 연결해야함 -->
-         <div class="container">
-            <div class="footer-distributed">
-               <div class="footer-left">
-                  <p class="footer-links">
-                     <a href="#">Home</a>
-                     <a href="#">Blog</a>
-                     <a href="#">Pricing</a>
-                     <a href="#">About</a>
-                     <a href="#">Faq</a>
-                     <a href="#">Contact</a>
-                  </p>
-                  <p class="footer-company-name">All Rights Reserved. <a href="https://html.design/">html.design</a> &copy; 2023</p>
-               </div>
-               <div class="footer-right">
-                  <form method="get" action="#">
-                     <input placeholder="Subscribe our newsletter.." name="search">
-                     <i class="fa fa-envelope-o"></i>
-                  </form>
-               </div>
-            </div>
-         </div>
-         <!-- end container -->
-      </div>
+    
+       <jsp:include page="../../new_footer.jsp"></jsp:include>
+
       <!-- end copyrights -->
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-      <!-- ALL JS FILES -->
-   <script src="resources/js/all.js"></script>
-   <!-- ALL PLUGINS -->
-   <script src="resources/js/custom.js"></script>
-   <script src="resources/js/portfolio.js"></script>
-   <script src="resources/js/hoverdir.js"></script>    
-   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-   <!-- MAP & CONTACT -->
-   <!-- <script src="resources/js/map.js"></script> -->
+      
    </body>
 </html>

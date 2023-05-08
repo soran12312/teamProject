@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+@import url('https://webfontworld.github.io/TheJamsil/TheJamsil.css');
+
+
+<!-- header -->
+.logo{
+	display: inline-block;
+	width: 30px;
+	float: left;
+	}
+
+.logo img{
+	width : 15%;
+	display: inline-block;
+}
+
+.navbar{
+	display: inline-block;
+	float: right;
+	margin-right: 100px;
+	}
+	
+.navbar-right li{
+	display: inline-block;
+	font-family: 'TheJamsil', sans-serif;
+}
+
+.navbar-right li a{
+	text-decoration: none;
+	color: #333332;
+	margin-left: 20px;
+}
+
+
+
+
+<!-- footer -->
+.foot{
+	display: inline-block;
+	background: #1F1F1F;
+	width: 100%;
+}
+.footer_nav{
+	background: #1F1F1F;
+	display: inline-block;
+	color: white;
+	width: 100%;
+	padding: 50px;
+}
+.footer_nav p{
+	display: inline-block;
+	width: 100%;}
+
+.footer_nav p a{
+	font-family: 'TheJamsil', sans-serif;
+	margin-right: 50px;
+	text-decoration: none;
+	color: white;
+	display: inline-block;
+}
+
+.footer_nav span{
+	display: inline-block;
+	float: right;
+}
+
+.footer_nav span img{
+	width: 300px;
+}
+
+.copyrights{
+	background-color: #1F1F1F;
+	display: inline-block;
+	color: #c8c8c8;
+	width: 100%;
+	border: 50px;
+	border-color: #1F1F1F;
+	padding: 50px;
+}
+
+
+<!-- 배경화면 -->
+.background_img{
+	width: 50%;
+}
+
+body.main {
+	background-image :url("../resources/uploads/MainBack.png"); 
+	min-height: 900px;
+}
+.main_info_div{
+	width: 100%;
+	display: inline-block;
+}
+.main_info{
+	font-family: 'TheJamsil', sans-serif;
+	color: #333332;
+	font-size: 60px;
+	float: left;
+	margin-top: 300px;
+	margin-bottom: 500px;
+	display: inline-block;
+	width: 50%;
+}
+.new_member_form{
+	width: 50%;
+	display: inline-block;
+}
+.new_member_form_div{
+	width: 50%;
+	font-family: 'TheJamsil', sans-serif;
+	font-size : 30px;
+	}
+	
+.new_member_info{
+	width: 80%;
+	height: 200px;
+}
+
+.new_member_namel{
+	width: 50%;
+	height: 30px;
+}
+
+.new_member_submit{
+	background-color: #f38f84;
+	font-family: 'TheJamsil', sans-serif;
+	color: #333332;
+	margin: 10px;
+	float: right;
+	width: 20%;
+	height: 30px;
+	font-size: 20px;	
+}
+
+<!-- 메인페이지 -->
+<!-- 인서트 페이지-->

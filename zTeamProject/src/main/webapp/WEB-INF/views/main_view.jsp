@@ -39,12 +39,6 @@
    <![endif]-->
    </head>
    <body class="realestate_version">
-      <!-- LOADER -->
-      <div id="preloader">
-         <img class="preloader" src="resources/images/loaders/loader-realestate.gif" alt="">
-      </div>
-      <!-- end loader -->
-      <!-- END LOADER -->
       <!-- header -->
       <c:if test="${empty sessionScope.member_grade}">
       <jsp:include page="../../header.jsp"></jsp:include>
@@ -443,14 +437,6 @@
       <!-- end footer -->
       <!-- end copyrights -->
       
-      <!-- ALL JS FILES -->
-      <script src="resources/js/all.js"></script>
-      <!-- ALL PLUGINS -->
-      <script src="resources/js/custom.js"></script>
-      <script src="resources/js/portfolio.js"></script>
-      <script src="resources/js/hoverdir.js"></script>    
-      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-      <!-- MAP & CONTACT -->
-      <script src="resources/js/map.js"></script>
+      
    </body>
 </html>

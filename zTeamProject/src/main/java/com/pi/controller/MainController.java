@@ -96,6 +96,13 @@ public class MainController {
 		return "main_view";
 	}
 	
+	@RequestMapping("/selectAddr1.do")
+	@ResponseBody
+	public List<LocationVO> selectAddr1() {
+		
+		return mainService.selectAddr1();
+	}
+	
 	@RequestMapping("/selectAddr2.do")
 	@ResponseBody
 	public List<LocationVO> selectAddr2(LocationVO vo) {
