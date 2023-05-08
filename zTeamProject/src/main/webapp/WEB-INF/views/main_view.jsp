@@ -30,6 +30,7 @@
    <!-- Modernizer for Portfolio -->
    <script src="resources/js/modernizer.js"></script>
    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+   
    <!--[if lt IE 9]>
    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -42,31 +43,7 @@
       </div>
       <!-- end loader -->
       <!-- END LOADER -->
-      <header class="header header_style_01">
-         <nav class="megamenu navbar navbar-default" data-spy="affix">
-            <div class="container-fluid">
-               <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="index-real-estate.html"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
-               </div>
-               <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                     <li><a data-scroll href="#home">Home</a></li>
-                     <li><a data-scroll href="#features">오늘의 장인<span class="hidden-xs">*</span></a></li>
-                     <li><a data-scroll href="#agent">오늘의 리뷰</a></li>
-                     <li><a data-scroll href="#gallery">오늘의 기부</a></li>
-                     <li><a data-scroll href="#testimonials">오늘의 수업</a></li>
-                     <li><a data-scroll href="#support">고객센터</a></li>
-                  </ul>
-               </div>
-            </div>
-         </nav>
-      </header>
+      <jsp:include page="../../header.jsp"></jsp:include>
       <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
          <div class="container">
             <div class="row">
@@ -83,7 +60,7 @@
                      <form id="loginForm" class="row" name="contactform" method="post">
                         <fieldset class="row-fluid">
                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://localhost:8080/zTeamProject/member_join_form.do&response_type=code" target="_blank"></a>
+                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://localhost:8080/zTeamProject/member_join_form.do&response_type=code"></a>
                            </div>
                            <br/>
                            <div class="text-center">
@@ -416,32 +393,9 @@
          <!-- end container -->
       </div>
       <!-- end section -->
-      <div class="copyrights"><!-- ===========================================================================================카테고리 연결해야함 -->
-         <div class="container">
-            <div class="footer-distributed">
-               <div class="footer-left">
-                  <p class="footer-links">
-                     <a href="#">Home</a>
-                     <a href="#">Blog</a>
-                     <a href="#">Pricing</a>
-                     <a href="#">About</a>
-                     <a href="#">Faq</a>
-                     <a href="#">Contact</a>
-                  </p>
-                  <p class="footer-company-name">All Rights Reserved. <a href="https://html.design/">html.design</a> &copy; 2023</p>
-               </div>
-               <div class="footer-right">
-                  <form method="get" action="#">
-                     <input placeholder="Subscribe our newsletter.." name="search">
-                     <i class="fa fa-envelope-o"></i>
-                  </form>
-               </div>
-            </div>
-         </div>
-         <!-- end container -->
-      </div>
+      <jsp:include page="../../footer.jsp"></jsp:include>
       <!-- end copyrights -->
-      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      
       <!-- ALL JS FILES -->
       <script src="resources/js/all.js"></script>
       <!-- ALL PLUGINS -->
