@@ -73,7 +73,7 @@
       <jsp:include page="../../header3.jsp"></jsp:include>
       </c:if>
       <!-- end header -->
-      <c:if test="${empty sessionScope.member_grade}">
+      <c:if test="${empty sessionScope.member_grade}"> 
       <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
          <div class="container">
             <div class="row">
