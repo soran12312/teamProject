@@ -150,13 +150,14 @@
         </div>
         <!-- 검색버튼 -->	
         
+      
         <!-- 작성하기 -->
         <div class="col-xs-8 col-xs-offset-10">
-	        <button href="" class="btn_b02">작성하기</button>
+	        <button href="" class="btn_b02">모임 만들기</button>
         </div>
 
           <div class="col-md-9" data-aos="fade-up">
-            <h3 class="category-title">Review</h3>
+            <h3 class="category-title">Commuity</h3>
 
             <div class="d-md-flex post-entry-2 half">
               <a href="single-post.html" class="me-4 thumbnail">
@@ -172,13 +173,6 @@
                     <h3 class="m-0 p-0">Wade Warren</h3>
                   </div>
                   
-                  <div class="col-xs-15 col-xs-offset-5">
-                  
-	                  <div class="icon" >
-	                  	<a class="btn_b00"><i class="fa-sharp fa-regular fa-thumbs-up"></i></a>
-	                  	<a class="btn_b00"><i class="fa-regular fa-eye"></i></a>
-	                  </div>
-                  </div>
                   
                 </div>
               </div>
@@ -198,15 +192,13 @@
                     <h3 class="m-0 p-0">Wade Warren</h3>
                   </div>
                   
-                  
                   <div class="col-xs-15 col-xs-offset-5">
                   
 	                  <div class="icon" >
-	                  	<a class="btn_b00"><i class="fa-sharp fa-regular fa-thumbs-up"></i></a>
-	                  	<a class="btn_b00"><i class="fa-regular fa-eye"></i></a>
-	                  </div>
-                  </div>
-                  
+			        	<button class="btn_b00"><i class="fa-solid fa-users"></i></button>
+			           </div>	
+			      </div>
+                 
                 </div>
               </div>
             </div>
@@ -225,13 +217,6 @@
                     <h3 class="m-0 p-0">Wade Warren</h3>
                   </div>
                   
-                  <div class="col-xs-15 col-xs-offset-5">
-                  
-	                  <div class="icon" >
-	                  	<a class="btn_b00"><i class="fa-sharp fa-regular fa-thumbs-up"></i></a>
-	                  	<a class="btn_b00"><i class="fa-regular fa-eye"></i></a>
-	                  </div>
-                  </div>
                   
                 </div>
               </div>
@@ -249,14 +234,6 @@
                   <div class="photo"><img src="resources/assets/img/person-2.jpg" alt="" class="img-fluid"></div>
                   <div class="name">
                     <h3 class="m-0 p-0">Wade Warren</h3>
-                  </div>
-                  
-                  <div class="col-xs-15 col-xs-offset-5">
-                  
-	                  <div class="icon" >
-	                  	<a class="btn_b00"><i class="fa-sharp fa-regular fa-thumbs-up"></i></a>
-	                  	<a class="btn_b00"><i class="fa-regular fa-eye"></i></a>
-	                  </div>
                   </div>
                   
                 </div>
@@ -277,14 +254,6 @@
                     <h3 class="m-0 p-0">Wade Warren</h3>
                   </div>
                   
-                  
-                  <div class="col-xs-15 col-xs-offset-5">
-                  
-	                  <div class="icon" >
-	                  	<a class="btn_b00"><i class="fa-sharp fa-regular fa-thumbs-up"></i></a>
-	                  	<a class="btn_b00"><i class="fa-regular fa-eye"></i></a>
-	                  </div>
-                  </div>
                   
                 </div>
               </div>

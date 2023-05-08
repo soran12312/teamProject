@@ -205,3 +205,51 @@
 .bg-white { background-color: var(--color-white) !important; }
 .bg-gray { background-color: var(--color-gray) !important; }
 .bg-black { background-color: var(--color-black) !important; }
+
+
+
+
+
+/* 버튼 */
+a.btn_frmline {}
+button.btn_frmline {font-size:1em}
+
+   /* 공통 버튼 */
+   .btn_b00,
+   .btn_b01,
+   .btn_b02,
+   .btn_b03,
+   .btn_b04,
+   .btn_b05,
+   .btn_admin,
+   input.btn_submit,
+   .btn_submit,
+   .btn_cancel,
+   .btn_frmline{display:inline-block !important; padding:8px 10px; font-size:15px; text-decoration:none;vertical-align:middle; cursor:pointer; border-radius:5px; -webkit-transition-duration: 0.2s;-webkit-transition-timing-function: ease;transition-duration: 0.2s;transition-timing-function: ease;}
+   .btn_b01:hover,
+   .btn_b02:hover,
+   .btn_b03:hover,
+   .btn_b04:hover,
+   .btn_b05:hover,
+   .btn_admin:hover,
+   input.btn_submit:hover,
+   .btn_submit:hover,
+   .btn_cancel:hover,
+   .btn_frmline:hover{text-decoration:none;filter:Alpha(opacity=70); opacity:0.7; -moz-opacity:0.7;-webkit-transition-duration: 0.2s;-webkit-transition-timing-function: ease;transition-duration: 0.2s;transition-timing-function: ease;}
+   
+   a.btn_b00,.btn_b00               {background:#ffffff; color:#666666; border:none; font-size:20px;}
+   a.btn_b01,.btn_b01               {background:#ffffff; color:#666666; border:1px solid #dddddd;}
+   a.btn_b02,.btn_b02               {background:#666666; color:#ffffff; border:1px solid #666666; margin-right: 10px;}
+   a.btn_b03, .btn_b03               {background:#ffffff; color:#646982; border:1px solid #b9bdd3; }
+   a.btn_b04, .btn_b04               {background:#ffffff; color:#707070; border:1px solid #ccc; }
+   a.btn_admin,.btn_admin            {background:#ffffff; color:#ff0000; border:1px solid #ff6600;} /* 관리자 전용 버튼 */
+   .btn_submit                     {background:#242424; color:#ffffff; border:1px solid #242424;}
+   a.btn_cancel,button.btn_cancel      {background:#ffffff; color:#666666; border:1px solid #dddddd;}
+   a.btn_frmline,button.btn_frmline   {padding:0 5px;height:40px;border:0;background:#3c3c3c;border-radius:5px;color:#fff;vertical-align:top} /* 우편번호검색버튼 등 */
+
+   .btn_confirm {text-align:center} /* 서식단계 진행 */
+   .btn_confirm .btn{padding:15px 20px;
+   
+}
+
+
