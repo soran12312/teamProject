@@ -43,7 +43,9 @@
       </div>
       <!-- end loader -->
       <!-- END LOADER -->
+      <!-- header -->
       <jsp:include page="../../header.jsp"></jsp:include>
+      <!-- end header -->
       <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
          <div class="container">
             <div class="row">
@@ -393,7 +395,9 @@
          <!-- end container -->
       </div>
       <!-- end section -->
+      <!-- footer -->
       <jsp:include page="../../footer.jsp"></jsp:include>
+      <!-- end footer -->
       <!-- end copyrights -->
       
       <!-- ALL JS FILES -->
