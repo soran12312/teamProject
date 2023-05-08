@@ -90,11 +90,11 @@
                      <form id="loginForm" class="row" name="contactform" method="post">
                         <fieldset class="row-fluid">
                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://localhost:8080/zTeamProject/member_join_form.do&response_type=code"></a>
+                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"></a>
                            </div>
                            <br/>
                            <div class="text-center">
-                                 <a><br/>카카오톡으로 1초만에 회원되기</a>
+                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>
@@ -126,10 +126,11 @@
       </c:if>
       <!-- end section ================================================== 메인 1페이지====================================================== -->
 <!-- section 1 -->	  
+<div id="today_money"/>
 <section class="mainContents">
 	<div class="prodLatWR">
 	<div class="prodLat">
-		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">제품소개(갤러리형)<u></u></a></h2>
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 장인!▼▼▼<u></u></a></h2>
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 					<div class="prodLatRELcon">
 				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
@@ -207,11 +208,12 @@ $('.prodLat_product_gallery').owlCarousel({
 </section>
 <!-- end section 1 -->
 
-<!-- section 2 -->	  
+<!-- section 2 -->	 
+<div id="today_review"/> 
 <section class="mainContents">
 	<div class="prodLatWR">
 	<div class="prodLat">
-		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">제품소개(갤러리형)<u></u></a></h2>
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 리뷰!▼▼▼<u></u></a></h2>
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 					<div class="prodLatRELcon">
 				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
@@ -289,11 +291,12 @@ $('.prodLat_product_gallery').owlCarousel({
 </section>
 <!-- end section 2 -->
 
-<!-- section 3 -->	  
+<!-- section 3 -->	
+<div id="today_notmoney"/>  
 <section class="mainContents">
 	<div class="prodLatWR">
 	<div class="prodLat">
-		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">제품소개(갤러리형)<u></u></a></h2>
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 기부!▼▼▼<u></u></a></h2>
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 					<div class="prodLatRELcon">
 				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
@@ -370,7 +373,88 @@ $('.prodLat_product_gallery').owlCarousel({
 </script>
 </section>
 <!-- end section 3 -->
+<!-- section 4 -->	
+<div id="today_lesson"/>  
+<section class="mainContents">
+	<div class="prodLatWR">
+	<div class="prodLat">
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 수업!▼▼▼<u></u></a></h2>
+		<div class="prodLatREL owl-carousel prodLat_product_gallery">
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_20_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=19">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_KaELYXdV_11dc01bd1f38f64cf99b12f69fed9f19d5cc22f6_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=18">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-14_copy_18_12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=17">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_17_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=16">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_8XYeFhzH_941e42ffa8e6f19a7116841327f3963b0e09a8bd_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=15">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_15_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=14">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=13">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=12">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+						</div>
+		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
 
+	</div>
+</div>
+<script src="http://sample.paged.kr/purewhite/theme/pagedtheme/plugin/owlcarousel/owl.carousel.min.js"></script>
+<script>
+$('.prodLat_product_gallery').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsiveClass:true,
+	autoplay:true,
+	autoplayTimeout:5000,
+	autoplayHoverPause:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:3
+        },
+        980:{
+            items:5
+        }
+    }
+})
+</script>
+</section>
+<!-- end section 4 -->
       <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3 or empty sessionScope.member_grade}">
       <div id="support" class="section wb">
          <div class="container">

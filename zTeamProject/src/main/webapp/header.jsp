@@ -53,10 +53,10 @@
                <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                      <li><a data-scroll href="#home">Home</a></li>
-                     <li><a data-scroll href="#features">오늘의 장인<span class="hidden-xs">*</span></a></li>
-                     <li><a data-scroll href="#agent">오늘의 리뷰</a></li>
-                     <li><a data-scroll href="#gallery">오늘의 기부</a></li>
-                     <li><a data-scroll href="#testimonials">오늘의 수업</a></li>
+                     <li><a data-scroll href="#today_money">오늘의 장인<span class="hidden-xs">*</span></a></li>
+                     <li><a data-scroll href="#today_review">오늘의 리뷰</a></li>
+                     <li><a data-scroll href="#today_notmoney">오늘의 기부</a></li>
+                     <li><a data-scroll href="#today_lesson">오늘의 수업</a></li>
                      <li><a data-scroll href="#support">고객센터</a></li>
                   </ul>
                </div>

@@ -61,7 +61,7 @@ public class MainController {
 		if(vo == null) {
 			
 			List<LocationVO> list = mainService.selectAddr1();
-			
+			System.out.println(list);
 			m.addAttribute("member", userInfo);
 			m.addAttribute("list1", list);
 			

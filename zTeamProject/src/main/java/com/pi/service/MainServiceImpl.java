@@ -51,7 +51,7 @@ public class MainServiceImpl implements MainService {
 			sb.append("grant_type=authorization_code");
 
 			sb.append("&client_id=3ce0aad34a9acc02c24c9294a3cfc537"); // REST_API키 본인이 발급받은 key 넣어주기
-			sb.append("&redirect_uri=http://localhost:8080/zTeamProject/member_join_form.do"); // REDIRECT_URI 본인이 설정한 주소 넣어주기
+			sb.append("&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do"); // REDIRECT_URI 본인이 설정한 주소 넣어주기
 
 			sb.append("&code=" + authorize_code);
 			bw.write(sb.toString());
