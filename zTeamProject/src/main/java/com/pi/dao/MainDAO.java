@@ -3,6 +3,7 @@ package com.pi.dao;
 import java.util.List;
 
 import com.pi.domain.ImageVO;
+import com.pi.domain.InterestLocationVO;
 import com.pi.domain.LocationVO;
 import com.pi.domain.MemberVO;
 import com.pi.domain.QuestionVO;
@@ -16,4 +17,5 @@ public interface MainDAO {
 	public int selectLocNumByAddr(LocationVO vo);
 	public void insertQuestion(QuestionVO qvo);
 	public void insertQImage(ImageVO ivo);
+	public List<LocationVO> selectAllLocationNumberByEmail(String email);
 }

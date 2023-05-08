@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pi.domain.ImageVO;
+import com.pi.domain.InterestLocationVO;
 import com.pi.domain.LocationVO;
 import com.pi.domain.MemberVO;
 import com.pi.domain.QuestionVO;
@@ -59,6 +60,14 @@ public class MainDAOImpl implements MainDAO {
 	public void insertQImage(ImageVO ivo) {
 		System.out.println("===> Mybatis insertQImage() 호출");
 		mybatis.insert("MainMapper.insertQImage", ivo);
+	}
+
+	
+
+	@Override
+	public List<LocationVO> selectAllLocationNumberByEmail(String email) {
+		System.out.println("===> Mybatis selectAllLocationNumberByEmail() 호출");
+		return mybatis.selectList("MainMapper.selectAllLocationNumberByEmail",email);
 	}
 
 }

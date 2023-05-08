@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,8 +46,17 @@
       <!-- end loader -->
       <!-- END LOADER -->
       <!-- header -->
+      <c:if test="${empty sessionScope.member_grade}">
       <jsp:include page="../../header.jsp"></jsp:include>
+      </c:if>
+      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+      <jsp:include page="../../header2.jsp"></jsp:include>
+      </c:if>
+      <c:if test="${sessionScope.member_grade eq 4}">
+      <jsp:include page="../../header3.jsp"></jsp:include>
+      </c:if>
       <!-- end header -->
+      <c:if test="${empty sessionScope.member_grade}">
       <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
          <div class="container">
             <div class="row">
@@ -77,6 +88,25 @@
          </div>
          <!-- end container -->
       </div>
+      </c:if>
+      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+      <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6 col-sm-12">
+                  <div class="big-tagline clearfix">
+                     <h2 id='main_info' class='main_info'>
+                     현재 지역은 <br/>
+                     <c:forEach var="LocationVO" items="${sessionScope.locList}" >"${LocationVO.addr3}"<br/></c:forEach> 입니다!</h2>
+                  </div>
+               </div>
+               
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+      </c:if>
       <!-- end section ================================================== 메인 1페이지====================================================== -->
       <div id="features" class="section wb">
          <div class="container">
@@ -340,6 +370,7 @@
          <!-- end container -->
       </div>
       <!-- end section -->
+      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3 or empty sessionScope.member_grade}">
       <div id="support" class="section wb">
          <div class="container">
             <div class="section-title text-center">
@@ -365,12 +396,23 @@
                             </select>
                             </div>
                             </div>
+                            <c:if test="${empty sessionScope.member_grade}">
                             <input type="hidden" name='member_check' id='member_check' value='0' >
+                            </c:if>
+                            <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+                            <input type="hidden" name='member_check' id='member_check' value='1' >
+                            </c:if>
+                            
                           		 <div class="col-xs-12">
                              		제목 <input type="text" name="title" id="title" class="form-control" placeholder="제목을 입력해주세요">
                            		 </div>
                            		 <div class="col-xs-12">
+                           		 <c:if test="${empty sessionScope.member_grade}">
                              		 이메일 <input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요">
+                             	 </c:if>
+                             	 <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+                             		 이메일 <input type="email" name="email" id="email" class="form-control" value="${sessionScope.email}" readonly="readonly">
+                             	 </c:if>
                              	 </div>
                               	 <div class="col-xs-12">
                                		내용 <textarea name="content" id="content" class="form-control" placeholder="내용을 입력해주세요"></textarea>
@@ -394,6 +436,7 @@
          </div>
          <!-- end container -->
       </div>
+      </c:if>
       <!-- end section -->
       <!-- footer -->
       <jsp:include page="../../footer.jsp"></jsp:include>

@@ -40,5 +40,15 @@
 		, #{original_name}, #{save_name}, #{path}, #{size} )
 	</insert>
 	
+	
+	<select id="selectAllLocationNumberByEmail" resultType="com.pi.domain.LocationVO" parameterType="String">
+		SELECT l.location_number location_number
+		, l.addr3 addr3
+		FROM location l INNER JOIN 
+		(SELECT location_number FROM interest_location
+		WHERE email = #{email}) i 
+		ON l.location_number = i.location_number
+	</select>
+	
 
 </mapper>

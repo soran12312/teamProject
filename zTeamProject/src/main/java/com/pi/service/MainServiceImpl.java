@@ -19,6 +19,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pi.dao.MainDAO;
 import com.pi.domain.ImageVO;
+import com.pi.domain.InterestLocationVO;
 import com.pi.domain.LocationVO;
 import com.pi.domain.MemberVO;
 import com.pi.domain.QuestionVO;
@@ -187,6 +188,12 @@ public class MainServiceImpl implements MainService {
 		mainDAO.insertQuestion(qvo);
 		mainDAO.insertQImage(ivo);
 		
+	}
+
+	@Override
+	public List<LocationVO> selectAllLocationNumberByEmail(String email) {
+		
+		return mainDAO.selectAllLocationNumberByEmail(email);
 	}
 
 	

@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pi.domain.ImageVO;
+import com.pi.domain.InterestLocationVO;
 import com.pi.domain.LocationVO;
 import com.pi.domain.MemberVO;
 import com.pi.domain.QuestionVO;
@@ -40,7 +41,7 @@ public class MainController {
 	
 	// 1번 카카오톡에 사용자 코드 받기(jsp의 a태그 href에 경로 있음)
 	@RequestMapping(value = "member_join_form.do", method = RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model m) throws Throwable {
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model m, HttpSession session) throws Throwable {
 		// 1번
 		System.out.println("code:" + code);
 		
@@ -66,7 +67,7 @@ public class MainController {
 			
 			return "member_join_form";
 		}else{
-			HttpSession session = request.getSession();
+			
 			session.setAttribute("email", vo.getEmail());
 			session.setAttribute("nickname", vo.getNickname());
 			session.setAttribute("member_grade", vo.getMember_grade());
@@ -74,9 +75,25 @@ public class MainController {
 			session.setAttribute("introduce", vo.getIntroduce());
 			session.setAttribute("business_number", vo.getBusiness_number());
 			
+			session.setAttribute("locList", mainService.selectAllLocationNumberByEmail(vo.getEmail()));
+			
 			return "main_view";
 		}
 		
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		
+		session.removeAttribute("email");
+		session.removeAttribute("nickname");
+		session.removeAttribute("member_grade");
+		session.removeAttribute("member_state");
+		session.removeAttribute("introduce");
+		session.removeAttribute("business_number");
+		session.removeAttribute("locList");
+		
+		return "main_view";
 	}
 	
 	@RequestMapping("/selectAddr2.do")
@@ -142,7 +159,7 @@ public class MainController {
 	
 	
 	@RequestMapping("/{step}.do")
-	public String viewPage(@PathVariable String step) {
+	public String viewPage(@PathVariable String step, Model m) {
 		return step;
 	}
 	

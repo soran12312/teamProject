@@ -56,8 +56,7 @@
                      <li><a data-scroll href="#features">강좌게시판<span class="hidden-xs">*</span></a></li>
                      <li><a data-scroll href="#agent">커뮤니티게시판</a></li>
                      <li><a data-scroll href="#gallery">리뷰게시판</a></li>
-                     <li><a data-scroll href="#mypage">마이페이지</a></li>
-                     <li><a data-scroll href="#support">고객센터</a></li>
+                     <li><a data-scroll href="#mypage">관리자페이지</a></li>
                   </ul>
                </div>
             </div>
