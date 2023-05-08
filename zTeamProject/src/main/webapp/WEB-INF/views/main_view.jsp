@@ -418,7 +418,7 @@
                            		 	<button type="reset" name="q_delete_btn" id="q_delete_btn" class="q_delete_btn form-control">취소</button>
                            		 </div>
                            		 <div class="col-md-6 col-sm-6">
-                           		 	<button type="submit" name="q_submit_btn" id="q_submit_btn" class="q_submit_btn form-control">보내기</button>
+                           		 	<button type="submit" name="q_submit_btn" id="q_submit_btn" class="q_submit_btn form-control">보내기</button> 
                         		</div>
                         </fieldset>
                      </form>
