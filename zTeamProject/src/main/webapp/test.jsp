@@ -4,7 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>stickcode_summernote</title>
+    <title>품-i</title>
+    
     <!-- include libraries(jQuery, bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -13,6 +14,7 @@
     <!-- include summernote css/js-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <link rel="stylesheet" href="resources/new_Css_Sibal.css">
     <script>
     // 메인화면 페이지 로드 함수
     $(document).ready(function () {
@@ -164,13 +166,28 @@
 			
 		});//end of on(지역3 셀렉트시 이벤트)
 		
+		$('#free').change(function(){
+			if($(this).is(":checked")){
+				$('#price').val('0');
+				$('#price').attr('readonly','readonly');
+			}else{
+				$('#price').val('');
+				$('#price').removeAttr('readonly');
+			}
+			
+		});
+		
     });//end of $
 </script>
 </head>
-<body>
+<body class="main">
 
-<jsp:include page="new_header2.jsp"></jsp:include>
+<%--<jsp:include page="new_header2.jsp"></jsp:include>--%>
 
+<div class = "background">
+	      <div class="background_img">
+	      <div class="main_info_div">
+	      
 <form class="insert_lesson_frm " id="insert_lesson_frm" action="" method="post">
                   	
                      	<input type="text" name="insert_lesson_title" class="insert_lesson_title" id="insert_lesson_title" placeholder="제목을 입력해주세요">
@@ -182,7 +199,9 @@
                   		
                   		
                     
- <!-- ===옵션=== --><div name="insert_lesson_option" class="insert_lesson_option" id="insert_lesson_option"> <!-- ====================옵션======================================= -->
+ 			<!-- ===옵션=== -->
+ 			<div name="insert_lesson_option" class="insert_lesson_option" id="insert_lesson_option"> 
+ 			<!-- ====================옵션======================================= -->
  						<table>
  							<tr>
  								<td>카테고리</td>
@@ -235,7 +254,11 @@
                     	 <button type="submit" name="insert_lesson_submit" id="insert_lesson_submit" class="insert_lesson_submit">작성완료</button>
                   	
                    </form>
-                   
+                   </div>
+                   </div>
+                   </div>
+
 <jsp:include page="new_footer.jsp"></jsp:include>
+
 </body>
 </html>

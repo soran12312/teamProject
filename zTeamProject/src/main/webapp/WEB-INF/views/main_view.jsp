@@ -3,41 +3,64 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- Mobile Metas -->
-   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-   <!-- Site Metas -->
-   <title>품-i</title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
-   <!-- Site Icons -->
-   <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
-   <link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="resources/css/bootstrap.min.css">
-   <!-- Site CSS -->
-   <link rel="stylesheet" href="resources/style.css">
-   <!-- Colors CSS -->
-   <link rel="stylesheet" href="resources/css/colors.css">
-   <!-- ALL VERSION CSS -->
-   <link rel="stylesheet" href="resources/css/versions.css">
-   <!-- Responsive CSS -->
-   <link rel="stylesheet" href="resources/css/responsive.css">
-   <!-- Custom CSS -->
-   <link rel="stylesheet" href="resources/css/custom.css">
-   <!-- Modernizer for Portfolio -->
-   <script src="resources/js/modernizer.js"></script>
-   <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=yes">
+<meta name="HandheldFriendly" content="true">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<title>품-i</title>
+<link rel="stylesheet" href="resources/css/classList/default.css">
+<link rel="stylesheet" href="resources/css/classList/bxslider.css">
+<link rel="stylesheet" href="resources/css/classList/boxstyle.css">
+<link rel="stylesheet" href="resources/css/classList/webstyle.css">
+<link rel="stylesheet" href="resources/css/classList/basicstyle.css">
+<link rel="stylesheet" href="resources/css/classList/qnastyle.css">
+<link rel="stylesheet" href="resources/css/classList/productstyle.css">
+<link rel="stylesheet" href="resources/css/classList/owlcarousel.css">
+<link rel="stylesheet" href="resources/css/classList/main.css">
+<link rel="stylesheet" href="resources/css/classList/board.common.css">
+<link rel="stylesheet" href="resources/css/classList/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/classList/mobile.css">
+<link rel="stylesheet" href="resources/css/classList/contents.css">
+<link rel="stylesheet" href="resources/css/classList/featherlight.min.css">
+<!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
+<link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="resources/style.css">
+<!-- Colors CSS -->
+<link rel="stylesheet" href="resources/css/colors.css">
+<!-- ALL VERSION CSS -->
+<link rel="stylesheet" href="resources/css/versions.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="resources/css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="resources/css/custom.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+<!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
+<script>var g5_url = "http://sample.paged.kr/purewhite"; var g5_bbs_url = "http://sample.paged.kr/purewhite/bbs"; var g5_is_member = ""; var g5_is_admin = ""; var g5_is_mobile = ""; var g5_bo_table = "gallery"; var g5_sca = ""; var g5_editor = "smarteditor2"; var g5_cookie_domain = "";</script>
+<script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="resources/js/jquery.menu.min.js"></script>
+<script src="resources/js/common.js"></script>
+<script src="resources/js/WEBsiting.js"></script>
+<script src="resources/js/wrest.js"></script>
+<script src="resources/js/placeholders.min.js"></script>
+<script src="resources/js/jquery.shuffleLetters.min.js"></script>
+<script src="resources/js/featherlight.min.js"></script>
+<script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
+<script src="resources/js/modernizer.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+</head>
    
    <!--[if lt IE 9]>
    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
    <![endif]-->
-   </head>
+  
    <body class="realestate_version">
       <!-- header -->
       <c:if test="${empty sessionScope.member_grade}">
@@ -71,7 +94,7 @@
                            </div>
                            <br/>
                            <div class="text-center">
-                           		<a><br/>카카오톡으로 1초만에 회원되기</a>
+                                 <a><br/>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>
@@ -102,268 +125,252 @@
       </div>
       </c:if>
       <!-- end section ================================================== 메인 1페이지====================================================== -->
-      <div id="features" class="section wb">
-         <div class="container">
-            <div class="section-title row text-center">
-               <div class="col-md-8 col-md-offset-2">
-                  <small>오늘의 인기글을 둘러보세요</small>
-                  <h3 class="lead">오늘의 추천 게시글</h3>
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end title -->
-            </div>
-            <!-- end how-its-work -->
-            <hr class="invis">
-            <div class="row text-center">
-               <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="service-widget">
-                     <div class="post-media wow fadeIn">
-                        <a href="resources/uploads/estate_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                        <img src="resources/uploads/estate_01.jpg" alt="" class="img-responsive img-rounded">
-                     </div>
-                     <h3>Spacious and Large Garden</h3>
-                     <p>Aliquam sagittis ligula et sem lacinia, ut facilisis enim sollicitudin. Proin nisi est, convallis nec purus vitae, iaculis posuere sapien. Cum sociis natoque.</p>
-                  </div>
-                  <!-- end service -->
-               </div>
-               <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="service-widget">
-                     <div class="post-media wow fadeIn">
-                        <a href="resources/uploads/estate_03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                        <img src="resources/uploads/estate_03.jpg" alt="" class="img-responsive img-rounded">
-                     </div>
-                     <h3>With its Own Pool</h3>
-                     <p>Duis at tellus at dui tincidunt scelerisque nec sed felis. Suspendisse id dolor sed leo rutrum euismod. Nullam vestibulum fermentum erat. It nam auctor. </p>
-                  </div>
-                  <!-- end service -->
-               </div>
-               <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="service-widget">
-                     <div class="post-media wow fadeIn">
-                        <a href="resources/uploads/estate_02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
-                        <img src="resources/uploads/estate_02.jpg" alt="" class="img-responsive img-rounded">
-                     </div>
-                     <h3>In Forests- Fresh Clean Air</h3>
-                     <p>Etiam materials ut mollis tellus, vel posuere nulla. Etiam sit amet lacus vitae massa sodales aliquam at eget quam. Integer ultricies et magna quis.</p>
-                  </div>
-                  <!-- end service -->
-               </div>
-            </div>
-            <!-- end row -->
-         </div>
-         <!-- end container -->
-         <div class="sep1"></div>
-      </div>
-      <!-- end section -->
-      <div id="agent" class="parallax section db parallax-off" style="background-image:url('resources/uploads/parallax_02.png');">
-         <div class="container">
-            <div class="section-title row text-center">
-               <div class="col-md-8 col-md-offset-2">
-               		<p class="lead">오늘의 인기리뷰를 둘러보세요!</p>
-                  	<h3>오늘의 리뷰☞pick!</h3>
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end title -->
-            <div class="row">
-               <div class="col-md-3">
-                  <div class="post-media wow fadeIn">
-                     <img src="resources/uploads/agent.jpg" alt="" class="img-responsive img-rounded">
-                     <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
-                  </div>
-                  <!-- end media -->
-               </div>
-               <!-- end col -->
-               <div class="col-md-6">
-                  <div class="message-box">
-                     <h4>The Agent</h4>
-                     <h2>Jenny Martines</h2>
-                     <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>
-                     <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-                     <a href="#contact" data-scroll class="btn btn-light global-radius btn-brd grd1 effect-1">Contact Me</a>
-                  </div>
-                  <!-- end messagebox -->
-               </div>
-               <!-- end col -->
-               <div class="col-md-3">
-                  <div class="agencies_meta clearfix">
-                     <span><i class="fa fa-envelope "></i> <a href="mailto:support@sitename.com">support@sitename.com</a></span>
-                     <span><i class="fa fa-link "></i> <a href="#">www.sitename.com</a></span>
-                     <span><i class="fa fa-phone-square "></i> +1 232 444 55 66</span>
-                     <span><i class="fa fa-print "></i> +1 232 444 55 66</span>
-                     <span><i class="fa fa-facebook-square "></i> <a href="#">facebook.com/tagline</a></span>
-                     <span><i class="fa fa-twitter-square "></i> <a href="#">twitter.com/tagline</a></span>
-                     <span><i class="fa fa-linkedin-square "></i> <a href="#">linkedin.com/tagline</a></span>
-                  </div>
-                  <!-- end agencies_meta -->
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end row -->
-         </div>
-      </div>
-      <div id="gallery" class="section wb">
-         <div class="sep2"></div>
-         <div class="container">
-            <div class="section-title row text-center">
-               <div class="col-md-8 col-md-offset-2">
-                  <p class="lead">오늘의 인기리뷰를 둘러보세요!</p>
-                  <h3>오늘의 기부☞Pick!</h3>
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end title -->
-            <div id="da-thumbs" class="da-thumbs portfolio">
-               <div class="post-media pitem item-w1 item-h1 cat1">
-                  <a href="resources/uploads/home_01.jpg" data-rel="prettyPhoto[gal]">
-                     <img src="resources/uploads/home_01.jpg" alt="" class="img-responsive">
-                     <div>
-                        <i class="flaticon-unlink"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-media pitem item-w1 item-h1 cat2">
-                  <a href="resources/uploads/home_02.jpg" data-rel="prettyPhoto[gal]">
-                     <img src="resources/uploads/home_02.jpg" alt="" class="img-responsive">
-                     <div>
-                        <i class="flaticon-unlink"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-media pitem item-w1 item-h1 cat1">
-                  <a href="resources/uploads/home_03.jpg" data-rel="prettyPhoto[gal]">
-                     <img src="resources/uploads/home_03.jpg" alt="" class="img-responsive">
-                     <div>
-                        <i class="flaticon-unlink"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-media pitem item-w1 item-h1 cat3">
-                  <a href="resources/uploads/home_04.jpg" data-rel="prettyPhoto[gal]">
-                     <img src="resources/uploads/home_04.jpg" alt="" class="img-responsive">
-                     <div>
-                        <i class="flaticon-unlink"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-media pitem item-w1 item-h1 cat2">
-                  <a href="resources/uploads/home_05.jpg" data-rel="prettyPhoto[gal]">
-                     <img src="resources/uploads/home_05.jpg" alt="" class="img-responsive">
-                     <div>
-                        <i class="flaticon-unlink"></i>
-                     </div>
-                  </a>
-               </div>
-               <div class="post-media pitem item-w1 item-h1 cat1">
-                  <a href="resources/uploads/home_06.jpg" data-rel="prettyPhoto[gal]">
-                     <img src="resources/uploads/home_06.jpg" alt="" class="img-responsive">
-                     <div>
-                        <i class="flaticon-unlink"></i>
-                     </div>
-                  </a>
-               </div>
-            </div>
-            <!-- end portfolio -->
-         </div>
-         <!-- end container -->
-      </div>
-      <!-- end section -->
-      <div id="testimonials" class="section lb">
-         <div class="container">
-            <div class="section-title row text-center">
-               <div class="col-md-8 col-md-offset-2">
-                  <p class="lead">오늘의 인기강의를 둘러보세요!</p>
-                  <h3>오늘의 동네수업☞Pick!</h3>
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end title -->
-            <div class="row">
-               <div class="col-md-12 col-sm-12">
-                  <div class="testi-carousel owl-carousel owl-theme">
-                     <div class="testimonial clearfix">
-                        <div class="desc">
-                           <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-                           <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                        </div>
-                        <div class="testi-meta">
-                           <img src="resources/uploads/testi_01.png" alt="" class="img-responsive alignleft">
-                           <h4>James Fernando <small>- Manager of Racer</small></h4>
-                        </div>
-                        <!-- end testi-meta -->
-                     </div>
-                     <!-- end testimonial -->
-                     <div class="testimonial clearfix">
-                        <div class="desc">
-                           <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                           <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                        </div>
-                        <div class="testi-meta">
-                           <img src="resources/uploads/testi_02.png" alt="" class="img-responsive alignleft">
-                           <h4>Jacques Philips <small>- Designer</small></h4>
-                        </div>
-                        <!-- end testi-meta -->
-                     </div>
-                     <!-- end testimonial -->
-                     <div class="testimonial clearfix">
-                        <div class="desc">
-                           <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                           <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                        </div>
-                        <div class="testi-meta">
-                           <img src="resources/uploads/testi_03.png" alt="" class="img-responsive alignleft">
-                           <h4>Venanda Mercy <small>- Newyork City</small></h4>
-                        </div>
-                        <!-- end testi-meta -->
-                     </div>
-                     <!-- end testimonial -->
-                     <div class="testimonial clearfix">
-                        <div class="desc">
-                           <h3><i class="fa fa-quote-left"></i> Wonderful Support!</h3>
-                           <p class="lead">They have got my project on time with the competition with a sed highly skilled, and experienced & professional team.</p>
-                        </div>
-                        <div class="testi-meta">
-                           <img src="resources/uploads/testi_01.png" alt="" class="img-responsive alignleft">
-                           <h4>James Fernando <small>- Manager of Racer</small></h4>
-                        </div>
-                        <!-- end testi-meta -->
-                     </div>
-                     <!-- end testimonial -->
-                     <div class="testimonial clearfix">
-                        <div class="desc">
-                           <h3><i class="fa fa-quote-left"></i> Awesome Services!</h3>
-                           <p class="lead">Explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you completed.</p>
-                        </div>
-                        <div class="testi-meta">
-                           <img src="resources/uploads/testi_02.png" alt="" class="img-responsive alignleft">
-                           <h4>Jacques Philips <small>- Designer</small></h4>
-                        </div>
-                        <!-- end testi-meta -->
-                     </div>
-                     <!-- end testimonial -->
-                     <div class="testimonial clearfix">
-                        <div class="desc">
-                           <h3><i class="fa fa-quote-left"></i> Great & Talented Team!</h3>
-                           <p class="lead">The master-builder of human happines no one rejects, dislikes avoids pleasure itself, because it is very pursue pleasure. </p>
-                        </div>
-                        <div class="testi-meta">
-                           <img src="resources/uploads/testi_03.png" alt="" class="img-responsive alignleft">
-                           <h4>Venanda Mercy <small>- Newyork City</small></h4>
-                        </div>
-                        <!-- end testi-meta -->
-                     </div>
-                     <!-- end testimonial -->
-                  </div>
-                  <!-- end carousel -->
-               </div>
-               <!-- end col -->
-            </div>
-            <!-- end row -->
-         </div>
-         <!-- end container -->
-      </div>
-      <!-- end section -->
+<!-- section 1 -->	  
+<section class="mainContents">
+	<div class="prodLatWR">
+	<div class="prodLat">
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">제품소개(갤러리형)<u></u></a></h2>
+		<div class="prodLatREL owl-carousel prodLat_product_gallery">
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_20_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=19">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_KaELYXdV_11dc01bd1f38f64cf99b12f69fed9f19d5cc22f6_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=18">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-14_copy_18_12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=17">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_17_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=16">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_8XYeFhzH_941e42ffa8e6f19a7116841327f3963b0e09a8bd_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=15">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_15_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=14">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=13">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=12">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+						</div>
+		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
+
+	</div>
+</div>
+<script src="http://sample.paged.kr/purewhite/theme/pagedtheme/plugin/owlcarousel/owl.carousel.min.js"></script>
+<script>
+$('.prodLat_product_gallery').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsiveClass:true,
+	autoplay:true,
+	autoplayTimeout:5000,
+	autoplayHoverPause:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:3
+        },
+        980:{
+            items:5
+        }
+    }
+})
+</script>
+</section>
+<!-- end section 1 -->
+
+<!-- section 2 -->	  
+<section class="mainContents">
+	<div class="prodLatWR">
+	<div class="prodLat">
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">제품소개(갤러리형)<u></u></a></h2>
+		<div class="prodLatREL owl-carousel prodLat_product_gallery">
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_20_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=19">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_KaELYXdV_11dc01bd1f38f64cf99b12f69fed9f19d5cc22f6_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=18">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-14_copy_18_12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=17">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_17_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=16">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_8XYeFhzH_941e42ffa8e6f19a7116841327f3963b0e09a8bd_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=15">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_15_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=14">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=13">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=12">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+						</div>
+		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
+
+	</div>
+</div>
+<script src="http://sample.paged.kr/purewhite/theme/pagedtheme/plugin/owlcarousel/owl.carousel.min.js"></script>
+<script>
+$('.prodLat_product_gallery').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsiveClass:true,
+	autoplay:true,
+	autoplayTimeout:5000,
+	autoplayHoverPause:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:3
+        },
+        980:{
+            items:5
+        }
+    }
+})
+</script>
+</section>
+<!-- end section 2 -->
+
+<!-- section 3 -->	  
+<section class="mainContents">
+	<div class="prodLatWR">
+	<div class="prodLat">
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">제품소개(갤러리형)<u></u></a></h2>
+		<div class="prodLatREL owl-carousel prodLat_product_gallery">
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_20_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=19">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_KaELYXdV_11dc01bd1f38f64cf99b12f69fed9f19d5cc22f6_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=18">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-14_copy_18_12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=17">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_17_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=16">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_8XYeFhzH_941e42ffa8e6f19a7116841327f3963b0e09a8bd_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=15">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_15_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=14">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=13">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+					<div class="prodLatRELcon">
+				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=12">
+					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
+					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
+			</div>
+						</div>
+		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
+
+	</div>
+</div>
+<script src="http://sample.paged.kr/purewhite/theme/pagedtheme/plugin/owlcarousel/owl.carousel.min.js"></script>
+<script>
+$('.prodLat_product_gallery').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsiveClass:true,
+	autoplay:true,
+	autoplayTimeout:5000,
+	autoplayHoverPause:true,
+    responsive:{
+        0:{
+            items:2
+        },
+        600:{
+            items:3
+        },
+        980:{
+            items:5
+        }
+    }
+})
+</script>
+</section>
+<!-- end section 3 -->
+
       <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3 or empty sessionScope.member_grade}">
       <div id="support" class="section wb">
          <div class="container">
@@ -380,7 +387,7 @@
                         <fieldset class="row-fluid">
                         <div class="col-xs-12">
                         <div class="col-md-6 col-sm-6">
-                       		문의유형 <select name="question_category" id="question_category" class="selectpicker form-control " data-style="btn-white">
+                             문의유형 <select name="question_category" id="question_category" class="form-control " data-style="btn-white">
                                  <option value="사업자신청">사업자신청</option>
                                  <option value="유료회원신청">유료회원신청</option>
                                  <option value="강좌신고">강좌신고</option>
@@ -397,29 +404,29 @@
                             <input type="hidden" name='member_check' id='member_check' value='1' >
                             </c:if>
                             
-                          		 <div class="col-xs-12">
-                             		제목 <input type="text" name="title" id="title" class="form-control" placeholder="제목을 입력해주세요">
-                           		 </div>
-                           		 <div class="col-xs-12">
-                           		 <c:if test="${empty sessionScope.member_grade}">
-                             		 이메일 <input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요">
-                             	 </c:if>
-                             	 <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
-                             		 이메일 <input type="email" name="email" id="email" class="form-control" value="${sessionScope.email}" readonly="readonly">
-                             	 </c:if>
-                             	 </div>
-                              	 <div class="col-xs-12">
-                               		내용 <textarea name="content" id="content" class="form-control" placeholder="내용을 입력해주세요"></textarea>
-                               	 </div>
-                               	 <div class=" col-xs-12">
-                               	 첨부파일 <input type='file' name="file" id="file" class="form-control"/>
-                           		 </div>
-                           		 <div class="col-md-6 col-sm-6">
-                           		 	<button type="reset" name="q_delete_btn" id="q_delete_btn" class="q_delete_btn form-control">취소</button>
-                           		 </div>
-                           		 <div class="col-md-6 col-sm-6">
-                           		 	<button type="submit" name="q_submit_btn" id="q_submit_btn" class="q_submit_btn form-control">보내기</button> 
-                        		</div>
+                                 <div class="col-xs-12">
+                                   제목 <input type="text" name="title" id="title" class="form-control" placeholder="제목을 입력해주세요">
+                                  </div>
+                                  <div class="col-xs-12">
+                                  <c:if test="${empty sessionScope.member_grade}">
+                                    이메일 <input type="email" name="email" id="email" class="form-control" placeholder="이메일을 입력해주세요">
+                                 </c:if>
+                                 <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+                                    이메일 <input type="email" name="email" id="email" class="form-control" value="${sessionScope.email}" readonly="readonly">
+                                 </c:if>
+                                 </div>
+                                  <div class="col-xs-12">
+                                     내용 <textarea name="content" id="content" class="form-control" placeholder="내용을 입력해주세요"></textarea>
+                                   </div>
+                                   <div class=" col-xs-12">
+                                   첨부파일 <input type='file' name="file" id="file" class="form-control"/>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                     <button type="reset" name="q_delete_btn" id="q_delete_btn" class="q_delete_btn form-control">취소</button>
+                                  </div>
+                                  <div class="col-md-6 col-sm-6">
+                                     <button type="submit" name="q_submit_btn" id="q_submit_btn" class="q_submit_btn form-control">보내기</button> 
+                              </div>
                         </fieldset>
                      </form>
                   </div>
@@ -437,6 +444,14 @@
       <!-- end footer -->
       <!-- end copyrights -->
       
-      
+      <!-- ALL JS FILES -->
+      <script src="resources/js/all.js"></script>
+      <!-- ALL PLUGINS -->
+      <script src="resources/js/custom.js"></script>
+      <script src="resources/js/portfolio.js"></script>
+      <script src="resources/js/hoverdir.js"></script>    
+      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+      <!-- MAP & CONTACT -->
+      <script src="resources/js/map.js"></script>
    </body>
 </html>

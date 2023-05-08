@@ -103,7 +103,7 @@ body.main {
 	display: inline-block;
 	width: 50%;
 }
-.new_member_form{
+.new_member_form, .insert_lesson_frm{
 	width: 50%;
 	display: inline-block;
 }
