@@ -81,6 +81,15 @@ body h2.new_member_name_h2{
 .new_member_addr_h2{
 	color : #333332;
 }
+/*
+.new_member_addr_h2{
+	position: absolute;
+	z-index: 10;
+}
+.new_member_info{
+	position: absolute;
+	z-index: 100;
+}*/
 
 .new_member_submit{
 	background-color : #f38f84;

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +39,128 @@
    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
    <![endif]-->
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+   		$(".select_location").on('change',".addr1",function(){
+   			//alert($(this).val());
+   			if($(this).val()!="시,도"){
+   				
+   				var sel = $(this);
+   				var param = { addr1 : $(this).val().trim() };
+   				
+   				$.ajax({
+   					type	: 'post'
+   					,data	: param
+   					,dataType : 'json'
+   					,url	: '/zTeamProject/selectAddr2.do'
+   					,success	: function(result){
+   						//alert(result);
+   						//console.log(result);
+   						
+   						sel.nextAll().remove()
+   						
+   						var select = $('<select class = "addr2" name = "addr2" />')
+   						var opt = $('<option value = "시,군,구" />')
+   						opt.text('시,군,구');
+   						select.append(opt);
+   						for( row of result ){
+   							console.log(row['addr2']);
+   							var option = $('<option value = "'+row['addr2']+'" />');
+   							option.text(row['addr2']);
+   							select.append(option);
+   						} // end of for
+   						sel.parent().append(select);
+   						
+   					}
+   					,error	: function(err){
+   						alert('error');
+   						console.log(err);
+   					}
+   		}); // end of ajax
+   				
+   			} // end of if
+   			
+   		});//end of on(지역1 셀렉트시 이벤트)
+   		
+   		$(".select_location").on('change','.addr2',function(){
+   			//alert($(this).val());
+   			if($(this).val()!="시,군,구"){
+   				var sel = $(this);
+   				var param = { addr2 : $(this).val().trim() };
+   				
+   				$.ajax({
+   					type	: 'post'
+   					,data	: param
+   					,dataType : 'json'
+   					,url	: '/zTeamProject/selectAddr3.do'
+   					,success	: function(result){
+   						//alert(result);
+   						//console.log(result);
+   						
+   						sel.nextAll().remove()
+   						
+   						var select = $('<select class = "addr3" name = "addr3" />')
+   						var opt = $('<option value = "법정동명" />')
+   						opt.text('법정동명');
+   						select.append(opt);
+   						for( row of result ){
+   							console.log(row['addr3']);
+   							var option = $('<option value = "'+row['addr3']+'" />');
+   							option.text(row['addr3']);
+   							select.append(option);
+   						} // end of for
+   						sel.parent().append(select);
+   						var location_number = $('<input type="hidden" name="location_number" id="location_number" />');
+   						sel.parent().append(location_number);
+   						
+   					}
+   					,error	: function(err){
+   						alert('error');
+   						console.log(err);
+   					}
+   		}); // end of ajax
+   				
+   			} // end of if
+   			
+   		});//end of on(지역2 셀렉트시 이벤트)
+   		
+   		$(".select_location").on('change','.addr3',function(){
+   			//alert($(this).val());
+   			if($(this).val()!="시,군,구"){
+   				var sel = $(this);
+   				var param = { 
+   						addr1 : $(this).prev().prev().val().trim()
+   						,addr2 : $(this).prev().val().trim()
+   						,addr3 : $(this).val().trim() };
+   				
+   				$.ajax({
+   					type	: 'post'
+   					,data	: param
+   					,dataType : 'json'
+   					,url	: '/zTeamProject/selectLocNumByAddr.do'
+   					,success	: function(result){
+   						//alert(result);
+   						//console.log(result);
+   						
+   						sel.next().val(result);
+   						
+   					}
+   					,error	: function(err){
+   						alert('error');
+   						console.log(err);
+   					}
+   		}); // end of ajax
+   				
+   			} // end of if
+   			
+   		});//end of on(지역3 셀렉트시 이벤트)
+   		
+   		
+		
+	}); // end of $
+	</script>
    </head>
    <body class="realestate_version">
       <!-- LOADER -->
@@ -86,24 +210,50 @@
                         <fieldset class="row-fluid">
                         	<div class="new_member_form_div">
             				<h2 class="new_member_name_h2">닉네임</h2>
-				            		<input id="new_member_name" name="new_member_name" class="new_member_name ">
+            						<input type="hidden" name="email" value="${member.email}">
+				            		<input id="new_member_name" name="nickname" class="new_member_namel" value="${member.nickname}">
 				            <h2 class="new_member_info_h2">자기소개</h2>
-				            		<textarea id="new_member_info"name="new_member_info"class="new_member_info col-lg-12 col-md-12 col-sm-12 col-xs-12" ></textarea>
+				            <div class='col-xs-12'>
+				            		<textarea id="new_member_info" name="introduce" class="new_member_info form-control" ></textarea>
+				            </div>
+				            <div>
 				            <h2 class="new_member_addr_h2">동네선택</h2>
+				            </div>
+				            <div id='select_location'>
+				            <div>
+				            	<span id="location1" class="select_location">
+				            		<select id="addr1" name="addr1" class="addr1">
+				            		<option>시,도</option>
+				            		<c:forEach var="loc1" items="${list1}">
+				            			<option value="${loc1.addr1}">${loc1.addr1}</option>
+				            		</c:forEach>
+				            		</select>
+				            	</span>	
 				            	
-				            		<select id="new_member_addr1" name="new_member_addr1" class="new_member_addr1">
-				            			<option>addr1</option>
+					            	<!-- <button type="button" id="new_member_plusbtn" name="new_member_plusbtn" class="new_member_plusbtn">+</button>
+					            	<br/> -->
+				       		</div>
+				       		<div>
+				       		<span id="location2" class="select_location">
+				            		<select id="addr1" name="addr1" class="addr1">
+				            		<option>시,도</option>
+				            		<c:forEach var="loc1" items="${list1}">
+				            			<option value="${loc1.addr1}">${loc1.addr1}</option>
+				            		</c:forEach>
 				            		</select>
-				            		<select id="new_member_addr2" name="new_member_addr2" class="new_member_addr2">
-				            			<option>addr2</option>
+				            	</span>	
+				       		</div>
+				       		<div>
+				       		<span id="location3" class="select_location">
+				            		<select id="addr1" name="addr1" class="addr1">
+				            		<option>시,도</option>
+				            		<c:forEach var="loc1" items="${list1}">
+				            			<option value="${loc1.addr1}">${loc1.addr1}</option>
+				            		</c:forEach>
 				            		</select>
-				            		<select id="new_member_addr3" name="new_member_addr3" class="new_member_addr3">
-				            			<option>addr3</option>
-				            		</select>
-				            	
-					            	<button type="button" id="new_member_plusbtn" name="new_member_plusbtn" class="new_member_plusbtn">+</button>
-					            	<br/>
-				       
+				            	</span>	
+				       		</div>
+				       		</div>
 				           <button  type="submit" name="new_member_submit" class="new_member_submit" id="new_member_submit">가입하기</button>
 							</div>                       
                         </fieldset>
@@ -116,32 +266,7 @@
          <!-- end container -->
       </div>
         
-            <div id="" class="parallax first-section new_member_div" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/nomalBack.png');">
-    		 <div class="container">
-            <form id="new_member_form" name="new_member_form" class="new_member_form">
-            	<div>
-            	<h2 class="new_member_name_h2">닉네임</h2>
-            	</div>
-            		<input id="new_member_name" name="new_member_name" class="new_member_name">
-            	
-            	<h2 class="new_member_info_h2">자기소개</h2>
-            	<textarea id="new_member_info"name="new_member_info"class="new_member_info"></textarea>
-            	
-            	<h2 class="new_member_addr_h2">동네선택</h2>
-            		<select id="new_member_addr1" name="new_member_addr1" class="new_member_addr1">
-            			<option>addr1</option>
-            		</select>
-            		<select id="new_member_addr2" name="new_member_addr2" class="new_member_addr2">
-            			<option>addr2</option>
-            		</select>
-            		<select id="new_member_addr3" name="new_member_addr3" class="new_member_addr3">
-            			<option>addr3</option>
-            		</select>
-            	<br/>
-            	<button  type="submit" name="new_member_submit" class="new_member_submit" id="new_member_submit">가입하기</button>
-            </form>
-           </div>		
-</div>
+            
       <div class="copyrights"><!-- ===========================================================================================카테고리 연결해야함 -->
          <div class="container">
             <div class="footer-distributed">
@@ -169,13 +294,13 @@
       <!-- end copyrights -->
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- ALL JS FILES -->
-      <script src="resources/js/all.js"></script>
-      <!-- ALL PLUGINS -->
-      <script src="resources/js/custom.js"></script>
-      <script src="resources/js/portfolio.js"></script>
-      <script src="resources/js/hoverdir.js"></script>    
-      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-      <!-- MAP & CONTACT -->
-      <script src="resources/js/map.js"></script>
+   <script src="resources/js/all.js"></script>
+   <!-- ALL PLUGINS -->
+   <script src="resources/js/custom.js"></script>
+   <script src="resources/js/portfolio.js"></script>
+   <script src="resources/js/hoverdir.js"></script>    
+   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+   <!-- MAP & CONTACT -->
+   <!-- <script src="resources/js/map.js"></script> -->
    </body>
 </html>

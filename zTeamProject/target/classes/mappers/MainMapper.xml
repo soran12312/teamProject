@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MainMapper">
+
+
+
+	<select id="loginCheck" resultType="com.pi.domain.MemberVO" parameterType="com.pi.domain.MemberVO">
+		SELECT * FROM member WHERE email=#{email}
+	</select>
+	
+	<select id="selectAddr1" resultType="com.pi.domain.LocationVO">
+		SELECT DISTINCT addr1 FROM location
+	</select>
+	
+	<select id="selectAddr2" resultType="com.pi.domain.LocationVO" parameterType="com.pi.domain.LocationVO">
+		SELECT DISTINCT addr2 FROM location WHERE addr1 = #{addr1}
+	</select>
+	
+	<select id="selectAddr3" resultType="com.pi.domain.LocationVO" parameterType="com.pi.domain.LocationVO">
+		SELECT DISTINCT addr3 FROM location WHERE addr2 = #{addr2}
+	</select>
+	
+	<select id="selectLocNumByAddr" resultType="com.pi.domain.LocationVO" parameterType="com.pi.domain.LocationVO">
+		SELECT location_number FROM location WHERE addr1 = #{addr1} AND addr2 = #{addr2} AND addr3 = #{addr3}
+	</select>
+	
+	<insert id="insertQuestion" parameterType="com.pi.domain.QuestionVO">
+		INSERT INTO question
+		( email, question_category, title, content, member_check ) 
+		VALUES
+		( #{email}, #{question_category}, #{title}, #{content}, #{member_check} )
+	</insert>
+	
+	<insert id="insertQImage" parameterType="com.pi.domain.ImageVO">
+		INSERT INTO image 
+		( question_number, original_name, save_name, path, size )
+		VALUES
+		( (SELECT MAX(question_number) FROM question)
+		, #{original_name}, #{save_name}, #{path}, #{size} )
+	</insert>
+	
+
+</mapper>
