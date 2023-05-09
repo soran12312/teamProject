@@ -149,8 +149,9 @@ public class MainController {
 			ivo.setSave_name(uuid.toString() + "_" + ivo.getOriginal_name());
 			
 			String realPath="C:\\Users\\kosmo\\git\\teamProject\\zTeamProject\\src\\main\\webapp\\resources\\uploads\\"+ivo.getSave_name();
+			String path = "http://localhost:8080/zTeamProject/resources/uploads/"+ivo.getSave_name();
 			
-			ivo.setPath(realPath);
+			ivo.setPath(path);
 			
 			System.out.println(realPath);
 			

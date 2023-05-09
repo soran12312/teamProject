@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MemberMapper">
+
+
+	<insert id="insertMember" parameterType="com.pi.domain.MemberVO">
+		INSERT INTO member 
+		( email, nickname, introduce )
+		VALUES
+		( #{email}, #{nickname}, #{introduce} )
+	</insert>
+	
+	<insert id="insertInterestLocation" parameterType="com.pi.domain.InterestLocationVO">
+		INSERT INTO interest_location
+		( email, location_number )
+		VALUES
+		( #{email}, #{location_number} )
+	</insert>
+	
+	
+
+</mapper>

@@ -43,6 +43,8 @@
 	
 	<select id="selectAllLocationNumberByEmail" resultType="com.pi.domain.LocationVO" parameterType="String">
 		SELECT l.location_number location_number
+		, l.addr1 addr1
+		, l.addr2 addr2
 		, l.addr3 addr3
 		FROM location l INNER JOIN 
 		(SELECT location_number FROM interest_location

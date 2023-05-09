@@ -30,7 +30,7 @@
          <nav class="navbar" data-spy="affix">
                <div id="navbar" class="navbar_2">
                   <ul class="navbar-right">
-                     <li><a data-scroll href="#home">Home</a></li>
+                     <li><a data-scroll href="/zTeamProject/main_view.do">Home</a></li>
                      <li><a data-scroll href="#nologin_money">오늘의 장인</a></li>
                      <li><a data-scroll href="#nologin_review">오늘의 리뷰</a></li>
                      <li><a data-scroll href="#nologin_not_money">오늘의 기부</a></li>

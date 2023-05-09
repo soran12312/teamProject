@@ -56,7 +56,7 @@
                      <li><a data-scroll href="/zTeamProject/class_list.do">강좌게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/guild_list.do">커뮤니티게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/review_list.do">리뷰게시판</a></li>
-                     <li><a data-scroll href="#mypage">마이페이지</a></li>
+                     <li><a data-scroll href="/zTeamProject/mypage.do">마이페이지</a></li>
                      <li><a data-scroll href="#support">고객센터</a></li>
                      <li><a data-scroll href="/zTeamProject/logout.do">로그아웃</a></li>
                   </ul>

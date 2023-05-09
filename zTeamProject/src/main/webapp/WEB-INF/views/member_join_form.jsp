@@ -98,7 +98,7 @@
    							select.append(option);
    						} // end of for
    						sel.parent().append(select);
-   						var location_number = $('<input type="hidden" name="location_number" id="location_number" />');
+   						var location_number = $('<input type="text" name="location_number'+sel.parents("span").attr('value')+'" class="location_number" style="display: none;" required/>');
    						sel.parent().append(location_number);
    						
    					}
@@ -143,6 +143,9 @@
    			
    		});//end of on(지역3 셀렉트시 이벤트)
    		
+   		function join(){
+   			if($('.location_number').length != 3){alert("관심지역을 선택해주세요");return false;}
+   		};
    		
 		
 	}); // end of $
@@ -159,21 +162,21 @@
                      회원정보를 알려주세요 </br>
                      동네정보를 데려올게요!</h2>
             
-            	<form id="new_member_form " name="new_member_form" class="new_member_form  method="post">
+            	<form id="new_member_form " name="new_member_form" class="new_member_form"  method="post" action="/zTeamProject/insertMember.do">
                         	<div class="new_member_form_div">
             				<h2 class="new_member_name_h2">닉네임</h2>
             						<input type="hidden" name="email" value="${member.email}">
-				            		<input id="new_member_name" name="nickname" class="new_member_namel" value="${member.nickname}">
+				            		<input id="new_member_name" name="nickname" class="new_member_namel" value="${member.nickname}" required>
 				            <h2 class="new_member_info_h2">자기소개</h2>
 				            <div>
-				            		<textarea id="new_member_info" name="introduce" class="new_member_info form-control" ></textarea>
+				            		<textarea id="new_member_info" name="introduce" class="new_member_info form-control" required></textarea>
 				            </div>
 				            <div>
 				            <h2 class="new_member_addr_h2">동네선택</h2>
 				            </div>
 				            <div id='select_location'>
 				            <div>
-				            	<span id="location1" class="select_location">
+				            	<span id="location1" class="select_location" value="1">
 				            		<select id="addr1" name="addr1" class="addr1">
 				            		<option>시,도</option>
 				            		<c:forEach var="loc1" items="${list1}">
@@ -183,7 +186,7 @@
 				            	</span>
 				       		</div>
 				       		<div>
-				       		<span id="location2" class="select_location">
+				       		<span id="location2" class="select_location" value="2">
 				            		<select id="addr1" name="addr1" class="addr1">
 				            		<option>시,도</option>
 				            		<c:forEach var="loc1" items="${list1}">
@@ -193,7 +196,7 @@
 				            	</span>	
 				       		</div>
 				       		<div>
-				       		<span id="location3" class="select_location">
+				       		<span id="location3" class="select_location" value="3">
 				            		<select id="addr1" name="addr1" class="addr1">
 				            		<option>시,도</option>
 				            		<c:forEach var="loc1" items="${list1}">
@@ -203,7 +206,7 @@
 				            	</span>	
 				       		</div>
 				       		</div>
-				           <button  type="submit" name="new_member_submit" class="new_member_submit" id="new_member_submit">가입하기</button>
+				           <button  type="submit" name="new_member_submit" class="new_member_submit" id="new_member_submit" onclick='if($(".location_number").length != 3){alert("관심지역을 선택해주세요");return false;}'>가입하기</button>
 							</div>                       
                      </form>
             </div>

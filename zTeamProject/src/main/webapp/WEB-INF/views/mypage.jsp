@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -36,7 +38,6 @@
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
 <!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
 <script>var g5_url = "http://sample.paged.kr/purewhite"; var g5_bbs_url = "http://sample.paged.kr/purewhite/bbs"; var g5_is_member = ""; var g5_is_admin = ""; var g5_is_mobile = ""; var g5_bo_table = "gallery"; var g5_sca = ""; var g5_editor = "smarteditor2"; var g5_cookie_domain = "";</script>
-<script src="resources/js/jquery-1.11.0.min.js"></script>
 <script src="resources/js/jquery.menu.min.js"></script>
 <script src="resources/js/common.js"></script>
 <script src="resources/js/WEBsiting.js"></script>
@@ -47,33 +48,169 @@
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
 <script src="resources/js/modernizer.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$(".loc").hover(function(){
+		$(this).css('cursor','pointer');
+	});
+	
+	$(".locDiv").on('click','.loc',function(){
+		
+		var clk = $(this);
+		
+		$.ajax({
+			type	: 'post'
+			,dataType : 'json'
+			,url	: '/zTeamProject/selectAddr1.do'
+			,success	: function(result){
+				//alert(result);
+				//console.log(result);
+				
+				var select = $('<select class = "addr1" name = "addr1" />')
+				var opt = $('<option value = "시,도" />')
+				opt.text('시,도');
+				select.append(opt);
+				for( row of result ){
+					console.log(row['addr1']);
+					var option = $('<option value = "'+row['addr1']+'" />');
+					option.text(row['addr1']);
+					select.append(option);
+				} // end of for
+				clk.parent().append(select);
+				clk.remove();
+			}
+			,error	: function(err){
+				alert('error');
+				console.log(err);
+			}
+}); // end of ajax
+		
+		
+	}); // end of on(지역 a태그 최초 클릭 시)
+	
+	$(".locDiv").on('change',".addr1",function(){
+		//alert($(this).val());
+		if($(this).val()!="시,도"){
+			
+			var sel = $(this);
+			var param = { addr1 : $(this).val().trim() };
+			
+			$.ajax({
+				type	: 'post'
+				,data	: param
+				,dataType : 'json'
+				,url	: '/zTeamProject/selectAddr2.do'
+				,success	: function(result){
+					//alert(result);
+					//console.log(result);
+					
+					sel.nextAll().remove()
+					
+					var select = $('<select class = "addr2" name = "addr2" />')
+					var opt = $('<option value = "시,군,구" />')
+					opt.text('시,군,구');
+					select.append(opt);
+					for( row of result ){
+						console.log(row['addr2']);
+						var option = $('<option value = "'+row['addr2']+'" />');
+						option.text(row['addr2']);
+						select.append(option);
+					} // end of for
+					sel.parent().append(select);
+					
+				}
+				,error	: function(err){
+					alert('error');
+					console.log(err);
+				}
+	}); // end of ajax
+			
+		} // end of if
+		
+	});//end of on(지역1 셀렉트시 이벤트)
+	
+	$(".locDiv").on('change','.addr2',function(){
+		//alert($(this).val());
+		if($(this).val()!="시,군,구"){
+			var sel = $(this);
+			var param = { addr2 : $(this).val().trim() };
+			
+			$.ajax({
+				type	: 'post'
+				,data	: param
+				,dataType : 'json'
+				,url	: '/zTeamProject/selectAddr3.do'
+				,success	: function(result){
+					//alert(result);
+					//console.log(result);
+					
+					sel.nextAll().remove()
+					
+					var select = $('<select class = "addr3" name = "addr3" />')
+					var opt = $('<option value = "법정동명" />')
+					opt.text('법정동명');
+					select.append(opt);
+					for( row of result ){
+						console.log(row['addr3']);
+						var option = $('<option value = "'+row['addr3']+'" />');
+						option.text(row['addr3']);
+						select.append(option);
+					} // end of for
+					sel.parent().append(select);
+					var location_number = $('<input type="hidden" name="location_number2" class="location_number2" />');
+					sel.parent().append(location_number);
+					
+				}
+				,error	: function(err){
+					alert('error');
+					console.log(err);
+				}
+	}); // end of ajax
+			
+		} // end of if
+		
+	});//end of on(지역2 셀렉트시 이벤트)
+	
+	$(".locDiv").on('change','.addr3',function(){
+		//alert($(this).val());
+		if($(this).val()!="시,군,구"){
+			var sel = $(this);
+			var param = { 
+					addr1 : $(this).prev().prev().val().trim()
+					,addr2 : $(this).prev().val().trim()
+					,addr3 : $(this).val().trim() };
+			
+			$.ajax({
+				type	: 'post'
+				,data	: param
+				,dataType : 'json'
+				,url	: '/zTeamProject/selectLocNumByAddr.do'
+				,success	: function(result){
+					//alert(result);
+					//console.log(result);
+					
+					sel.next().val(result);
+					
+				}
+				,error	: function(err){
+					alert('error');
+					console.log(err);
+				}
+	}); // end of ajax
+			
+		} // end of if
+		
+	});//end of on(지역3 셀렉트시 이벤트)
+	
+	
+}); // end of $
+</script>
 </head>
 <body>
 <body class="realestate_version">
-      <header class="header header_style_01">
-         <nav class="megamenu navbar navbar-default" data-spy="affix">
-            <div class="container-fluid">
-               <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="index-real-estate.html"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
-               </div>
-               <div id="navbar" class="navbar-collapse collapse">
-                  <ul class="nav navbar-nav navbar-right">
-                     <li><a data-scroll href="#home">Home</a></li>
-                     <li><a data-scroll href="#features">강좌게시판<span class="hidden-xs">*</span></a></li>
-                     <li><a data-scroll href="#agent">커뮤니티게시판</a></li>
-                     <li><a data-scroll href="#gallery">리뷰게시판</a></li>
-                     <li><a data-scroll href="#mypage">관리자페이지</a></li>
-                  </ul>
-               </div>
-            </div>
-         </nav>
-      </header>
+      <jsp:include page="../../new_header2.jsp"></jsp:include>
       
 <aside id="topSpacer"></aside>
 <aside id="sideBarCover"></aside>
@@ -91,45 +228,33 @@
 </div>
       
  <div class="section-MyPage min-height-50vh flex flex-ai-c ">
-        <form name="form" onsubmit="check(this); return false;" action="doModifyInfo" method="POST">
-          <input type="hidden" name="id" value="${loginedMember.id}">
-          <input type="hidden" name="loginPwReal">
+        <form name="form" action="doModifyInfo" method="POST">
+          <input type="hidden" name="email" value="${sessionScope.email}">
 
           <div class="flex flex-jc-c">           
               <div class=MyPage_cell__title>
               	<div><img src="resources/images/classList/noimage.jpg" width="150px" height="150px" alt=""/></a></div>
               	<br/>
+              	<input type="file">
                 <span>자기소개</span>
                 <div class=MyPage_cell__body>
-                  <input type="text" maxlength="50" placeholder="자기소개">
+                  <textarea id="introduce" name='introduce' >${sessionScope.introduce}</textarea>
                 </div>
               </div>            
             <div class="section-MyPage-body__cell">
-              <div class="MyPage_cell__title">
-                <span>이메일</span>
-                <div class="MyPage_cell__body">
-                  <input type="text" maxlength="50" placeholder="이메일" readonly="readonly">
-                </div>
-              </div>
-
+              
               <div class="MyPage_cell__title">
                 <span>닉네임</span>
-                <div class="MyPage_cell__body">
-                  <input type="text" maxlength="50" placeholder="닉네임">                  
+                <div>
+                  <input name="nickname" type="text" maxlength="50" value="${sessionScope.nickname}">
                 </div>
               </div>
 
               <div class=MyPage_cell__title>
                 <span>관심지역</span>
-                <div class=MyPage_cell__body>
-                  <input type="text" name="" maxlength="50" placeholder="지역">
-                </div>
-                <div class=MyPage_cell__body>
-                  <input type="text" name="" maxlength="50" placeholder="지역">
-                </div>
-                <div class=MyPage_cell__body>
-                  <input type="text" name="" maxlength="50" placeholder="지역">
-                </div>
+                <c:forEach var="LocationVO" items="${sessionScope.locList}" ><div class='locDiv'><a class='loc' name='loc'>${LocationVO.addr3}</a></div>
+                <input type="hidden" class='location_number1' name='location_number1' value="${LocationVO.location_number}">
+                <br/></c:forEach>
               </div>
               <div class="section-MyPage-body__option flex flex-jc-fe flex-ai-fe">
                 <button class="submitModifyBtn btn btn-go" type="submit" onclick="if(confirm('정말 변경하시겠습니까?') == false) {return false;}"><i class="far fa-edit"></i> 변경</button>
@@ -205,15 +330,7 @@
       </div>
       <!-- end copyrights -->
       <a href="#navbar" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-      <!-- ALL JS FILES -->
-      <script src="resources/js/all.js"></script>
-      <!-- ALL PLUGINS -->
-      <script src="resources/js/custom.js"></script>
-      <script src="resources/js/portfolio.js"></script>
-      <script src="resources/js/hoverdir.js"></script>    
-      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-      <!-- MAP & CONTACT -->
-      <script src="resources/js/map.js"></script>
+      
    </body>
 
 </body>
