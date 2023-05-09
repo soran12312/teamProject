@@ -238,10 +238,11 @@
 	      <div class="background_img">
 	      <div class="main_info_div">
 	      
-<form class="insert_lesson_frm " id="insert_lesson_frm" action="" method="post" onsubmit="postForm()">
+<form class="insert_lesson_frm " id="insert_lesson_frm" action="/zTeamProject/class_insert.do" method="post" onsubmit="postForm()">
                   	
-                     	<input type="text" name="insert_lesson_title" class="insert_lesson_title" id="insert_lesson_title" placeholder="제목을 입력해주세요" required>
+                     	<input type="text" name="class_name" class="class_name" id="class_name" placeholder="제목을 입력해주세요" required>
                   
+                  <input type="hidden" name='email' value="${sessionScope.email}">
                     
  			<!-- ===옵션=== -->
  			<div name="insert_lesson_option" class="insert_lesson_option" id="insert_lesson_option"> 
@@ -300,7 +301,7 @@
                    </div>
                    </div>
 
-<jsp:include page="new_footer.jsp"></jsp:include>
+<jsp:include page="../../new_footer.jsp"></jsp:include>
 
 </body>
 </html>

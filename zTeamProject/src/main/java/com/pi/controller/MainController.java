@@ -147,8 +147,8 @@ public class MainController {
 			UUID uuid = UUID.randomUUID();
 			
 			ivo.setSave_name(uuid.toString() + "_" + ivo.getOriginal_name());
-			ServletContext context= request.getSession().getServletContext();
-			String realPath=context.getRealPath("resources\\upload\\");
+			
+			String realPath="C:\\Users\\kosmo\\git\\teamProject\\zTeamProject\\src\\main\\webapp\\resources\\uploads\\"+ivo.getSave_name();
 			
 			ivo.setPath(realPath);
 			
