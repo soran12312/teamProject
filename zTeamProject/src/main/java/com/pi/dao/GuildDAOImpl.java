@@ -4,20 +4,19 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.pi.domain.ClassVO;
+import com.pi.domain.GuildVO;
 
-
-@Repository("classDAO")
-public class ClassDAOImpl implements ClassDAO {
+@Repository("guildDAO")
+public class GuildDAOImpl implements GuildDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
+
 	@Override
-	public void class_insert(ClassVO vo) {
-		System.out.println("===> Mybatis class_insert() 호출");
+	public void guild_insert(GuildVO vo) {
+		System.out.println("===> Mybatis Guild_insert() 호출");
 		
-		int result = mybatis.insert("ClassMapper.insertClass", vo);
+		int result = mybatis.insert("GuildMapper.insertGuild", vo);
 		System.out.println(result);
 	}
 

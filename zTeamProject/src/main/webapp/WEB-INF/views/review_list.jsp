@@ -65,33 +65,52 @@
         <!-- <h1>ZenBlog</h1> -->
       </a>
 
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html">Blog</a></li>
-          <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="category.html"><span>Categories</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="search-result.html">Search Result</a></li>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
+      <nav id="gnb">
+        <h2>메인메뉴</h2>
+        <div class="gnb_wrap">
+			<div id="logo">
+				<a href="index.jsp"><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></a>
+			</div>
+            <ul id="gnb_1dul">
+                <li class="gnb_1dli" style="z-index:999">
+                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
+                </li>
+                <li class="gnb_1dli" style="z-index:998">
+                    <a href="guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                </li>
+                <li class="gnb_1dli" style="z-index:997">
+                    <a href="class_list.do" target="_self" class="gnb_1da">강좌<u></u></a>
+                </li>
+                <li class="gnb_1dli" style="z-index:996">
+                    <a href="review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
+                </li> 
+                <li class="gnb_1dli" style="z-index:996"> 
+                    <a href="mypage연결해조...form class_list" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                </li>             
+  				<li class="gnb_1dli allSchBoxWr">
+					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>
 
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav><!-- .navbar -->
+					<div id="allSchBox">
+						<fieldset>
+							<legend>사이트 내 전체검색</legend>
+							<form name="fsearchbox" method="get" action="" onsubmit="return fsearchbox_submit(this);">
+								<input type="hidden" name="sfl" value="wr_subject||wr_content">
+								<input type="hidden" name="sop" value="and">
+								<label for="sch_stx" class="sound_only">검색어 필수</label>
+								<input type="text" name="stx" id="sch_stx" class="topSchFocus" maxlength="20" placeholder="Search...">
+								<button type="submit" id="sch_submit" value="검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+								<a id="allSchBoxClose"><i class="fa fa-close" aria-hidden="true"></i><i class="sound_only">전체검색 닫기</i></a>
+							</form>
+							<script> function fsearchbox_submit(f) { if (f.stx.value.length < 2) { alert("검색어는 두글자 이상 입력하십시오."); f.stx.select(); f.stx.focus(); return false; } /* 검색에 많은 부하가 걸리는 경우 이 주석을 제거하세요. */ var cnt = 0; for (var i=0; i<f.stx.value.length; i++) { if (f.stx.value.charAt(i) == ' ') cnt++; } if (cnt > 1) { alert("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."); f.stx.select(); f.stx.focus(); return false; } return true; } </script>
+						</fieldset>
+					</div>
+
+				</li>
+            </ul>
+        </div>
+
+		<p class="clb"></p>
+    </nav><!-- .navbar -->
 
       <div class="position-relative">
         <a href="#" class="mx-2"><span class="bi-facebook"></span></a>

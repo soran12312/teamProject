@@ -30,11 +30,13 @@
 <body>
 <a id="topID"></a>
 <!-- 상단 시작 { -->
-<div id="hd">
-    <h1 id="hd_h1">커뮤니티 리스트</h1>
+<div id="hd" class="">
+    <h1 id="hd_h1">갤러리 1 페이지</h1>
 
-    <div id="skip_to_container"><a href="#ctWrap">본문 바로가기</a></div>
- 
+    <div id="skip_to_container"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery#ctWrap">본문 바로가기</a></div>
+
+	<a id="snbOpen"><b><i class="fa fa-bars" aria-hidden="true"></i> <span class="sound_only">사이드메뉴 열기</span></b></a>
+
     <nav id="gnb">
         <h2>메인메뉴</h2>
         <div class="gnb_wrap">
@@ -46,21 +48,24 @@
                     <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:998">
-                    <a href="guildList.jsp" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="classList.jsp" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="class_list.do" target="_self" class="gnb_1da">강좌<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
                 </li> 
-                				<li class="gnb_1dli allSchBoxWr">
+                <li class="gnb_1dli" style="z-index:996"> 
+                    <a href="mypage연결해조...form class_list" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                </li>             
+  				<li class="gnb_1dli allSchBoxWr">
 					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>
 
 					<div id="allSchBox">
 						<fieldset>
 							<legend>사이트 내 전체검색</legend>
-							<form name="fsearchbox" method="get" action="http://sample.paged.kr/purewhite/bbs/search.php" onsubmit="return fsearchbox_submit(this);">
+							<form name="fsearchbox" method="get" action="" onsubmit="return fsearchbox_submit(this);">
 								<input type="hidden" name="sfl" value="wr_subject||wr_content">
 								<input type="hidden" name="sop" value="and">
 								<label for="sch_stx" class="sound_only">검색어 필수</label>
@@ -399,7 +404,7 @@
     <!-- } 게시판 검색 끝 -->
                 <ul class="btn_bo_user">
             	<li>
-            		<a href="./write.php?bo_table=gallery2" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
+            		<a href="/zTeamProject/guild_form.do" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
             	</li>
             </ul>
     

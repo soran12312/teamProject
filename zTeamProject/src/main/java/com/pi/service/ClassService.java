@@ -6,3 +6,4 @@ public interface ClassService {
 
 	public void class_insert(ClassVO vo);
 }
+

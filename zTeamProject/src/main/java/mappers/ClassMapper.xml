@@ -10,7 +10,5 @@
 		VALUES 
 		( #{class_name}, #{email}, #{category_number}, #{detail}, #{price}, #{max_member}, #{location_number}, #{start_date}, #{end_date} )
 	</insert>
-	
-	
 
 </mapper>

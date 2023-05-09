@@ -221,8 +221,10 @@
 	    // 태그가 추가되면 이벤트 발생
 	    tagify.on('add', function() {
 	      console.log(tagify.value); // 입력된 태그 정보 객체
-	    });
-    });
+	    })
+	    
+	 
+    });//end of $
 </script>
 </head>
 <body class="main">
@@ -233,63 +235,21 @@
 	      <div class="background_img">
 	      <div class="main_info_div">
 	      
-<form class="insert_lesson_frm " id="insert_lesson_frm" action="/zTeamProject/class_insert.do" method="post" >
+<form class="insert_review_frm " id="insert_review_frm" action="/zTeamProject/review_insert.do" method="post" >
                   	
-                     	<input type="text" name="class_name" class="class_name" id="class_name" placeholder="제목을 입력해주세요" required>
+                     	<input type="text" name="title" class="review_name" id="review_name" placeholder="제목을 입력해주세요" required>
                   
                   <input type="hidden" name='email' value="${sessionScope.email}">
                     
  			<!-- ===옵션=== -->
- 			<div name="insert_lesson_option" class="insert_lesson_option" id="insert_lesson_option"> 
+ 			<div name="insert_review_option" class="insert_review_option" id="insert_review_option"> 
  			<!-- ====================옵션======================================= -->
- 						<table>
- 							<tr>
- 								<td>카테고리</td>
- 								<td><select name="category_number" class="category_number" id="category_number">
- 								<option value="1">요리</option>
- 								<option value="2">운동</option>
- 								<option value="3">공예</option>
- 								<option value="4">IT</option>
- 								<option value="5">게임</option>
- 								<option value="6">음악</option>
- 								<option value="7">교육</option>
- 								<option value="8">인테리어</option>
- 								<option value="9">기타</option>
- 								</select></td>
- 							</tr> 
-                    		<tr>
-                    			<td>가격 : </td> 
-                    			<td><input type="text" name="price" class="price" id="price" required></td>
-                    			<td>기부하시나요? &nbsp;<input type="checkbox" class="insert_lesson_paid" id="free"></td>
-                    		</tr>
-                    		<tr>
-                    			<td>지역 :&nbsp;</td>
-                    			<td class='select_location' colspan="2">
-                    			</td>
-                    		</tr>
-                    		<tr>
-                    			<td>수강인원</td>
-                    			<td><input type="number" name="max_member" class="max_member" id="max_member" min="1" required></td>
-                    			<td>명</td>
-                    		</tr>
-                    		<tr>
-                    			<td>해쉬태그 :&nbsp;</td>
-                    			<td colspan="2"><input type="text" name="hashtag" class="hashtag" id="hashtag" placeholder="태그입력 후 엔터"></td>
-                    		</tr>
-                    		<tr>
-                    			<td>개강일 :&nbsp; </td>
-                    			<td><input type="date" name="start_date" class="start_date" id="start_date" required></td>
-                    		</tr>
-                    		<tr>
-                    			<td>종강일 :&nbsp; </td>
-                    			<td><input type="date" name="end_date" class="end_date" id="end_date" required></td>
-                    	</tr>
-                    </table>
+ 						
                     </div>
                     		 <textarea id="summernote" class="summernote" placeholder="내용을 입력해주세요"></textarea></br>
-                    <textarea id="detail" name="detail" style="display: none;"></textarea>
+                    <textarea id="detail" name="review_content" style="display: none;"></textarea>
                     
-                    	 <button type="submit" name="insert_lesson_submit" id="insert_lesson_submit" class="insert_lesson_submit"  onclick="$('#detail').val($('#summernote').summernote('code'));">작성완료</button>
+                    	 <button type="submit" name="insert_review_submit" id="insert_review_submit" class="insert_review_submit"  onclick="$('#detail').val($('#summernote').summernote('code'));">작성완료</button>
                   	
                    </form>
                    </div>
