@@ -743,7 +743,7 @@ a.gnb_2da:hover {
 	padding: 0 0 10px 0;
 	width: 100%;
 	margin: 0 auto;
-	overflow: hidden;
+	/* overflow: hidden; */
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	text-shadow: RGBA(0, 0, 0, .5) 0px 0px 10px;
@@ -978,7 +978,6 @@ a.gnb_2da:hover {
 /* 하단 레이아웃 */
 #footer {
 	clear: both;
-	background: #eee;
 	padding: 50px 15px;
 	text-align: center
 }

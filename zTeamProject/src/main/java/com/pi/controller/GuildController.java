@@ -37,7 +37,5 @@ public class GuildController {
 		guildService.guild_insert(vo);
 		
 		return "guild_list";
-	}
-
-	
+	}	
 }
