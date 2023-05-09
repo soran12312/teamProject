@@ -126,7 +126,7 @@
 
             <ul class="btn_bo_user">
             	<li>
-            		<a href="./write.php?bo_table=gallery2" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
+            		<a href="/zTeamProject/class_form.do" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
             	</li>
             </ul>
             </div>
