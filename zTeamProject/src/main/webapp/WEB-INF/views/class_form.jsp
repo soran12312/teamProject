@@ -216,11 +216,15 @@
 		}); // 무료강좌 체크박스 클릭 시 이벤트
 		
 		const input = document.querySelector('input[name=hashtag]');
-	    let tagify = new Tagify(input); // initialize Tagify
+	    let tagify = new Tagify(input, {
+	    	  originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
+	    }); // initialize Tagify
 	    
 	    // 태그가 추가되면 이벤트 발생
 	    tagify.on('add', function() {
 	      console.log(tagify.value); // 입력된 태그 정보 객체
+	      
+	      console.log(input.value);
 	    });
     });
 </script>

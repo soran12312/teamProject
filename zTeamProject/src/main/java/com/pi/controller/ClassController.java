@@ -66,9 +66,10 @@ public class ClassController {
 	}
 	
 	@RequestMapping("/class_insert.do")
-	public String class_insert(ClassVO vo) {
+	public String class_insert(ClassVO vo, String hashtag) {
+		System.out.println(hashtag);
 		
-		classService.class_insert(vo);
+		//classService.class_insert(vo);
 		
 		return "class_list";
 	}

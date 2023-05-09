@@ -38,6 +38,7 @@
 <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
 <!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
 <script>var g5_url = "http://sample.paged.kr/purewhite"; var g5_bbs_url = "http://sample.paged.kr/purewhite/bbs"; var g5_is_member = ""; var g5_is_admin = ""; var g5_is_mobile = ""; var g5_bo_table = "gallery"; var g5_sca = ""; var g5_editor = "smarteditor2"; var g5_cookie_domain = "";</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="resources/js/jquery.menu.min.js"></script>
 <script src="resources/js/common.js"></script>
 <script src="resources/js/WEBsiting.js"></script>
@@ -48,7 +49,6 @@
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
 <script src="resources/js/modernizer.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	
