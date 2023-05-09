@@ -8,7 +8,7 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>질문답변 1 페이지 | 페이지디 홈페이지 템플릿 테마</title>
+<title>질문답변</title>
 <link rel="stylesheet" href="resources/admin/default.css">
 <link rel="stylesheet" href="resources/admin/style.css">
 <link rel="stylesheet" href="resources/admin/board.common.css">
@@ -16,6 +16,27 @@
 <link rel="stylesheet" href="resources/admin/mobile.css">
 <link rel="stylesheet" href="resources/admin/contents.css">
 <link rel="stylesheet" href="resources/admin/featherlight.min.css">
+
+
+<!-- Site Icons -->
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
+<link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<!-- Site CSS -->
+<link rel="stylesheet" href="resources/style.css">
+<!-- Colors CSS -->
+<link rel="stylesheet" href="resources/css/colors.css">
+<!-- ALL VERSION CSS -->
+<link rel="stylesheet" href="resources/css/versions.css">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="resources/css/responsive.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="resources/css/custom.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
+
+
+
 <!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
 <script>var g5_url = "http://sample.paged.kr/purewhite"; var g5_bbs_url = "http://sample.paged.kr/purewhite/bbs"; var g5_is_member = ""; var g5_is_admin = ""; var g5_is_mobile = ""; var g5_bo_table = "qna"; var g5_sca = ""; var g5_editor = "smarteditor2"; var g5_cookie_domain = "";</script>
 <script src="resources/admin/jquery-1.11.0.min.js"></script>
@@ -27,122 +48,36 @@
 <script src="resources/admin/jquery.shuffleLetters.min.js"></script>
 <script src="resources/admin/featherlight.min.js"></script>
 </head>
-<body>
-<a id="topID"></a>
+<body class="realestate_version">
 <!-- 상단 시작 { -->
-<div id="hd" class="scDown">
-    <h1 id="hd_h1">질문답변 1 페이지</h1>
-
-    <div id="skip_to_container"><a href="">본문 바로가기</a></div>
-
-    <div id="tnb">
-        <ul>
-			<!-- 해당 URL링크를 삽입해 주세요 // 해당사항 없을 시 제거해 주시기 바랍니다. -->
-            <li><a href=""><b><i class="tnbIco fa fa-facebook-square" aria-hidden="true"></i> <span class="sound_only">페이스북</span></b></a></li>
-            <li><a href=""><b><i class="tnbIco fa fa-twitter-square" aria-hidden="true"></i> <span class="sound_only">트위터</span></b></a></li>
-            <li><a href=""><b><i class="tnbIco fa fa-instagram" aria-hidden="true"></i> <span class="sound_only">인스타그램</span></b></a></li>
-            <li><a href=""><b><i class="fa fa-link" aria-hidden="true"></i> BLOG</b></a></li>
-                        <li><a href=""><b><i class="fa fa-user-plus" aria-hidden="true"></i> JOIN</b></a></li>
-            <li><a href=""><b><i class="fa fa-power-off" aria-hidden="true"></i> LOGIN</b></a></li>
-                        <li><a href="" onclick="javascript:addBookmark();"><b><i class="fa fa-bookmark" aria-hidden="true"></i> Bookmark</b></a></li>
-
-        </ul>
-  
-    </div>
-	<a id="snbOpen"><b><i class="fa fa-bars" aria-hidden="true"></i> <span class="sound_only">사이드메뉴 열기</span></b></a>
-
-    <nav id="gnb">
-        <h2>메인메뉴</h2>
-        <div class="gnb_wrap">
-			<div id="logo">
-				<a href=""><img src="resources/images/logos/logo.png" alt="페이지디 홈페이지 템플릿 테마"></a>
-			</div>
-            <ul id="gnb_1dul">
-                                <li class="gnb_1dli" style="z-index:999">
-                    <a href="" target="_self" class="gnb_1da">ABOUT<u></u></a>
-                    <span class="bg">하위분류</span><ul class="gnb_2dul">
-                        <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">인사말</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">회사소개</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">연혁</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">오시는 길</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">스타일 샘플</a></li>
-                    </ul>
-                </li>
-                                <li class="gnb_1dli" style="z-index:998">
-                    <a href="" target="_self" class="gnb_1da">BUSINESS<u></u></a>
-                    <span class="bg">하위분류</span><ul class="gnb_2dul">
-                        <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">사업분야</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">제품소개(갤러리형)</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">제품소개(웹진형)</a></li>
-                    </ul>
-                </li>
-                                <li class="gnb_1dli" style="z-index:997">
-                    <a href="" target="_self" class="gnb_1da">게시판샘플<u></u></a>
-                    <span class="bg">하위분류</span><ul class="gnb_2dul">
-                        <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">기본게시판</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">Q&amp;A게시판</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">FAQ게시판</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">웹진형게시판</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">폼메일</a></li>
-                    </ul>
-                </li>
-                                <li class="gnb_1dli" style="z-index:996">
-                    <a href="" target="_self" class="gnb_1da">갤러리샘플<u></u></a>
-                    <span class="bg">하위분류</span><ul class="gnb_2dul">
-                        <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">갤러리게시판(기본)</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">갤러리(가로길게2단)</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">갤러리게시판(박스형)</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">갤러리게시판(박스-세로길게4단)</a></li>
-                    </ul>
-                </li>
-                                <li class="gnb_1dli" style="z-index:995">
-                    <a href="" target="_self" class="gnb_1da">기본기능<u></u></a>
-                    <span class="bg">하위분류</span><ul class="gnb_2dul">
-                        <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">로그인</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">회원가입</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">비밀번호확인</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">현재접속자</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">새글</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">전체검색</a></li>
-                    </ul>
-                </li>
-                                <li class="gnb_1dli" style="z-index:994">
-                    <a href="" target="_self" class="gnb_1da">테마소개<u></u></a>
-                    <span class="bg">하위분류</span><ul class="gnb_2dul">
-                        <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">테마안내</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">- 테마소개</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">- 게시판별 특이사항</a></li>
-                                            <li class="gnb_2dli"><a href="" target="_self" class="gnb_2da">- 사이트 제작절 차안내</a></li>
-                    </ul>
-                </li>
-                				<li class="gnb_1dli allSchBoxWr">
-					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>
-
-					<div id="allSchBox">
-						<fieldset>
-							<legend>사이트 내 전체검색</legend>
-							<form name="fsearchbox" method="get" action="http://sample.paged.kr/purewhite/bbs/search.php" onsubmit="return fsearchbox_submit(this);">
-								<input type="hidden" name="sfl" value="wr_subject||wr_content">
-								<input type="hidden" name="sop" value="and">
-								<label for="sch_stx" class="sound_only">검색어 필수</label>
-								<input type="text" name="stx" id="sch_stx" class="topSchFocus" maxlength="20" placeholder="Search...">
-								<button type="submit" id="sch_submit" value="검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
-								<a id="allSchBoxClose"><i class="fa fa-close" aria-hidden="true"></i><i class="sound_only">전체검색 닫기</i></a>
-							</form>
-							<script> function fsearchbox_submit(f) { if (f.stx.value.length < 2) { alert("검색어는 두글자 이상 입력하십시오."); f.stx.select(); f.stx.focus(); return false; } /* 검색에 많은 부하가 걸리는 경우 이 주석을 제거하세요. */ var cnt = 0; for (var i=0; i<f.stx.value.length; i++) { if (f.stx.value.charAt(i) == ' ') cnt++; } if (cnt > 1) { alert("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."); f.stx.select(); f.stx.focus(); return false; } return true; } </script>
-						</fieldset>
-					</div>
-
-				</li>
-            </ul>
-        </div>
-
-		<p class="clb"></p>
-    </nav>
-</div>
-<aside id="topSpacer"></aside>
-<aside id="sideBarCover"></aside>
-<!-- } 상단 끝 --><hr>
+<header class="header header_style_01">
+         <nav class="megamenu navbar navbar-default" data-spy="affix">
+            <div class="container-fluid">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index-real-estate.html"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
+               </div>
+               <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                     <li><a data-scroll href="#home">Home</a></li>
+                     <li><a data-scroll href="#features">오늘의 장인<span class="hidden-xs">*</span></a></li>
+                     <li><a data-scroll href="#agent">오늘의 리뷰</a></li>
+                     <li><a data-scroll href="#gallery">오늘의 기부</a></li>
+                     <li><a data-scroll href="#testimonials">오늘의 수업</a></li>
+                     <li><a data-scroll href="#support">고객센터</a></li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+      </header><hr/>
+      
+      <aside id="topSpacer"></aside>
+	  <aside id="sideBarCover"></aside>
 
 <!-- 콘텐츠 시작 { -->
 
@@ -170,8 +105,7 @@
             1 page
         </div>
 
-                <ul class="btn_bo_user">
-            <li><a href="" class="btn_b01 btn"><i class="fa fa-rss" aria-hidden="true"></i> RSS</a></li>                        <li><a href="http://sample.paged.kr/purewhite/bbs/write.php?bo_table=qna" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 답변등록</a></li>        </ul>
+                
             </div>
     <!-- } 게시판 페이지 정보 및 버튼 끝 -->
 
@@ -532,11 +466,7 @@
         </li>
                 </ul>
             </div>
-
-        <div class="bo_fx">
-                <ul class="btn_bo_user">
-                                    <li><a href="" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 답변등록</a></li>        </ul>
-            </div>
+                
     
     </form>
      
@@ -588,36 +518,49 @@
 <hr>
 
 <!-- 하단 시작 { -->
-<footer id="footer">
-    <dl>
-        <dt><img src="./질문답변 1 페이지 _ 페이지디 홈페이지 템플릿 테마_files/footerLogo.png" alt="페이지디 홈페이지 템플릿 테마"></dt>
-        <dd>
-            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area">개인정보처리방침</a>
-            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
-            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
-        </dd>
-    </dl>
-	<address>
-		<span>서울 관악구 조원중앙로 38-1한별빌딩</span> 
-		 <em>|</em><span> Tel. 070-7558-6420</span> 
-		 <em>|</em><span> Fax. 050-4156-1305</span> 
-		 <em>|</em><span> E-mail. <a href="">admin@websiting.co.kr</a></span> 
-		<br><span>본 샘플사이트를 베이스로 페이지디 <a href="" target="_blank">paged.kr</a> 에서 제작요청 가능합니다.</span>	</address>
-	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.</span></p>
-</footer>
-
-<button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: block;"><span class="sound_only">페이지 상단으로 이동</span></button>
-
-<!-- 현재위치 및 서브메뉴 활성화 설정// -->
-<script>
-$(function(){$('.snb.bo_tableqna, .snb .snb2d_bo_tableqna').addClass('active');});/*  보테이블 : bo_tableqna  */
-$(document).ready(function(){ if ( $("#snb > li").is(".snb.active") ) { $('.loc1D').text( $('#snb .bo_tableqna h2 a b').text());$('.loc2D').html( $('.snb2d_bo_tableqna a b').html());$('.faArr').html('<i class="fa fa-angle-right"></i>');var index = $("#snb > li").index("#snb > li.active");$( "#page_title" ).addClass("subTopBg_0"+($("#snb > li.bo_tableqna").index() + 1) ); } else { $('.loc1D').text('질문답변'); $('.noInfoPageTit').html('<h2><a><b>질문답변</b><sub>sample.paged.kr</sub></a></h2>'); $('.noInfoPageTit').addClass('active');$('#page_title').addClass('subTopBg_00'); } });  </script>
-<!-- //현재위치 및 서브메뉴 활성화 설정 -->
-<script>$(function() { /* 모바일용 메뉴바 */ var articleMgnb = $("#snb li.snb"); articleMgnb.addClass("hide"); $("#snb li.active").removeClass("hide").addClass("show"); $("#snb li.active .snb2dul").show(); $(".snb2dDown").click(function(){ var myArticle = $(this).parents("#snb li.snb"); if(myArticle.hasClass("hide")){ articleMgnb.addClass("hide").removeClass("show"); articleMgnb.find(".snb2dul").slideUp("fast"); myArticle.removeClass("hide").addClass("show"); myArticle.find(".snb2dul").slideDown("fast"); } else { myArticle.removeClass("show").addClass("hide");myArticle.find(".snb2dul").slideUp("fast"); } }); });</script>
-
-
-
+<!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">  
+  
+  
+  
+      <div class="copyrights"><!-- ===========================================================================================카테고리 연결해야함 -->
+         <div class="container">
+            <div class="footer-distributed">
+               <div class="footer-left">
+                  <p class="footer-links">
+                     <a href="#">Home</a>
+                     <a href="#">Blog</a>
+                     <a href="#">Pricing</a>
+                     <a href="#">About</a>
+                     <a href="#">Faq</a>
+                     <a href="#">Contact</a>
+                  </p>
+                  <p class="footer-company-name">All Rights Reserved. <a href="https://html.design/">html.design</a> &copy; 2023</p>
+               </div>
+               <div class="footer-right">
+                  <form method="get" action="#">
+                     <input placeholder="Subscribe our newsletter.." name="search">
+                     <i class="fa fa-envelope-o"></i>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <!-- end container -->
+      </div>
+      <!-- end copyrights -->
+  </footer>
 <!-- } 하단 끝 -->
+
+<a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+<!-- ALL JS FILES -->
+<script src="resources/js/all.js"></script>
+<!-- ALL PLUGINS -->
+<script src="resources/js/custom.js"></script>
+<script src="resources/js/portfolio.js"></script>
+<script src="resources/js/hoverdir.js"></script>    
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<!-- MAP & CONTACT -->
+<script src="resources/js/map.js"></script>
 
 
 <!-- ie6,7에서 사이드뷰가 게시판 목록에서 아래 사이드뷰에 가려지는 현상 수정 -->
