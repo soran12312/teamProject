@@ -11,4 +11,10 @@
 		( #{class_name}, #{email}, #{category_number}, #{detail}, #{price}, #{max_member}, #{location_number}, #{start_date}, #{end_date} )
 	</insert>
 
+	<insert id="insertHashtag" parameterType="com.pi.domain.HashtagVO" >
+		INSERT INTO hashtag
+		( class_number, hashtag_name, category_number ) 
+		VALUES 
+		( (SELECT MAX(class_number) FROM class), #{hashtag_name}, #{category_number} )	
+	</insert>
 </mapper>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,8 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
 import com.pi.domain.ClassVO;
+import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
 import com.pi.service.ClassService;
+
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 @Controller
 public class ClassController {
@@ -65,11 +70,29 @@ public class ClassController {
 		return path;
 	}
 	
+	@Transactional
 	@RequestMapping("/class_insert.do")
 	public String class_insert(ClassVO vo, String hashtag) {
-		System.out.println(hashtag);
+		//System.out.println(hashtag);
 		
-		//classService.class_insert(vo);
+		classService.class_insert(vo);
+		
+		ArrayList<String> hashtag_name_list = new ArrayList<String>();
+		StringTokenizer st = new StringTokenizer(hashtag,",");
+		for(int i=0; st.hasMoreTokens(); i++) {
+			hashtag_name_list.add(st.nextToken());
+		}
+		
+		for(String j : hashtag_name_list) {
+			//System.out.println(j);
+			HashtagVO hvo = new HashtagVO();
+			hvo.setHashtag_name(j);
+			hvo.setCategory_number(vo.getCategory_number());
+			classService.hashtag_insert(hvo);
+		}
+		
+
+		
 		
 		return "class_list";
 	}
