@@ -11,4 +11,116 @@
 		( #{class_name}, #{email}, #{category_number}, #{detail}, #{price}, #{max_member}, #{location_number}, #{start_date}, #{end_date} )
 	</insert>
 
+	<insert id="insertHashtag" parameterType="com.pi.domain.HashtagVO" >
+		INSERT INTO hashtag
+		( class_number, hashtag_name, category_number ) 
+		VALUES 
+		( (SELECT MAX(class_number) FROM class), #{hashtag_name}, #{category_number} )	
+	</insert>
+	
+	<insert id="insert_classImage" parameterType="com.pi.domain.ImageVO">
+		INSERT INTO image 
+		( original_name, save_name, path, size, main_image )
+		VALUES
+		( #{original_name}, #{save_name}, #{path}, #{size}, #{main_image} )
+	</insert>
+	
+	<update id="updateImgByPath" parameterType="String">
+		UPDATE image SET 
+		class_number = (SELECT MAX(class_number) FROM class)
+		WHERE path = #{path}
+	</update>
+	
+	<select id="selectClassByLocation" parameterType="HashMap" resultType="HashMap">
+		SELECT  
+		c.class_number class_number
+		, c.class_name class_name
+		, c.price price
+		, c.view_number view_number
+		, c.writing_date writing_date
+		, i.path path
+		, h.class_hashtag class_hashtag
+		, m.nickname nickname
+		FROM class c LEFT OUTER JOIN (SELECT image_number, class_number, path 
+		FROM image GROUP BY class_number ORDER BY image_number DESC) i
+		ON c.class_number = i.class_number 
+		LEFT OUTER JOIN (SELECT class_number
+		, group_concat( hashtag_name separator ' #' ) class_hashtag
+		FROM hashtag GROUP BY class_number) h
+		ON c.class_number = h.class_number 
+		INNER JOIN (SELECT email, nickname
+		FROM member) m 
+		ON c.email = m.email
+		WHERE ( c.location_number = #{location_number1} 
+		OR c.location_number = #{location_number2} 
+		OR c.location_number = #{location_number3} )
+		AND c.class_state = 1 
+		<if test="category_number !=null ">
+		AND category_number = #{category_number}
+		</if>
+		<if test="keyword !=null">
+		AND ${option} LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		ORDER BY class_number DESC LIMIT #{first_view}, 9;
+	</select>
+	
+	<select id="classCount" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) cnt
+		FROM class
+		WHERE ( location_number = #{location_number1} 
+		OR location_number = #{location_number2} 
+		OR location_number = #{location_number3} )
+		<if test="category_number !=null ">
+		AND category_number = #{category_number}
+		</if>
+	</select>
+	
+	<select id="selectAllClassDetailByClassNumber" parameterType="int" resultType="HashMap">
+		SELECT 
+		c.class_number class_number 
+		, c.class_name class_name 
+		, c.detail detail 
+		, c.price price 
+		, c.max_member max_member 
+		, c.current_member current_member 
+		, c.start_date start_date 
+		, c.end_date end_date 
+		, c.view_number view_number 
+		, c.writing_date writing_date 
+		, IFNULL(l.class_like,0)  class_like 
+		, m.email email 
+		, m.nickname nickname 
+		, m.introduce introduce
+		, m.path member_img_path
+		FROM class c LEFT OUTER JOIN (SELECT 
+		class_number, COUNT(like_state=1) class_like 
+		FROM `like` 
+		GROUP BY class_number) l
+		ON c.class_number = l.class_number
+		LEFT OUTER JOIN (SELECT 
+		m.email email, m.nickname nickname, m.introduce introduce, i.path path
+		FROM member m LEFT OUTER JOIN image i
+		ON m.email = i.email) m
+		ON c.email = m.email
+		WHERE c.class_number = #{class_number}
+	</select>
+	
+	<update id="incViewNum" parameterType="int">
+		UPDATE class SET 
+		view_number = (( SELECT view_number FROM class WHERE class_number = #{class_number} )+1)
+		WHERE class_number = #{class_number}
+	</update>
+	
+	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
+		SELECT COUNT(*) cnt 
+		FROM `like`
+		WHERE email = #{email}
+	</select>
+	
+	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
+		INSERT INTO `like` ( email, class_number )
+		VALUES ( #{email}, #{class_number} )
+	</insert>
+	
+	
 </mapper>

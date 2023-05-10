@@ -26,7 +26,7 @@
 <body class="realestate_version">
       <header class="header">
       <div class="logo">
-      	<span><img src="resources/images/logos/logo.png"></span>      	
+      	<span><a href="/zTeamProject/main_view.do"><img src="resources/images/logos/logo.png"></a></span>      	
          <nav class="navbar" data-spy="affix">
                <div id="navbar" class="navbar_2">
                   <ul class="navbar-right">

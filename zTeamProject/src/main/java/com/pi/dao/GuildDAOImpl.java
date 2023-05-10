@@ -20,4 +20,11 @@ public class GuildDAOImpl implements GuildDAO {
 		System.out.println(result);
 	}
 
+	@Override
+	public void updateImgByPath(String path) {
+		System.out.println("===> Mybatis updateImgByPath() 호출");
+		
+		mybatis.update("GuildMapper.updateImgByPath", path);
+	}
+
 }

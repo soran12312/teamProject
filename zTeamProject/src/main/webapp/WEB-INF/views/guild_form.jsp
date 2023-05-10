@@ -56,7 +56,15 @@
     				//alert(data);
     				setTimeout(function() {
     				$('#summernote').summernote("insertImage",data);
-    				}, 4000);
+    				var path = $('#path').val();
+    				if(path==''){
+    					$('#path').val(data);
+    				}else{
+    					path = path+","+data
+    					$('#path').val(path);
+    				}
+    				
+    				}, 5000);
     			}
     		});
     	}
@@ -255,6 +263,7 @@
                     			<td>모임인원</td>
                     			<td><input type="number" name="max_member" class="max_member" id="max_member" min="1" required></td>
                     			<td>명</td>
+                    			<td><input type="hidden" name="path" id="path"></td>
                     		</tr>
                     </table>
                     </div>

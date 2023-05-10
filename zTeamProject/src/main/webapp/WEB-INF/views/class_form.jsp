@@ -39,7 +39,6 @@
             }
         });
         
-        
         function sendFile(file, editor, welEditable){
     		var data = new FormData();
     		data.append("file", file);
@@ -56,7 +55,15 @@
     				//alert(data);
     				setTimeout(function() {
     				$('#summernote').summernote("insertImage",data);
-    				}, 4000);
+    				var path = $('#path').val();
+    				if(path==''){
+    					$('#path').val(data);
+    				}else{
+    					path = path+","+data
+    					$('#path').val(path);
+    				}
+    				
+    				}, 5000);
     			}
     		});
     	}
@@ -226,6 +233,18 @@
 	      
 	      console.log(input.value);
 	    });
+	   
+	    var date = new Date().toISOString().slice(0, 10); // 현재 날짜 yyyy-mm-dd
+	    
+	 $("#start_date").attr("min", date); // 시작일 최소값을 현재날짜로
+	 
+	 $("#start_date").change(function(){ // 시작일 선택 시 이벤트
+		 //alert();
+		 $("#end_date").attr("min", $(this).val()); // 종료일 최소값을 시작일로
+	 });
+	 
+	 
+	    
     });
 </script>
 </head>
@@ -265,6 +284,7 @@
                     			<td>가격 : </td> 
                     			<td><input type="text" name="price" class="price" id="price" required></td>
                     			<td>기부하시나요? &nbsp;<input type="checkbox" class="insert_lesson_paid" id="free"></td>
+                    			<td><input type="hidden" name="path" id="path"></td>
                     		</tr>
                     		<tr>
                     			<td>지역 :&nbsp;</td>

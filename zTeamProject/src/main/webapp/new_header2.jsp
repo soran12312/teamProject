@@ -22,12 +22,12 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="index-real-estate.html"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
+                  <a class="navbar-brand" href="/zTeamProject/main_view.do"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
                </div>
                <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                      <li><a data-scroll href="/zTeamProject/main_view.do">Home</a></li>
-                     <li><a data-scroll href="/zTeamProject/class_list.do">강좌게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/class_list.do?currentPage=0">강좌게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/guild_list.do">커뮤니티게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/review_list.do">리뷰게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/mypage.do">마이페이지</a></li>

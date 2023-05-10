@@ -14,11 +14,11 @@
 <div class="foot">
 	<div class="footer_nav">
 		<p>
-			<a href="#">Home</a> 
+			<a href="/zTeamProject/main_view.do">Home</a> 
 			<a href="#">사업자강좌</a> 
-			<a href="#">강좌</a> 
-			<a href="#">모임</a> 
-			<a href="#">리뷰</a> 
+			<a href="/zTeamProject/class_list.do?currentPage=0">강좌</a> 
+			<a href="/zTeamProject/guild_list.do">모임</a> 
+			<a href="/zTeamProject/review_list.do">리뷰</a> 
 			<a href="#">Contact</a>
 			<span><img src="resources/images/logos/logo.png"></span>
 		</p>

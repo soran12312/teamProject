@@ -43,7 +43,7 @@
             <div class="footer-distributed">
                <div class="footer-left">
                   <p class="footer-links">
-                     <a href="#">Home</a>
+                     <a href="/zTeamProject/main_view.do">Home</a>
                      <a href="#">Blog</a>
                      <a href="#">Pricing</a>
                      <a href="#">About</a>

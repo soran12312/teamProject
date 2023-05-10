@@ -9,5 +9,11 @@
 		VALUES 
 		( #{guild_name}, #{email}, #{detail}, #{location_number}, #{max_member} )
 	</insert>
-
+	
+	<update id="updateImgByPath" parameterType="String">
+		UPDATE image SET 
+		guild_number = (SELECT MAX(guild_number) FROM guild)
+		WHERE path = #{path}
+	</update>
+	
 </mapper>
