@@ -23,6 +23,7 @@ import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
 import com.pi.domain.InterestLocationVO;
+import com.pi.domain.LikeVO;
 import com.pi.domain.LocationVO;
 import com.pi.service.ClassService;
 
@@ -229,6 +230,31 @@ public class ClassController {
 		
 		
 		return "redirect:class_list.do?currentPage=0";
+	}
+	
+	@RequestMapping("/class_detail.do")
+	public void class_detail(HttpSession session, Model m , @RequestParam int class_number) {
+		
+		session.removeAttribute("category_number");
+		session.removeAttribute("option");
+		session.removeAttribute("keyword");
+		
+		classService.incViewNum(class_number);
+		HashMap map = classService.selectAllClassDetailByClassNumber(class_number);
+		
+		m.addAttribute("map", map);
+	}
+	
+	@RequestMapping("/insertLike.do")
+	public String insertLike(LikeVO vo) {
+		
+		int cnt = classService.checkLike(vo);
+		
+		if(cnt==0) {
+			classService.insertLike(vo);
+		}
+		
+		return "redirect:class_detail.do?class_number="+String.valueOf(vo.getClass_number());
 	}
 	
 	

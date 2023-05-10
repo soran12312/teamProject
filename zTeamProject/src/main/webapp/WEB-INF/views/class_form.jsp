@@ -233,6 +233,18 @@
 	      
 	      console.log(input.value);
 	    });
+	   
+	    var date = new Date().toISOString().slice(0, 10); // 현재 날짜 yyyy-mm-dd
+	    
+	 $("#start_date").attr("min", date); // 시작일 최소값을 현재날짜로
+	 
+	 $("#start_date").change(function(){ // 시작일 선택 시 이벤트
+		 //alert();
+		 $("#end_date").attr("min", $(this).val()); // 종료일 최소값을 시작일로
+	 });
+	 
+	 
+	    
     });
 </script>
 </head>

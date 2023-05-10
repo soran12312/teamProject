@@ -6,6 +6,7 @@ import java.util.List;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
+import com.pi.domain.LikeVO;
 
 public interface ClassDAO {
 
@@ -20,5 +21,12 @@ public interface ClassDAO {
 	public List<HashMap> selectClassByLocation(HashMap map);
 	
 	public int classCount(HashMap map);
-
+	
+	public HashMap selectAllClassDetailByClassNumber(int class_number);
+	
+	public void incViewNum(int class_number);
+	
+	public int checkLike(LikeVO vo);
+	
+	public void insertLike(LikeVO vo);
 }

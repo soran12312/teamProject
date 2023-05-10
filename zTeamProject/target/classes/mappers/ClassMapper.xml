@@ -54,6 +54,7 @@
 		WHERE ( c.location_number = #{location_number1} 
 		OR c.location_number = #{location_number2} 
 		OR c.location_number = #{location_number3} )
+		AND c.class_state = 1 
 		<if test="category_number !=null ">
 		AND category_number = #{category_number}
 		</if>
@@ -73,5 +74,53 @@
 		AND category_number = #{category_number}
 		</if>
 	</select>
+	
+	<select id="selectAllClassDetailByClassNumber" parameterType="int" resultType="HashMap">
+		SELECT 
+		c.class_number class_number 
+		, c.class_name class_name 
+		, c.detail detail 
+		, c.price price 
+		, c.max_member max_member 
+		, c.current_member current_member 
+		, c.start_date start_date 
+		, c.end_date end_date 
+		, c.view_number view_number 
+		, c.writing_date writing_date 
+		, IFNULL(l.class_like,0)  class_like 
+		, m.email email 
+		, m.nickname nickname 
+		, m.introduce introduce
+		, m.path member_img_path
+		FROM class c LEFT OUTER JOIN (SELECT 
+		class_number, COUNT(like_state=1) class_like 
+		FROM `like` 
+		GROUP BY class_number) l
+		ON c.class_number = l.class_number
+		LEFT OUTER JOIN (SELECT 
+		m.email email, m.nickname nickname, m.introduce introduce, i.path path
+		FROM member m LEFT OUTER JOIN image i
+		ON m.email = i.email) m
+		ON c.email = m.email
+		WHERE c.class_number = #{class_number}
+	</select>
+	
+	<update id="incViewNum" parameterType="int">
+		UPDATE class SET 
+		view_number = (( SELECT view_number FROM class WHERE class_number = #{class_number} )+1)
+		WHERE class_number = #{class_number}
+	</update>
+	
+	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
+		SELECT COUNT(*) cnt 
+		FROM `like`
+		WHERE email = #{email}
+	</select>
+	
+	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
+		INSERT INTO `like` ( email, class_number )
+		VALUES ( #{email}, #{class_number} )
+	</insert>
+	
 	
 </mapper>

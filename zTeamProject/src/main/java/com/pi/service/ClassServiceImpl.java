@@ -10,6 +10,7 @@ import com.pi.dao.ClassDAO;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
+import com.pi.domain.LikeVO;
 @Service("classService")
 public class ClassServiceImpl implements ClassService {
 
@@ -50,6 +51,30 @@ public class ClassServiceImpl implements ClassService {
 	public int classCount(HashMap map) {
 		
 		return classDAO.classCount(map);
+	}
+
+	@Override
+	public HashMap selectAllClassDetailByClassNumber(int class_number) {
+		
+		return classDAO.selectAllClassDetailByClassNumber(class_number);
+	}
+
+	@Override
+	public void incViewNum(int class_number) {
+		
+		classDAO.incViewNum(class_number);
+	}
+
+	@Override
+	public int checkLike(LikeVO vo) {
+		
+		return classDAO.checkLike(vo);
+	}
+
+	@Override
+	public void insertLike(LikeVO vo) {
+		classDAO.insertLike(vo);
+		
 	}
 
 }
