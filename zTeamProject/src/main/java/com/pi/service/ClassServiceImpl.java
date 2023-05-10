@@ -1,5 +1,8 @@
 package com.pi.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +38,18 @@ public class ClassServiceImpl implements ClassService {
 		
 		classDAO.updateImgByPath(path);
 		
+	}
+
+	@Override
+	public List<HashMap> selectClassByLocation(HashMap map) {
+		
+		return classDAO.selectClassByLocation(map);
+	}
+
+	@Override
+	public int classCount(HashMap map) {
+		
+		return classDAO.classCount(map);
 	}
 
 }

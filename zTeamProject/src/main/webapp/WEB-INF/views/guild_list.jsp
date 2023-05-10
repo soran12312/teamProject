@@ -51,7 +51,7 @@
                     <a href="guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="class_list.do" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
                     <a href="review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>

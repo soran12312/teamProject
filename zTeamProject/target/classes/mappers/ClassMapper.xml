@@ -31,4 +31,47 @@
 		WHERE path = #{path}
 	</update>
 	
+	<select id="selectClassByLocation" parameterType="HashMap" resultType="HashMap">
+		SELECT  
+		c.class_number class_number
+		, c.class_name class_name
+		, c.price price
+		, c.view_number view_number
+		, c.writing_date writing_date
+		, i.path path
+		, h.class_hashtag class_hashtag
+		, m.nickname nickname
+		FROM class c LEFT OUTER JOIN (SELECT image_number, class_number, path 
+		FROM image GROUP BY class_number ORDER BY image_number DESC) i
+		ON c.class_number = i.class_number 
+		LEFT OUTER JOIN (SELECT class_number
+		, group_concat( hashtag_name separator ' #' ) class_hashtag
+		FROM hashtag GROUP BY class_number) h
+		ON c.class_number = h.class_number 
+		INNER JOIN (SELECT email, nickname
+		FROM member) m 
+		ON c.email = m.email
+		WHERE ( c.location_number = #{location_number1} 
+		OR c.location_number = #{location_number2} 
+		OR c.location_number = #{location_number3} )
+		<if test="category_number !=null ">
+		AND category_number = #{category_number}
+		</if>
+		<if test="keyword !=null">
+		AND ${option} LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		ORDER BY class_number DESC LIMIT #{first_view}, 9;
+	</select>
+	
+	<select id="classCount" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) cnt
+		FROM class
+		WHERE ( location_number = #{location_number1} 
+		OR location_number = #{location_number2} 
+		OR location_number = #{location_number3} )
+		<if test="category_number !=null ">
+		AND category_number = #{category_number}
+		</if>
+	</select>
+	
 </mapper>

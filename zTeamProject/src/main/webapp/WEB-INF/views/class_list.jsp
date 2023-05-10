@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
 <!-- saved from url=(0063)http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,6 +29,22 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+   	
+	$('#cate').change(function(){
+		
+		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val();
+		
+	});
+	
+	$('#searchbtn').click(function(){
+		location.href = '/zTeamProject/search_class.do?option='+$('#sfl2').val()+'&keyword='+$('#stx').val();
+	});
+	
+	
+}); // end of $
+</script>
 </head>
 <body style="">
 <a id="topID"></a>
@@ -52,7 +70,7 @@
                     <a href="/zTeamProject/guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="/zTeamProject/class_list.do" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
                     <a href="/zTeamProject/review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
@@ -60,25 +78,7 @@
                 <li class="gnb_1dli" style="z-index:996"> 
                     <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
                 </li>             
-  				<li class="gnb_1dli allSchBoxWr">
-					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>
-
-					<div id="allSchBox">
-						<fieldset>
-							<legend>사이트 내 전체검색</legend>
-							<form name="fsearchbox" method="get" action="" onsubmit="return fsearchbox_submit(this);">
-								<input type="hidden" name="sfl" value="wr_subject||wr_content">
-								<input type="hidden" name="sop" value="and">
-								<label for="sch_stx" class="sound_only">검색어 필수</label>
-								<input type="text" name="stx" id="sch_stx" class="topSchFocus" maxlength="20" placeholder="Search...">
-								<button type="submit" id="sch_submit" value="검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
-								<a id="allSchBoxClose"><i class="fa fa-close" aria-hidden="true"></i><i class="sound_only">전체검색 닫기</i></a>
-							</form>
-							<script> function fsearchbox_submit(f) { if (f.stx.value.length < 2) { alert("검색어는 두글자 이상 입력하십시오."); f.stx.select(); f.stx.focus(); return false; } /* 검색에 많은 부하가 걸리는 경우 이 주석을 제거하세요. */ var cnt = 0; for (var i=0; i<f.stx.value.length; i++) { if (f.stx.value.charAt(i) == ' ') cnt++; } if (cnt > 1) { alert("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."); f.stx.select(); f.stx.focus(); return false; } return true; } </script>
-						</fieldset>
-					</div>
-
-				</li>
+  				
             </ul>
         </div>
 
@@ -114,16 +114,18 @@
   <div id="bo_btn_top">
         <div id="bo_list_total">
             
-        <select name="" id="" >
-            <option value="">카테고리</option>
-            <option value="">요리</option>
-            <option value="">공예</option>
-            <option value="">IT</option>
-            <option value="">게임</option>
-            <option value="">음악</option>
-            <option value="">교육</option>
-            <option value="">인테리어</option>
-            <option value="">기타</option>
+        <select name="cate" id="cate">
+        	<option>카테고리</option>
+            <option value="0">전체보기</option>
+            <option value="1">요리</option>
+            <option value="2">운동</option>
+            <option value="3">공예</option>
+            <option value="4">IT</option>
+            <option value="5">게임</option>
+            <option value="6">음악</option>
+            <option value="7">교육</option>
+            <option value="8">인테리어</option>
+            <option value="9">기타</option>
         </select>
         </div>
 
@@ -155,367 +157,36 @@
 	
 
     <ul id="gall_ul" class="gall_row">
+    <c:forEach var="map" items="${listMap}">
                 <li class="gall_li col-gn-3 gallWST">
             <div class="gall_box">
                 <div class="gall_chk">
-                                <span class="sound_only">
-                                    </span>
+                                <span class="sound_only" name="class_number">${map.class_number}</span>
                 </div>
                 <div class="gall_con">
                     <div class="gall_boxa">
-                        <a href="classContent.jsp">
-						<em class="iconPs bo_tit">
-															<i class="fa fa-bullhorn icoNotice"> 공지</i> 
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-31261188_xmOe0WFw_a0da36d000ebde0a2d70f85502ec5811f750a8b9_300x230.jpg"  alt="" title=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1466							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-06</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="classContent.jsp" class="bo_tit">
-                            갤러리게시판 공지사항입니다                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    14                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=16">
-						<em class="iconPs bo_tit">
-							                            <i class="fa fa-youtube-play fts13px"><span class="sound_only">유투브영상</span></i> 						</em>
-						<i class="youtube_img"><sup style="background-image:URL(https://img.youtube.com/vi/y1yFiotx3qk/sddefault.jpg"  alt="유투브영상링크 샘플"></sup><sub><i class="imgAr"><img src="resources/images/classList/imageSpacer.php" alt="youtube image spacer" title=""></i></sub></i>
-														<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 953							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-12</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=16" class="bo_tit">
-                            유투브영상링크 샘플                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    13                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=14">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-1982125119_aY3uLPKx_0346bdfd1558c859366f41cb4642cd574f12e28b_300x230.jpg"  alt="" title=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1333							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=14" class="bo_tit">
-                            페이지디 반응형 홈페이지 테마                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 box_clear gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    12                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=13">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-1982125119_syHIplMt_39724b805dc1142318f434818b62ab4b2d749151_300x230.jpg" alt="" title=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1449							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-06</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=13" class="bo_tit">
-                            갤러리게시판                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    11                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=12">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-1982125119_EJGhABMS_ba51458c12b3dde59e5647c6d94dd9e46273b479_300x230.jpg" alt="" title=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1297							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=12" class="bo_tit">
-                            갤러리 게시판입니다                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    10                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=11">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-5_copy_11_31261188_OuepdXZy_3e7d4d615d0ad144794a1ba0f2f8763f19e143ac_300x230.jpg" alt="" title=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1272							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-06</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=11" class="bo_tit">
-                            PURE WHITE                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 box_clear gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    9                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=10">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-1982125119_afh3PDjx_bc4bf409963c6666ca6e95483aa9f06ebe974bf8_300x230.jpg" alt=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1324							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=10" class="bo_tit">
-                            갤러리 등록 테스트                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    8                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=9">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-31261188_ZpGtIQrH_6539ff08f5411c45ddde854bafe446429c743ab2_300x230.jpg" alt=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1308							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=9" class="bo_tit">
-                            갤러리게시판                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    7                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=8">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-1982125119_B5vKMApt_0706c623c9b17633ecc1cc0022d6faf86aed3160_300x230.jpg" alt=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1297							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=8" class="bo_tit">
-                            페이지디 반응형 홈페이지 테마                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 box_clear gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    6                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=6">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-2_copy_6_31261188_zdwi2F59_d84ab7973bb3568bc59463298e8adfa0bec185f5_300x230.jpg" alt="" title=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1798							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=6" class="bo_tit">
-                            갤러리 게시판입니다                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    5                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=5">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-1982125119_iHDFEPZA_73635ec976f1c7dbed84f6d1e76c6f5dd13ae3fb_300x230.jpg" alt=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1301							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-06</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=5" class="bo_tit">
-                            PURE WHITE                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    4                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=4">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-31261188_vniU54eA_caeae717cdd24c50096bc2e1b210aa11c3318770_300x230.jpg" alt=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1268							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=4" class="bo_tit">
-                            갤러리 등록 테스트                                                     </a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 box_clear gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    3                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=3">
+                        <a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
 						<em class="iconPs bo_tit"></em>
-						<i class="imgAr"><img src="resources/images/classList/noimage.jpg" alt="이미지 없음" title=""></i>
-							<b>no image</b>
-								<em class="gall_info">
-									<span class="sound_only">조회 </span>
-									<i class="fa fa-eye" aria-hidden="true"></i> 1299							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-06</span>
-									<u><span class="sound_only">작성자 </span>웹사이팅</u>
-								</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                      <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=3" class="bo_tit">이미지가 없는경우</a>
-                    </div>
-                </div>
-            </div>
-        </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    2                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=2">
-						<em class="iconPs bo_tit">
-							                            						</em>
-						<i class="imgAr"><img src="resources/images/classList/thumb-31261188_zdwi2F59_d84ab7973bb3568bc59463298e8adfa0bec185f5_300x230.jpg" alt=""></i>						<em class="gall_info">
-							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i> 1333							<span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-07</span>
-							<u><span class="sound_only">작성자 </span>웹사이팅</u>
+						<i class="imgAr">
+						<c:if test="${not empty map.path}">
+						<img src="${map.path}">
+						</c:if>
+						<c:if test="${empty map.path}">
+						<img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg">
+						</c:if>
+						</i><em class="gall_info">
+							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i>      ${map.view_number}      <span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i>${map.writing_date}</span>
+							<u><span class="sound_only">작성자 </span>${map.nickname}</u>
 						</em>
                         </a>
                     </div>
                     <div class="gall_text_href">
-                                                <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=2" class="bo_tit">
-                            갤러리게시판                                                     </a>
+                       <a href="/zTeamProject/class_detail.do?class_number=${map.class_number}" class="bo_tit">${map.class_name}</a>
                     </div>
                 </div>
             </div>
         </li>
-                <li class="gall_li col-gn-3 gallWST">
-            <div class="gall_box">
-                <div class="gall_chk">
-                                <span class="sound_only">
-                    1                </span>
-                </div>
-                <div class="gall_con">
-                    <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=1">
-						<em class="iconPs bo_tit"></em>
-						<i class="imgAr"><img src="resources/images/classList/noimage.jpg" alt="이미지 없음"></i><b> no image </b>
-						<em class="gall_info">
-							<i class="fa fa-eye" aria-hidden="true"></i> 1328 <span class="gall_date"> 작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i> 02-06</span>
-						</em>
-                        </a>
-                    </div>
-                    <div class="gall_text_href">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery&amp;wr_id=1" class="bo_tit">이미지 없음, 링크 있음</a>
-                    </div>
-                </div>
-            </div>
-        </li>
+      </c:forEach>          
             </ul>
     
     
@@ -525,17 +196,17 @@
     <fieldset id="bo_sch">
         <legend>게시물 검색</legend>
 
-        <form name="fsearch" method="get">
+        <form name="fsearch" method="post" action="/zTeamProject/search_class.do">
         <input type="hidden" name="bo_table" value="gallery">
         <input type="hidden" name="sca" value="">
         <input type="hidden" name="sop" value="and">
-        <select name="sfl2" id="sfl2">
-            <option value="wr_subject||wr_content">작성자</option>
-            <option value="wr_subject">제목</option>
-            <option value="wr_content">해쉬 태그</option>
+        <select name="option" id="sfl2">
+            <option value="m.nickname">작성자</option>
+            <option value="c.class_name">제목</option>
+            <option value="h.class_hashtag">해쉬 태그</option>
         </select>
-        <input type="text" name="stx" value="" required id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-        <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+        <input type="text" name="keyword" id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
+        <button type="button" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
         </form>
         
 
@@ -543,10 +214,16 @@
     
     
 <nav class="pg_wrap">
-    <span class="pg"><a href="./board.php?bo_table=qna&amp;page=1" class="pg_page pg_start">처음</a>
-	    <span class="sound_only">열린</span><strong class="pg_current">1</strong><span class="sound_only">페이지</span>
-		<a href="./board.php?bo_table=qna&amp;page=2" class="pg_page">2<span class="sound_only">페이지</span></a>
-		<a href="./board.php?bo_table=qna&amp;page=2" class="pg_page pg_end">맨끝</a>
+    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=0" class="pg_page">&#60;</a>
+    <c:forEach var="i" begin="${startPage}" end="${endPage}">
+    <c:if test="${currentPage eq i}">
+	    <span class="sound_only">열린</span><strong class="pg_current">${i}</strong><span class="sound_only">페이지</span>
+	</c:if>
+	<c:if test="${currentPage ne i}">
+		<a href="/zTeamProject/class_list.do?currentPage=${i}" class="pg_page">${i}<span class="sound_only">페이지</span></a>
+	</c:if>
+	</c:forEach>
+		<a href="/zTeamProject/class_list.do?currentPage=${maxPage}" class="pg_page">&#62;</a>
 	</span>
 </nav>
 

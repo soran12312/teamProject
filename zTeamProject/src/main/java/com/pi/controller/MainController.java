@@ -167,7 +167,10 @@ public class MainController {
 	
 	
 	@RequestMapping("/{step}.do")
-	public String viewPage(@PathVariable String step, Model m) {
+	public String viewPage(@PathVariable String step, Model m, HttpSession session) {
+		session.removeAttribute("category_number");
+		session.removeAttribute("option");
+		session.removeAttribute("keyword");
 		return step;
 	}
 	
