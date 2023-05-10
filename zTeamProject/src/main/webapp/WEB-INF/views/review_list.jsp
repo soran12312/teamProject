@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    
-    
-    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -60,7 +57,6 @@
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </head>
 
-<<<<<<< HEAD
 <body>
 
   <!-- ======= Header ======= -->
@@ -148,7 +144,7 @@
   
 
   <main id="main">
-=======
+
 <body class="realestate_version">
       <header class="header header_style_01">
          <nav class="megamenu navbar navbar-default" data-spy="affix">
@@ -178,7 +174,6 @@
       
       
       <main id="main">
->>>>>>> branch 'master' of https://github.com/soran12312/teamProject.git
     <section>
       <div class="container">
         <div class="row">
