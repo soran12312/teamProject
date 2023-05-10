@@ -50,11 +50,13 @@ public class ClassController {
 		String realPath="C:\\Users\\kosmo\\git\\teamProject\\zTeamProject\\src\\main\\webapp\\resources\\uploads\\"+ivo.getSave_name();
 		String path = "http://localhost:8080/zTeamProject/resources/uploads/"+ivo.getSave_name();
 		
-		ivo.setPath(realPath); 
+		ivo.setPath(path);
 		
-		System.out.println(realPath);
+		//System.out.println(realPath);
 			
 		File f = new File(realPath);
+		
+		classService.insert_classImage(ivo);
 		
 		try {
 			InputStream fileStream = file.getInputStream();
@@ -72,15 +74,22 @@ public class ClassController {
 	
 	@Transactional
 	@RequestMapping("/class_insert.do")
-	public String class_insert(ClassVO vo, String hashtag) {
+	public String class_insert(ClassVO vo, String hashtag, String path) {
 		//System.out.println(hashtag);
 		
 		classService.class_insert(vo);
 		
 		ArrayList<String> hashtag_name_list = new ArrayList<String>();
+		ArrayList<String> path_list = new ArrayList<String>();
+		
 		StringTokenizer st = new StringTokenizer(hashtag,",");
 		for(int i=0; st.hasMoreTokens(); i++) {
 			hashtag_name_list.add(st.nextToken());
+		}
+		
+		StringTokenizer pst = new StringTokenizer(path,",");
+		for(int i=0; pst.hasMoreTokens(); i++) {
+			path_list.add(pst.nextToken());
 		}
 		
 		for(String j : hashtag_name_list) {
@@ -91,7 +100,10 @@ public class ClassController {
 			classService.hashtag_insert(hvo);
 		}
 		
-
+		for(String k : path_list) {
+			System.out.println(k);
+			classService.updateImgByPath(k);
+		}
 		
 		
 		return "class_list";

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
+import com.pi.domain.ImageVO;
 
 
 @Repository("classDAO")
@@ -26,6 +27,20 @@ public class ClassDAOImpl implements ClassDAO {
 		
 		int result = mybatis.insert("ClassMapper.insertHashtag", vo);
 		System.out.println(result);
+	}
+	
+	@Override
+	public void insert_classImage(ImageVO ivo) {
+		System.out.println("===> Mybatis insert_classImage() 호출");
+		
+		mybatis.insert("ClassMapper.insert_classImage", ivo);
+	}
+	
+	@Override
+	public void updateImgByPath(String path) {
+		System.out.println("===> Mybatis updateImgByPath() 호출");
+		
+		mybatis.update("ClassMapper.updateImgByPath", path);
 	}
 	
 }

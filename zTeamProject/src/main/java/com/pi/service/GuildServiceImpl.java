@@ -20,4 +20,12 @@ public class GuildServiceImpl implements GuildService {
 		guildDAO.guild_insert(vo);
 	}
 
+
+
+	@Override
+	public void updateImgByPath(String path) {
+		
+		guildDAO.updateImgByPath(path);
+	}
+
 }

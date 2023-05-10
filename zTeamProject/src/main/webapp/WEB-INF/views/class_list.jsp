@@ -46,19 +46,19 @@
 			</div>
             <ul id="gnb_1dul">
                 <li class="gnb_1dli" style="z-index:999">
-                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
+                    <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:998">
-                    <a href="guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="/zTeamProject/guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="class_list.do" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do" target="_self" class="gnb_1da">강좌<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="/zTeamProject/review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
                 </li> 
                 <li class="gnb_1dli" style="z-index:996"> 
-                    <a href="mypage연결해조...form class_list" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
                 </li>             
   				<li class="gnb_1dli allSchBoxWr">
 					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>

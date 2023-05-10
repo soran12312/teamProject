@@ -17,4 +17,18 @@
 		VALUES 
 		( (SELECT MAX(class_number) FROM class), #{hashtag_name}, #{category_number} )	
 	</insert>
+	
+	<insert id="insert_classImage" parameterType="com.pi.domain.ImageVO">
+		INSERT INTO image 
+		( original_name, save_name, path, size, main_image )
+		VALUES
+		( #{original_name}, #{save_name}, #{path}, #{size}, #{main_image} )
+	</insert>
+	
+	<update id="updateImgByPath" parameterType="String">
+		UPDATE image SET 
+		class_number = (SELECT MAX(class_number) FROM class)
+		WHERE path = #{path}
+	</update>
+	
 </mapper>

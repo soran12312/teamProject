@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.pi.dao.ClassDAO;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
+import com.pi.domain.ImageVO;
 @Service("classService")
 public class ClassServiceImpl implements ClassService {
 
@@ -21,6 +22,19 @@ public class ClassServiceImpl implements ClassService {
 	public void hashtag_insert(HashtagVO vo) {
 		
 		classDAO.hashtag_insert(vo);
+	}
+
+	@Override
+	public void insert_classImage(ImageVO ivo) {
+		
+		classDAO.insert_classImage(ivo);
+	}
+
+	@Override
+	public void updateImgByPath(String path) {
+		
+		classDAO.updateImgByPath(path);
+		
 	}
 
 }
