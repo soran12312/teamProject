@@ -28,6 +28,19 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+	if(${sessionScope.email eq map.email}){
+		$("#guild_delete").click(function(){
+			
+			if(confirm("정말 삭제하시겠습니까?")){
+				alert("삭제되었습니다.");
+				location.href = '/zTeamProject/guild_delete.do?guild_number='+${map.guild_number};
+			}
+		});
+	} // end of if(로그인 한 사람과 글 작성자가 같은 사람이면 true)
+});
+</script>
 </head>
 <body style="">
 <a id="topID"></a>
@@ -130,8 +143,14 @@
         <ul class="bo_v_com">
            <!-- 좋아요 버튼 -->
            <li><a href="/zTeamProject/insertLike.do?guild_number=${map.guild_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i></a></li>
+           <c:if test="${sessionScope.email eq map.email}">
+           <!-- 삭제하기 버튼 -->
+           <li><a id="guild_delete" class="btn_b01 btn">삭제하기</a></li>
+           </c:if>
+           <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
            <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           </c:if>
            <!-- 모임 신청 버튼 -->
            <li><a href="https://chatting--pum-i.run.goorm.site/?chatroom=${map.email}" class="btn_b01 btn"><i class="fa-solid fa-person-circle-plus"></i> 모임가입</a></li>
            <!-- 목록 보기 버튼 -->

@@ -71,5 +71,12 @@ public class GuildDAOImpl implements GuildDAO {
 		
 		mybatis.insert("GuildMapper.insertLike", vo);
 	}
+
+	@Override
+	public void guild_delete(int guild_number) {
+		System.out.println("===> Mybatis guild_delete() 호출");
+		
+		mybatis.update("GuildMapper.guild_delete", guild_number);
+	}
 	
 }

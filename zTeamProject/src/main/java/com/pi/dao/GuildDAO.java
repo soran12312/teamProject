@@ -23,4 +23,6 @@ public interface GuildDAO {
 	public int checkLike(LikeVO vo);
 	
 	public void insertLike(LikeVO vo);
+	
+	public void guild_delete(int guild_number);
 }

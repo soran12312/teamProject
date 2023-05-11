@@ -67,4 +67,10 @@ public class GuildServiceImpl implements GuildService {
 		guildDAO.insertLike(vo);
 		
 	}
+	
+	@Override
+	public void guild_delete(int guild_number) {
+		guildDAO.guild_delete(guild_number);
+		
+	}
 }

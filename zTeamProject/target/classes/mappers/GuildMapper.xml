@@ -93,5 +93,10 @@
 		INSERT INTO `like` ( email, guild_number )
 		VALUES ( #{email}, #{guild_number} )
 	</insert>
-	
+		<!-- 강좌 삭제(DB에서 등록상태만 변경) -->
+	<update id="guild_delete" parameterType="int">
+		UPDATE guild SET 
+		guild_state = 0
+		WHERE guild_number = #{guild_number}
+	</update>
 </mapper>
