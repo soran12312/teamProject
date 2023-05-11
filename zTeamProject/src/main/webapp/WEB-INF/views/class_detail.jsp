@@ -10,7 +10,8 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>강좌 상세 페이지</title>
+<title>품-i</title>
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
 <link rel="stylesheet" href="resources/css/classList/default.css">
 <link rel="stylesheet" href="resources/css/classList/style.css">
 <link rel="stylesheet" href="resources/css/classList/board.common.css">
@@ -20,7 +21,7 @@
 <link rel="stylesheet" href="resources/css/classList/featherlight.min.css">
 <!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
 <script>var g5_url = "http://sample.paged.kr/purewhite"; var g5_bbs_url = "http://sample.paged.kr/purewhite/bbs"; var g5_is_member = ""; var g5_is_admin = ""; var g5_is_mobile = ""; var g5_bo_table = "gallery"; var g5_sca = ""; var g5_editor = "smarteditor2"; var g5_cookie_domain = "";</script>
-<script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="resources/js/jquery.menu.min.js"></script>
 <script src="resources/js/common.js"></script>
 <script src="resources/js/WEBsiting.js"></script>
@@ -29,6 +30,73 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+$(function(){
+	if(${sessionScope.email ne map.email}){ // 404에러 방지용(세션의 이메일과 게시글의 작성자 이메일이 다를 경우 버튼 생성되기때문에 같은 조건 걸어준다.)
+		if(${map.current_member ge map.max_member}){ // 현재인원수가 최대인원수 이상일 경우
+			alert("마감된 강좌입니다.");
+		}else{ // 현재 인원수가 최대인원수보다 적을 경우
+			$('.bo_v_com').on("click","#class_Join",function(){ // 강좌신청버튼 클릭 시
+				var param = {"email" : "${sessionScope.email}"
+							, "class_number" : "${map.class_number}"
+							};
+				
+				$.ajax({
+					type	: 'post'
+					,data	: param
+					,url	: '/zTeamProject/class_Join.do' // 강좌 신청
+					,success	: function(result){
+						alert(result); // 신청결과 경고창으로 출력
+						location.href = '/zTeamProject/class_detail.do?class_number='+${map.class_number};
+					}//이후 강좌상세페이지로 리다이렉팅(강좌 현재 신청인원 새로고침하기위해서)
+					,error	: function(err){
+						alert('error');
+						console.log(err);
+					}
+				}); // end of ajax
+			}); // end of on(강좌신청버튼 클릭이벤트)
+		} // end of if(강좌 신청인원이 최대인원보다 적은지 확인)
+	} // end of if(로그인 한 사람과 글 작성자가 다른 사람이면 true)
+		
+	if(${sessionScope.email eq map.email}){ // 404에러 방지용(세션의 이메일과 게시글의 작성자 이메일이 같을 경우 버튼 생성되기때문에 같은 조건 걸어준다.)
+		$("#class_delete").click(function(){ // 강좌삭제 버튼 클릭 시
+			
+			if(confirm("정말 삭제하시겠습니까?")){ // 확인문구 출력 후 확인 시 삭제, 취소 시 삭제 안함
+				alert("삭제되었습니다."); // 삭제 경고창 출력
+				location.href = '/zTeamProject/class_delete.do?class_number='+${map.class_number}; // 강좌 삭제
+			}
+		});
+		
+	} // end of if(로그인 한 사람과 글 작성자가 같은 사람이면 true)
+	
+
+		// 원래 탬플릿에 있던 제이쿼리
+	$("a.view_image").click(function() {
+	        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
+	        return false;
+	    });
+
+	    // 이미지 리사이즈
+	$("#bo_v_atc").viewimageresize();
+	    
+	
+	function board_move(href)
+	{
+	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
+	}
+	
+	function board_move(href)
+	{
+	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
+	}
+	
+	// 글자수 제한
+	var char_min = parseInt(0); // 최소
+	var char_max = parseInt(0); // 최대
+	
+}); // end of $
+</script>
 </head>
 <body style="">
 <a id="topID"></a>
@@ -44,20 +112,26 @@
         <h2>메인메뉴</h2>
         <div class="gnb_wrap">
 			<div id="logo">
-				<a href="/zTeamProject/main_view.do"><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></a>
+				<a href="/zTeamProject/main_view.do"><img src="resources/images/classList/logo.png" ></a>
 			</div>
             <ul id="gnb_1dul">
                 <li class="gnb_1dli" style="z-index:999">
-                    <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME<u></u></a>
-                </li>
-                <li class="gnb_1dli" style="z-index:998">
-                    <a href="/zTeamProject/guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
+                </li>
+                <li class="gnb_1dli" style="z-index:998">
+                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="/zTeamProject/review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
+                </li> 
+                <li class="gnb_1dli" style="z-index:996"> 
+                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                </li> 
+                <li class="gnb_1dli" style="z-index:996">
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
                 </li>
             </ul>
         </div>
@@ -98,6 +172,8 @@
     <section id="bo_v_info">
         <span class="sound_only">조회수</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
         <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
+        <span class="sound_only">현재인원</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재인원 : ${map.current_member}명</strong>
+        <span class="sound_only">최대인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
     </section>
     
 
@@ -122,23 +198,22 @@
     <div id="bo_v_top">        
         <ul class="bo_v_left"></ul>
         <ul class="bo_v_com">
- 	  		<li><strong class="if_date"><span class="sound_only">강좌기간</span><i class="fa fa-clock-o" aria-hidden="true"></i>기간 : ${map.start_date} ~ ${map.end_date} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></li>
+        	<li><u><span class="sound_only">해시태그 </span> #${map.class_hashtag}</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+ 	  		<li><strong class="if_date2"><span class="sound_only">강좌기간</span><i class="fa fa-clock-o" aria-hidden="true"></i>기간 : ${map.start_date} ~ ${map.end_date} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></li>
            <!-- 좋아요 버튼 -->
            <li><a href="/zTeamProject/insertLike.do?class_number=${map.class_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i>${map.class_like}</a></li>
            <c:if test="${sessionScope.email eq map.email}">
            <!-- 삭제하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn">삭제하기</a></li>
+           <li><a id="class_delete" class="btn_b01 btn">삭제하기</a></li>
            </c:if>
            <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            <!-- 강좌 신청 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa fa-inbox"></i> 강좌신청</a></li>
-           <!-- 리뷰 쓰기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn">리뷰쓰기</a></li>
+           <li><a id='class_Join' class="btn_b01 btn"><i class="fa fa-inbox"></i> 강좌신청</a></li>
            </c:if>
            <!-- 목록 보기 버튼 -->
-           <li><a href="/zTeamProject/class_list.do?currentPage=0" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+           <li><a href="/zTeamProject/class_list.do?currentPage=1" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul>
 
         
@@ -157,48 +232,10 @@
         
     </section>
 
-    
-<script>
-// 글자수 제한
-var char_min = parseInt(0); // 최소
-var char_max = parseInt(0); // 최대
-</script>
-<!-- 댓글 시작 { -->
-<hr class="dashHr">
-
-
 
 </article>
 <!-- } 게시판 읽기 끝 -->
 
-<script>
-
-function board_move(href)
-{
-    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-}
-</script>
-
-<script>
-function board_move(href)
-{
-    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-}
-</script>
-
-<script>
-$(function() {
-    $("a.view_image").click(function() {
-        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
-        return false;
-    });
-
-    // 이미지 리사이즈
-    $("#bo_v_atc").viewimageresize();
-
-});
-</script>
-<!-- } 게시글 읽기 끝 -->
 
 </div><!-- // #container 닫음 -->
 

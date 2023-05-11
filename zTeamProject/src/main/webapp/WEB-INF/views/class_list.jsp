@@ -10,7 +10,8 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>클래스 페이지 | 페이지디 홈페이지 템플릿 테마</title>
+<title>품-i</title>
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
 <link rel="stylesheet" href="resources/css/classList/default.css">
 <link rel="stylesheet" href="resources/css/classList/style.css">
 <link rel="stylesheet" href="resources/css/classList/board.common.css">
@@ -32,14 +33,8 @@
 <script type="text/javascript">
 $(function(){
    	
-	$('#cate').change(function(){
-		
-		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val();
-		
-	});
-	
-	$('#searchbtn').click(function(){
-		location.href = '/zTeamProject/search_class.do?option='+$('#sfl2').val()+'&keyword='+$('#stx').val();
+	$('#cate').change(function(){ // 카테고리 셀렉트태그 변경 시
+		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val(); // 카테고리검색으로 리다이렉팅
 	});
 	
 	
@@ -66,19 +61,21 @@ $(function(){
                 <li class="gnb_1dli" style="z-index:999">
                     <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME<u></u></a>
                 </li>
-                <li class="gnb_1dli" style="z-index:998">
-                    <a href="/zTeamProject/guild_list.do" target="_self" class="gnb_1da">커뮤니티<u></u></a>
-                </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
+                </li>
+                <li class="gnb_1dli" style="z-index:998">
+                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="/zTeamProject/review_list.do" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
                 </li> 
                 <li class="gnb_1dli" style="z-index:996"> 
                     <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
                 </li>             
-  				
+  				<li class="gnb_1dli" style="z-index:996">
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                </li> 
             </ul>
         </div>
 
@@ -174,7 +171,11 @@ $(function(){
 						<c:if test="${empty map.path}">
 						<img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg">
 						</c:if>
-						</i><em class="gall_info">
+						</i>
+						<em class="gall_info">
+						<c:if test="${not empty map.class_hashtag}">
+						<u><span class="sound_only">해시태그 </span> #${map.class_hashtag}</u>
+						</c:if>
 							<span class="sound_only">조회 </span><i class="fa fa-eye" aria-hidden="true"></i>      ${map.view_number}      <span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i>${map.writing_date}</span>
 							<u><span class="sound_only">작성자 </span>${map.nickname}</u>
 						</em>
@@ -197,16 +198,13 @@ $(function(){
         <legend>게시물 검색</legend>
 
         <form name="fsearch" method="post" action="/zTeamProject/search_class.do">
-        <input type="hidden" name="bo_table" value="gallery">
-        <input type="hidden" name="sca" value="">
-        <input type="hidden" name="sop" value="and">
         <select name="option" id="sfl2">
             <option value="m.nickname">작성자</option>
             <option value="c.class_name">제목</option>
             <option value="h.class_hashtag">해쉬 태그</option>
         </select>
         <input type="text" name="keyword" id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-        <button type="button" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
         </form>
         
 
@@ -214,7 +212,7 @@ $(function(){
     
     
 <nav class="pg_wrap">
-    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=0" class="pg_page">&#60;</a>
+    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=1" class="pg_page">&#60;</a>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
     <c:if test="${currentPage eq i}">
 	    <span class="sound_only">열린</span><strong class="pg_current">${i}</strong><span class="sound_only">페이지</span>
@@ -251,12 +249,12 @@ $(function(){
         </dd>
     </dl>
 	<address>
-		<span>서울 관악구 조원중앙로 38-1한별빌딩</span> 
-		 <em>|</em><span> Tel. 070-7558-6420</span> 
-		 <em>|</em><span> Fax. 050-4156-1305</span> 
-		 <em>|</em><span> E-mail. <a href="mailto:admin@websiting.co.kr">admin@websiting.co.kr</a></span> 
-		<br><span>본 샘플사이트를 베이스로 페이지디 <a href="https://paged.kr/" target="_blank">paged.kr</a> 에서 제작요청 가능합니다.</span>	</address>
-	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.</span></p>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span> </br>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
 </footer>
 
 <button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"><span class="sound_only">페이지 상단으로 이동</span></button>

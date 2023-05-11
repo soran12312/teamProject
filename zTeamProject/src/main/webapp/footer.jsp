@@ -44,16 +44,16 @@
                <div class="footer-left">
                   <p class="footer-links">
                      <a href="/zTeamProject/main_view.do">Home</a>
-                     <a href="#">Blog</a>
-                     <a href="#">Pricing</a>
-                     <a href="#">About</a>
-                     <a href="#">Faq</a>
-                     <a href="#">Contact</a>
+                     <a href="/zTeamProject/main_view.do#support">Blog</a>
+                     <a href="/zTeamProject/main_view.do#support">Pricing</a>
+                     <a href="/zTeamProject/main_view.do#support">About</a>
+                     <a href="/zTeamProject/main_view.do#support">Faq</a>
+                     <a href="/zTeamProject/main_view.do#support">Contact</a>
                   </p>
                   <p class="footer-company-name">All Rights Reserved. <a href="https://html.design/">html.design</a> &copy; 2023</p>
                </div>
                <div class="footer-right">
-                  <form method="get" action="#">
+                  <form method="get">
                      <input placeholder="Subscribe our newsletter.." name="search">
                      <i class="fa fa-envelope-o"></i>
                   </form>
@@ -63,7 +63,7 @@
          <!-- end container -->
       </div>
       <!-- end copyrights -->
-      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <a href="/zTeamProject/main_view.do" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       
    </body>
 

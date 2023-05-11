@@ -13,25 +13,22 @@
    </head>
 <body class="realestate_version">
       <header class="header header_style_01">
+      <a class="navbar-brand" href="/zTeamProject/main_view.do"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
          <nav class="megamenu navbar navbar-default" data-spy="affix">
             <div class="container-fluid">
                <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="/zTeamProject/main_view.do"><img src="resources/images/logos/logo.png" width="220" alt="image" /></a>
+                  
                </div>
                <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                      <li><a data-scroll href="/zTeamProject/main_view.do">Home</a></li>
-                     <li><a data-scroll href="/zTeamProject/class_list.do?currentPage=0">강좌게시판</a></li>
-                     <li><a data-scroll href="/zTeamProject/guild_list.do">커뮤니티게시판</a></li>
-                     <li><a data-scroll href="/zTeamProject/review_list.do">리뷰게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/class_list.do?currentPage=1">강좌게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/guild_list.do?currentPage=1">커뮤니티게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/review_list.do?currentPage=1">리뷰게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/mypage.do">마이페이지</a></li>
-                     <li><a data-scroll href="#support">고객센터</a></li>
+                     <li><a data-scroll href="/zTeamProject/main_view.do#support">고객센터</a></li>
                      <li><a data-scroll href="/zTeamProject/logout.do">로그아웃</a></li>
                   </ul>
                </div>

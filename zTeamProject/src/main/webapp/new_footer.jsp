@@ -14,17 +14,15 @@
 <div class="foot">
 	<div class="footer_nav">
 		<p>
-			<a href="/zTeamProject/main_view.do">Home</a> 
-			<a href="#">사업자강좌</a> 
-			<a href="/zTeamProject/class_list.do?currentPage=0">강좌</a> 
-			<a href="/zTeamProject/guild_list.do">모임</a> 
-			<a href="/zTeamProject/review_list.do">리뷰</a> 
-			<a href="#">Contact</a>
+			<a href="/zTeamProject/main_view.do">Home</a>
+			<a href="/zTeamProject/class_list.do?currentPage=1">강좌</a> 
+			<a href="/zTeamProject/guild_list.do?currentPage=1">모임</a> 
+			<a href="/zTeamProject/review_list.do?currentPage=1">리뷰</a>
 			<span><img src="resources/images/logos/logo.png"></span>
 		</p>
 	</div>
 	<div class="copyrights">
-		All Rights Reserved.<a>5조</a>&copy; 2023
+		All Rights Reserved.<a>Team.5랑캐</a>&copy; 2023
 	</div>    
 </div>	
 

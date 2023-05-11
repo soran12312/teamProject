@@ -10,7 +10,8 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>클래스 페이지 | 페이지디 홈페이지 템플릿 테마</title>
+<title>품-i</title>
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
 <link rel="stylesheet" href="resources/css/classList/default.css">
 <link rel="stylesheet" href="resources/css/classList/style.css">
 <link rel="stylesheet" href="resources/css/classList/board.common.css">
@@ -32,14 +33,10 @@
 <script type="text/javascript">
 $(function(){
    	
-	$('#cate').change(function(){
+	$('#cate').change(function(){ // 카테고리 셀렉트태그 변경 시
 		
-		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val();
+		location.href = '/zTeamProject/cate_review_list.do?category_number='+$(this).val(); // 카테고리검색으로 리다이렉팅
 		
-	});
-	
-	$('#searchbtn').click(function(){
-		location.href = '/zTeamProject/search_class.do?option='+$('#sfl2').val()+'&keyword='+$('#stx').val();
 	});
 	
 	
@@ -67,18 +64,20 @@ $(function(){
                     <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:998">
-                    <a href="/zTeamProject/guild_list.do?currentPage=0" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="/zTeamProject/review_list.do?currentPage=0" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
                 </li> 
                 <li class="gnb_1dli" style="z-index:996"> 
                     <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
                 </li>             
-  				
+  				<li class="gnb_1dli" style="z-index:996">
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                </li>
             </ul>
         </div>
 
@@ -108,8 +107,24 @@ $(function(){
 
 <!-- 게시판 목록 시작 { -->
 <div id="bo_gall" style="width:100%">
-
-
+<div id="bo_btn_top">
+<div id="bo_list_total">
+            
+        <select name="cate" id="cate">
+        	<option>카테고리</option>
+            <option value="0">전체보기</option>
+            <option value="1">요리</option>
+            <option value="2">운동</option>
+            <option value="3">공예</option>
+            <option value="4">IT</option>
+            <option value="5">게임</option>
+            <option value="6">음악</option>
+            <option value="7">교육</option>
+            <option value="8">인테리어</option>
+            <option value="9">기타</option>
+        </select>
+        </div>
+        </div>
     <!-- 게시판 페이지 정보 및 버튼 시작 { -->
 
     <!-- } 게시판 페이지 정보 및 버튼 끝 -->
@@ -138,11 +153,11 @@ $(function(){
                 <li class="gall_li col-gn-3 gallWST">
             <div class="gall_box">
                 <div class="gall_chk">
-                                <span class="sound_only" name="class_number">${map.class_number}</span>
+                                <span class="sound_only" name="review_number">${map.review_number}</span>
                 </div>
                 <div class="gall_con">
                     <div class="gall_boxa">
-                        <a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
+                        <a href="/zTeamProject/review_detail.do?review_number=${map.review_number}">
 						<em class="iconPs bo_tit"></em>
 						<i class="imgAr">
 						<c:if test="${not empty map.path}">
@@ -158,7 +173,7 @@ $(function(){
                         </a>
                     </div>
                     <div class="gall_text_href">
-                       <a href="/zTeamProject/class_detail.do?class_number=${map.class_number}" class="bo_tit">${map.class_name}</a>
+                       <a href="/zTeamProject/review_detail.do?review_number=${map.review_number}" class="bo_tit">${map.title}</a>
                     </div>
                 </div>
             </div>
@@ -175,28 +190,20 @@ $(function(){
     <fieldset id="bo_sch">
         <legend>게시물 검색</legend>
 
-        <form name="fsearch" method="post" action="/zTeamProject/search_class.do">
-        <input type="hidden" name="bo_table" value="gallery">
-        <input type="hidden" name="sca" value="">
-        <input type="hidden" name="sop" value="and">
+        <form name="fsearch" method="post" action="/zTeamProject/search_review.do">
         <select name="option" id="sfl2">
             <option value="m.nickname">작성자</option>
-            <option value="c.class_name">제목</option>
-            <option value="h.class_hashtag">해쉬 태그</option>
+            <option value="r.title">제목</option>
         </select>
         <input type="text" name="keyword" id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-        <button type="button" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
         </form>
     </fieldset>
-    	<ul class="btn_bo_user">
-        	<li>
-           		<a href="/zTeamProject/review_form.do" class="btn_b02"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
-        	</li>
-    	</ul>	
+    		
     
     
 <nav class="pg_wrap">
-    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=0" class="pg_page">&#60;</a>
+    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=1" class="pg_page">&#60;</a>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
     <c:if test="${currentPage eq i}">
 	    <span class="sound_only">열린</span><strong class="pg_current">${i}</strong><span class="sound_only">페이지</span>
@@ -214,17 +221,24 @@ $(function(){
     <!-- } 게시판 검색 끝 -->   
 </div>
 
-
-<!-- 페이지 -->
-
-
-<!-- } 게시판 목록 끝 -->
-
-
-
-<!-- 하단 시작 { -->
-
-         
+<footer id="footer">
+    <dl>
+        <dt><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></dt>
+        <dd>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area" data-featherlight="iframe">개인정보처리방침</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
+        </dd>
+    </dl>
+   <address>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span> </br>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
+</footer>
+ 
 
 <button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"><span class="sound_only">페이지 상단으로 이동</span></button>
 

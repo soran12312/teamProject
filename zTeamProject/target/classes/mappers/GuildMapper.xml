@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GuildMapper">
 
+	<!-- 커뮤니티등록 -->
 	<insert id="insertGuild" parameterType="com.pi.domain.GuildVO">
 		INSERT INTO guild
 		( guild_name, email, detail, location_number, max_member )
@@ -10,10 +11,86 @@
 		( #{guild_name}, #{email}, #{detail}, #{location_number}, #{max_member} )
 	</insert>
 	
+	<!-- 등록된 이미지에 커뮤니티번호 등록 -->
 	<update id="updateImgByPath" parameterType="String">
 		UPDATE image SET 
 		guild_number = (SELECT MAX(guild_number) FROM guild)
 		WHERE path = #{path}
 	</update>
 	
+	<!-- 회원의 관심지역 내 모든 커뮤니티정보 검색 -->
+	<select id="selectGuildByLocation" parameterType="HashMap" resultType="HashMap">
+		SELECT g.guild_number guild_number 
+		, g.guild_name guild_name 
+		, g.max_member max_member 
+		, g.current_member current_member 
+		, i.path 
+		, m.nickname nickname 
+		, l.addr1 addr1 
+		, l.addr2 addr2 
+		, l.addr3 addr3 
+		FROM guild g LEFT OUTER JOIN (SELECT image_number, guild_number, path 
+		FROM image GROUP BY guild_number ORDER BY guild_number DESC) i
+		ON g.guild_number = i.guild_number
+		INNER JOIN member m
+		ON g.email = m.email
+		INNER JOIN location l 
+		ON g.location_number = l.location_number 
+		WHERE g.guild_state = 1 
+		AND ( g.location_number = #{location_number1} 
+		OR g.location_number = #{location_number2} 
+		OR g.location_number = #{location_number3} )
+		ORDER BY guild_number DESC LIMIT #{first_view}, 10
+	</select>
+	
+	<select id="guildCount" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) cnt
+		FROM guild
+		WHERE ( location_number = #{location_number1} 
+		OR location_number = #{location_number2} 
+		OR location_number = #{location_number3} )
+	</select>
+	
+	<select id="selectAllGuildDetailByGuildNumber" parameterType="int" resultType="HashMap">
+		
+		SELECT 
+		  g.guild_number guild_number
+		, g.guild_name guild_name
+		, g.detail detail
+		, g.max_member max_member
+		, g.current_member current_member
+		, l.addr1 addr1
+		, l.addr2 addr2
+		, l.addr3 addr3
+		, IFNULL(lk.guild_like,0) guild_like
+		, m.nickname nickname
+		, m.email email
+		FROM guild g INNER JOIN location l
+		ON g.location_number = l.location_number 
+		INNER JOIN member m
+		ON g.email = m.email
+		LEFT OUTER JOIN  (SELECT 
+		guild_number, COUNT(like_state=1) guild_like 
+		FROM `like` 
+		GROUP BY guild_number) lk
+		ON g.guild_number = lk.guild_number
+		WHERE g.guild_number = #{guild_number}
+	</select>
+	
+	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
+		SELECT COUNT(*) cnt 
+		FROM `like`
+		WHERE email = #{email} AND guild_number = #{guild_number} AND like_state = 1
+	</select>
+	
+	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
+		INSERT INTO `like` ( email, guild_number )
+		VALUES ( #{email}, #{guild_number} )
+	</insert>
+		<!-- 강좌 삭제(DB에서 등록상태만 변경) -->
+	<update id="guild_delete" parameterType="int">
+		UPDATE guild SET 
+		guild_state = 0
+		WHERE guild_number = #{guild_number}
+	</update>
 </mapper>

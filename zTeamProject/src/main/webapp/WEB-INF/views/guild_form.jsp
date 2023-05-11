@@ -8,6 +8,7 @@
     <title>품-i</title>
     
     <!-- include libraries(jQuery, bootstrap) -->
+    <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">	
 <script src="resources/js/summernote/summernote-lite.js"></script>
@@ -183,7 +184,7 @@
 		
 		$(".select_location").on('change','.addr3',function(){
 			//alert($(this).val());
-			if($(this).val()!="시,군,구"){
+			if($(this).val()!="법정동명"){
 				var sel = $(this);
 				var param = { 
 						addr1 : $(this).prev().prev().val().trim()

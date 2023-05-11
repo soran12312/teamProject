@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
 <!-- saved from url=(0063)http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,7 +10,8 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>리뷰 상세 페이지</title>
+<title>품-i</title>
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
 <link rel="stylesheet" href="resources/css/classList/default.css">
 <link rel="stylesheet" href="resources/css/classList/style.css">
 <link rel="stylesheet" href="resources/css/classList/board.common.css">
@@ -27,6 +30,46 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+	
+	if(${sessionScope.email eq map.email}){
+		$("#review_delete").click(function(){
+			
+			if(confirm("정말 삭제하시겠습니까?")){
+				alert("삭제되었습니다.");
+				location.href = '/zTeamProject/review_delete.do?review_number='+${map.review_number};
+			}
+		});
+		
+	} // end of if(로그인 한 사람과 글 작성자가 같은 사람이면 true)
+	
+
+	$("a.view_image").click(function() {
+	        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
+	        return false;
+	    });
+
+	    // 이미지 리사이즈
+	$("#bo_v_atc").viewimageresize();
+	    
+	
+	function board_move(href)
+	{
+	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
+	}
+	
+	function board_move(href)
+	{
+	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
+	}
+	
+	// 글자수 제한
+	var char_min = parseInt(0); // 최소
+	var char_max = parseInt(0); // 최대
+	
+}); // end of $
+</script>
 </head>
 <body style="">
 <a id="topID"></a>
@@ -42,40 +85,27 @@
         <h2>메인메뉴</h2>
         <div class="gnb_wrap">
 			<div id="logo">
-				<a href="index.jsp"><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></a>
+				<a href="/zTeamProject/main_view.do"><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></a>
 			</div>
             <ul id="gnb_1dul">
                 <li class="gnb_1dli" style="z-index:999">
-                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
+                    <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:998">
-                    <a href="guildList.jsp" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="classList.jsp" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="" target="_self" class="gnb_1da">리뷰<u></u></a>
-                </li>   
-                				<li class="gnb_1dli allSchBoxWr">
-					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>
-
-					<div id="allSchBox">
-						<fieldset>
-							<legend>사이트 내 전체검색</legend>
-							<form name="fsearchbox" method="get" action="" onsubmit="return fsearchbox_submit(this);">
-								<input type="hidden" name="sfl" value="wr_subject||wr_content">
-								<input type="hidden" name="sop" value="and">
-								<label for="sch_stx" class="sound_only">검색어 필수</label>
-								<input type="text" name="stx" id="sch_stx" class="topSchFocus" maxlength="20" placeholder="Search...">
-								<button type="submit" id="sch_submit" value="검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
-								<a id="allSchBoxClose"><i class="fa fa-close" aria-hidden="true"></i><i class="sound_only">전체검색 닫기</i></a>
-							</form>
-							<script> function fsearchbox_submit(f) { if (f.stx.value.length < 2) { alert("검색어는 두글자 이상 입력하십시오."); f.stx.select(); f.stx.focus(); return false; } /* 검색에 많은 부하가 걸리는 경우 이 주석을 제거하세요. */ var cnt = 0; for (var i=0; i<f.stx.value.length; i++) { if (f.stx.value.charAt(i) == ' ') cnt++; } if (cnt > 1) { alert("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."); f.stx.select(); f.stx.focus(); return false; } return true; } </script>
-						</fieldset>
-					</div>
-
-				</li>
+                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
+                </li>
+                <li class="gnb_1dli" style="z-index:996"> 
+                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                </li> 
+                <li class="gnb_1dli" style="z-index:996">
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                </li>
             </ul>
         </div>
 
@@ -108,31 +138,33 @@
     <header>
         <h2 id="bo_v_title">
                         <span class="bo_v_tit">
-            PURE WHITE</span>
+            ${map.title}</span>
         </h2>
     </header>
 
     <section id="bo_v_info">
-        <h2>페이지 정보</h2>
-        <span class="sound_only">작성자</span> <strong><span class="sv_member">웹사이팅</span></strong>
-        <span class="sound_only">댓글</span><strong><a href="#bo_vc"> <i class="fa fa-commenting-o" aria-hidden="true"></i> 0건</a></strong>
-        <span class="sound_only">조회</span><strong><i class="fa fa-eye" aria-hidden="true"></i> 1,273회</strong>
-        <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> 18-02-06 12:14</strong>
+        <span class="sound_only">조회수</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
+        <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
     </section>
 
     <section id="bo_v_atc">
-        <h2 id="bo_v_atc_title">본문</h2>
-
-		
-        <div id="bo_v_img">
-<a href="http://sample.paged.kr/purewhite/bbs/view_image.php?bo_table=gallery&amp;fn=5_copy_11_31261188_OuepdXZy_3e7d4d615d0ad144794a1ba0f2f8763f19e143ac.jpg" target="_blank" class="view_image"><img src="http://sample.paged.kr/purewhite/data/file/gallery/thumb-5_copy_11_31261188_OuepdXZy_3e7d4d615d0ad144794a1ba0f2f8763f19e143ac_1200x250.jpg" alt=""/></a></div>
-
-        <!-- 본문 내용 시작 { -->
-        <div id="bo_v_con"><div>페이지디 반응형 홈페이지 테마의 기본 갤러리 게시판입니다. </div><div><br /></div><div><br /></div><div>갤러리 게시판은 목록에서 이미지와 제목을 보여주는 게시판입니다.</div><div>갤러리 게시판의 목록에서는 게시글의 파일첨부 또는 에디터를 통하여 첨부된 이미지가 있을 경우 해당 이미지의 썸네일과 함께 제목이 노출됩니다.</div><div><br /></div><div>웹사이팅에서 제작한 페이지디 반응형 홈페이지 테마를 이용하시면 본 테마에 반응형 갤러리 게시판이 포함되어 있어 간단한 설정만으로 손쉽게 사용이 가능합니다. 페이지디 반응형 홈페이지 테마는 레이아웃 부터 각 게시판(기본게시판, 질문답변 게시판, FAQ게시판, 웹진형 게시판, 갤러리게시판, 제품소개 게시판 등), 기타 자주사용되는 대부분의 페이지가 모두 반응형으로 제작되어 있어 단기간에 고퀄리티 반응형 홈페이지 제작 진행이 가능합니다.</div><div><br /></div><div>단기간의 컨텐츠 작업만으로도 전혀다른 홈페이지로 변하는 마법같은 웹사이트 템플릿!</div><div><br /></div><div>페이지디 반응형 홈페이지 테마는 기업소개 홈페이지, 회사소개 홈페이지, 음식점 홈페이지, 제품소개형 홈페이지, 개인 홈페이지, 포트폴리오 사이트 등 다양한 홈페이지로의 변화가 가능합니다.</div></div>
-                <!-- } 본문 내용 끝 -->
-
+        <h2 id="bo_v_atc_title">본문</h2>		
         
-
+        <!-- 본문 내용 시작 { -->
+        <!-- 작성자 프로필 시작 { -->
+    	<div class="bo_v_right">
+        <h2>프로필</h2>
+        <c:if test="${not empty map.member_img_path}">
+        <span class="sound_only">프로필사진</span> <strong><img src="${map.member_img_path}" height="100px"></strong>
+        </c:if>
+        <c:if test="${empty map.member_img_path}">
+        <span class="sound_only">프로필사진</span> <strong><img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg" height="100px"></strong>
+        </c:if>
+        <span class="sound_only">작성자</span> <strong><span class="sv_member">작성자 : ${map.nickname}</span><br/><textarea readonly="readonly">${map.introduce}</textarea></strong>
+    	</div>
+    	<!-- } 작성자 프로필 끝 -->
+        <div class="bo_v_left">${map.review_content}</div>
+        <!-- } 본문 내용 끝 -->
     </section>
 
    
@@ -141,43 +173,25 @@
         <ul class="bo_v_left"></ul>
         <ul class="bo_v_com">
            <!-- 좋아요 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01"><i class="fa-regular fa-heart"></i></a></li>
+           <li><a href="/zTeamProject/insertReviewLike.do?review_number=${map.review_number}&email=${sessionScope.email}" class="btn_b01"><i class="fa-regular fa-heart"></i> ${map.review_like}</a></li>
+           <c:if test="${sessionScope.email eq map.email}">
+           <!-- 삭제하기 버튼 -->
+           <li><a id="review_delete" class="btn_b01">삭제하기</a></li>
+           </c:if>
+           <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
-           <!-- 강좌 신청 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01"><i class="fa-solid fa-graduation-cap"></i> 강좌 보러가기</a></li>
+           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <!-- 강좌 보러가기 버튼 -->
+           <li><a href="/zTeamProject/class_detail.do?class_number=${map.class_number}" class="btn_b01"><i class="fa-solid fa-graduation-cap"></i> 강좌 보러가기</a></li>
+           </c:if>
            <!-- 목록 보기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+           <li><a href="/zTeamProject/review_list.do?currentPage=1" class="btn_b01"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul> 
     </div>   
 <hr class="dashHr">
 
-
-
 </article>
-<!-- } 게시판 읽기 끝 -->
 
-<script>
-
-function board_move(href)
-{
-    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-}
-</script>
-
-<script>
-$(function() {
-    $("a.view_image").click(function() {
-        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
-        return false;
-    });
-
-    // 이미지 리사이즈
-    $("#bo_v_atc").viewimageresize();
-
-});
-</script>
-<!-- } 게시글 읽기 끝 -->
 
 </div><!-- // #container 닫음 -->
 

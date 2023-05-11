@@ -488,3 +488,32 @@ box-sizing: content-box;
 /* Mobile화면으로 */
 #device_change {display:block;margin:0.3em;padding:0.5em 0;border:1px solid #eee;border-radius:2em;background:#fff;color:#000;font-size:2em;text-decoration:none;text-align:center}
 
+.if_date{
+	display: inline-block !important;
+    padding: 8px 10px;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: middle;    
+    border-radius: 5px;
+    -webkit-transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    background: #ffffff;
+    color: #666666;
+    border: 1px solid #dddddd;
+}
+
+.if_date2{
+	display: inline-block !important;
+    padding: 8px 10px;
+    font-size: 15px;
+    text-decoration: none;
+    vertical-align: middle;    
+    border-radius: 5px;
+    -webkit-transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    border: none;
+}
