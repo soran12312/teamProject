@@ -22,5 +22,42 @@
         limit #{skip},#{amount}
     
     </select>
+    
+    
+    <!-- 회원 등급 수정-->
+    <update id="updateMemberGrade" parameterType="com.pi.domain.MemberVO" >
+    
+        UPDATE member SET 
+		( member_grade = #{member_grade} )
+		WHERE email = #{email}
+    
+    </update>
+    
+    <!-- 회원 등급 수정-->
+   <!--  <update id="updateMemberGrade" parameterType="com.pi.domain.MemberVO" >
+    
+        UPDATE member SET 
+		( member_grade = #{member_grade} )
+		WHERE email = #{email}
+    
+    </update> -->
+    
+    <update id="updateMember" parameterType="com.pi.domain.MemberVO">
+	  UPDATE member
+	  <set>
+	    <if test="member_grade != null">
+	      member_grade = #{member_grade},
+	    </if>
+	    <if test="member_state != null">
+	      member_state = #{member_state},
+	    </if>
+	    <if test="business_number != null">
+	      business_number = #{business_number},
+	    </if>
+	  </set>
+	  WHERE email = #{email}
+	</update>
+    
+    
 	
 </mapper>

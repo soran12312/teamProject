@@ -141,41 +141,15 @@
         <ul class="bo_v_left"></ul>
         <ul class="bo_v_com">
            <!-- 좋아요 버튼 -->
-           <li><a href="classList.jsp" class="btn_b00 btn"><i class="fa-regular fa-heart"></i></a></li>
+           <li><a href="classList.jsp" class="btn_b01"><i class="fa-regular fa-heart"></i></a></li>
            <!-- 신고하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <li><a href="classList.jsp" class="btn_b01"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            <!-- 강좌 신청 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa-solid fa-graduation-cap"></i> 강좌 보러가기</a></li>
+           <li><a href="classList.jsp" class="btn_b01"><i class="fa-solid fa-graduation-cap"></i> 강좌 보러가기</a></li>
            <!-- 목록 보기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
-        </ul>
-
-        <ul class="bo_v_nb">
-            <li class="btn_prev transOJ">
-            	<a href="./board.php?bo_table=gallery&amp;wr_id=12">
-            		<i class="fa fa-arrow-left" aria-hidden="true"></i> 
-            			<span class="sound_only"> 이전글</span> 
-            				<b>갤러리 게시판입니다 </b>
-            	</a>
-            </li>
-            <li class="btn_next transOJ">
-            	<a href="./board.php?bo_table=gallery&amp;wr_id=10">
-            		<i class="fa fa-arrow-right" aria-hidden="true"></i> 
-            			<span class="sound_only">다음글 </span> 
-            				<b>갤러리 등록 테스트 </b>
-            	</a> 
-            </li>        
-        </ul>
-    </div>
-    <!-- } 게시물 상단 버튼 끝 -->
-
-    
-<script>
-// 글자수 제한
-var char_min = parseInt(0); // 최소
-var char_max = parseInt(0); // 최대
-</script>
-<!-- 댓글 시작 { -->
+           <li><a href="classList.jsp" class="btn_b01"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+        </ul> 
+    </div>   
 <hr class="dashHr">
 
 

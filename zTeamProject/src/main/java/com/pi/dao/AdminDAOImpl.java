@@ -1,6 +1,7 @@
 package com.pi.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,31 @@ public class AdminDAOImpl implements AdminDAO {
 		// TODO Auto-generated method stub
         
 		return mybatis.selectList("AdminMapper.selectMember", cri);
+	}
+
+
+	@Override
+	public void updateMemeber(MemberVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("===> Mybatis updateMemeber() 호출");
+		mybatis.update("AdminMapper.updateMember", vo);
+	}
+
+
+	@Override
+	public void updateBusiness(MemberVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("===> Mybatis updateBusiness() 호출");
+		mybatis.update("AdminMapper.updateMember", vo);
+	}
+
+
+	@Override
+	public void updateState(MemberVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("===> Mybatis updateState() 호출");
+		mybatis.update("AdminMapper.updateMember", vo);
+
 	}
 
 }

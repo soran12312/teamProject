@@ -2,6 +2,7 @@ package com.pi.service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,21 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.getListPaging(cri);
 	}
 
-	
+	public void updateMember(MemberVO vo) {
+		adminDAO.updateMemeber(vo);
+	}
+
+	@Override
+	public void updateState(MemberVO vo) {
+		// TODO Auto-generated method stub
+		adminDAO.updateState(vo);
+		
+	}
+
+	@Override
+	public void updateBusiness(MemberVO vo) {
+		// TODO Auto-generated method stub
+		adminDAO.updateBusiness(vo);
+	}
 
 }
