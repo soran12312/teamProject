@@ -56,7 +56,7 @@ $(function(){
 		$(this).css('cursor','pointer');
 	});
 	
-	$(".locDiv").on('click','.loc',function(){
+	$(".locDiv").on('click','.loc',function(){ // 관심지역 클릭 시
 		
 		var clk = $(this);
 		
@@ -78,8 +78,8 @@ $(function(){
 					option.text(row['addr1']);
 					select.append(option);
 				} // end of for
-				clk.parent().append(select);
-				clk.remove();
+				clk.parent().append(select); // DB에서 시,도 정보 셀렉트박스 옵션에 담아 화면에 출력
+				clk.remove(); // 원래 존재하던 관심지역 요소제거
 			}
 			,error	: function(err){
 				alert('error');

@@ -203,7 +203,7 @@ public class ClassController {
 		
 		if(category_number==0) { // 카레고리번호가 0 일경우(전체보기 선택)
 			session.removeAttribute("category_number"); // 세션에서 카테고리번호를 지운다.
-		}else { // 카레고리번호가 0이 아닐 경우
+		}else { 				// 카레고리번호가 0이 아닐 경우
 			session.setAttribute("category_number", category_number); // 세션에 카테고리번호를 저장한다.
 		}
 		
@@ -216,7 +216,7 @@ public class ClassController {
 		if(keyword=="") { // 검색 키워드가 ""일 경우(전체검색)
 			session.removeAttribute("option");
 			session.removeAttribute("keyword"); // 세션에서 검색옵션과 키워드를 삭제
-		}else { // 검색키워드가 있을 경우
+		}else { 			// 검색키워드가 있을 경우
 			session.setAttribute("option", option);
 			session.setAttribute("keyword", keyword); // 세션에 검색옵션과 키워드를 저장
 		}

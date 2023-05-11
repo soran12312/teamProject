@@ -51,12 +51,6 @@ public class GuildServiceImpl implements GuildService {
 	}
 
 	@Override
-	public void incViewNum(int guild_number) {
-		
-		guildDAO.incViewNum(guild_number);
-	}
-
-	@Override
 	public int checkLike(LikeVO vo) {
 		
 		return guildDAO.checkLike(vo);

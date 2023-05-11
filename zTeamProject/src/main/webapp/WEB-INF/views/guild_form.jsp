@@ -184,7 +184,7 @@
 		
 		$(".select_location").on('change','.addr3',function(){
 			//alert($(this).val());
-			if($(this).val()!="시,군,구"){
+			if($(this).val()!="법정동명"){
 				var sel = $(this);
 				var param = { 
 						addr1 : $(this).prev().prev().val().trim()

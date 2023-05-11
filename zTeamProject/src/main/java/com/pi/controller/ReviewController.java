@@ -58,12 +58,12 @@ public class ReviewController {
 		}
 		
 		
-		return "redirect:review_list.do?currentPage=1";
+		return "redirect:review_list.do?currentPage=1"; // 리뷰리스트로 리다이렉팅
 	}
 	
 	@RequestMapping("/review_list.do")
-	public void class_list(Model m, HttpSession session, int currentPage) {
-		List<LocationVO> list = (List<LocationVO>)session.getAttribute("locList");
+	public void review_list(Model m, HttpSession session, int currentPage) { // 리뷰리스트
+		List<LocationVO> list = (List<LocationVO>)session.getAttribute("locList"); // 이용자의 관심지역정보를 가져온다.
 		
 		int category_number = 0;
 		String option = null;
@@ -78,44 +78,40 @@ public class ReviewController {
 		}
 		
 		//System.out.println(category_number);
-		System.out.println(option);
-		System.out.println(keyword);
+		//System.out.println(option);
+		//System.out.println(keyword);
 		
-		InterestLocationVO lvo = new InterestLocationVO();
+		HashMap map = new HashMap(); // 해쉬맵에 회원의 관심지역 리스트에서 가져온 지역번호들을 넣는다.
+		
 		for(int i = 0 ; i<3 ; i++ ) {
 			LocationVO temp = new LocationVO();
 			temp = list.get(i);
 			switch (i) {
 			case 0:
-				lvo.setLocation_number1(temp.getLocation_number());
+				map.put("location_number1", temp.getLocation_number());
 				break;
 			case 1:
-				lvo.setLocation_number2(temp.getLocation_number());
+				map.put("location_number2", temp.getLocation_number());
 				break;
 			case 2:
-				lvo.setLocation_number3(temp.getLocation_number());
+				map.put("location_number3", temp.getLocation_number());
 				break;
 			}
 		}
 		
-		HashMap map = new HashMap();
-		
-		map.put("location_number1", lvo.getLocation_number1());
-		map.put("location_number2", lvo.getLocation_number2());
-		map.put("location_number3", lvo.getLocation_number3());
 		
 		if(category_number!=0) {
-			map.put("category_number", category_number);
+			map.put("category_number", category_number); // 카테고리번호가 있을 경우 해쉬맵에 카테고리번호를 넣는다.
 		}
 		
 		if(option != null) {
 			map.put("option", option);
-			map.put("keyword", keyword);
+			map.put("keyword", keyword); // 검색옵션이 있을 경우 해쉬맵에 검색옵션과 키워드를 넣는다.
 		}
 			
 			
 			//총 게시글 수
-			int cnt = reviewService.reviewCount(map);
+			int cnt = reviewService.reviewCount(map); // DB에서 검색
 			
 			// 한 페이지에 출력될 글 수 
 			int pageSize = 9;
@@ -123,9 +119,9 @@ public class ReviewController {
 			// 한번에 보여지는 페이징 수(페이지넘버)
 			int pageLimit = 5;
 			
-			int maxPage = (int)Math.ceil(cnt / (double)pageSize);
-		    int startPage = (int)((currentPage - 1) / pageLimit) * pageLimit + 1;  
-		    int endPage = startPage + pageLimit - 1;
+			int maxPage = (int)Math.ceil(cnt / (double)pageSize); // 최대 페이지
+		    int startPage = (int)((currentPage - 1) / pageLimit) * pageLimit + 1; // 현재페이지 기준으로 화면에 보이는 첫페이지
+		    int endPage = startPage + pageLimit - 1; // 현재페이지 기준으로 화면에 보이는 마지막 페이지
 		    
 		    if(maxPage < endPage) {
 	            endPage = maxPage;
@@ -135,79 +131,79 @@ public class ReviewController {
 			//현재 페이지에서 첫번째로 보여질 글 인덱스
 			int first_view = (currentPage-1)*9;
 			
-			map.put("first_view", first_view);
+			map.put("first_view", first_view); // 시작인덱스를 해쉬맵에 넣는다.
 			
-			System.out.println(map.toString());
+			//System.out.println(map.toString());
 			
-			List<HashMap> listMap = reviewService.selectReview(map);
+			List<HashMap> listMap = reviewService.selectReview(map); // 화면에 띄울 리뷰정보를 DB에서 검색하여 가져온다.
 			
 			m.addAttribute("listMap", listMap);
 			m.addAttribute("maxPage", maxPage);
 			m.addAttribute("startPage", startPage);
 			m.addAttribute("endPage", endPage);
 			m.addAttribute("currentPage", currentPage);
-		
+		// 리뷰정보, 시작페이지, 끝페이지, 현재페이지를 모델에 담아 보낸다.
 	}
 	
 
 	@RequestMapping("/cate_review_list.do")
-	public String cate_review_list(HttpSession session, int category_number) {
+	public String cate_review_list(HttpSession session, int category_number) { // 카테고리검색
 		
-		if(category_number==0) {
-			session.removeAttribute("category_number");
-		}else {
-			session.setAttribute("category_number", category_number);
+		if(category_number==0) { // 카레고리번호가 0 일경우(전체보기 선택)
+			session.removeAttribute("category_number"); // 세션에서 카테고리번호를 지운다.
+		}else {					// 카레고리번호가 0이 아닐 경우
+			session.setAttribute("category_number", category_number); // 세션에 카테고리번호를 저장한다.
 		}
 		
-		return "redirect:review_list.do?currentPage=1";
+		return "redirect:review_list.do?currentPage=1"; // 리뷰 리스트.do로 리다이렉팅
 	}
 	
 	@RequestMapping("/search_review.do")
 	public String search_review(HttpSession session, String option, String keyword){
 		
-		if(keyword=="") {
+		if(keyword=="") { // 검색 키워드가 ""일 경우(전체검색)
 			session.removeAttribute("option");
-			session.removeAttribute("keyword");
-		}else {
+			session.removeAttribute("keyword"); // 세션에서 검색옵션과 키워드를 삭제
+		}else {			// 검색키워드가 있을 경우
 			session.setAttribute("option", option);
-			session.setAttribute("keyword", keyword);
+			session.setAttribute("keyword", keyword); // 세션에 검색옵션과 키워드를 저장
 		}
 		
 		
-		return "redirect:review_list.do?currentPage=1";
+		return "redirect:review_list.do?currentPage=1"; // 리뷰 리스트.do로 리다이렉팅
 	}
 	
-	@RequestMapping("/review_detail.do")
+	@RequestMapping("/review_detail.do") // 리뷰상세
 	public void review_detail(HttpSession session, Model m , @RequestParam int review_number) {
 		
 		session.removeAttribute("category_number");
 		session.removeAttribute("option");
-		session.removeAttribute("keyword");
+		session.removeAttribute("keyword"); // 카테고리검색, 키워드검색에 사용되는 세션값을 제거한다.
 		
-		reviewService.incViewNum(review_number);
-		HashMap map = reviewService.selectAllReviewDetailByReviewNumber(review_number);
+		reviewService.incViewNum(review_number); // 조회수를 증가
+		HashMap map = reviewService.selectAllReviewDetailByReviewNumber(review_number); // 선택한 리뷰의 리뷰정보를 DB에서 가져온다.
 		
-		m.addAttribute("map", map);
+		m.addAttribute("map", map); // 리뷰정보를 모델에 담아 보낸다.
 	}
 	
 	@RequestMapping("/insertReviewLike.do")
-	public String insertReviewLike(LikeVO vo) {
+	public String insertReviewLike(LikeVO vo) { // 좋아요 등록
 		
-		int cnt = reviewService.checkLike(vo);
+		int cnt = reviewService.checkLike(vo); // 이용자가 좋아요를 누른상태인지 확인
 		
-		if(cnt==0) {
-			reviewService.insertLike(vo);
+		if(cnt==0) { // 누른적 없을 경우
+			reviewService.insertLike(vo); // 좋아요 등록
 		}
 		
-		return "redirect:review_detail.do?review_number="+String.valueOf(vo.getReview_number());
+		return "redirect:review_detail.do?review_number="+String.valueOf(vo.getReview_number()); // 리뷰상세페이지로 리다이렉팅
 	}
 	
 	@RequestMapping("/review_delete.do")
-	public String review_delete(int review_number) {
+	public String review_delete(int review_number) { // 리뷰삭제
 		
 		reviewService.review_delete(review_number);
 		
-		return "redirect:review_list.do?currentPage=1";
+		return "redirect:review_list.do?currentPage=1"; // 삭제 후 리스트페이지로 리다이렉팅
 	}
 	
 }

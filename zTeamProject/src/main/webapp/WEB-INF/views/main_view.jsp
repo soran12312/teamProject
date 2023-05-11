@@ -81,7 +81,7 @@
                   <div class="big-tagline clearfix">
                      <h2 id='main_info' class='main_info'>
                      품i에서 재능을 판매하고 <br/>
-                     기부도 시작하세요!</h2>
+                     기부도 시작하세요! </br>
                   </div>
                </div>
                <div class="col-md-6 wow slideInRight hidden-xs hidden-sm">

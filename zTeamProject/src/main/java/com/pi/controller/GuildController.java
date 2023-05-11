@@ -58,7 +58,7 @@ public class GuildController {
 			guildService.updateImgByPath(k);
 		}
 		
-		return "guild_list";
+		return "redirect:guild_list.do?currentPage=1";
 	}	
 	
 	@RequestMapping("/guild_list.do")
@@ -125,7 +125,6 @@ public class GuildController {
 	@RequestMapping("/guild_detail.do")
 	public void guild_detail(HttpSession session, Model m , @RequestParam int guild_number) {
 
-		guildService.incViewNum(guild_number);
 		HashMap map = guildService.selectAllGuildDetailByGuildNumber(guild_number);
 		m.addAttribute("map", map);
 		System.out.println(map.toString());
@@ -134,9 +133,9 @@ public class GuildController {
 	
 
 	@RequestMapping("/guild_delete.do")
-	public String guild_delete(int guild_number) { // 강좌삭제
+	public String guild_delete(int guild_number) { // 커뮤니티삭제
 		
-		guildService.guild_delete(guild_number); // 해당강좌 강좌번호를 이용하여 강좌의 등록상태를 변경한다.(update)
+		guildService.guild_delete(guild_number); // 해당커뮤니티 커뮤니티번호를 이용하여 커뮤니티의 등록상태를 변경한다.(update)
 		
 		return "redirect:guild_list.do?currentPage=1"; // 리스트페이지로 리다이렉팅
 	}

@@ -33,14 +33,8 @@
 <script type="text/javascript">
 $(function(){
    	
-	$('#cate').change(function(){
-		
-		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val();
-		
-	});
-	
-	$('#searchbtn').click(function(){
-		location.href = '/zTeamProject/search_class.do?option='+$('#sfl2').val()+'&keyword='+$('#stx').val();
+	$('#cate').change(function(){ // 카테고리 셀렉트태그 변경 시
+		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val(); // 카테고리검색으로 리다이렉팅
 	});
 	
 	
@@ -204,16 +198,13 @@ $(function(){
         <legend>게시물 검색</legend>
 
         <form name="fsearch" method="post" action="/zTeamProject/search_class.do">
-        <input type="hidden" name="bo_table" value="gallery">
-        <input type="hidden" name="sca" value="">
-        <input type="hidden" name="sop" value="and">
         <select name="option" id="sfl2">
             <option value="m.nickname">작성자</option>
             <option value="c.class_name">제목</option>
             <option value="h.class_hashtag">해쉬 태그</option>
         </select>
         <input type="text" name="keyword" id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-        <button type="button" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
         </form>
         
 
