@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ReviewMapper">
 
+	<!-- 리뷰 등록 -->
 	<insert id="insertReview" parameterType="com.pi.domain.ReviewVO">
 		INSERT INTO review
 		( email, class_number, title, review_content )
@@ -10,17 +11,20 @@
 		( #{email}, #{class_number}, #{title}, #{review_content} )
 	</insert>
 	
+	<!-- 등록된 이미지에 리뷰번호 등록 -->
 	<update id="updateImgByPath" parameterType="String">
 		UPDATE image SET 
 		review_number = (SELECT MAX(review_number) FROM review)
 		WHERE path = #{path}
 	</update>
 	
+	<!-- 전체 리뷰 갯수 검색 -->
 	<select id="reviewCount" parameterType="HashMap" resultType="int">
 		SELECT COUNT(*) cnt
 		FROM review
 	</select>
 	
+	<!-- 모든 리뷰정보 검색 & 카테고리,키워드검색 -->
 	<select id="selectReview" parameterType="HashMap" resultType="HashMap">
 		SELECT r.review_number review_number 
 		, r.title title 
@@ -49,6 +53,7 @@
 		ORDER BY review_number DESC LIMIT #{first_view}, 9
 	</select>
 	
+	<!-- 선택한 리뷰 상세정보 검색 -->
 	<select id="selectAllReviewDetailByReviewNumber" parameterType="int" resultType="HashMap">
 		SELECT 
 		r.review_number review_number 
@@ -75,23 +80,27 @@
 		WHERE r.review_number = #{review_number}
 	</select>
 	
+	<!-- 조회수 증가 -->
 	<update id="incViewNum" parameterType="int">
 		UPDATE review SET 
 		view_number = (( SELECT view_number FROM review WHERE review_number = #{review_number} )+1)
 		WHERE review_number = #{review_number}
 	</update>
 	
+	<!-- 이용자가 좋아요를 누른 적 있는지 검색 -->
 	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
 		SELECT COUNT(*) cnt 
 		FROM `like`
 		WHERE email = #{email} AND review_number = #{review_number}
 	</select>
 	
+	<!-- 좋아요 등록 -->
 	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
 		INSERT INTO `like` ( email, review_number )
 		VALUES ( #{email}, #{review_number} )
 	</insert>
 	
+	<!-- 리뷰 삭제(DB에서 등록상태만 변경) -->
 	<update id="review_delete" parameterType="int">
 		UPDATE review SET 
 		review_state = 0

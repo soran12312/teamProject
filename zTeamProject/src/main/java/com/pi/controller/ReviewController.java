@@ -41,24 +41,24 @@ public class ReviewController {
 
 
 	@RequestMapping("/review_insert.do")
-	public String review_insert(ReviewVO vo, String path, Model m) {
+	public String review_insert(ReviewVO vo, String path, Model m) { // 리뷰등록(트랜잭션)
 		
-		reviewService.review_insert(vo);
+		reviewService.review_insert(vo); // 리뷰정보를 DB에 등록
 		
-		ArrayList<String> path_list = new ArrayList<String>();
+		ArrayList<String> path_list = new ArrayList<String>(); // 리뷰에 들어간 이미지 경로들이 들어갈 리스트 선언
 		
-		StringTokenizer pst = new StringTokenizer(path,",");
+		StringTokenizer pst = new StringTokenizer(path,","); // ,로 묶어서 가져온 이미지 경로를 나눈다.
 		for(int i=0; pst.hasMoreTokens(); i++) {
-			path_list.add(pst.nextToken());
+			path_list.add(pst.nextToken()); // 나눈 이미지경로를 리스트에 담는다.
 		}
 		
-		for(String k : path_list) {
+		for(String k : path_list) { // 이미지경로 갯수만큼 반복
 			System.out.println(k);
-			reviewService.updateImgByPath(k);
+			reviewService.updateImgByPath(k); // 이미지테이블에 리뷰번호 입력
 		}
 		
 		
-		return "redirect:review_list.do?currentPage=0";
+		return "redirect:review_list.do?currentPage=1";
 	}
 	
 	@RequestMapping("/review_list.do")
@@ -159,7 +159,7 @@ public class ReviewController {
 			session.setAttribute("category_number", category_number);
 		}
 		
-		return "redirect:review_list.do?currentPage=0";
+		return "redirect:review_list.do?currentPage=1";
 	}
 	
 	@RequestMapping("/search_review.do")
@@ -174,7 +174,7 @@ public class ReviewController {
 		}
 		
 		
-		return "redirect:review_list.do?currentPage=0";
+		return "redirect:review_list.do?currentPage=1";
 	}
 	
 	@RequestMapping("/review_detail.do")

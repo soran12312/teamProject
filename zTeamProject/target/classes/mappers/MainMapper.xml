@@ -9,23 +9,27 @@
 		SELECT * FROM member WHERE email=#{email}
 	</select>
 	
-	
+	<!-- DB에서 시,도 정보 가져옴 -->
 	<select id="selectAddr1" resultType="com.pi.domain.LocationVO">
 		SELECT DISTINCT addr1 FROM location
 	</select>
 	
+	<!-- DB에서 시,군,구 정보 가져옴 -->
 	<select id="selectAddr2" resultType="com.pi.domain.LocationVO" parameterType="com.pi.domain.LocationVO">
 		SELECT DISTINCT addr2 FROM location WHERE addr1 = #{addr1}
 	</select>
 	
+	<!-- DB에서 법정동명 정보 가져옴 -->
 	<select id="selectAddr3" resultType="com.pi.domain.LocationVO" parameterType="com.pi.domain.LocationVO">
 		SELECT DISTINCT addr3 FROM location WHERE addr2 = #{addr2}
 	</select>
 	
+	<!-- 이용자가 선택한 지역명으로 지역번호를 찾아옴 -->
 	<select id="selectLocNumByAddr" resultType="com.pi.domain.LocationVO" parameterType="com.pi.domain.LocationVO">
 		SELECT location_number FROM location WHERE addr1 = #{addr1} AND addr2 = #{addr2} AND addr3 = #{addr3}
 	</select>
 	
+	<!-- 문의등록 -->
 	<insert id="insertQuestion" parameterType="com.pi.domain.QuestionVO">
 		INSERT INTO question
 		( email, question_category, title, content, member_check ) 
@@ -33,6 +37,7 @@
 		( #{email}, #{question_category}, #{title}, #{content}, #{member_check} )
 	</insert>
 	
+	<!-- 문의이미지등록 -->
 	<insert id="insertQImage" parameterType="com.pi.domain.ImageVO">
 		INSERT INTO image 
 		( question_number, original_name, save_name, path, size )
@@ -41,7 +46,7 @@
 		, #{original_name}, #{save_name}, #{path}, #{size} )
 	</insert>
 	
-	
+	<!-- 회원이메일로 해당 회원의 관심지역정보를 가져옴 -->
 	<select id="selectAllLocationNumberByEmail" resultType="com.pi.domain.LocationVO" parameterType="String">
 		SELECT l.location_number location_number
 		, l.addr1 addr1

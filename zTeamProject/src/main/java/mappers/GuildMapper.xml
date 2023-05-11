@@ -3,6 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GuildMapper">
 
+	<!-- 커뮤니티등록 -->
 	<insert id="insertGuild" parameterType="com.pi.domain.GuildVO">
 		INSERT INTO guild
 		( guild_name, email, detail, location_number, max_member )
@@ -10,11 +11,14 @@
 		( #{guild_name}, #{email}, #{detail}, #{location_number}, #{max_member} )
 	</insert>
 	
+	<!-- 등록된 이미지에 커뮤니티번호 등록 -->
 	<update id="updateImgByPath" parameterType="String">
 		UPDATE image SET 
 		guild_number = (SELECT MAX(guild_number) FROM guild)
 		WHERE path = #{path}
 	</update>
+	
+	<!-- 회원의 관심지역 내 모든 커뮤니티정보 검색 -->
 	<select id="selectGuildByLocation" parameterType="HashMap" resultType="HashMap">
 		SELECT g.guild_number guild_number 
 		, g.guild_name guild_name 
@@ -74,19 +78,20 @@
 	</select>
 	
 	<update id="incViewNum" parameterType="int">
-		UPDATE class SET 
-		view_number = (( SELECT view_number FROM class WHERE class_number = #{class_number} )+1)
-		WHERE class_number = #{class_number}
+		UPDATE guild SET 
+		view_number = (( SELECT view_number FROM guild WHERE guild_number = #{guild_number} )+1)
+		WHERE guild_number = #{guild_number}
 	</update>
 	
 	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
 		SELECT COUNT(*) cnt 
 		FROM `like`
-		WHERE email = #{email}
+		WHERE email = #{email} AND guild_number = #{guild_number} AND like_state = 1
 	</select>
 	
 	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
-		INSERT INTO `like` ( email, class_number )
-		VALUES ( #{email}, #{class_number} )
+		INSERT INTO `like` ( email, guild_number )
+		VALUES ( #{email}, #{guild_number} )
 	</insert>
+	
 </mapper>

@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberMapper">
 
-
+	<!-- 회원등록 -->
 	<insert id="insertMember" parameterType="com.pi.domain.MemberVO">
 		INSERT INTO member 
 		( email, nickname, introduce )
@@ -11,6 +11,7 @@
 		( #{email}, #{nickname}, #{introduce} )
 	</insert>
 	
+	<!-- 회원 관심지역등록 -->
 	<insert id="insertInterestLocation" parameterType="com.pi.domain.InterestLocationVO">
 		INSERT INTO interest_location
 		( email, location_number )

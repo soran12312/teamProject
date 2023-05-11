@@ -129,7 +129,7 @@
         <ul class="bo_v_left"></ul>
         <ul class="bo_v_com">
            <!-- 좋아요 버튼 -->
-           <li><a href="href="/zTeamProject/insertLike.do?guild_number=${map.guild_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i></a></li>
+           <li><a href="/zTeamProject/insertLike.do?guild_number=${map.guild_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i></a></li>
            <!-- 신고하기 버튼 -->
            <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            <!-- 모임 신청 버튼 -->

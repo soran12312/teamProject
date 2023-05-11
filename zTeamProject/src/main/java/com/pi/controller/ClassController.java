@@ -111,7 +111,7 @@ public class ClassController {
 		}
 		
 		
-		return "redirect:class_list.do?currentPage=0"; // 강좌 리스트로 리다이렉팅시킨다.
+		return "redirect:class_list.do?currentPage=1"; // 강좌 리스트로 리다이렉팅시킨다.
 	}
 	
 	@RequestMapping("/class_list.do")
@@ -207,7 +207,7 @@ public class ClassController {
 			session.setAttribute("category_number", category_number); // 세션에 카테고리번호를 저장한다.
 		}
 		
-		return "redirect:class_list.do?currentPage=0"; // 강좌 리스트.do로 리다이렉팅
+		return "redirect:class_list.do?currentPage=1"; // 강좌 리스트.do로 리다이렉팅
 	}
 	
 	@RequestMapping("/search_class.do")
@@ -222,7 +222,7 @@ public class ClassController {
 		}
 		
 		
-		return "redirect:class_list.do?currentPage=0"; // 강좌 리스트.do로 리다이렉팅
+		return "redirect:class_list.do?currentPage=1"; // 강좌 리스트.do로 리다이렉팅
 	}
 	
 	@RequestMapping("/class_detail.do")
