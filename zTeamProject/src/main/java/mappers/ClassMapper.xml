@@ -56,7 +56,7 @@
 		OR c.location_number = #{location_number3} )
 		AND c.class_state = 1 
 		<if test="category_number !=null ">
-		AND category_number = #{category_number}
+		AND c.category_number = #{category_number}
 		</if>
 		<if test="keyword !=null">
 		AND ${option} LIKE CONCAT('%',#{keyword},'%')
@@ -114,7 +114,7 @@
 	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
 		SELECT COUNT(*) cnt 
 		FROM `like`
-		WHERE email = #{email}
+		WHERE email = #{email} AND class_number = #{class_number}
 	</select>
 	
 	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">

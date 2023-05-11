@@ -4,24 +4,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>품-i</title>
+<meta charset="UTF-8">
+<title>품-i</title>
     
     <!-- include libraries(jQuery, bootstrap) -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">	
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">	
 <script src="resources/js/summernote/summernote-lite.js"></script>
 <script src="resources/js/summernote/lang/summernote-ko-KR.js"></script>
-
-    <link rel="stylesheet" href="resources/new_Css_Sibal.css">
-    
-    <!-- 소스 다운 -->
+<link rel="stylesheet" href="resources/new_Css_Sibal.css">
+   <!-- 소스 다운 -->
 <script src="https://unpkg.com/@yaireo/tagify"></script>
 <!-- 폴리필 (구버젼 브라우저 지원) -->
 <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     
-    <script>
+<script>
     // 메인화면 페이지 로드 함수
     $(document).ready(function () {
     	$('#summernote').summernote({

@@ -10,4 +10,92 @@
 		( #{email}, #{class_number}, #{title}, #{review_content} )
 	</insert>
 	
+	<update id="updateImgByPath" parameterType="String">
+		UPDATE image SET 
+		review_number = (SELECT MAX(review_number) FROM review)
+		WHERE path = #{path}
+	</update>
+	
+	<select id="reviewCount" parameterType="HashMap" resultType="int">
+		SELECT COUNT(*) cnt
+		FROM review
+	</select>
+	
+	<select id="selectReview" parameterType="HashMap" resultType="HashMap">
+		SELECT r.review_number review_number 
+		, r.title title 
+		, r.review_content review_content 
+		, r.writing_date writing_date 
+		, r.view_number view_number 
+		, i.path review_img_path 
+		, m.nickname nickname 
+		, c.location_number location_number
+		, c.category_number category_number
+		FROM review r LEFT OUTER JOIN 
+		(SELECT image_number, review_number, path 
+		FROM image GROUP BY review_number ORDER BY review_number DESC) i
+		ON r.review_number = i.review_number
+		INNER JOIN member m
+		ON r.email = m.email 
+		INNER JOIN class c 
+		ON r.class_number = c.class_number
+		WHERE r.review_state = 1 
+		<if test="category_number !=null ">
+		AND c.category_number = #{category_number}
+		</if>
+		<if test="keyword !=null">
+		AND ${option} LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		ORDER BY review_number DESC LIMIT #{first_view}, 9
+	</select>
+	
+	<select id="selectAllReviewDetailByReviewNumber" parameterType="int" resultType="HashMap">
+		SELECT 
+		r.review_number review_number 
+		, r.title title 
+		, r.review_content review_content 
+		, r.writing_date writing_date 
+		, r.view_number view_number 
+		, r.class_number class_number
+		, IFNULL(l.review_like,0)  review_like 
+		, m.email email 
+		, m.nickname nickname 
+		, m.introduce introduce
+		, m.path member_img_path
+		FROM review r LEFT OUTER JOIN (SELECT 
+		review_number, COUNT(like_state=1) review_like 
+		FROM `like` 
+		GROUP BY review_number) l
+		ON r.review_number = l.review_number
+		LEFT OUTER JOIN (SELECT 
+		m.email email, m.nickname nickname, m.introduce introduce, i.path path
+		FROM member m LEFT OUTER JOIN image i
+		ON m.email = i.email) m
+		ON r.email = m.email
+		WHERE r.review_number = #{review_number}
+	</select>
+	
+	<update id="incViewNum" parameterType="int">
+		UPDATE review SET 
+		view_number = (( SELECT view_number FROM review WHERE review_number = #{review_number} )+1)
+		WHERE review_number = #{review_number}
+	</update>
+	
+	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
+		SELECT COUNT(*) cnt 
+		FROM `like`
+		WHERE email = #{email} AND review_number = #{review_number}
+	</select>
+	
+	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
+		INSERT INTO `like` ( email, review_number )
+		VALUES ( #{email}, #{review_number} )
+	</insert>
+	
+	<update id="review_delete" parameterType="int">
+		UPDATE review SET 
+		review_state = 0
+		WHERE review_number = #{review_number}
+	</update>
+	
 </mapper>
