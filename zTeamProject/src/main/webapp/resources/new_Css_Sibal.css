@@ -4,6 +4,9 @@
 
 
 <!-- header -->
+.navbar-brand{
+	float: left;
+}
 .logo{
 	display: inline-block;
 	width: 30px;

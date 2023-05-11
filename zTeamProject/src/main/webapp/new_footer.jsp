@@ -17,8 +17,8 @@
 			<a href="/zTeamProject/main_view.do">Home</a> 
 			<a href="#">사업자강좌</a> 
 			<a href="/zTeamProject/class_list.do?currentPage=0">강좌</a> 
-			<a href="/zTeamProject/guild_list.do">모임</a> 
-			<a href="/zTeamProject/review_list.do">리뷰</a> 
+			<a href="/zTeamProject/guild_list.do?currentPage=0">모임</a> 
+			<a href="/zTeamProject/review_list.do?currentPage=0">리뷰</a> 
 			<a href="#">Contact</a>
 			<span><img src="resources/images/logos/logo.png"></span>
 		</p>

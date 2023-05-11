@@ -42,39 +42,28 @@
         <h2>메인메뉴</h2>
         <div class="gnb_wrap">
 			<div id="logo">
-				<a href="index.jsp"><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></a>
+				<a href="index.jsp"><img src="resources/images/classList/logo.png"></a>
 			</div>
-            <ul id="gnb_1dul">
-                <li class="gnb_1dli" style="z-index:999">
-                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
-                </li>
-                <li class="gnb_1dli" style="z-index:998">
-                    <a href="guildList.jsp" target="_self" class="gnb_1da">커뮤니티<u></u></a>
-                </li>
-                <li class="gnb_1dli" style="z-index:997">
-                    <a href="classList.jsp" target="_self" class="gnb_1da">강좌<u></u></a>
-                </li>
-                <li class="gnb_1dli" style="z-index:996">
-                    <a href="" target="_self" class="gnb_1da">리뷰<u></u></a>
-                </li>                
-                <li class="gnb_1dli allSchBoxWr">
-					<button type="button" id="btnSchbox" title="전체검색 열기"><i class="fa fa-search"></i></button>
-					<div id="allSchBox">
-						<fieldset>
-							<legend>사이트 내 전체검색</legend>
-							<form name="fsearchbox" method="get" action="" onsubmit="return fsearchbox_submit(this);">
-								<input type="hidden" name="sfl" value="wr_subject||wr_content">
-								<input type="hidden" name="sop" value="and">
-								<label for="sch_stx" class="sound_only">검색어 필수</label>
-								<input type="text" name="stx" id="sch_stx" class="topSchFocus" maxlength="20" placeholder="Search...">
-								<button type="submit" id="sch_submit" value="검색"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
-								<a id="allSchBoxClose"><i class="fa fa-close" aria-hidden="true"></i><i class="sound_only">전체검색 닫기</i></a>
-							</form>
-							<script> function fsearchbox_submit(f) { if (f.stx.value.length < 2) { alert("검색어는 두글자 이상 입력하십시오."); f.stx.select(); f.stx.focus(); return false; } /* 검색에 많은 부하가 걸리는 경우 이 주석을 제거하세요. */ var cnt = 0; for (var i=0; i<f.stx.value.length; i++) { if (f.stx.value.charAt(i) == ' ') cnt++; } if (cnt > 1) { alert("빠른 검색을 위하여 검색어에 공백은 한개만 입력할 수 있습니다."); f.stx.select(); f.stx.focus(); return false; } return true; } </script>
-						</fieldset>
-					</div>
-				</li>
-            </ul>
+	            <ul id="gnb_1dul">
+		            <li class="gnb_1dli" style="z-index:999">
+	                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
+	                </li>
+	                <li class="gnb_1dli" style="z-index:997">
+	                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
+	                </li>
+	                <li class="gnb_1dli" style="z-index:998">
+	                    <a href="/zTeamProject/guild_list.do?currentPage=0" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+	                </li>
+	                <li class="gnb_1dli" style="z-index:996">
+	                    <a href="/zTeamProject/review_list.do?currentPage=0" target="_self" class="gnb_1da">리뷰<u></u></a>
+	                </li> 
+	                <li class="gnb_1dli" style="z-index:996"> 
+	                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
+	                </li>
+	                <li class="gnb_1dli" style="z-index:996">
+                		<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                	</li> 
+	            </ul>
         </div>
 
 		<p class="clb"></p>
@@ -106,27 +95,25 @@
     <header>
         <h2 id="bo_v_title">
                         <span class="bo_v_tit">
-            PURE WHITE</span>
+            ${map.guild_name}</span>
         </h2>
     </header>
 
     <section id="bo_v_info">
-        <h2>페이지 정보</h2>
-        <span class="sound_only">작성자</span> <strong><span class="sv_member">웹사이팅</span></strong>
-        <span class="sound_only">댓글</span><strong><a href="#bo_vc"> <i class="fa fa-commenting-o" aria-hidden="true"></i> 0건</a></strong>
-        <span class="sound_only">조회</span><strong><i class="fa fa-eye" aria-hidden="true"></i> 1,273회</strong>
-        <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> 18-02-06 12:14</strong>
+        <span class="sound_only">좋아요</span><strong><i class="fa fa-eye" aria-hidden="true"></i> 좋아요 : ${map.guild_like}회</strong>
+        <span class="sound_only">활동지역</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 활동지역 : ${map.addr3}</strong>
+        <span class="sound_only">개설자</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 대장 : ${map.nickname}</strong>
+        <span class="sound_only">최대인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
+        <span class="sound_only">현재인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;현재 신청 인원 : ${map.current_member}명</strong>
     </section>
+    
 
     <section id="bo_v_atc">
         <h2 id="bo_v_atc_title">본문</h2>
 
 		
-        <div id="bo_v_img">
-<a href="http://sample.paged.kr/purewhite/bbs/view_image.php?bo_table=gallery&amp;fn=5_copy_11_31261188_OuepdXZy_3e7d4d615d0ad144794a1ba0f2f8763f19e143ac.jpg" target="_blank" class="view_image"><img src="http://sample.paged.kr/purewhite/data/file/gallery/thumb-5_copy_11_31261188_OuepdXZy_3e7d4d615d0ad144794a1ba0f2f8763f19e143ac_1200x250.jpg" alt=""/></a></div>
-
         <!-- 본문 내용 시작 { -->
-        <div id="bo_v_con"><div>페이지디 반응형 홈페이지 테마의 기본 갤러리 게시판입니다. </div><div><br /></div><div><br /></div><div>갤러리 게시판은 목록에서 이미지와 제목을 보여주는 게시판입니다.</div><div>갤러리 게시판의 목록에서는 게시글의 파일첨부 또는 에디터를 통하여 첨부된 이미지가 있을 경우 해당 이미지의 썸네일과 함께 제목이 노출됩니다.</div><div><br /></div><div>웹사이팅에서 제작한 페이지디 반응형 홈페이지 테마를 이용하시면 본 테마에 반응형 갤러리 게시판이 포함되어 있어 간단한 설정만으로 손쉽게 사용이 가능합니다. 페이지디 반응형 홈페이지 테마는 레이아웃 부터 각 게시판(기본게시판, 질문답변 게시판, FAQ게시판, 웹진형 게시판, 갤러리게시판, 제품소개 게시판 등), 기타 자주사용되는 대부분의 페이지가 모두 반응형으로 제작되어 있어 단기간에 고퀄리티 반응형 홈페이지 제작 진행이 가능합니다.</div><div><br /></div><div>단기간의 컨텐츠 작업만으로도 전혀다른 홈페이지로 변하는 마법같은 웹사이트 템플릿!</div><div><br /></div><div>페이지디 반응형 홈페이지 테마는 기업소개 홈페이지, 회사소개 홈페이지, 음식점 홈페이지, 제품소개형 홈페이지, 개인 홈페이지, 포트폴리오 사이트 등 다양한 홈페이지로의 변화가 가능합니다.</div></div>
+        <div id="bo_v_con">${map.detail}</div>
                 <!-- } 본문 내용 끝 -->
 
         
@@ -141,31 +128,16 @@
         <ul class="bo_v_left"></ul>
         <ul class="bo_v_com">
            <!-- 좋아요 버튼 -->
-           <li><a href="classList.jsp" class="btn_b00 btn"><i class="fa-regular fa-heart"></i></a></li>
+           <li><a href="href="/zTeamProject/insertLike.do?guild_number=${map.guild_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i></a></li>
            <!-- 신고하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
-           <!-- 강좌 신청 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa-solid fa-person-circle-plus"></i> 모임가입</a></li>
+           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <!-- 모임 신청 버튼 -->
+           <li><a href="https://chatting--pum-i.run.goorm.site/?chatroom=${map.email}" class="btn_b01 btn"><i class="fa-solid fa-person-circle-plus"></i> 모임가입</a></li>
            <!-- 목록 보기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+           <li><a href="/zTeamProject/guild_list.do?currentPage=0" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul>
 
-        <ul class="bo_v_nb">
-            <li class="btn_prev transOJ">
-            	<a href="./board.php?bo_table=gallery&amp;wr_id=12">
-            		<i class="fa fa-arrow-left" aria-hidden="true"></i> 
-            			<span class="sound_only"> 이전글</span> 
-            				<b>갤러리 게시판입니다 </b>
-            	</a>
-            </li>
-            <li class="btn_next transOJ">
-            	<a href="./board.php?bo_table=gallery&amp;wr_id=10">
-            		<i class="fa fa-arrow-right" aria-hidden="true"></i> 
-            			<span class="sound_only">다음글 </span> 
-            				<b>갤러리 등록 테스트 </b>
-            	</a> 
-            </li>        
-        </ul>
+        
     </div>
     <!-- } 게시물 상단 버튼 끝 -->
 
