@@ -53,9 +53,9 @@
                <div id="navbar" class="navbar-collapse collapse">
                   <ul class="nav navbar-nav navbar-right">
                      <li><a data-scroll href="/zTeamProject/main_view.do">Home</a></li>
-                     <li><a data-scroll href="/zTeamProject/class_list.do?currentPage=0">강좌게시판</a></li>
-                     <li><a data-scroll href="/zTeamProject/guild_list.do?currentPage=0">커뮤니티게시판</a></li>
-                     <li><a data-scroll href="/zTeamProject/review_list.do?currentPage=0">리뷰게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/class_list.do?currentPage=1">강좌게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/guild_list.do?currentPage=1">커뮤니티게시판</a></li>
+                     <li><a data-scroll href="/zTeamProject/review_list.do?currentPage=1">리뷰게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/mypage.do">마이페이지</a></li>
                      <li><a data-scroll href="/zTeamProject/main_view.do#support">고객센터</a></li>
                      <li><a data-scroll href="/zTeamProject/logout.do">로그아웃</a></li>

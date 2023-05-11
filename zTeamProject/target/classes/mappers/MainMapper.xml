@@ -4,10 +4,11 @@
 <mapper namespace="MainMapper">
 
 
-
+	<!-- 이메일을 받아 해당 이메일이 회원테이블에 있는지 확인 -->
 	<select id="loginCheck" resultType="com.pi.domain.MemberVO" parameterType="com.pi.domain.MemberVO">
 		SELECT * FROM member WHERE email=#{email}
 	</select>
+	
 	
 	<select id="selectAddr1" resultType="com.pi.domain.LocationVO">
 		SELECT DISTINCT addr1 FROM location

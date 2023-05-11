@@ -8,7 +8,8 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>모임 상세 페이지</title>
+<title>품-i</title>
+<link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
 <link rel="stylesheet" href="resources/css/classList/default.css">
 <link rel="stylesheet" href="resources/css/classList/style.css">
 <link rel="stylesheet" href="resources/css/classList/board.common.css">
@@ -49,13 +50,13 @@
 	                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
 	                </li>
 	                <li class="gnb_1dli" style="z-index:997">
-	                    <a href="/zTeamProject/class_list.do?currentPage=0" target="_self" class="gnb_1da">강좌<u></u></a>
+	                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
 	                </li>
 	                <li class="gnb_1dli" style="z-index:998">
-	                    <a href="/zTeamProject/guild_list.do?currentPage=0" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+	                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
 	                </li>
 	                <li class="gnb_1dli" style="z-index:996">
-	                    <a href="/zTeamProject/review_list.do?currentPage=0" target="_self" class="gnb_1da">리뷰<u></u></a>
+	                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
 	                </li> 
 	                <li class="gnb_1dli" style="z-index:996"> 
 	                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
@@ -134,7 +135,7 @@
            <!-- 모임 신청 버튼 -->
            <li><a href="https://chatting--pum-i.run.goorm.site/?chatroom=${map.email}" class="btn_b01 btn"><i class="fa-solid fa-person-circle-plus"></i> 모임가입</a></li>
            <!-- 목록 보기 버튼 -->
-           <li><a href="/zTeamProject/guild_list.do?currentPage=0" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+           <li><a href="/zTeamProject/guild_list.do?currentPage=1" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul>
 
         

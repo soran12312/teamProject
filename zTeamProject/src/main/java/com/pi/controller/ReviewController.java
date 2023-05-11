@@ -104,10 +104,6 @@ public class ReviewController {
 		map.put("location_number2", lvo.getLocation_number2());
 		map.put("location_number3", lvo.getLocation_number3());
 		
-		if(currentPage==0) {
-			currentPage=1;
-		}
-		
 		if(category_number!=0) {
 			map.put("category_number", category_number);
 		}
@@ -211,7 +207,7 @@ public class ReviewController {
 		
 		reviewService.review_delete(review_number);
 		
-		return "redirect:review_list.do?currentPage=0";
+		return "redirect:review_list.do?currentPage=1";
 	}
 	
 }

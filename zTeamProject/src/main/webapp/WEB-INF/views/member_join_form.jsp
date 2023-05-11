@@ -14,7 +14,7 @@
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
-   
+   <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
    <!-- Site CSS -->
    <link rel="stylesheet" href="resources/new_Css_Sibal.css">
 	

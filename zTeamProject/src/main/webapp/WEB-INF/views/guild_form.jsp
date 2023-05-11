@@ -8,6 +8,7 @@
     <title>품-i</title>
     
     <!-- include libraries(jQuery, bootstrap) -->
+    <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <link rel="stylesheet" href="resources/css/summernote/summernote-lite.css">	
 <script src="resources/js/summernote/summernote-lite.js"></script>

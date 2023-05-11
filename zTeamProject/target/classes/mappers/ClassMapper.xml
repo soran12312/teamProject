@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ClassMapper">
 
-
+	<!-- 강좌 등록 -->
 	<insert id="insertClass" parameterType="com.pi.domain.ClassVO">
 		INSERT INTO class 
 		( class_name, email, category_number, detail, price, max_member, location_number, start_date, end_date )
@@ -11,6 +11,7 @@
 		( #{class_name}, #{email}, #{category_number}, #{detail}, #{price}, #{max_member}, #{location_number}, #{start_date}, #{end_date} )
 	</insert>
 
+	<!-- 해시태그 등록 -->
 	<insert id="insertHashtag" parameterType="com.pi.domain.HashtagVO" >
 		INSERT INTO hashtag
 		( class_number, hashtag_name, category_number ) 
@@ -18,6 +19,7 @@
 		( (SELECT MAX(class_number) FROM class), #{hashtag_name}, #{category_number} )	
 	</insert>
 	
+	<!-- 이미지 등록(이미지 정보만 등록) -->
 	<insert id="insert_classImage" parameterType="com.pi.domain.ImageVO">
 		INSERT INTO image 
 		( original_name, save_name, path, size, main_image )
@@ -25,12 +27,14 @@
 		( #{original_name}, #{save_name}, #{path}, #{size}, #{main_image} )
 	</insert>
 	
+	<!-- 등록된 이미지에 강좌번호 등록 -->
 	<update id="updateImgByPath" parameterType="String">
 		UPDATE image SET 
 		class_number = (SELECT MAX(class_number) FROM class)
 		WHERE path = #{path}
 	</update>
 	
+	<!-- 회원의 관심지역의 강좌 전체검색 & 카테고리 및 키워드검색 -->
 	<select id="selectClassByLocation" parameterType="HashMap" resultType="HashMap">
 		SELECT  
 		c.class_number class_number
@@ -64,6 +68,7 @@
 		ORDER BY class_number DESC LIMIT #{first_view}, 9;
 	</select>
 	
+	<!-- 회원의 관심지역 내 강좌 수 검색 -->
 	<select id="classCount" parameterType="HashMap" resultType="int">
 		SELECT COUNT(*) cnt
 		FROM class
@@ -75,6 +80,7 @@
 		</if>
 	</select>
 	
+	<!-- 선택한 강좌의 강좌정보 검색 -->
 	<select id="selectAllClassDetailByClassNumber" parameterType="int" resultType="HashMap">
 		SELECT 
 		c.class_number class_number 
@@ -92,6 +98,7 @@
 		, m.nickname nickname 
 		, m.introduce introduce
 		, m.path member_img_path
+		, h.class_hashtag class_hashtag
 		FROM class c LEFT OUTER JOIN (SELECT 
 		class_number, COUNT(like_state=1) class_like 
 		FROM `like` 
@@ -102,43 +109,54 @@
 		FROM member m LEFT OUTER JOIN image i
 		ON m.email = i.email) m
 		ON c.email = m.email
+		LEFT OUTER JOIN (SELECT class_number
+		, group_concat( hashtag_name separator ' #' ) class_hashtag
+		FROM hashtag GROUP BY class_number) h
+		ON c.class_number = h.class_number
 		WHERE c.class_number = #{class_number}
 	</select>
 	
+	<!-- 조회수 증가 -->
 	<update id="incViewNum" parameterType="int">
 		UPDATE class SET 
 		view_number = (( SELECT view_number FROM class WHERE class_number = #{class_number} )+1)
 		WHERE class_number = #{class_number}
 	</update>
 	
+	<!-- 이용자가 좋아요를 누른 적 있는지 검색 -->
 	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
 		SELECT COUNT(*) cnt 
 		FROM `like`
-		WHERE email = #{email} AND class_number = #{class_number}
+		WHERE email = #{email} AND class_number = #{class_number} AND like_state = 1
 	</select>
 	
+	<!-- 좋아요 등록 -->
 	<insert id="insertLike" parameterType="com.pi.domain.LikeVO">
 		INSERT INTO `like` ( email, class_number )
 		VALUES ( #{email}, #{class_number} )
 	</insert>
 	
+	<!-- 이용자가 강좌신청을 한 적 있는지 검색 -->
 	<select id="class_join_check" parameterType="com.pi.domain.ClassJoinVO" resultType="int">
 		SELECT COUNT(class_join_number) cnt
 		FROM class_join 
-		WHERE email = #{email} AND class_number = #{class_number}
+		WHERE email = #{email} AND class_number = #{class_number} AND class_join_state = 1
 	</select>
 	
+	<!-- 강좌신청 등록 -->
 	<insert id="class_join" parameterType="com.pi.domain.ClassJoinVO">
 		INSERT INTO class_join ( email, class_number )
 		VALUES ( #{email}, #{class_number} )
 	</insert>
 	
+	<!-- 강좌의 현재 신청인원 증가 -->
 	<update id="inc_class_member" parameterType="int">
 		UPDATE class SET 
 		current_member = (( SELECT current_member FROM class WHERE class_number = #{class_number} )+1)
 		WHERE class_number = #{class_number}
 	</update>
 	
+	<!-- 강좌 삭제(DB에서 등록상태만 변경) -->
 	<update id="class_delete" parameterType="int">
 		UPDATE class SET 
 		class_state = 0

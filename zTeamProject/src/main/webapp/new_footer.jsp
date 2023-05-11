@@ -15,9 +15,9 @@
 	<div class="footer_nav">
 		<p>
 			<a href="/zTeamProject/main_view.do">Home</a>
-			<a href="/zTeamProject/class_list.do?currentPage=0">강좌</a> 
-			<a href="/zTeamProject/guild_list.do?currentPage=0">모임</a> 
-			<a href="/zTeamProject/review_list.do?currentPage=0">리뷰</a>
+			<a href="/zTeamProject/class_list.do?currentPage=1">강좌</a> 
+			<a href="/zTeamProject/guild_list.do?currentPage=1">모임</a> 
+			<a href="/zTeamProject/review_list.do?currentPage=1">리뷰</a>
 			<span><img src="resources/images/logos/logo.png"></span>
 		</p>
 	</div>

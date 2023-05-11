@@ -87,9 +87,6 @@ public class GuildController {
 		map.put("location_number2", lvo.getLocation_number2());
 		map.put("location_number3", lvo.getLocation_number3());
 		
-		if(currentPage==0) {
-			currentPage=1;		
-		}						
 			//총 게시글 수
 			int cnt = guildService.guildCount(map);
 			
