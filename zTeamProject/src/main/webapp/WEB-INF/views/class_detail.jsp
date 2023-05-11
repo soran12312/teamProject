@@ -209,8 +209,6 @@ $(function(){
            <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            <!-- 강좌 신청 버튼 -->
            <li><a id='class_Join' class="btn_b01 btn"><i class="fa fa-inbox"></i> 강좌신청</a></li>
-           <!-- 리뷰 쓰기 버튼 -->
-           <li><a href="review_form.do?class_number=${map.class_number}" class="btn_b01 btn">리뷰쓰기</a></li>
            </c:if>
            <!-- 목록 보기 버튼 -->
            <li><a href="/zTeamProject/class_list.do?currentPage=0" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>

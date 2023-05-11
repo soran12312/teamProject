@@ -28,7 +28,7 @@
                      <li><a data-scroll href="/zTeamProject/guild_list.do?currentPage=0">커뮤니티게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/review_list.do?currentPage=0">리뷰게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/mypage.do">마이페이지</a></li>
-                     <li><a data-scroll href="#support">고객센터</a></li>
+                     <li><a data-scroll href="/zTeamProject/main_view.do#support">고객센터</a></li>
                      <li><a data-scroll href="/zTeamProject/logout.do">로그아웃</a></li>
                   </ul>
                </div>

@@ -57,7 +57,7 @@ public class ClassController {
 		ivo.setSave_name(String.valueOf(time) + "_" + ivo.getOriginal_name());
 		
 		String realPath="C:\\Users\\kosmo\\git\\teamProject\\zTeamProject\\src\\main\\webapp\\resources\\uploads\\"+ivo.getSave_name();
-		String path = "http://localhost:8080/zTeamProject/resources/uploads/"+ivo.getSave_name();
+		String path = "http://192.168.0.68:8080/zTeamProject/resources/uploads/"+ivo.getSave_name();
 		
 		ivo.setPath(path);
 		

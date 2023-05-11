@@ -90,11 +90,11 @@
                      <form id="loginForm" class="row" name="contactform" method="post">
                         <fieldset class="row-fluid">
                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://localhost:8080/zTeamProject/member_join_form.do&response_type=code"></a>
+                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"></a>
                            </div>
                            <br/>
                            <div class="text-center">
-                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://localhost:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
+                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>
@@ -528,14 +528,5 @@ $('.prodLat_product_gallery').owlCarousel({
       <!-- end footer -->
       <!-- end copyrights -->
       
-      <!-- ALL JS FILES -->
-      <script src="resources/js/all.js"></script>
-      <!-- ALL PLUGINS -->
-      <script src="resources/js/custom.js"></script>
-      <script src="resources/js/portfolio.js"></script>
-      <script src="resources/js/hoverdir.js"></script>    
-      <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-      <!-- MAP & CONTACT -->
-      <script src="resources/js/map.js"></script>
    </body>
 </html>

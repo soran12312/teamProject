@@ -51,7 +51,7 @@ public class MainController {
 		// 위의 access_Token 받는 걸 확인한 후에 밑에 진행
 		
 		// 3번
-		MemberVO userInfo = mainService.getUserInfo(access_Token);
+		MemberVO userInfo = mainService.getUserInfo(access_Token); // 유저정보 : 이메일, 닉네임을 받아온다.
 		System.out.println(userInfo.toString());
 		
 		MemberVO vo = new MemberVO();

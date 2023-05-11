@@ -78,7 +78,9 @@ $(function(){
                 <li class="gnb_1dli" style="z-index:996"> 
                     <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
                 </li>             
-  				
+  				<li class="gnb_1dli" style="z-index:996">
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                </li>
             </ul>
         </div>
 
@@ -225,17 +227,24 @@ $(function(){
     <!-- } 게시판 검색 끝 -->   
 </div>
 
-
-<!-- 페이지 -->
-
-
-<!-- } 게시판 목록 끝 -->
-
-
-
-<!-- 하단 시작 { -->
-
-         
+<footer id="footer">
+    <dl>
+        <dt><img src="resources/images/classList/logo.png" alt="페이지디 홈페이지 템플릿 테마"></dt>
+        <dd>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area" data-featherlight="iframe">개인정보처리방침</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
+        </dd>
+    </dl>
+   <address>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span> </br>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
+</footer>
+ 
 
 <button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"><span class="sound_only">페이지 상단으로 이동</span></button>
 
