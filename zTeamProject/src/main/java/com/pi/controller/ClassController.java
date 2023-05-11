@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
+import com.pi.domain.ClassJoinVO;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
@@ -43,7 +44,8 @@ public class ClassController {
 	ClassService classService;
 	
 	@RequestMapping(value="SummerNoteImageFile" , produces="application/text;charset=utf8", method = RequestMethod.POST)
-	public @ResponseBody String SummerNoteImageFile(@RequestParam("file") MultipartFile file) {
+	@ResponseBody
+	public String SummerNoteImageFile(@RequestParam("file") MultipartFile file) {
 		
 		ImageVO ivo = new ImageVO();
 		
@@ -257,5 +259,30 @@ public class ClassController {
 		return "redirect:class_detail.do?class_number="+String.valueOf(vo.getClass_number());
 	}
 	
+	@RequestMapping(value="/class_Join.do", produces="application/text;charset=utf8")
+	@ResponseBody
+	public String classJoin(ClassJoinVO vo) {
+		
+		int check = classService.class_join_check(vo);
+		
+		if(check==0) {
+			classService.class_join(vo);
+			classService.inc_class_member(vo.getClass_number());
+			
+			return "신청되었습니다. 수강일을 확인해주세요";
+		}else {
+			
+			return "이미 신청된 강좌입니다. 신청취소는 마이페이지에서 할 수 있습니다.";
+		}
+		
+	}
+	
+	@RequestMapping("/class_delete.do")
+	public String class_delete(int class_number) {
+		
+		classService.class_delete(class_number);
+		
+		return "redirect:class_list.do?currentPage=0";
+	}
 	
 }

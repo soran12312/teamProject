@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pi.domain.ClassJoinVO;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
@@ -86,6 +87,34 @@ public class ClassDAOImpl implements ClassDAO {
 		System.out.println("===> Mybatis insertLike() 호출");
 		
 		mybatis.insert("ClassMapper.insertLike", vo);
+	}
+
+	@Override
+	public int class_join_check(ClassJoinVO vo) {
+		System.out.println("===> Mybatis class_join_check() 호출");
+		
+		return mybatis.selectOne("ClassMapper.class_join_check", vo);
+	}
+
+	@Override
+	public void class_join(ClassJoinVO vo) {
+		System.out.println("===> Mybatis class_join() 호출");
+		
+		mybatis.selectOne("ClassMapper.class_join", vo);
+	}
+
+	@Override
+	public void inc_class_member(int class_number) {
+		System.out.println("===> Mybatis inc_class_member() 호출");
+		
+		mybatis.update("ClassMapper.inc_class_member", class_number);
+	}
+
+	@Override
+	public void class_delete(int class_number) {
+		System.out.println("===> Mybatis class_delete() 호출");
+		
+		mybatis.update("ClassMapper.class_delete", class_number);
 	}
 	
 }

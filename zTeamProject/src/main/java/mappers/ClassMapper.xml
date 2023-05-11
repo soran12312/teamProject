@@ -122,5 +122,28 @@
 		VALUES ( #{email}, #{class_number} )
 	</insert>
 	
+	<select id="class_join_check" parameterType="com.pi.domain.ClassJoinVO" resultType="int">
+		SELECT COUNT(class_join_number) cnt
+		FROM class_join 
+		WHERE email = #{email} AND class_number = #{class_number}
+	</select>
+	
+	<insert id="class_join" parameterType="com.pi.domain.ClassJoinVO">
+		INSERT INTO class_join ( email, class_number )
+		VALUES ( #{email}, #{class_number} )
+	</insert>
+	
+	<update id="inc_class_member" parameterType="int">
+		UPDATE class SET 
+		current_member = (( SELECT current_member FROM class WHERE class_number = #{class_number} )+1)
+		WHERE class_number = #{class_number}
+	</update>
+	
+	<update id="class_delete" parameterType="int">
+		UPDATE class SET 
+		class_state = 0
+		WHERE class_number = #{class_number}
+	</update>
+	
 	
 </mapper>

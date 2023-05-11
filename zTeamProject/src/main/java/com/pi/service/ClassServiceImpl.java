@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pi.dao.ClassDAO;
+import com.pi.domain.ClassJoinVO;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
@@ -73,7 +74,31 @@ public class ClassServiceImpl implements ClassService {
 
 	@Override
 	public void insertLike(LikeVO vo) {
+		
 		classDAO.insertLike(vo);
+	}
+
+	@Override
+	public int class_join_check(ClassJoinVO vo) {
+		
+		return classDAO.class_join_check(vo);
+	}
+
+	@Override
+	public void class_join(ClassJoinVO vo) {
+		
+		classDAO.class_join(vo);
+	}
+
+	@Override
+	public void inc_class_member(int class_number) {
+		
+		classDAO.inc_class_member(class_number);
+	}
+
+	@Override
+	public void class_delete(int class_number) {
+		classDAO.class_delete(class_number);
 		
 	}
 

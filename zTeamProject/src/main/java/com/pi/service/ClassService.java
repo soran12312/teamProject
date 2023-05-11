@@ -3,6 +3,7 @@ package com.pi.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.pi.domain.ClassJoinVO;
 import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
@@ -29,5 +30,13 @@ public interface ClassService {
 	public int checkLike(LikeVO vo);
 	
 	public void insertLike(LikeVO vo);
+	
+	public int class_join_check(ClassJoinVO vo);
+	
+	public void class_join(ClassJoinVO vo);
+	
+	public void inc_class_member(int class_number);
+	
+	public void class_delete(int class_number);
 }
 

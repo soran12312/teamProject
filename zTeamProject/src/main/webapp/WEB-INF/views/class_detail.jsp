@@ -10,7 +10,7 @@
 <meta name="HandheldFriendly" content="true">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>강좌 상세 페이지</title>
+<title>품-i</title>
 <link rel="stylesheet" href="resources/css/classList/default.css">
 <link rel="stylesheet" href="resources/css/classList/style.css">
 <link rel="stylesheet" href="resources/css/classList/board.common.css">
@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="resources/css/classList/featherlight.min.css">
 <!--[if lte IE 8]><script src="http://sample.paged.kr/purewhite/js/html5.js"></script><![endif]-->
 <script>var g5_url = "http://sample.paged.kr/purewhite"; var g5_bbs_url = "http://sample.paged.kr/purewhite/bbs"; var g5_is_member = ""; var g5_is_admin = ""; var g5_is_mobile = ""; var g5_bo_table = "gallery"; var g5_sca = ""; var g5_editor = "smarteditor2"; var g5_cookie_domain = "";</script>
-<script src="resources/js/jquery-1.11.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script src="resources/js/jquery.menu.min.js"></script>
 <script src="resources/js/common.js"></script>
 <script src="resources/js/WEBsiting.js"></script>
@@ -29,6 +29,73 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+$(function(){
+	if(${sessionScope.email ne map.email}){
+		if(${map.current_member ge map.max_member}){
+			alert("마감된 강좌입니다.");
+		}else{
+			$('.bo_v_com').on("click","#class_Join",function(){
+				var param = {"email" : "${sessionScope.email}"
+							, "class_number" : "${map.class_number}"
+							};
+				
+				
+				$.ajax({
+					type	: 'post'
+					,data	: param
+					,url	: '/zTeamProject/class_Join.do'
+					,success	: function(result){
+						alert(result);
+						location.href = '/zTeamProject/class_detail.do?class_number='+${map.class_number};
+					}
+					,error	: function(err){
+						alert('error');
+						console.log(err);
+					}
+				}); // end of ajax
+			}); // end of on(강좌신청버튼 클릭이벤트)
+		} // end of if(강좌 신청인원이 최대인원보다 적은지 확인)
+	} // end of if(로그인 한 사람과 글 작성자가 다른 사람이면 true)
+		
+	if(${sessionScope.email eq map.email}){
+		$("#class_delete").click(function(){
+			
+			if(confirm("정말 삭제하시겠습니까?")){
+				alert("삭제되었습니다.");
+				location.href = '/zTeamProject/class_delete.do?class_number='+${map.class_number};
+			}
+		});
+		
+	} // end of if(로그인 한 사람과 글 작성자가 같은 사람이면 true)
+	
+
+	$("a.view_image").click(function() {
+	        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
+	        return false;
+	    });
+
+	    // 이미지 리사이즈
+	$("#bo_v_atc").viewimageresize();
+	    
+	
+	function board_move(href)
+	{
+	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
+	}
+	
+	function board_move(href)
+	{
+	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
+	}
+	
+	// 글자수 제한
+	var char_min = parseInt(0); // 최소
+	var char_max = parseInt(0); // 최대
+	
+}); // end of $
+</script>
 </head>
 <body style="">
 <a id="topID"></a>
@@ -98,6 +165,8 @@
     <section id="bo_v_info">
         <span class="sound_only">조회수</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
         <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
+        <span class="sound_only">현재인원</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재인원 : ${map.current_member}명</strong>
+        <span class="sound_only">최대인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
     </section>
     
 
@@ -127,15 +196,15 @@
            <li><a href="/zTeamProject/insertLike.do?class_number=${map.class_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i>${map.class_like}</a></li>
            <c:if test="${sessionScope.email eq map.email}">
            <!-- 삭제하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn">삭제하기</a></li>
+           <li><a id="class_delete" class="btn_b01 btn">삭제하기</a></li>
            </c:if>
            <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            <!-- 강좌 신청 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn"><i class="fa fa-inbox"></i> 강좌신청</a></li>
+           <li><a id='class_Join' class="btn_b01 btn"><i class="fa fa-inbox"></i> 강좌신청</a></li>
            <!-- 리뷰 쓰기 버튼 -->
-           <li><a href="classList.jsp" class="btn_b01 btn">리뷰쓰기</a></li>
+           <li><a href="review_form.do?class_number=${map.class_number}" class="btn_b01 btn">리뷰쓰기</a></li>
            </c:if>
            <!-- 목록 보기 버튼 -->
            <li><a href="/zTeamProject/class_list.do?currentPage=0" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
@@ -157,48 +226,10 @@
         
     </section>
 
-    
-<script>
-// 글자수 제한
-var char_min = parseInt(0); // 최소
-var char_max = parseInt(0); // 최대
-</script>
-<!-- 댓글 시작 { -->
-<hr class="dashHr">
-
-
 
 </article>
 <!-- } 게시판 읽기 끝 -->
 
-<script>
-
-function board_move(href)
-{
-    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-}
-</script>
-
-<script>
-function board_move(href)
-{
-    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-}
-</script>
-
-<script>
-$(function() {
-    $("a.view_image").click(function() {
-        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
-        return false;
-    });
-
-    // 이미지 리사이즈
-    $("#bo_v_atc").viewimageresize();
-
-});
-</script>
-<!-- } 게시글 읽기 끝 -->
 
 </div><!-- // #container 닫음 -->
 
