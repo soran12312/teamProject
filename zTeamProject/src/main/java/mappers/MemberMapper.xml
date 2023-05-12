@@ -51,22 +51,145 @@
 		WHERE email = #{email}
 	</update>
 	
-	<select id="select_my_class">
+	<select id="select_my_class" parameterType="String" resultType="com.pi.domain.ClassVO">
 		SELECT *
 		FROM class
+		WHERE email = #{email} AND class_state = 1
+	</select>
+	
+	<select id="select_my_like" parameterType="String" resultType="HashMap">
+		SELECT l.class_number class_number
+		, l.like_date like_date
+		, c.class_name class_name
+		, l.like_number like_number
+		FROM `like` l INNER JOIN class c
+		ON l.class_number = c.class_number
+		WHERE l.like_state=1 AND l.email=#{email} AND c.class_state = 1
+	</select>
+	
+	<select id="select_prev_class" parameterType="String" resultType="HashMap">
+		SELECT j.class_number class_number
+		, j.class_join_number class_join_number
+		, c.class_name class_name
+		, c.start_date start_date
+		, c.end_date end_date
+		, c.class_state class_state
+		FROM class_join j INNER JOIN class c
+		ON j.class_number = c.class_number
+		WHERE j.class_join_state = 1 AND j.email = #{email}
+	</select>
+	
+	<update id="delete_my_class" parameterType="int">
+		UPDATE class
+		SET class_state = 0
+		WHERE class_number = #{class_number}
+	</update>
+	
+	<update id="cancel_like" parameterType="int">
+		UPDATE `like`
+		SET like_state = 0
+		WHERE like_number = #{like_number}
+	</update>
+	
+	<update id="cancel_join" parameterType="int">
+		UPDATE class_join
+		SET class_join_state = 0
+		WHERE class_join_number = #{class_join_number}
+	</update>
+	
+	<update id="dec_class_member" parameterType="int">
+		UPDATE class SET 
+		current_member = (( SELECT current_member FROM class WHERE class_number = #{class_number} )-1)
+		WHERE class_number = #{class_number}
+	</update>
+	
+	<select id="select_my_guild" parameterType="String" resultType="com.pi.domain.GuildVO">
+		SELECT *
+		FROM guild
+		WHERE email = #{email} AND guild_state = 1
+	</select>
+	
+	<select id="select_like_guild" parameterType="String" resultType="HashMap">
+		SELECT l.guild_number guild_number
+		, l.like_date like_date
+		, g.guild_name guild_name
+		, l.like_number like_number
+		, g.current_member current_member
+		, g.max_member max_member
+		FROM `like` l INNER JOIN guild g
+		ON l.guild_number = g.guild_number
+		WHERE l.like_state=1 AND l.email = #{email} AND guild_state = 1
+	</select>
+	
+	<select id="select_join_guild" parameterType="String" resultType="HashMap">
+		SELECT j.guild_join_number guild_join_number
+		, j.guild_number guild_number
+		, g.guild_name guild_name
+		, g.email chatroom_name
+		, g.guild_state guild_state
+		, g.current_member current_member
+		, g.max_member max_member
+		FROM guild_join j INNER JOIN guild g
+		ON j.guild_number = g.guild_number
+		WHERE j.guild_join_state = 1 AND j.email = #{email}
+	</select>
+	
+	<update id="delete_my_guild" parameterType="int">
+		UPDATE guild SET 
+		guild_state = 0 
+		WHERE guild_number = #{guild_number}
+	</update>
+	
+	<update id="cancel_guild_join" parameterType="int">
+		UPDATE guild_join
+		SET guild_join_state = 0
+		WHERE guild_join_number = #{guild_join_number}
+	</update>
+	
+	<update id="dec_guild_member" parameterType="int">
+		UPDATE guild SET 
+		current_member = (( SELECT current_member FROM guild WHERE guild_number = #{guild_number} )-1)
+		WHERE guild_number = #{guild_number}
+	</update>
+	
+	<select id="select_my_review" parameterType="String" resultType="HashMap">
+		SELECT r.review_number review_number
+		, r.class_number class_number
+		, r.title title
+		, r.writing_date writing_date
+		, r.view_number view_number
+		, IFNULL(l.review_like,0) review_like
+		FROM review r LEFT OUTER JOIN 
+		(SELECT review_number, COUNT(*) review_like FROM `like` 
+		WHERE like_state = 1 GROUP BY review_number ) l
+		ON r.review_number = l.review_number
+		WHERE r.email = #{email} AND review_state = 1
+	</select>
+	
+	<select id="select_like_review" parameterType="String" resultType="HashMap">
+		SELECT l.like_number like_number
+		, l.like_date like_date
+		, r.review_number review_number
+		, r.class_number class_number
+		, r.title title
+		, r.writing_date writing_date
+		, r.view_number view_number
+		FROM `like` l INNER JOIN review r
+		ON l.review_number = r.review_number
+		WHERE l.like_state=1 AND l.email = #{email} AND r.review_state = 1
+	</select>
+	
+	<update id="delete_review" parameterType="int">
+		UPDATE review SET 
+		review_state = 0
+		WHERE review_number = #{review_number}
+	</update>
+	
+	<select id="select_my_question" parameterType="String" resultType="com.pi.domain.QuestionVO">
+		SELECT *
+		FROM question
 		WHERE email = #{email}
 	</select>
-	
-	<select id="select_my_like">
-		SELECT 
-		FROM like l INNER JOIN class c
-		ON l.class_number = c.class_number
-		WHERE l.like_state=1 AND l.email=#{email}
-	</select>
-	
-	<select id="select_prev_class">
-	</select>
-	
 	
 	
 </mapper>

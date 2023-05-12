@@ -78,4 +78,13 @@ public class GuildServiceImpl implements GuildService {
 	public int insert_guild_join(GuildJoinVO vo) {
 		return guildDAO.insert_guild_join(vo);
 	}
+
+
+
+	@Override
+	public void inc_guild_member(GuildJoinVO vo) {
+		
+		guildDAO.inc_guild_member(vo);
+	}
+	
 }

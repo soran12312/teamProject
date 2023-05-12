@@ -74,8 +74,9 @@
 		INNER JOIN member m
 		ON g.email = m.email
 		LEFT OUTER JOIN  (SELECT 
-		guild_number, COUNT(like_state=1) guild_like 
+		guild_number, COUNT(*) guild_like 
 		FROM `like` 
+		WHERE like_state=1
 		GROUP BY guild_number) lk
 		ON g.guild_number = lk.guild_number
 		WHERE g.guild_number = #{guild_number}
@@ -109,4 +110,10 @@
 		( guild_number, email )
 		VALUES ( #{guild_number}, #{email} )
 	</insert>
+	
+	<update id="inc_guild_member" parameterType="com.pi.domain.GuildJoinVO">
+		UPDATE guild SET 
+		current_member = ((SELECT current_member FROM guild WHERE guild_number = #{guild_number})+1)
+		WHERE guild_number = #{guild_number}
+	</update>
 </mapper>

@@ -174,6 +174,7 @@ public class GuildController {
 			int result2 = guildService.insert_guild_join(vo); 
 
 			if(result2==1) {
+				guildService.inc_guild_member(vo);
 				//가입완료되면 채팅방으로 이동
 				return "1";
 				}
