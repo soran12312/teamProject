@@ -41,7 +41,7 @@
                      <li><a data-scroll href="/zTeamProject/class_list.do?currentPage=1">강좌게시판<span class="hidden-xs">*</span></a></li>
                      <li><a data-scroll href="/zTeamProject/guild_list.do?currentPage=1">커뮤니티게시판</a></li>
                      <li><a data-scroll href="/zTeamProject/review_list.do?currentPage=1">리뷰게시판</a></li>
-                     <li><a data-scroll href="#mypage">관리자페이지</a></li>
+                     <li><a data-scroll href="./admin">관리자페이지</a></li>
                   </ul>
                </div>
             </div>
