@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+    
+    
 <!DOCTYPE html>
 <!-- saved from url=(0059)http://sample.paged.kr/purewhite/bbs/board.php?bo_table=qna -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -156,6 +160,39 @@
                                     <div class="mvInlinev td_datetime"><i class="fa fa-clock-o"></i> 02-06</div>
 
         </li>
+        
+        <!-- db데이터 불러오기 -->
+        
+        <c:forEach items="${ questionList }" var="q">
+        		<li class=" likeTblTr likeTblTd">
+                        <div class="mvInlinev td_num2">
+								<span class="qnaIco qnaIco3"><i class="fa fa-spinner" aria-hidden="true"></i> 접수완료</span>
+			            </div>
+
+            <div class="td_subject" style="padding-left:0px">
+               <div class="bo_tit">
+                  
+                  <a href="">
+                     <i class="fa fa-lock" aria-hidden="true"></i>                        
+                     ${q.title }                  
+					<em>
+					</em>
+                  </a>
+              </div>
+
+            </div>
+			<span class="onlyMvV" style="padding-left:0px"></span>
+            <div class="mvInlinev td_name sv_use"><span class="sv_guest">${q.email}</span></div>
+            <div class="mvInlinev td_num"><i class="fa fa-eye"></i> ${q.question_category}</div>
+            <div class="mvInlinev td_datetime"><i class="fa fa-clock-o"></i> ${q.writing_date}</div>
+
+        </li>
+   </c:forEach>     
+        
+        
+        
+        
+        
                 <li class=" likeTblTr likeTblTd">
                         <div class="mvInlinev td_num2">
 														<span class="qnaIco qnaIco3"><i class="fa fa-spinner" aria-hidden="true"></i> 접수완료</span>

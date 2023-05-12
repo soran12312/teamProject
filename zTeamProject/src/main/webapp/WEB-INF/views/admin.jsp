@@ -41,11 +41,15 @@
 
    $(function(){
 	   
+	   $("div.gradeDiv").hover(function(){
+       	
+       	$(this).css('cursor','pointer');
+       	
+	   });
         
         
-        //  셀렉트박트 클릭 콤보박스 생성
+        //  회원등급 클릭 콤보박스 생성
         $("div.gradeDiv").on('click',function(){
-        	//alert(0);
         	
         	$(this).css('cursor','pointer');
         	
@@ -77,10 +81,20 @@
        	    // 셀렉트박트 클릭
 	       selectBox.on("change", function() {
 	    	   
-	    	// 수정 버튼 생성
-    	    let updateBtn = $("<button type='submit'>").addClass("btn btn-light updateBtn").text("수정");
-    	    // 수정 버튼 추가
-    	    $(this).after(updateBtn);
+		    	// 수정 버튼 생성
+	    	    let updateBtn = $("<button type='submit'>").addClass("btn btn-light updateBtn").text("수정");
+	    	 	
+		    	// 수정 버튼이 추가되지 않은 경우에만 추가
+	    	    if (!$(this).data('update-btn-added')) {
+		    	      // 수정 버튼 생성
+		    	      let updateBtn = $("<button type='submit'>").addClass("btn btn-light updateBtn").text("수정");
+		    	      // 수정 버튼 추가
+		    	      $(this).after(updateBtn);
+		
+		    	      // 수정 버튼이 추가되었음을 저장
+		    	      $(this).data('update-btn-added', true);
+	    	    }
+    	    
 	    	   
 	       	  let selectedValue = $(this).val();
 	       	  console.log("Selected value: " + selectedValue);
@@ -104,113 +118,111 @@
 		              dataType : 'json',
 		               success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
 		                 console.log(response) // 서버에서 준 결과
-		               }
+		               } // end of ajax
 		               
-		            ,error: function(err){
-		            alert('error');
-		            console.log(err);
-		         }
+		             ,error: function(err){
+			            //alert('error');
+			            console.log(err);
+			         } 
                
                
              }); // end of ajax
                 
-            });
+            }); // end 수정버튼 클릭
 	       	  
 	       });  // end 셀렉트박트 클릭
        	  
         });// end
         
         
-        
-        
-        
-        
-     	//  제재상태 클릭 체크박스 생성
+    //  제재상태 클릭 체크박스 생성
+    	$("div.stateDiv").hover(function(){
+       	
+       		$(this).css('cursor','pointer');
+	   });
+    
+    
+    
         $("div.stateDiv").on('click',function() {
-        	
-        	$(this).css('cursor', 'pointer');
-        	
-        	//alert(0);
-        	let form = $("<form>").attr({
-        	    method: "POST",
-        	    action: "./updatestate"
-        	});
-        	
-        	// 폼 태그에 input 태그 추가
-        	let stateInput = $("<input>").attr({
-        	    type: "hidden",
-        	    name: "member_state",
-        	    value: ""
-        	});
-
-        	// 체크박스 생성
-            let checkbox = $("<input>").attr({
-                type: "checkbox",
-                name: "my-checkbox",
-                class : "stateDiv-check",
-                value: "1"
-            });
-        	
-         	// 체크박스 레이블 생성
-            let label = $("<label>").text("제재").prepend(checkbox);
-
-            $(this).empty();
-
-
-        	form.append(stateInput, checkbox);
-        	
-        	$(this).append(checkbox);	   
-        	
-        	
-        	// 체크박스를 클릭할 때 실행되는 함수
-            $(".stateDiv-check").on("click", function() {
-                let isChecked = $(this).is(":checked");
-                let stateValue = isChecked ? "1" : "0";
-                let emailValue = $(this).closest("tr").find(".m_email").text();  // 선택된 행에서 이메일 값을 가져옴
-
-                // input 태그에 값을 설정
-                stateInput.val(stateValue);
-
-                // 폼 데이터 서버로 전송
-                form.submit();
-                
-                
+           
+           //alert(0);
+           
+           $(this).css('cursor','pointer');
+           
+           
+        
+              // 체크박스 생성
+             let checkbox = $("<input>").attr({
+                 type: "checkbox",
+                 name: "my-checkbox",
+                 class : "stateDiv-check",
+                 value: ""
+             });
+              
              
-                console.log(emailValue);
-                
-                let checkedValue = $('.this').val();
-                let param = {"member_state" :stateValue
-                     , "email" : emailValue
-                };
+             
+             // 체크박스 레이블 생성
+             let label = $("<label>").text("제재").prepend(checkbox);
+             
+             
+             $(this).empty();
+             // 체크박스와 레이블을 버튼 아래에 추가
+             //$("div.stateDiv").after(label);
+             $(this).after(label);
+            
+            
+          // 체크박스를 클릭할 때 실행되는 함수
+             $(".stateDiv-check").on("click", function() {
+                 
+                  let isChecked = $(this).is(":checked");
+                  let checkedValue = isChecked ? "1" : "0";
+                  
+                    console.log("checked value: " + checkedValue);
+                     
+                    let emailValue = $(this).closest("tr").find(".m_email").text(); // 선택된 행에서 이메일 값을 가져옴
+                    console.log(emailValue);
+                    
+                    let param = {"member_state" :checkedValue
+                         , "email" : emailValue
+                      };
+            
+                 console.log(param);
 
-                
-                
-                $.ajax({
-                    type: "POST",
-                    url: "./updatestate",
-                    data: { param },
-                    success: function(response) {
-                        console.log("전송 완료");
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("전송 실패");
-                    }
-                });
+                  $.ajax({
+                      type: "POST",
+                      url: "./updatestate",
+                      data: param ,
+                      success: function(response) {
+                    	  console.log(response);
+                          console.log("전송 완료");
+                      },
+                      error: function(xhr, status, error) {
+                    	  console.log(error);
+                          console.log("전송 실패");
+                      }
+                  });
+                      
 
-                
-                
-                
-                
-                
-                
-                
-            });
-	        
+                  
+           });
         });
+        
+        
+        
      	
      	
-     	// 사업자등록 텍스트필드
-        $(".register").on('click',function() {
+     	
+        $("div.noNumDiv").hover(function(){
+       		$(this).css('cursor','pointer');
+	   }); 
+     	
+     	
+     	$("div.numDiv").hover(function(){
+       		$(this).css('cursor','pointer');
+	   });
+     	
+     	// 사업자등록번호 클릭할 때 실행되는 함수
+        $("div.numDiv").on('click',function() {
         	//alert(0);
         	
             // 텍스트박스 생성
@@ -223,10 +235,68 @@
         	
             // 텍스트박스를 버튼 아래에 추가
             //$("#textbox-btn").after(textBox);
+            
             $(this).after(textBox);
-        	
-            $(this).remove();
-       });// end ("#textbox-btn").click
+            $(this).hide();
+            
+            
+            // 텍스트박스 클릭시
+            $('.numDiv-text').on('click',function() {
+            	
+            	
+	             // 수정 버튼 생성
+	       	     let updateBtn = $("<button type='submit'>").addClass("btn btn-light updateBtn").text("수정");
+	       	     // 수정 버튼 추가
+	       	     $(this).after(updateBtn);
+	   	    	   
+	       		// 텍스트박스 클릭 이벤트 삭제
+	             $('.numDiv-text').off('click');
+   	       	
+   	       	 // 수정버튼 클릭
+   	       	$('.updateBtn').on('click',function(){
+   	       	
+   	       		//alert('update');
+	   	       	  let textValue = $('.numDiv-text').val(); // 텍스트박스의 입력값을 가져옴
+	   	       	  console.log("textValue: " + textValue);
+	   	       	  
+	   	       	  let emailValue = $(this).closest("tr").find(".m_email").text(); // 선택된 행에서 이메일 값을 가져옴
+	   	       	  console.log(emailValue);
+	   	       		
+	                   
+	   	       		let param = {"business_number" :textValue
+	                           , "email" : emailValue
+	                        };
+	              
+	   	       			console.log(param);
+	   	       		
+	   		             $.ajax({
+	   			               type: "post", // post 방식으로 요청
+	   			               url: "./updatebusiness",
+	   			               data: param, // 요청하면서 함께 줄 데이터
+	   			               dataType : 'json',
+	   			               success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
+	   			                   //alert('success')
+	   			            	   console.log(response) // 서버에서 준 결과
+		   			            	
+	   			            	   // 수정이 완료되면 다시 div.numDiv를 보여줌
+	   			            	   $(updateBtn).remove();
+		   			               $('.numDiv-text').remove();
+		   			               $('div.numDiv').text(textValue);
+		   			               $('div.numDiv').show();
+	   			            	}
+	   				               
+	   				            ,error: function(err){
+	   				            	console.log(err);
+	   				            }
+	   		               
+	   		               
+	   		             }); // end of ajax
+                   
+               }); // end 수정버튼 클릭
+            	
+            });
+            
+       });// end 사업자등록번호 클릭
 	   
 });  // end of function
         
@@ -618,8 +688,13 @@
 													<div class='stateDiv'>${m.member_state}</div>
 												</td>
 												<td>
-													<div class='numDiv'>${m.business_number}</div>
-													<button type="button" class="btn btn-light register">등록</button>
+													
+													<c:if test="${not empty m.business_number}">
+													    <!-- 조건식이 참일 경우 수행할 코드 -->
+														<div class='numDiv'>${m.business_number}</div>
+													</c:if>
+													
+													<div class='noNumDiv'></div>
 												</td>
 
 											</tr>

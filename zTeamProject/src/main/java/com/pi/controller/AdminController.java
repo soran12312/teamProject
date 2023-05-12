@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pi.constant.SessionConstants;
 import com.pi.domain.MemberVO;
+import com.pi.domain.QuestionVO;
 import com.pi.paging.Criteria;
 import com.pi.service.AdminService;
 
@@ -46,23 +47,22 @@ public class AdminController {
 			System.out.println(mv);
 		}
 		
-		
-		//model.addAttribute("memberList", memberList);
-		model.addAttribute("memberList", adminService.getListPaging(cri));
 		return "admin";
 	}
 	
+	
+	// 회원 등급 수정
 	@PostMapping("/updategrade")
 	@ResponseBody
 	public String updateGrade(MemberVO vo) {
-	    // params 변수에는 AJAX 요청으로 전송된 {"mam": "2", "email": "example@example.com"}
+	    // params 변수에는 AJAX 요청으로 전송된 {"member_grade": "2", "email": "example@example.com"}
 	    
 		 try {
 		        //Integer member_grade = vo.getMember_grade();
 		        //String email = vo.getEmail();
 		        
 		        // TODO: 이메일을 기반으로 회원 등급을 업데이트하는 로직을 구현합니다.
-		        adminService.updateMember(vo);
+		        adminService.updateMember(vo);;
 		        
 		        System.out.println(vo);
 		        
@@ -75,12 +75,30 @@ public class AdminController {
 	   
 	}
 	
+	// 회원 제재상태 수정
 	@PostMapping("/updatestate")
 	@ResponseBody
 	public String updateState(MemberVO vo) {
 	    
 		// TODO: 이메일을 기반으로 회원 상태을 업데이트하는 로직을 구현합니다.
         adminService.updateState(vo);
+        
+        System.out.println(vo);
+
+        return "success";
+		      
+	}
+	
+	
+	// 회원 사업자번호 수정
+	@PostMapping("/updatebusiness")
+	@ResponseBody
+	public String updateBusiness(MemberVO vo) {
+	    
+		// TODO: 이메일을 기반으로 사업자번호를 업데이트하는 로직을 구현합니다.
+        adminService.updateBusiness(vo);
+        
+        System.out.println(vo);
 
         return "success";
 		      
@@ -96,10 +114,17 @@ public class AdminController {
 	
 	
 	
-	// 답변
+	// 모든 문의 리스트
 	@GetMapping("/admin_answer")
-	public String adminAnswer()
+	public String adminAnswer(QuestionVO qvo, Model model)
 	{
+		List<QuestionVO> questionList = adminService.listQuestion(qvo);
+		
+		for(QuestionVO q : questionList)
+		{
+			System.out.println(q);
+		}
+		
 		return "admin_answer";
 	}
 

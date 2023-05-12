@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pi.dao.AdminDAO;
 import com.pi.domain.MemberVO;
+import com.pi.domain.QuestionVO;
 import com.pi.paging.Criteria;
 
 
@@ -22,13 +23,7 @@ public class AdminServiceImpl implements AdminService{
 	public List<MemberVO> listMember(MemberVO params) {
 		// TODO Auto-generated method stub
 		
-		List<MemberVO> memberList =Collections.emptyList();
-
-		//int memberTotalCount = 0;
-			
 		return adminDAO.listMember(params);
-
-	
 	}
 
 	@Override
@@ -54,5 +49,17 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		adminDAO.updateBusiness(vo);
 	}
+
+	@Override
+	public List<QuestionVO> listQuestion(QuestionVO qvo) {
+		// TODO Auto-generated method stub
+		
+			
+		return adminDAO.listQuestion(qvo);
+		
+	}
+	
+	
+	
 
 }

@@ -1,9 +1,9 @@
 package com.pi.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import com.pi.domain.MemberVO;
+import com.pi.domain.QuestionVO;
 import com.pi.paging.Criteria;
 
 public interface AdminDAO {
@@ -21,4 +21,8 @@ public interface AdminDAO {
     
     
     public void updateState(MemberVO vo);
+    
+    
+    // 질문목록
+    public List<QuestionVO> listQuestion(QuestionVO qvo);
 }

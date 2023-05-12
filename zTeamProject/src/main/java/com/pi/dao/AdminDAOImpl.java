@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pi.domain.MemberVO;
+import com.pi.domain.QuestionVO;
 import com.pi.paging.Criteria;
 
 @Repository("adminDAO")
@@ -57,6 +58,15 @@ public class AdminDAOImpl implements AdminDAO {
 		System.out.println("===> Mybatis updateState() 호출");
 		mybatis.update("AdminMapper.updateMember", vo);
 
+	}
+
+
+	@Override
+	public List<QuestionVO> listQuestion(QuestionVO qvo) {
+		// TODO Auto-generated method stub
+		System.out.println("===> Mybatis listQuestion() 호출");
+		
+		return mybatis.selectList("AdminMapper.selectAllQuestion", qvo);
 	}
 
 }

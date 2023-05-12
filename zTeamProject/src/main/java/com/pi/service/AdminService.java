@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.pi.domain.MemberVO;
+import com.pi.domain.QuestionVO;
 import com.pi.paging.Criteria;
 
 public interface AdminService {
@@ -21,5 +22,9 @@ public interface AdminService {
 	
 	// 회원 사업자 수정
 	public void updateBusiness(MemberVO vo);
+	
+	
+	// 질문목록
+    public List<QuestionVO> listQuestion(QuestionVO qvo);
 
 }
