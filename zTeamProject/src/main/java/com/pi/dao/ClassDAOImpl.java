@@ -117,4 +117,5 @@ public class ClassDAOImpl implements ClassDAO {
 		mybatis.update("ClassMapper.class_delete", class_number);
 	}
 	
+	
 }

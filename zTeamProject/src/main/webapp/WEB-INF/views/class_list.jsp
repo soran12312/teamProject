@@ -30,16 +30,8 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(function(){
-   	
-	$('#cate').change(function(){ // 카테고리 셀렉트태그 변경 시
-		location.href = '/zTeamProject/cate_list.do?category_number='+$(this).val(); // 카테고리검색으로 리다이렉팅
-	});
-	
-	
-}); // end of $
-</script>
+<script src="resources/js/class_list.js"></script>
+
 </head>
 <body>
 

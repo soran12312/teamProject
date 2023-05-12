@@ -30,18 +30,7 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(function(){
-   	
-	$('#cate').change(function(){ // 카테고리 셀렉트태그 변경 시
-		
-		location.href = '/zTeamProject/cate_review_list.do?category_number='+$(this).val(); // 카테고리검색으로 리다이렉팅
-		
-	});
-	
-	
-}); // end of $
-</script>
+
 </head>
 <body style="">
 <a id="topID"></a>
@@ -179,7 +168,7 @@ $(function(){
             <option value="r.title">제목</option>
         </select>
         <input type="text" name="keyword" id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
     </fieldset>
     		
