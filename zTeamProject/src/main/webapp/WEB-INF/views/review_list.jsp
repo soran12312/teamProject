@@ -132,10 +132,10 @@
                         <a href="/zTeamProject/review_detail.do?review_number=${map.review_number}">
 						<em class="iconPs bo_tit"></em>
 						<i class="imgAr">
-						<c:if test="${not empty map.path}">
-						<img src="${map.path}">
+						<c:if test="${not empty map.review_img_path}">
+						<img src="${map.review_img_path}">
 						</c:if>
-						<c:if test="${empty map.path}">
+						<c:if test="${empty map.review_img_path}">
 						<img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg">
 						</c:if>
 						</i><em class="gall_info">

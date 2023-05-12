@@ -59,7 +59,7 @@ public class GuildController {
 			guildService.updateImgByPath(k);
 		}
 		
-		return "guild_list";
+		return "redirect:guild_list.do?currentPage=1";
 	}	
 	
 	@RequestMapping("/guild_list.do")

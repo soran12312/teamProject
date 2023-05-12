@@ -30,46 +30,7 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(function(){
-	
-	if(${sessionScope.email eq map.email}){
-		$("#review_delete").click(function(){
-			
-			if(confirm("정말 삭제하시겠습니까?")){
-				alert("삭제되었습니다.");
-				location.href = '/zTeamProject/review_delete.do?review_number='+${map.review_number};
-			}
-		});
-		
-	} // end of if(로그인 한 사람과 글 작성자가 같은 사람이면 true)
-	
-
-	$("a.view_image").click(function() {
-	        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
-	        return false;
-	    });
-
-	    // 이미지 리사이즈
-	$("#bo_v_atc").viewimageresize();
-	    
-	
-	function board_move(href)
-	{
-	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-	}
-	
-	function board_move(href)
-	{
-	    window.open(href, "boardmove", "left=50, top=50, width=500, height=550, scrollbars=1");
-	}
-	
-	// 글자수 제한
-	var char_min = parseInt(0); // 최소
-	var char_max = parseInt(0); // 최대
-	
-}); // end of $
-</script>
+<script src="resources/js/review_detail.js"></script>
 </head>
 <body style="">
 <a id="topID"></a>
@@ -180,9 +141,9 @@ $(function(){
            <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
            <li><a href="/zTeamProject/main_view.do#support" class="btn_b01"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           </c:if>
            <!-- 강좌 보러가기 버튼 -->
            <li><a href="/zTeamProject/class_detail.do?class_number=${map.class_number}" class="btn_b01"><i class="fa-solid fa-graduation-cap"></i> 강좌 보러가기</a></li>
-           </c:if>
            <!-- 목록 보기 버튼 -->
            <li><a href="/zTeamProject/review_list.do?currentPage=1" class="btn_b01"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul> 
