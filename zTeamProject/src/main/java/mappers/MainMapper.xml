@@ -5,8 +5,17 @@
 
 
 	<!-- 이메일을 받아 해당 이메일이 회원테이블에 있는지 확인 -->
-	<select id="loginCheck" resultType="com.pi.domain.MemberVO" parameterType="com.pi.domain.MemberVO">
-		SELECT * FROM member WHERE email=#{email}
+	<select id="loginCheck" resultType="HashMap" parameterType="com.pi.domain.MemberVO">
+		SELECT m.email email 
+		, m.nickname nickname
+		, m.member_grade member_grade
+		, m.member_state member_state
+		, m.introduce introduce
+		, m.business_number business_number
+		, i.path path
+		FROM member m LEFT OUTER JOIN image i 
+		ON m.email = i.email
+		WHERE m.email=#{email}
 	</select>
 	
 	<!-- DB에서 시,도 정보 가져옴 -->
@@ -47,13 +56,14 @@
 	</insert>
 	
 	<!-- 회원이메일로 해당 회원의 관심지역정보를 가져옴 -->
-	<select id="selectAllLocationNumberByEmail" resultType="com.pi.domain.LocationVO" parameterType="String">
+	<select id="selectAllLocationNumberByEmail" resultType="HashMap" parameterType="String">
 		SELECT l.location_number location_number
 		, l.addr1 addr1
 		, l.addr2 addr2
 		, l.addr3 addr3
+		, i.interest_location_number interest_location_number
 		FROM location l INNER JOIN 
-		(SELECT location_number FROM interest_location
+		(SELECT location_number, interest_location_number FROM interest_location
 		WHERE email = #{email}) i 
 		ON l.location_number = i.location_number
 	</select>

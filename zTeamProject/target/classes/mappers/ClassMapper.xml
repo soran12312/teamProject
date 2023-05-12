@@ -45,6 +45,8 @@
 		, i.path path
 		, h.class_hashtag class_hashtag
 		, m.nickname nickname
+		, m.member_grade member_grade
+		, m.business_number business_number
 		FROM class c LEFT OUTER JOIN (SELECT image_number, class_number, path 
 		FROM image GROUP BY class_number ORDER BY image_number DESC) i
 		ON c.class_number = i.class_number 
@@ -52,8 +54,7 @@
 		, group_concat( hashtag_name separator ' #' ) class_hashtag
 		FROM hashtag GROUP BY class_number) h
 		ON c.class_number = h.class_number 
-		INNER JOIN (SELECT email, nickname
-		FROM member) m 
+		INNER JOIN member m 
 		ON c.email = m.email
 		WHERE ( c.location_number = #{location_number1} 
 		OR c.location_number = #{location_number2} 
@@ -98,6 +99,8 @@
 		, m.nickname nickname 
 		, m.introduce introduce
 		, m.path member_img_path
+		, m.member_grade member_grade
+		, m.business_number business_number
 		, h.class_hashtag class_hashtag
 		FROM class c LEFT OUTER JOIN (SELECT 
 		class_number, COUNT(like_state=1) class_like 
@@ -105,7 +108,7 @@
 		GROUP BY class_number) l
 		ON c.class_number = l.class_number
 		LEFT OUTER JOIN (SELECT 
-		m.email email, m.nickname nickname, m.introduce introduce, i.path path
+		m.email email, m.nickname nickname, m.introduce introduce, i.path path, m.member_grade member_grade, m.business_number business_number
 		FROM member m LEFT OUTER JOIN image i
 		ON m.email = i.email) m
 		ON c.email = m.email

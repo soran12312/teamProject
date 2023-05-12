@@ -1,10 +1,19 @@
 package com.pi.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.pi.domain.ImageVO;
 import com.pi.domain.InterestLocationVO;
 import com.pi.domain.MemberVO;
 import com.pi.service.MemberService;
@@ -42,4 +51,81 @@ public class MemberController {
 		
 		return "main_view";
 	}
+	
+	@RequestMapping("/modify_member.do")
+	@Transactional
+	public String modify_member(MultipartFile file, int interest_location_number1, int interest_location_number2, int interest_location_number3, MemberVO mvo, String location_number1, String location_number2, String location_number3, int img_check) {
+		
+		
+		if(location_number1 != null && !location_number1.isEmpty()) {
+			HashMap map = new HashMap();
+			map.put("mod_location_number", location_number1);
+			map.put("interest_location_number", interest_location_number1);
+			
+			memberService.mod_interest_location(map);
+		}else if(location_number2 != null && !location_number2.isEmpty()) {
+			HashMap map = new HashMap();
+			map.put("mod_location_number", location_number2);
+			map.put("interest_location_number", interest_location_number2);
+			
+			memberService.mod_interest_location(map);
+		}else if(location_number3 != null && !location_number3.isEmpty()) {
+			HashMap map = new HashMap();
+			map.put("mod_location_number", location_number3);
+			map.put("interest_location_number", interest_location_number3);
+			
+			memberService.mod_interest_location(map);
+		}
+		
+		ImageVO ivo = new ImageVO();
+		
+		if(!file.isEmpty()) { // 이용자가 문의에 파일을 첨부했을 경우
+			ivo.setOriginal_name(file.getOriginalFilename()); // 이미지의 원래이름 저장
+			ivo.setSize(file.getSize()); // 이미지 크기 저장
+			
+			long time = System.currentTimeMillis(); // 현재시간을 밀리초단위로 가져온다.
+			
+			ivo.setSave_name(String.valueOf(time) + "_" + ivo.getOriginal_name()); // 원래이름에 현재시간을 더해 저장용 이름을 만든다.
+			
+			String realPath="C:\\Users\\kosmo\\git\\teamProject\\zTeamProject\\src\\main\\webapp\\resources\\uploads\\"+ivo.getSave_name(); // 실제 저장되는 경로
+			String path = "http://192.168.0.68:8080/zTeamProject/resources/uploads/"+ivo.getSave_name(); // view에 띄울 용도의 이미지 경로
+			
+			ivo.setPath(path); // 이미지경로(uri)를 저장
+			
+			//System.out.println(realPath);
+			
+			File f = new File(realPath);
+			
+			try {
+				file.transferTo(f); // 실제 저장되는 경로에 이미지 저장
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+			ivo.setEmail(mvo.getEmail());
+			
+			int cnt = memberService.img_check(mvo.getEmail());
+			
+			if(cnt==0) {
+				memberService.img_insert(ivo);
+			}else{
+				memberService.img_update(ivo);
+			}
+			
+		} // end of if(!file.isEmpty())
+		
+		memberService.member_update(mvo);
+		
+		
+		return "redirect:mypage.do";
+	}
+	
+	@RequestMapping("/mypage.do")
+	public void mypage(Model m, HttpSession session) {
+		String email = (String)session.getAttribute("email");
+		
+		
+	}
+	
+	
+	
 }

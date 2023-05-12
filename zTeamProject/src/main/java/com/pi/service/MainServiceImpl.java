@@ -152,7 +152,7 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public MemberVO loginCheck(MemberVO vo) {
+	public HashMap loginCheck(MemberVO vo) {
 		
 		return mainDAO.loginCheck(vo);
 	}
@@ -191,7 +191,7 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public List<LocationVO> selectAllLocationNumberByEmail(String email) {
+	public List<HashMap> selectAllLocationNumberByEmail(String email) {
 		
 		return mainDAO.selectAllLocationNumberByEmail(email);
 	}

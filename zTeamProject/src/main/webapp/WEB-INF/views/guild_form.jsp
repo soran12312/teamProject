@@ -257,8 +257,7 @@
  						<table>
                     		<tr>
                     			<td>지역 :&nbsp;</td>
-                    			<td class='select_location' colspan="2">
-                    			</td>
+                    			<td class='select_location' colspan="2"></td>
                     		</tr>
                     		<tr>
                     			<td>모임인원</td>
@@ -278,7 +277,28 @@
                    </div>
                    </div>
 
-<jsp:include page="../../new_footer.jsp"></jsp:include>
+<!-- 하단 시작 { -->
+<footer id="footer">
+    <dl>
+        <dt><img src="resources/images/classList/logo.png" alt=""></dt>
+        <dd>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area">개인정보처리방침</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
+        </dd>
+    </dl>
+	<address>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
+</footer>
+<!-- 워프 버튼 시작 { -->
+<button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"></button>
+<!-- 워프 버튼 끝 } -->
+<!-- 하단 끝 -->
 
 </body>
 </html>

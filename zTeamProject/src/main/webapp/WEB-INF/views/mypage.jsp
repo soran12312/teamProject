@@ -56,7 +56,7 @@ $(function(){
 		$(this).css('cursor','pointer');
 	});
 	
-	$(".locDiv").on('click','.loc',function(){ // 관심지역 클릭 시
+	$(".locDiv").on('click','a',function(){ // 관심지역 클릭 시
 		
 		var clk = $(this);
 		
@@ -145,7 +145,8 @@ $(function(){
 				,success	: function(result){
 					//alert(result);
 					//console.log(result);
-					
+					var num = sel.parent().next().attr("name").replace('location_number','');
+					//alert(num);
 					sel.nextAll().remove()
 					
 					var select = $('<select class = "addr3" name = "addr3" />')
@@ -159,8 +160,6 @@ $(function(){
 						select.append(option);
 					} // end of for
 					sel.parent().append(select);
-					var location_number = $('<input type="hidden" name="location_number2" class="location_number2" />');
-					sel.parent().append(location_number);
 					
 				}
 				,error	: function(err){
@@ -191,7 +190,7 @@ $(function(){
 					//alert(result);
 					//console.log(result);
 					
-					sel.next().val(result);
+					sel.parent().next().next().val(result);
 					
 				}
 				,error	: function(err){
@@ -203,6 +202,7 @@ $(function(){
 		} // end of if
 		
 	});//end of on(지역3 셀렉트시 이벤트)
+	
 	
 	
 }); // end of $
@@ -228,18 +228,41 @@ $(function(){
 </div>
       
  <div class="section-MyPage min-height-50vh flex flex-ai-c ">
-        <form name="form" action="doModifyInfo" method="POST">
+        <form name="form" action="modify_member.do" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="email" value="${sessionScope.email}">
 
           <div class="flex flex-jc-c">           
               <div class=MyPage_cell__title>
-              	<div><img src="resources/images/classList/noimage.jpg" width="150px" height="150px" alt=""/></a></div>
+              	<div>
+              	<c:if test="${empty sessionScope.path}">
+              	<img src="resources/images/classList/noimage.jpg" width="150px" height="150px" alt=""/>
+              	<input type="hidden" name='img_check' value='0'>
+              	</c:if>
+              	<c:if test="${not empty sessionScope.path}">
+              	<img src="${sessionScope.path}" width="150px" height="150px" alt=""/>
+              	<input type="hidden" name='img_check' value='1'>
+              	</c:if>
+              	</div>
               	<br/>
-              	<input type="file">
+              	<input type="file" name="file">
+              	<br/>
+              	<span>${sessionScope.email}</span>
+              	<br/>
+              	<br/>
                 <span>자기소개</span>
                 <div class=MyPage_cell__body>
                   <textarea id="introduce" name='introduce' >${sessionScope.introduce}</textarea>
                 </div>
+                <br/>
+                <c:if test="${sessionScope.member_grade eq 1}">
+                <span>일반회원</span>
+                </c:if>
+                <c:if test="${sessionScope.member_grade eq 2}">
+                <span>사업자회원</span>
+                </c:if>
+                <c:if test="${sessionScope.member_grade eq 3}">
+                <span>유료회원</span>
+                </c:if>
               </div>            
             <div class="section-MyPage-body__cell">
               
@@ -249,12 +272,15 @@ $(function(){
                   <input name="nickname" type="text" maxlength="50" value="${sessionScope.nickname}">
                 </div>
               </div>
-
+				<input type="hidden" name="mod_location">
               <div class=MyPage_cell__title>
                 <span>관심지역</span>
-                <c:forEach var="LocationVO" items="${sessionScope.locList}" ><div class='locDiv'><a class='loc' name='loc'>${LocationVO.addr3}</a></div>
-                <input type="hidden" class='location_number1' name='location_number1' value="${LocationVO.location_number}">
-                <br/></c:forEach>
+                <c:forEach var="LocationVO" items="${sessionScope.locList}" varStatus="status">
+	                <div class='locDiv'><a class='loc${status.count}' name='loc${status.count}'>${LocationVO.addr3}</a></div>
+	                <input type="hidden" class='interest_location_number${status.count}' name='interest_location_number${status.count}' value="${LocationVO.interest_location_number}">
+	                <input type="hidden" name="location_number${status.count}" class="location_number${status.count}" />
+	                <br/>
+                </c:forEach>
               </div>
               <div class="section-MyPage-body__option flex flex-jc-fe flex-ai-fe">
                 <button class="submitModifyBtn btn btn-go" type="submit" onclick="if(confirm('정말 변경하시겠습니까?') == false) {return false;}"><i class="far fa-edit"></i> 변경</button>
@@ -282,7 +308,14 @@ $(function(){
 
 				<div class="tab-content ">
 		 			<div class="tab-pane active" id="1">
-          				<h3>1</h3>
+          				<h3>&#62;내가 개설한 강좌</h3><br/>
+          				<table>
+          					<thead>
+          						<tr>
+          							<td>No.</td><td>작성일</td><td>강좌명</td>
+          						</tr>
+          					</thead>
+          				</table>
 					</div>
 					<div class="tab-pane" id="2">
           				<h3>2</h3>

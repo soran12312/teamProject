@@ -40,6 +40,9 @@
 		AND ( g.location_number = #{location_number1} 
 		OR g.location_number = #{location_number2} 
 		OR g.location_number = #{location_number3} )
+		<if test="keyword !=null">
+      	AND ${option} LIKE CONCAT('%',#{keyword},'%')
+      	</if>
 		ORDER BY guild_number DESC LIMIT #{first_view}, 10
 	</select>
 	
@@ -49,6 +52,7 @@
 		WHERE ( location_number = #{location_number1} 
 		OR location_number = #{location_number2} 
 		OR location_number = #{location_number3} )
+		AND guild_state = 1 
 	</select>
 	
 	<select id="selectAllGuildDetailByGuildNumber" parameterType="int" resultType="HashMap">
@@ -62,7 +66,7 @@
 		, l.addr1 addr1
 		, l.addr2 addr2
 		, l.addr3 addr3
-		, IFNULL(lk.guild_like,0) guild_like
+		, lk.guild_like guild_like
 		, m.nickname nickname
 		, m.email email
 		FROM guild g INNER JOIN location l
@@ -93,4 +97,16 @@
 		guild_state = 0
 		WHERE guild_number = #{guild_number}
 	</update>
+	
+	<select id="guild_join" parameterType="com.pi.domain.GuildJoinVO" resultType="int">
+		select count(*) cnt
+		from guild_join
+		where guild_number=#{guild_number} and email=#{email} and guild_join_state=1
+	</select>
+	
+	<insert id="insert_guild_join" parameterType="com.pi.domain.GuildJoinVO">
+		INSERT INTO guild_join
+		( guild_number, email )
+		VALUES ( #{guild_number}, #{email} )
+	</insert>
 </mapper>

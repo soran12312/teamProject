@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pi.dao.GuildDAO;
+import com.pi.domain.GuildJoinVO;
 import com.pi.domain.GuildVO;
 import com.pi.domain.LikeVO;
 
@@ -49,7 +50,7 @@ public class GuildServiceImpl implements GuildService {
 		
 		return guildDAO.selectAllGuildDetailByGuildNumber(guild_number);
 	}
-
+	
 	@Override
 	public int checkLike(LikeVO vo) {
 		
@@ -66,5 +67,15 @@ public class GuildServiceImpl implements GuildService {
 	public void guild_delete(int guild_number) {
 		guildDAO.guild_delete(guild_number);
 		
+	}
+	@Override
+	public int guild_join(GuildJoinVO vo) {
+		
+		return guildDAO.guild_join(vo);
+	}
+	
+	@Override
+	public int insert_guild_join(GuildJoinVO vo) {
+		return guildDAO.insert_guild_join(vo);
 	}
 }

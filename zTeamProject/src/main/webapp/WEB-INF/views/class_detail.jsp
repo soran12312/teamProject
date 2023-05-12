@@ -154,10 +154,7 @@ $(function(){
 </div>
 
 <div id="ctWrap">
-
-	<div id="container">
-
-<script src="http://sample.paged.kr/purewhite/js/viewimageresize.js"></script>
+<div id="container">
 
 <!-- 게시물 읽기 시작 { -->
 
@@ -170,10 +167,11 @@ $(function(){
     </header>
     
     <section id="bo_v_info">
-        <span class="sound_only">조회수</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
-        <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
-        <span class="sound_only">현재인원</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재인원 : ${map.current_member}명</strong>
-        <span class="sound_only">최대인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
+        <strong class="if_date2"><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
+        <strong class="if_date2"><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
+        <strong class="if_date2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재인원 : ${map.current_member}명</strong>
+        <strong class="if_date2">&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong><br/>
+        <strong class="if_date2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;금액 : ${map.price}원</strong>
     </section>
     
 
@@ -182,9 +180,19 @@ $(function(){
 
 		
         <!-- 본문 내용 시작 { -->
-        <div id="bo_v_con">${map.detail}</div>
-                <!-- } 본문 내용 끝 -->
-
+        <div class="bo_v_left">${map.detail}</div>
+        <!-- } 본문 내용 끝 -->
+		<!-- 게시자 프로필 시작 { -->
+		<div class="bo_v_right">   
+        <c:if test="${not empty map.member_img_path}">
+        <strong><img src="${map.member_img_path}" height="100px"></strong>
+        </c:if>
+        <c:if test="${empty map.member_img_path}">
+        <strong><img src="http://192.168.0.68:8080/zTeamProject/resources/uploads/no_pic.jpg" height="100px"></strong>
+        </c:if>
+        <strong><span class="sv_member">작성자 : ${map.nickname}</span><br/><textarea readonly="readonly">${map.introduce}</textarea></strong>        
+        </div> 
+        <!-- 게시자 프로필 끝 } -->
         
 
     </section>
@@ -194,51 +202,70 @@ $(function(){
     
     
     
-    <!-- 게시물 상단 버튼 시작 { -->
+    <!-- 게시물 상세 하단 버튼 시작 { -->
     <div id="bo_v_top">        
         <ul class="bo_v_left"></ul>
         <ul class="bo_v_com">
-        	<li><u><span class="sound_only">해시태그 </span> #${map.class_hashtag}</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        	<li><u class="if_date2"> #${map.class_hashtag}</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
  	  		<li><strong class="if_date2"><span class="sound_only">강좌기간</span><i class="fa fa-clock-o" aria-hidden="true"></i>기간 : ${map.start_date} ~ ${map.end_date} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></li>
            <!-- 좋아요 버튼 -->
-           <li><a href="/zTeamProject/insertLike.do?class_number=${map.class_number}&email=${sessionScope.email}" class="btn_b00 btn"><i class="fa-regular fa-heart"></i>${map.class_like}</a></li>
+           <li><a href="/zTeamProject/insertLike.do?class_number=${map.class_number}&email=${sessionScope.email}" class="btn_b01"><i class="fa-regular fa-heart"></i> ${map.class_like}</a></li>
            <c:if test="${sessionScope.email eq map.email}">
            <!-- 삭제하기 버튼 -->
-           <li><a id="class_delete" class="btn_b01 btn">삭제하기</a></li>
+           <li><a id="class_delete" class="btn_b01">삭제하기</a></li>
            </c:if>
            <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
-           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            <!-- 강좌 신청 버튼 -->
-           <li><a id='class_Join' class="btn_b01 btn"><i class="fa fa-inbox"></i> 강좌신청</a></li>
+           <li><a id='class_Join' class="btn_b01"><i class="fa fa-inbox"></i> 강좌신청</a></li>
            </c:if>
            <!-- 목록 보기 버튼 -->
-           <li><a href="/zTeamProject/class_list.do?currentPage=1" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+           <li><a href="/zTeamProject/class_list.do?currentPage=1" class="btn_b01"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul>
 
         
-    </div>
-    <!-- } 게시물 상단 버튼 끝 -->
+    </div>    
+    <!-- 게시물 상세 하단 버튼 끝 } -->
     
-    <section id="bo_v_info">
-        <h2>페이지 정보</h2>
-        <c:if test="${not empty map.member_img_path}">
-        <span class="sound_only">프로필사진</span> <strong><img src="${map.member_img_path}" height="100px"></strong>
-        </c:if>
-        <c:if test="${empty map.member_img_path}">
-        <span class="sound_only">프로필사진</span> <strong><img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg" height="100px"></strong>
-        </c:if>
-        <span class="sound_only">작성자</span> <strong><span class="sv_member">작성자 : ${map.nickname}</span><br/><textarea readonly="readonly">${map.introduce}</textarea></strong>
-        
-    </section>
 
 
+<hr class="dashHr">	
 </article>
 <!-- } 게시판 읽기 끝 -->
 
 
 </div><!-- // #container 닫음 -->
+</div><!-- ctWrap end -->  
+<!-- 하단 시작 { -->
+<footer id="footer">
+    <dl>
+        <dt><img src="resources/images/classList/logo.png" alt=""></dt>
+        <dd>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area">개인정보처리방침</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
+        </dd>
+    </dl>
+	<address>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
+</footer>
+<!-- 워프 버튼 시작 { -->
+<button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"><span class="sound_only">페이지 상단으로 이동</span></button>
+<!-- 워프 버튼 끝 } -->
 
+<!-- 상단 현재위치 및 서브메뉴 활성화 설정// -->
+<script>
+$(function(){$('.snb.bo_tablegallery, .snb .snb2d_bo_tablegallery').addClass('active');});/*  보테이블 : bo_tablegallery  */
+$(document).ready(function(){ if ( $("#snb > li").is(".snb.active") ) { $('.loc1D').text( $('#snb .bo_tablegallery h2 a b').text());$('.loc2D').html( $('.snb2d_bo_tablegallery a b').html());$('.faArr').html('<i class="fa fa-angle-right"></i>');var index = $("#snb > li").index("#snb > li.active");$( "#page_title" ).addClass("subTopBg_0"+($("#snb > li.bo_tablegallery").index() + 1) ); } else { $('.loc1D').text('강좌'); $('.noInfoPageTit').html('<h2><a><b>갤러리</b><sub>sample.paged.kr</sub></a></h2>'); $('.noInfoPageTit').addClass('active');$('#page_title').addClass('subTopBg_00'); } });  </script>
+<!-- //현재위치 및 서브메뉴 활성화 설정 -->
+<script>$(function() { /* 모바일용 메뉴바 */ var articleMgnb = $("#snb li.snb"); articleMgnb.addClass("hide"); $("#snb li.active").removeClass("hide").addClass("show"); $("#snb li.active .snb2dul").show(); $(".snb2dDown").click(function(){ var myArticle = $(this).parents("#snb li.snb"); if(myArticle.hasClass("hide")){ articleMgnb.addClass("hide").removeClass("show"); articleMgnb.find(".snb2dul").slideUp("fast"); myArticle.removeClass("hide").addClass("show"); myArticle.find(".snb2dul").slideDown("fast"); } else { myArticle.removeClass("show").addClass("hide");myArticle.find(".snb2dul").slideUp("fast"); } }); });</script>
+<!-- } 하단 끝 -->
 
 </body>
 </html>
