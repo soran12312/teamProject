@@ -141,13 +141,13 @@ $(function(){
                     <div class="gall_boxa">
                         <a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
 						<em class="iconPs bo_tit"></em>
-						<c:if test="${member_grade eq 1}">
+						<c:if test="${map.member_grade eq 1}">
 						<i class="imgAr">
 						</c:if>
-						<c:if test="${member_grade eq 2}">
+						<c:if test="${map.member_grade eq 2}">
 						<i class="imgAr" style="border: 3px solid #98b25c">
 						</c:if>
-						<c:if test="${member_grade eq 3}">
+						<c:if test="${map.member_grade eq 3}">
 						<i class="imgAr" style="border: 3px solid #f38f84">
 						</c:if>
 						<c:if test="${not empty map.path}">

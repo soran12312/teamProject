@@ -117,6 +117,10 @@ public class GuildController {
 	            endPage = maxPage;
 	        }
 			
+		    if(option != null) {
+		         map.put("option", option);
+		         map.put("keyword", keyword); // 검색옵션이 있을 경우 해쉬맵에 검색옵션과 키워드를 넣는다.
+		    }
 			
 			//현재 페이지에서 첫번째로 보여질 글 인덱스
 			int first_view = (currentPage-1)*10;
@@ -137,6 +141,9 @@ public class GuildController {
 	
 	@RequestMapping("/guild_detail.do")
 	public void guild_detail(HttpSession session, Model m , @RequestParam int guild_number) {
+		
+		session.removeAttribute("option");
+		session.removeAttribute("keyword");
 		
 		HashMap map = guildService.selectAllGuildDetailByGuildNumber(guild_number);
 		m.addAttribute("map", map);
@@ -184,10 +191,13 @@ public class GuildController {
 	@RequestMapping("/search_guild.do")
 	   public String search_guild(HttpSession session, String option, String keyword){
 	      
-
+		if(keyword=="") { // 검색 키워드가 ""일 경우(전체검색)
+			session.removeAttribute("option");
+			session.removeAttribute("keyword"); // 세션에서 검색옵션과 키워드를 삭제
+		}else { 			// 검색키워드가 있을 경우
 	         session.setAttribute("option", option);
 	         session.setAttribute("keyword", keyword); // 세션에 검색옵션과 키워드를 저장
-	      
+		}
 	      
 	      return "redirect:guild_list.do?currentPage=1"; // 강좌 리스트.do로 리다이렉팅
 	 }

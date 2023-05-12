@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("utf-8"); //한글처리 %>
 <!DOCTYPE html>
 <!-- saved from url=(0063)http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -40,9 +42,8 @@ $(function(){
 		});
 	} // end of if(로그인 한 사람과 글 작성자가 같은 사람이면 true)
 	
-		$("#guild_join").click(
-			var param ={
-						 "chatroom"			:"${map.email}"
+		$("#guild_join").click(function(){
+			var param = { "chatroom"		:"${map.email}"
 						,"email"			:"${sessionScope.email}"
 						,"guild_number"		:"${map.guild_number}"
 						,"current_member"	:"${map.current_member}"
@@ -56,7 +57,7 @@ $(function(){
 				,success 	: function(result){;
 									if(result==1){
 										alert("─=≡Σ((( つ•̀ω•́)つ 채팅방으로 이동합니다!");
-										window.open("https://chatting--pum-i.run.goorm.site/?chatroom="+${map.email},"_blank");
+										window.open("https://chatting--pum-i.run.goorm.site/?chatroom="+"${map.email}","_blank");
 									}//END if
 									else if(result==2){
 										alert("관리자에게 문의하세요(T^T)");
@@ -69,7 +70,7 @@ $(function(){
 							}//END of success
 				,error 		: function(err){alert(err);}
 			});//END of ajax
-		);//END of guild_join.click
+		});//END of guild_join.click
 		
 });
 </script>

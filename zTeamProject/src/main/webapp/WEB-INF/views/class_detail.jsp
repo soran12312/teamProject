@@ -170,7 +170,8 @@ $(function(){
         <strong class="if_date2"><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
         <strong class="if_date2"><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
         <strong class="if_date2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재인원 : ${map.current_member}명</strong>
-        <strong class="if_date2">&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
+        <strong class="if_date2">&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong><br/>
+        <strong class="if_date2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;금액 : ${map.price}원</strong>
     </section>
     
 

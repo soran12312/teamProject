@@ -245,10 +245,24 @@ $(function(){
               	</div>
               	<br/>
               	<input type="file" name="file">
+              	<br/>
+              	<span>${sessionScope.email}</span>
+              	<br/>
+              	<br/>
                 <span>자기소개</span>
                 <div class=MyPage_cell__body>
                   <textarea id="introduce" name='introduce' >${sessionScope.introduce}</textarea>
                 </div>
+                <br/>
+                <c:if test="${sessionScope.member_grade eq 1}">
+                <span>일반회원</span>
+                </c:if>
+                <c:if test="${sessionScope.member_grade eq 2}">
+                <span>사업자회원</span>
+                </c:if>
+                <c:if test="${sessionScope.member_grade eq 3}">
+                <span>유료회원</span>
+                </c:if>
               </div>            
             <div class="section-MyPage-body__cell">
               
@@ -294,7 +308,14 @@ $(function(){
 
 				<div class="tab-content ">
 		 			<div class="tab-pane active" id="1">
-          				<h3>1</h3>
+          				<h3>&#62;내가 개설한 강좌</h3><br/>
+          				<table>
+          					<thead>
+          						<tr>
+          							<td>No.</td><td>작성일</td><td>강좌명</td>
+          						</tr>
+          					</thead>
+          				</table>
 					</div>
 					<div class="tab-pane" id="2">
           				<h3>2</h3>
