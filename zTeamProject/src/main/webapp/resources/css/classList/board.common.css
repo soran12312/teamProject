@@ -187,9 +187,9 @@ html.no-overflowscrolling #autosave_pop {height:auto;max-height:10000px !importa
 .bo_v_com {margin:20px 0;float:right}
 .bo_v_com li {float:left;margin-left:5px}
 
-.bo_v_left {margin:20px 0;float:left}
+.bo_v_left {margin:20px 0;float:left; width: 85%}
 .bo_v_left li {float:left;margin-right:5px}
-.bo_v_right {margin:20px 0;float:right}
+.bo_v_right {margin:20px 0;float:right; width: 15%}
 .bo_v_right li {float:right;margin-right:5px}
 
 .bo_v_nb {margin:20px 0;position:relative;clear:both;text-align:left;;overflow:hidden;border-top:3px solid #ddd;}

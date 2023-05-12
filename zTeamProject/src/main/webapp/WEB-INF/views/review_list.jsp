@@ -99,32 +99,19 @@ $(function(){
 	</div>
 </div>
 
+  
 
 
-<div id="ctWrap">
 
-<div id="container">
+<div id="ctWrap"><!-- ctWrap 시작 -->
+<div id="container"><!-- container 시작 -->    
 
 <!-- 게시판 목록 시작 { -->
 <div id="bo_gall" style="width:100%">
 <div id="bo_btn_top">
 <div id="bo_list_total">
-            
-        <select name="cate" id="cate">
-        	<option>카테고리</option>
-            <option value="0">전체보기</option>
-            <option value="1">요리</option>
-            <option value="2">운동</option>
-            <option value="3">공예</option>
-            <option value="4">IT</option>
-            <option value="5">게임</option>
-            <option value="6">음악</option>
-            <option value="7">교육</option>
-            <option value="8">인테리어</option>
-            <option value="9">기타</option>
-        </select>
-        </div>
-        </div>
+</div>
+</div>
     <!-- 게시판 페이지 정보 및 버튼 시작 { -->
 
     <!-- } 게시판 페이지 정보 및 버튼 끝 -->
@@ -143,10 +130,6 @@ $(function(){
     <input type="hidden" name="sod" value="">
     <input type="hidden" name="page" value="1">
     <input type="hidden" name="sw" value="">
-
-
-    <h2 class="sound_only">갤러리 목록</h2>
-	
 
     <ul id="gall_ul" class="gall_row">
     <c:forEach var="map" items="${listMap}">
@@ -184,7 +167,7 @@ $(function(){
     
     </form>
     </div>
-    </div>
+    
      
     <!-- 게시판 검색 시작 { -->
     <fieldset id="bo_sch">
@@ -218,8 +201,9 @@ $(function(){
 
 
     
-    <!-- } 게시판 검색 끝 -->   
-</div>
+</div><!-- container 끝 -->      
+</div><!-- ctWrap 끝 -->
+
 
 <footer id="footer">
     <dl>
@@ -231,7 +215,7 @@ $(function(){
         </dd>
     </dl>
    <address>
-		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span> </br>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span>
 		 <em>|</em><span> Tel. 070-0000-0000</span> 
 		 <em>|</em><span> Fax. 050-0000-0000</span> 
 		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 

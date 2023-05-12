@@ -126,11 +126,11 @@
       </c:if>
       <!-- end section ================================================== 메인 1페이지====================================================== -->
 <!-- section 1 -->	  
-<div id="today_money"/>
+<div id="today_money"></div>
 <section class="mainContents">
 	<div class="prodLatWR">
 	<div class="prodLat">
-		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 장인!▼▼▼<u></u></a></h2>
+		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 장인!▼▼▼</a></h2>
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 					<div class="prodLatRELcon">
 				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
@@ -178,10 +178,11 @@
 					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
 			</div>
 						</div>
-		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
+		
 
 	</div>
 </div>
+
 <script src="http://sample.paged.kr/purewhite/theme/pagedtheme/plugin/owlcarousel/owl.carousel.min.js"></script>
 <script>
 $('.prodLat_product_gallery').owlCarousel({
@@ -261,7 +262,7 @@ $('.prodLat_product_gallery').owlCarousel({
 					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
 			</div>
 						</div>
-		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
+		
 
 	</div>
 </div>
@@ -344,7 +345,7 @@ $('.prodLat_product_gallery').owlCarousel({
 					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
 			</div>
 						</div>
-		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
+		
 
 	</div>
 </div>
@@ -374,60 +375,29 @@ $('.prodLat_product_gallery').owlCarousel({
 </section>
 <!-- end section 3 -->
 <!-- section 4 -->	
-<div id="today_lesson"/>  
+<div id="today_lesson"></div>  
 <section class="mainContents">
 	<div class="prodLatWR">
 	<div class="prodLat">
-		<h2 class="prodLatTit"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery">▼▼▼오늘의 수업!▼▼▼<u></u></a></h2>
+		<h2 class="prodLatTit"><a href="">▼▼▼오늘의 수업!▼▼▼</a></h2>
+		<form name="selectDailyChargedClass" method="post" action="/zTeamProject/selectDailyChargedClass.do">
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
+				<c:forEach var="map" items="${listMap}">
 					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=20">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_20_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=19">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_KaELYXdV_11dc01bd1f38f64cf99b12f69fed9f19d5cc22f6_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=18">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-14_copy_18_12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=17">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_17_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=16">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_8XYeFhzH_941e42ffa8e6f19a7116841327f3963b0e09a8bd_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=15">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-13_copy_15_12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=14">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_14_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=13">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-12_copy_13_31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-					<div class="prodLatRELcon">
-				<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery&amp;wr_id=12">
-					<i><img src="http://sample.paged.kr/purewhite/data/file/product_gallery/thumb-31261188_nmf5YP0i_0393cce4b019c7f1948815a695ce3d407536d9fc_300x300.png" alt="제품명 영역입니다" ></i>
-					<em></em><span class='bo_cate_link'>분류1</span> <b>제품명 영역입니다</b>				</a>
-			</div>
-						</div>
-		<a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_gallery" class="lt_more">제품소개(갤러리형) 더보기 <i class="fa fa-plus" aria-hidden="true"></i></a>
-
+						<a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
+					<i>						
+						<c:if test="${not empty map.path}">
+							<img src="${map.path}">
+						</c:if>
+						<c:if test="${empty map.path}">
+						<img src="http://192.168.0.68:8080/zTeamProject/resources/uploads/no_pic.jpg">
+						</c:if>
+					</i>
+					<em></em><span class='bo_cate_link'>${class_like}</span><b>${map.class_name}</b></a>
+					</div>
+				</c:forEach>
+	   	</div>
+	   	</form>
 	</div>
 </div>
 <script src="http://sample.paged.kr/purewhite/theme/pagedtheme/plugin/owlcarousel/owl.carousel.min.js"></script>

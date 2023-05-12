@@ -127,8 +127,7 @@ $(function(){
 </div>
 
 <div id="ctWrap">
-
-	<div id="container">
+<div id="container">
 
 <script src="http://sample.paged.kr/purewhite/js/viewimageresize.js"></script>
 
@@ -158,7 +157,7 @@ $(function(){
         <span class="sound_only">프로필사진</span> <strong><img src="${map.member_img_path}" height="100px"></strong>
         </c:if>
         <c:if test="${empty map.member_img_path}">
-        <span class="sound_only">프로필사진</span> <strong><img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg" height="100px"></strong>
+        <span class="sound_only">프로필사진</span> <strong><img src="http://192.168.0.68:8080/zTeamProject/resources/uploads/no_pic.jpg" height="100px"></strong>
         </c:if>
         <span class="sound_only">작성자</span> <strong><span class="sv_member">작성자 : ${map.nickname}</span><br/><textarea readonly="readonly">${map.introduce}</textarea></strong>
     	</div>
@@ -192,9 +191,38 @@ $(function(){
 
 </article>
 
-
 </div><!-- // #container 닫음 -->
+</div><!-- // #ctWarp 닫음 -->
 
+<!-- 하단 시작 { -->
+<footer id="footer">
+    <dl>
+        <dt><img src="resources/images/classList/logo.png" alt=""></dt>
+        <dd>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area">개인정보처리방침</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
+        </dd>
+    </dl>
+	<address>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
+</footer>
+<!-- 워프 버튼 시작 { -->
+<button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"><span class="sound_only">페이지 상단으로 이동</span></button>
+<!-- 워프 버튼 끝 } -->
+
+<!-- 상단 현재위치 및 서브메뉴 활성화 설정// -->
+<script>
+$(function(){$('.snb.bo_tablegallery, .snb .snb2d_bo_tablegallery').addClass('active');});/*  보테이블 : bo_tablegallery  */
+$(document).ready(function(){ if ( $("#snb > li").is(".snb.active") ) { $('.loc1D').text( $('#snb .bo_tablegallery h2 a b').text());$('.loc2D').html( $('.snb2d_bo_tablegallery a b').html());$('.faArr').html('<i class="fa fa-angle-right"></i>');var index = $("#snb > li").index("#snb > li.active");$( "#page_title" ).addClass("subTopBg_0"+($("#snb > li.bo_tablegallery").index() + 1) ); } else { $('.loc1D').text('강좌'); $('.noInfoPageTit').html('<h2><a><b>갤러리</b><sub>sample.paged.kr</sub></a></h2>'); $('.noInfoPageTit').addClass('active');$('#page_title').addClass('subTopBg_00'); } });  </script>
+<!-- //현재위치 및 서브메뉴 활성화 설정 -->
+<script>$(function() { /* 모바일용 메뉴바 */ var articleMgnb = $("#snb li.snb"); articleMgnb.addClass("hide"); $("#snb li.active").removeClass("hide").addClass("show"); $("#snb li.active .snb2dul").show(); $(".snb2dDown").click(function(){ var myArticle = $(this).parents("#snb li.snb"); if(myArticle.hasClass("hide")){ articleMgnb.addClass("hide").removeClass("show"); articleMgnb.find(".snb2dul").slideUp("fast"); myArticle.removeClass("hide").addClass("show"); myArticle.find(".snb2dul").slideDown("fast"); } else { myArticle.removeClass("show").addClass("hide");myArticle.find(".snb2dul").slideUp("fast"); } }); });</script>
+<!-- } 하단 끝 -->
 
 </body>
 </html>

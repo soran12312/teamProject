@@ -225,13 +225,12 @@ $(function(){
         </ul>
 
         
-    </div>
-    <div id="bo_v_info"></div>
+    </div>    
     <!-- 게시물 상세 하단 버튼 끝 } -->
     
 
 
-	
+<hr class="dashHr">	
 </article>
 <!-- } 게시판 읽기 끝 -->
 

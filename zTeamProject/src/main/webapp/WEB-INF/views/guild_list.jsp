@@ -33,13 +33,7 @@
 <body>
 <a id="topID"></a>
 <!-- 상단 시작 { -->
-<div id="hd" class="">
-    <h1 id="hd_h1">갤러리 1 페이지</h1>
-
-    <div id="skip_to_container"><a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=gallery#ctWrap">본문 바로가기</a></div>
-
-   <a id="snbOpen"><b><i class="fa fa-bars" aria-hidden="true"></i> <span class="sound_only">사이드메뉴 열기</span></b></a>
-
+<div>
     <nav id="gnb">
         <h2>메인메뉴</h2>
         <div class="gnb_wrap">
@@ -48,22 +42,22 @@
          </div>
             <ul id="gnb_1dul">
                 <li class="gnb_1dli" style="z-index:999">
-                    <a href="index.jsp" target="_self" class="gnb_1da">HOME<u></u></a>
+                    <a href="index.jsp" target="_self" class="gnb_1da">HOME</a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌</a>
                 </li>
                 <li class="gnb_1dli" style="z-index:998">
-                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티</a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰</a>
                 </li> 
                 <li class="gnb_1dli" style="z-index:996"> 
-                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지</a>
                 </li>  
                 <li class="gnb_1dli" style="z-index:996">
-                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃</a>
                 </li>            
             </ul>
         </div>
@@ -87,8 +81,7 @@
 </div>
 
 <div id="ctWrap">
-
-   <div id="container">
+<div id="container">
 
 
 <!-- 게시판 목록 시작  -->
@@ -161,7 +154,7 @@
     <!-- } 게시판 검색 끝 -->
                 <ul class="btn_bo_user">
                <li>
-                  <a href="/zTeamProject/guild_form.do" class="btn_b02 btn"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
+                  <a href="/zTeamProject/guild_form.do" class="btn_b02"><i class="fa fa-pencil" aria-hidden="true"></i> 글쓰기</a>
                </li>
             </ul>
     
@@ -189,8 +182,8 @@
 <!-- } 게시판 목록 끝 -->
 
 
-    </div><!-- // #container 닫음 -->
-
+</div><!-- // #container 닫음 -->
+</div><!-- // #ctWrap 닫음-->
 
 <footer id="footer">
     <dl>

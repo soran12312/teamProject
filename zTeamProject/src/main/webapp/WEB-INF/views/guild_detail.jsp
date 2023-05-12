@@ -147,11 +147,11 @@ $(function(){
     </header>
 
     <section id="bo_v_info">
-        <span class="sound_only">좋아요</span><strong><i class="fa fa-eye" aria-hidden="true"></i> 좋아요 : ${map.guild_like}회</strong>
-        <span class="sound_only">활동지역</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 활동지역 : ${map.addr3}</strong>
-        <span class="sound_only">개설자</span><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 대장 : ${map.nickname}</strong>
-        <span class="sound_only">최대인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
-        <span class="sound_only">현재인원</span><strong>&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;현재 신청 인원 : ${map.current_member}명</strong>
+        <strong class="if_date2"><i class="fa fa-eye" aria-hidden="true"></i> 좋아요 : ${map.guild_like}회</strong>
+        <strong class="if_date2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 활동지역 : ${map.addr3}</strong>
+        <strong class="if_date2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 대장 : ${map.nickname}</strong>
+        <strong class="if_date2">&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;최대 신청가능 인원 : ${map.max_member}명</strong>
+        <strong class="if_date2">&nbsp;//&nbsp;&nbsp;&nbsp;&nbsp;현재 신청 인원 : ${map.current_member}명</strong>
     </section>
     
 
@@ -178,33 +178,22 @@ $(function(){
            <li><a href="/zTeamProject/insertGuildLike.do?guild_number=${map.guild_number}&email=${sessionScope.email}" class="btn_b01"><i class="fa-regular fa-heart"></i> ${map.guild_like}</a></li>
            <c:if test="${sessionScope.email eq map.email}">
            <!-- 삭제하기 버튼 -->
-           <li><a id="guild_delete" class="btn_b01 btn">삭제하기</a></li>
+           <li><a id="guild_delete" class="btn_b01">삭제하기</a></li>
            </c:if>
            <c:if test="${sessionScope.email ne map.email}">
            <!-- 신고하기 버튼 -->
-           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01 btn"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
+           <li><a href="/zTeamProject/main_view.do#support" class="btn_b01"><i class="fa-solid fa-handcuffs"></i> 신고하기</a></li>
            </c:if>
            <!-- 모임 신청 버튼 -->
-           <li><a id="guild_join" class="btn_b01 btn"><i class="fa-solid fa-person-circle-plus"></i> 모임가입</a></li>
+           <li><a id="guild_join" class="btn_b01"><i class="fa-solid fa-person-circle-plus"></i> 모임가입</a></li>
            <!-- 목록 보기 버튼 -->
-           <li><a href="/zTeamProject/guild_list.do?currentPage=1" class="btn_b01 btn"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
+           <li><a href="/zTeamProject/guild_list.do?currentPage=1" class="btn_b01"><i class="fa fa-list" aria-hidden="true"></i> 목록</a></li>
         </ul>
 
         
     </div>
     <!-- } 게시물 상단 버튼 끝 -->
-
-    
-<script>
-// 글자수 제한
-var char_min = parseInt(0); // 최소
-var char_max = parseInt(0); // 최대
-</script>
-<!-- 댓글 시작 { -->
 <hr class="dashHr">
-
-
-
 </article>
 <!-- } 게시판 읽기 끝 -->
 
@@ -232,7 +221,37 @@ $(function() {
 <!-- } 게시글 읽기 끝 -->
 
 </div><!-- // #container 닫음 -->
+</div><!-- // #ctWrap 닫음-->
 
+<!-- 하단 시작 { -->
+<footer id="footer">
+    <dl>
+        <dt><img src="resources/images/classList/logo.png" alt=""></dt>
+        <dd>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/privacy.php .term_area">개인정보처리방침</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/term.php .term_area" data-featherlight-type="ajax">이용약관</a>
+            <a data-featherlight="http://sample.paged.kr/purewhite/theme/pagedtheme/noEmail.php .term_area" data-featherlight-type="ajax">이메일주소 무단수집거부</a>
+        </dd>
+    </dl>
+	<address>
+		<span>서울 금천구 가산디지털 2로 101 한라원앤원타워 B동 3층 B강의실 Team.5랑캐</span>
+		 <em>|</em><span> Tel. 070-0000-0000</span> 
+		 <em>|</em><span> Fax. 050-0000-0000</span> 
+		 <em>|</em><span> E-mail. <a href="ch_db@naver.com">ch_db@naver.com</a></span> 
+		<br><span>본 샘플사이트를 베이스로 5조한테 제작요청 가능합니다.</span>	</address>
+	<p><span>Copyright</span> © <b>sample.paged.kr</b> <span>All rights reserved.2023</span></p>
+</footer>
+<!-- 워프 버튼 시작 { -->
+<button type="button" id="top_btn" class="fa fa-arrow-up" aria-hidden="true" style="display: none;"><span class="sound_only">페이지 상단으로 이동</span></button>
+<!-- 워프 버튼 끝 } -->
+
+<!-- 상단 현재위치 및 서브메뉴 활성화 설정// -->
+<script>
+$(function(){$('.snb.bo_tablegallery, .snb .snb2d_bo_tablegallery').addClass('active');});/*  보테이블 : bo_tablegallery  */
+$(document).ready(function(){ if ( $("#snb > li").is(".snb.active") ) { $('.loc1D').text( $('#snb .bo_tablegallery h2 a b').text());$('.loc2D').html( $('.snb2d_bo_tablegallery a b').html());$('.faArr').html('<i class="fa fa-angle-right"></i>');var index = $("#snb > li").index("#snb > li.active");$( "#page_title" ).addClass("subTopBg_0"+($("#snb > li.bo_tablegallery").index() + 1) ); } else { $('.loc1D').text('강좌'); $('.noInfoPageTit').html('<h2><a><b>갤러리</b><sub>sample.paged.kr</sub></a></h2>'); $('.noInfoPageTit').addClass('active');$('#page_title').addClass('subTopBg_00'); } });  </script>
+<!-- //현재위치 및 서브메뉴 활성화 설정 -->
+<script>$(function() { /* 모바일용 메뉴바 */ var articleMgnb = $("#snb li.snb"); articleMgnb.addClass("hide"); $("#snb li.active").removeClass("hide").addClass("show"); $("#snb li.active .snb2dul").show(); $(".snb2dDown").click(function(){ var myArticle = $(this).parents("#snb li.snb"); if(myArticle.hasClass("hide")){ articleMgnb.addClass("hide").removeClass("show"); articleMgnb.find(".snb2dul").slideUp("fast"); myArticle.removeClass("hide").addClass("show"); myArticle.find(".snb2dul").slideDown("fast"); } else { myArticle.removeClass("show").addClass("hide");myArticle.find(".snb2dul").slideUp("fast"); } }); });</script>
+<!-- } 하단 끝 -->
 
 </body>
 </html>
