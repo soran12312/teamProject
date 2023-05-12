@@ -152,7 +152,7 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public MemberVO loginCheck(MemberVO vo) {
+	public HashMap loginCheck(MemberVO vo) {
 		
 		return mainDAO.loginCheck(vo);
 	}

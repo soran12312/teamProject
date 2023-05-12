@@ -1,5 +1,6 @@
 package com.pi.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,7 +20,7 @@ public class MainDAOImpl implements MainDAO {
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public MemberVO loginCheck(MemberVO vo) {
+	public HashMap loginCheck(MemberVO vo) {
 		System.out.println("===> Mybatis loginCheck() 호출");
 		
 		return mybatis.selectOne("MainMapper.loginCheck", vo);

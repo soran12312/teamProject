@@ -5,8 +5,17 @@
 
 
 	<!-- 이메일을 받아 해당 이메일이 회원테이블에 있는지 확인 -->
-	<select id="loginCheck" resultType="com.pi.domain.MemberVO" parameterType="com.pi.domain.MemberVO">
-		SELECT * FROM member WHERE email=#{email}
+	<select id="loginCheck" resultType="HashMap" parameterType="com.pi.domain.MemberVO">
+		SELECT m.email email 
+		, m.nickname nickname
+		, m.member_grade member_grade
+		, m.member_state member_state
+		, m.introduce introduce
+		, m.business_number business_number
+		, i.path path
+		FROM member m LEFT OUTER JOIN image i 
+		ON m.email = i.email
+		WHERE m.email=#{email}
 	</select>
 	
 	<!-- DB에서 시,도 정보 가져옴 -->
@@ -52,6 +61,7 @@
 		, l.addr1 addr1
 		, l.addr2 addr2
 		, l.addr3 addr3
+		, l.interest_location_number interest_location_number
 		FROM location l INNER JOIN 
 		(SELECT location_number FROM interest_location
 		WHERE email = #{email}) i 

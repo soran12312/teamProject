@@ -54,11 +54,11 @@ public class MainController {
 		MemberVO userInfo = mainService.getUserInfo(access_Token); // 유저정보 : 이메일, 닉네임을 받아온다.
 		System.out.println(userInfo.toString());
 		
-		MemberVO vo = new MemberVO();
+		HashMap map = new HashMap();
 		
-		vo = mainService.loginCheck(userInfo); // 받아온 이메일이 DB의 회원테이블에 존재하는지 확인한 후 해당 회원정보를 가져온다.
+		map = mainService.loginCheck(userInfo); // 받아온 이메일이 DB의 회원테이블에 존재하는지 확인한 후 해당 회원정보를 가져온다.
 		
-		if(vo == null) { // 해당 이메일이 DB에 없으면
+		if(map == null) { // 해당 이메일이 DB에 없으면
 			
 			List<LocationVO> list = mainService.selectAddr1(); // 시,도 데이터를 디비에서 가져온다.
 			System.out.println(list);
@@ -68,14 +68,15 @@ public class MainController {
 			return "member_join_form"; // 회원가입화면으로 넘어간다.
 		}else{ // 해당 이메일이 DB에 있으면
 			
-			session.setAttribute("email", vo.getEmail());
-			session.setAttribute("nickname", vo.getNickname());
-			session.setAttribute("member_grade", vo.getMember_grade());
-			session.setAttribute("member_state", vo.getMember_state());
-			session.setAttribute("introduce", vo.getIntroduce());
-			session.setAttribute("business_number", vo.getBusiness_number()); // 세션에 로그인한 회원의 회원정보를 담는다.
+			session.setAttribute("email", map.get("email"));
+			session.setAttribute("nickname", map.get("nickname"));
+			session.setAttribute("member_grade", map.get("member_grade"));
+			session.setAttribute("member_state", map.get("member_state"));
+			session.setAttribute("introduce", map.get("introduce"));
+			session.setAttribute("business_number", map.get("business_number"));
+			session.setAttribute("path", map.get("path"));// 세션에 로그인한 회원의 회원정보를 담는다.
 			
-			session.setAttribute("locList", mainService.selectAllLocationNumberByEmail(vo.getEmail())); // 세션에 로그인한 회원의 관심지역정보를 담는다.
+			session.setAttribute("locList", mainService.selectAllLocationNumberByEmail((String)map.get("email"))); // 세션에 로그인한 회원의 관심지역정보를 담는다.
 			
 			return "main_view"; // 메인화면으로 넘어간다.(세션에 담긴 정보로 메인화면 형태가 바뀐다.)
 		}

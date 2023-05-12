@@ -15,7 +15,7 @@ public interface MainService {
 	
 	public MemberVO getUserInfo(String access_Token) throws Throwable;
 	
-	public MemberVO loginCheck(MemberVO vo);
+	public HashMap loginCheck(MemberVO vo);
 	
 	public List<LocationVO> selectAddr1();
 	public List<LocationVO> selectAddr2(LocationVO vo);

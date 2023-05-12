@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.pi.domain.GuildJoinVO;
 import com.pi.domain.GuildVO;
 import com.pi.domain.LikeVO;
 
@@ -50,7 +51,14 @@ public class GuildDAOImpl implements GuildDAO {
 		
 		return mybatis.selectOne("GuildMapper.selectAllGuildDetailByGuildNumber", guild_number);
 	}
-	
+
+	@Override
+	public void incViewNum(int guild_number) {
+		System.out.println("===> Mybatis incViewNum() 호출");
+		
+		mybatis.update("GuildMapper.incViewNum", guild_number);
+	}
+
 	@Override
 	public int checkLike(LikeVO vo) {
 		System.out.println("===> Mybatis checkLike() 호출");
@@ -72,4 +80,17 @@ public class GuildDAOImpl implements GuildDAO {
 		mybatis.update("GuildMapper.guild_delete", guild_number);
 	}
 	
+	@Override
+	public int guild_join(GuildJoinVO vo) {
+		System.out.println("===> Mybatis guild_join() 호출");
+		
+		return mybatis.selectOne("GuildMapper.guild_join", vo);
+	}
+	
+	@Override
+	public int insert_guild_join(GuildJoinVO vo) {
+		System.out.println("===> Mybatis insert_guild_join() 호출");
+		
+		return mybatis.insert("GuildMapper.insert_guild_join", vo);
+	}
 }

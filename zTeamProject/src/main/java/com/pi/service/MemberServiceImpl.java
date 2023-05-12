@@ -1,5 +1,7 @@
 package com.pi.service;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,12 @@ public class MemberServiceImpl implements MemberService {
 	public void insertInterestLocation(InterestLocationVO lvo) {
 		memberDAO.insertInterestLocation(lvo);
 
+	}
+
+	@Override
+	public void mod_interest_location(HashMap map) {
+		
+		memberDAO.mod_interest_location(map);
 	}
 
 }

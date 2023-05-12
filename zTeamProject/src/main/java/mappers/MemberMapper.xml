@@ -19,6 +19,36 @@
 		( #{email}, #{location_number} )
 	</insert>
 	
+	<!-- 관심지역 변경 -->
+	<update id="mod_interest_location" parameterType="HashMap">
+		UPDATE interest_location
+		SET location_number = #{mod_location_number}
+		WHERE interest_location_number = #{interest_location_number}
+	</update>
 	
+	<select id="img_check" parameterType="String">
+		SELECT COUNT(*)
+		FROM image
+		WHERE email = #{email}
+	</select>
+	
+	<insert id="img_insert" parameterType="com.pi.domain.ImageVO">
+		INSERT INTO image 
+		( email, original_name, save_name, path, size )
+		VALUES
+		( #{email}, #{original_name}, #{save_name}, #{path}, #{size} )
+	</insert>
+	
+	<update id="img_update" parameterType="com.pi.domain.ImageVO">
+		UPDATE image
+		SET original_name = #{original_name}, save_name = #{save_name}, path = #{path}, size = #{size}
+		WHERE email = #{email}
+	</update>
+	
+	<update id="member_update" parameterType="com.pi.domain.MemberVO">
+		UPDATE member
+		SET nickname = #{nickname}, introduce = #{introduce}
+		WHERE email = #{email}
+	</update>
 
 </mapper>
