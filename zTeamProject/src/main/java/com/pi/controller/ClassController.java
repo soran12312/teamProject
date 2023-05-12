@@ -116,7 +116,7 @@ public class ClassController {
 	
 	@RequestMapping("/class_list.do")
 	public void class_list(Model m, HttpSession session, int currentPage) { // 강좌리스트
-		List<LocationVO> list = (List<LocationVO>)session.getAttribute("locList"); // 세션에서 회원의 관심지역을 가져온다.
+		List<HashMap> list = (List<HashMap>)session.getAttribute("locList"); // 세션에서 회원의 관심지역을 가져온다.
 		
 		int category_number = 0;
 		String option = null;
@@ -137,17 +137,17 @@ public class ClassController {
 		HashMap map = new HashMap(); // 해쉬맵에 회원의 관심지역 리스트에서 가져온 지역번호들을 넣는다.
 		
 		for(int i = 0 ; i<3 ; i++ ) {
-			LocationVO temp = new LocationVO();
+			HashMap temp = new HashMap();
 			temp = list.get(i);
 			switch (i) {
 			case 0:
-				map.put("location_number1", temp.getLocation_number());
+				map.put("location_number1", (int)temp.get("location_number"));
 				break;
 			case 1:
-				map.put("location_number2", temp.getLocation_number());
+				map.put("location_number2", (int)temp.get("location_number"));
 				break;
 			case 2:
-				map.put("location_number3", temp.getLocation_number());
+				map.put("location_number3", (int)temp.get("location_number"));
 				break;
 			}
 		}

@@ -26,7 +26,7 @@
 		WHERE interest_location_number = #{interest_location_number}
 	</update>
 	
-	<select id="img_check" parameterType="String">
+	<select id="img_check" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM image
 		WHERE email = #{email}

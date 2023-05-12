@@ -40,6 +40,9 @@
 		AND ( g.location_number = #{location_number1} 
 		OR g.location_number = #{location_number2} 
 		OR g.location_number = #{location_number3} )
+		<if test="keyword !=null">
+      	AND ${option} LIKE CONCAT('%',#{keyword},'%')
+      	</if>
 		ORDER BY guild_number DESC LIMIT #{first_view}, 10
 	</select>
 	
@@ -77,12 +80,6 @@
 		ON g.guild_number = lk.guild_number
 		WHERE g.guild_number = #{guild_number}
 	</select>
-	
-	<update id="incViewNum" parameterType="int">
-		UPDATE guild SET 
-		view_number = (( SELECT view_number FROM guild WHERE guild_number = #{guild_number} )+1)
-		WHERE guild_number = #{guild_number}
-	</update>
 	
 	<select id="checkLike" resultType="int" parameterType="com.pi.domain.LikeVO">
 		SELECT COUNT(*) cnt 

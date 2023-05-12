@@ -53,13 +53,6 @@ public class GuildDAOImpl implements GuildDAO {
 	}
 
 	@Override
-	public void incViewNum(int guild_number) {
-		System.out.println("===> Mybatis incViewNum() 호출");
-		
-		mybatis.update("GuildMapper.incViewNum", guild_number);
-	}
-
-	@Override
 	public int checkLike(LikeVO vo) {
 		System.out.println("===> Mybatis checkLike() 호출");
 		

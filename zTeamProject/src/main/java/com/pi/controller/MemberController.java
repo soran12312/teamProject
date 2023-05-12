@@ -51,25 +51,25 @@ public class MemberController {
 	
 	@RequestMapping("/modify_member.do")
 	@Transactional
-	public String modify_member(MultipartFile file, int interest_location_number1, int interest_location_number2, int interest_location_number, MemberVO mvo, int mod_location_number1, int mod_location_number2, int mod_location_number3, int img_check) {
+	public String modify_member(MultipartFile file, int interest_location_number1, int interest_location_number2, int interest_location_number3, MemberVO mvo, String location_number1, String location_number2, String location_number3, int img_check) {
 		
 		
-		if(mod_location_number1!=0) {
+		if(location_number1 != null && !location_number1.isEmpty()) {
 			HashMap map = new HashMap();
-			map.put("mod_location_number", mod_location_number1);
+			map.put("mod_location_number", location_number1);
 			map.put("interest_location_number", interest_location_number1);
 			
 			memberService.mod_interest_location(map);
-		}else if(mod_location_number2!=0) {
+		}else if(location_number2 != null && !location_number2.isEmpty()) {
 			HashMap map = new HashMap();
-			map.put("mod_location_number", mod_location_number1);
-			map.put("interest_location_number", interest_location_number1);
+			map.put("mod_location_number", location_number2);
+			map.put("interest_location_number", interest_location_number2);
 			
 			memberService.mod_interest_location(map);
-		}else if(mod_location_number3!=0) {
+		}else if(location_number3 != null && !location_number3.isEmpty()) {
 			HashMap map = new HashMap();
-			map.put("mod_location_number", mod_location_number1);
-			map.put("interest_location_number", interest_location_number1);
+			map.put("mod_location_number", location_number3);
+			map.put("interest_location_number", interest_location_number3);
 			
 			memberService.mod_interest_location(map);
 		}
@@ -98,13 +98,21 @@ public class MemberController {
 			} catch (IllegalStateException | IOException e) {
 				e.printStackTrace();
 			}
-		}
+			ivo.setEmail(mvo.getEmail());
+			
+			int cnt = memberService.img_check(mvo.getEmail());
+			
+			if(cnt==0) {
+				memberService.img_insert(ivo);
+			}else{
+				memberService.img_update(ivo);
+			}
+			
+		} // end of if(!file.isEmpty())
+		
+		memberService.member_update(mvo);
 		
 		
-		
-		
-		
-		
-		return "";
+		return "redirect:mypage.do";
 	}
 }

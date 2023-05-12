@@ -63,7 +63,7 @@ public class ReviewController {
 	
 	@RequestMapping("/review_list.do")
 	public void review_list(Model m, HttpSession session, int currentPage) { // 리뷰리스트
-		List<LocationVO> list = (List<LocationVO>)session.getAttribute("locList"); // 이용자의 관심지역정보를 가져온다.
+		List<HashMap> list = (List<HashMap>)session.getAttribute("locList"); // 이용자의 관심지역정보를 가져온다.
 		
 		int category_number = 0;
 		String option = null;
@@ -84,17 +84,17 @@ public class ReviewController {
 		HashMap map = new HashMap(); // 해쉬맵에 회원의 관심지역 리스트에서 가져온 지역번호들을 넣는다.
 		
 		for(int i = 0 ; i<3 ; i++ ) {
-			LocationVO temp = new LocationVO();
+			HashMap temp = new HashMap();
 			temp = list.get(i);
 			switch (i) {
 			case 0:
-				map.put("location_number1", temp.getLocation_number());
+				map.put("location_number1", (int)temp.get("location_number"));
 				break;
 			case 1:
-				map.put("location_number2", temp.getLocation_number());
+				map.put("location_number2", (int)temp.get("location_number"));
 				break;
 			case 2:
-				map.put("location_number3", temp.getLocation_number());
+				map.put("location_number3", (int)temp.get("location_number"));
 				break;
 			}
 		}

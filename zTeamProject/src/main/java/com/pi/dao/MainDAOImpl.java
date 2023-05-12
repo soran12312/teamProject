@@ -66,7 +66,7 @@ public class MainDAOImpl implements MainDAO {
 	
 
 	@Override
-	public List<LocationVO> selectAllLocationNumberByEmail(String email) {
+	public List<HashMap> selectAllLocationNumberByEmail(String email) {
 		System.out.println("===> Mybatis selectAllLocationNumberByEmail() 호출");
 		return mybatis.selectList("MainMapper.selectAllLocationNumberByEmail",email);
 	}

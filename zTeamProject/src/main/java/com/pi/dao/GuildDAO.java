@@ -17,9 +17,7 @@ public interface GuildDAO {
 	
 	public int guildCount(HashMap map);
 	
-	public HashMap selectAllGuildDetailByGuildNumber(int guild_number); 
-	
-	public void incViewNum(int guild_number);
+	public HashMap selectAllGuildDetailByGuildNumber(int guild_number);
 	
 	public int checkLike(LikeVO vo);
 	

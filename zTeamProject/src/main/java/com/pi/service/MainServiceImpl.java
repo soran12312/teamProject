@@ -191,7 +191,7 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public List<LocationVO> selectAllLocationNumberByEmail(String email) {
+	public List<HashMap> selectAllLocationNumberByEmail(String email) {
 		
 		return mainDAO.selectAllLocationNumberByEmail(email);
 	}

@@ -18,5 +18,5 @@ public interface MainDAO {
 	public int selectLocNumByAddr(LocationVO vo);
 	public void insertQuestion(QuestionVO qvo);
 	public void insertQImage(ImageVO ivo);
-	public List<LocationVO> selectAllLocationNumberByEmail(String email);
+	public List<HashMap> selectAllLocationNumberByEmail(String email);
 }

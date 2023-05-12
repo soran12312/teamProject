@@ -22,5 +22,5 @@ public interface MainService {
 	public List<LocationVO> selectAddr3(LocationVO vo);
 	public int selectLocNumByAddr(LocationVO vo);
 	public void insertQuestion(QuestionVO qvo, ImageVO ivo);
-	public List<LocationVO> selectAllLocationNumberByEmail(String email);
+	public List<HashMap> selectAllLocationNumberByEmail(String email);
 }

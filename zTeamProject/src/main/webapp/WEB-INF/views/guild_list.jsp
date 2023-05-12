@@ -147,18 +147,14 @@
     <fieldset id="bo_sch">
         <legend>게시물 검색</legend>
 
-        <form name="fsearch" method="get">
-        <input type="hidden" name="bo_table" value="product_webzine">
-        <input type="hidden" name="sca" value="">
-        <input type="hidden" name="sop" value="and">
+        <form name="fsearch" method="get" action="/zTeamProject/search_guild.do">
         <label for="sfl" class="sound_only">검색대상</label>
-        <select name="sfl" id="sfl">
-            <option value="wr_subject||wr_content">제목</option>
-            <option value="wr_subject">작성자</option>
-            <!-- <option value="wr_name,0">작성자(코)</option> -->
+        <select name='option' id="sfl">
+            <option value="g.guild_name">제목</option>
+            <option value="m.nickname">작성자</option>
         </select>
         <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-        <input type="text" name="stx" value="" required id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
+        <input type="text" name="keyword" value="" required id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
         <button type="submit" value="검색" class="sch_btn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
         </form>
     </fieldset>
@@ -170,16 +166,16 @@
             </ul>
     
    <nav class="pg_wrap">
-    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=1" class="pg_page">&#60;</a>
+    <span class="pg"><a href="/zTeamProject/guild_list.do?currentPage=1" class="pg_page">&#60;</a>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
     <c:if test="${currentPage eq i}">
 	    <span class="sound_only">열린</span><strong class="pg_current">${i}</strong><span class="sound_only">페이지</span>
 	</c:if>
 	<c:if test="${currentPage ne i}">
-		<a href="/zTeamProject/class_list.do?currentPage=${i}" class="pg_page">${i}<span class="sound_only">페이지</span></a>
+		<a href="/zTeamProject/guild_list.do?currentPage=${i}" class="pg_page">${i}<span class="sound_only">페이지</span></a>
 	</c:if>
 	</c:forEach>
-		<a href="/zTeamProject/class_list.do?currentPage=${maxPage}" class="pg_page">&#62;</a>
+		<a href="/zTeamProject/guild_list.do?currentPage=${maxPage}" class="pg_page">&#62;</a>
 	</span>
 </nav>    
     

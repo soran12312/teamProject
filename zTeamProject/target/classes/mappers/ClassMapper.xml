@@ -108,7 +108,7 @@
 		GROUP BY class_number) l
 		ON c.class_number = l.class_number
 		LEFT OUTER JOIN (SELECT 
-		m.email email, m.nickname nickname, m.introduce introduce, i.path path
+		m.email email, m.nickname nickname, m.introduce introduce, i.path path, m.member_grade member_grade, m.business_number business_number
 		FROM member m LEFT OUTER JOIN image i
 		ON m.email = i.email) m
 		ON c.email = m.email

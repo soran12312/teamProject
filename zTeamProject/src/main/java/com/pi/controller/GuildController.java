@@ -64,21 +64,33 @@ public class GuildController {
 	
 	@RequestMapping("/guild_list.do")
 	public void guild_list(Model m, HttpSession session, int currentPage){
-		List<LocationVO> list = (List<LocationVO>)session.getAttribute("locList");
+		
+	     
+	      String option = null;
+	      String keyword = null; // 카테고리번호, 검색옵션, 검색키워드를 선언
+	      
+	      if(session.getAttribute("option")!=null) { // 세션에 검색옵션이 있을 경우
+	         option = (String)session.getAttribute("option");
+	         keyword = (String)session.getAttribute("keyword"); // 세션에서 검색옵션과 키워드를 가져온다.
+	      }
+	      System.out.println(option);
+	      System.out.println(keyword);
+		
+		List<HashMap> list = (List<HashMap>)session.getAttribute("locList");
 		
 		InterestLocationVO lvo = new InterestLocationVO();
 		for(int i = 0 ; i<3 ; i++ ) {
-			LocationVO temp = new LocationVO();
+			HashMap temp = new HashMap();
 			temp = list.get(i);
 			switch (i) {
 			case 0:
-				lvo.setLocation_number1(temp.getLocation_number());
+				lvo.setLocation_number1((int)temp.get("location_number"));
 				break;
 			case 1:
-				lvo.setLocation_number2(temp.getLocation_number());
+				lvo.setLocation_number2((int)temp.get("location_number"));
 				break;
 			case 2:
-				lvo.setLocation_number3(temp.getLocation_number());
+				lvo.setLocation_number3((int)temp.get("location_number"));
 				break;
 			}
 		}
@@ -125,8 +137,7 @@ public class GuildController {
 	
 	@RequestMapping("/guild_detail.do")
 	public void guild_detail(HttpSession session, Model m , @RequestParam int guild_number) {
-
-		guildService.incViewNum(guild_number);
+		
 		HashMap map = guildService.selectAllGuildDetailByGuildNumber(guild_number);
 		m.addAttribute("map", map);
 		System.out.println(map.toString());
@@ -169,5 +180,27 @@ public class GuildController {
 		
 		}
 	}
+	
+	@RequestMapping("/search_guild.do")
+	   public String search_guild(HttpSession session, String option, String keyword){
+	      
+
+	         session.setAttribute("option", option);
+	         session.setAttribute("keyword", keyword); // 세션에 검색옵션과 키워드를 저장
+	      
+	      
+	      return "redirect:guild_list.do?currentPage=1"; // 강좌 리스트.do로 리다이렉팅
+	 }
+	
+	@RequestMapping("insertGuildLike.do")
+	   public String insertLike(LikeVO vo) {
+	      int cnt = guildService.checkLike(vo); // 회원 이메일과 강좌번호를 통해 해당회원이 해당 강좌에 좋아요를 눌렀는지 확인한다.
+	      
+	      if(cnt==0) { // 좋아요를 누르지 않았을 경우 
+	         guildService.insertLike(vo); // 좋아요 등록
+	      }
+	      
+	      return "redirect:guild_detail.do?guild_number="+String.valueOf(vo.getGuild_number()); // 강좌상세보기로 리다이렉팅(화면상 좋아요갯수가 변하게하기위해)   
+	   }
 	
 }

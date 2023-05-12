@@ -19,8 +19,6 @@ public interface GuildService {
 
 	public HashMap selectAllGuildDetailByGuildNumber(int guild_number);
 
-	public void incViewNum(int guild_number);
-
 	public int checkLike(LikeVO vo);
 
 	public void insertLike(LikeVO vo);

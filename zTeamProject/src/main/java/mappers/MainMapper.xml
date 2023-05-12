@@ -56,14 +56,14 @@
 	</insert>
 	
 	<!-- 회원이메일로 해당 회원의 관심지역정보를 가져옴 -->
-	<select id="selectAllLocationNumberByEmail" resultType="com.pi.domain.LocationVO" parameterType="String">
+	<select id="selectAllLocationNumberByEmail" resultType="HashMap" parameterType="String">
 		SELECT l.location_number location_number
 		, l.addr1 addr1
 		, l.addr2 addr2
 		, l.addr3 addr3
-		, l.interest_location_number interest_location_number
+		, i.interest_location_number interest_location_number
 		FROM location l INNER JOIN 
-		(SELECT location_number FROM interest_location
+		(SELECT location_number, interest_location_number FROM interest_location
 		WHERE email = #{email}) i 
 		ON l.location_number = i.location_number
 	</select>
