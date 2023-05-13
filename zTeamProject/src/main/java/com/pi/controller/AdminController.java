@@ -1,5 +1,6 @@
 package com.pi.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -120,11 +121,52 @@ public class AdminController {
 		List<HashMap> cate_class = adminService.selectMonthlyClassNumOfCate();
 		List<HashMap> hashtag = adminService.selectNumOfHashtagByCate(category_number);
 		
-		model.addAttribute("m_class", m_class);
-		model.addAttribute("m_guild", m_guild);
-		model.addAttribute("m_review", m_review);
-		model.addAttribute("cate_class", cate_class);
-		model.addAttribute("hashtag", hashtag);
+		ArrayList<String> m_class_labels = new ArrayList<String>();
+		ArrayList<Long> m_class_data = new ArrayList<Long>();
+		
+		ArrayList<String> m_guild_labels = new ArrayList<String>();
+		ArrayList<Long> m_guild_data = new ArrayList<Long>();
+		
+		ArrayList<String> m_review_labels = new ArrayList<String>();
+		ArrayList<Long> m_review_data = new ArrayList<Long>();
+		
+		ArrayList<String> cate_class_labels = new ArrayList<String>();
+		ArrayList<Long> cate_class_data = new ArrayList<Long>();
+		
+		ArrayList<String> hashtag_labels = new ArrayList<String>();
+		ArrayList<Long> hashtag_data = new ArrayList<Long>();
+		
+		for(HashMap map : m_class) { // 해쉬맵이 담긴 리스트 형태로 받아온 데이터들을 리스트안에 담긴 String&Long 형태로 바꿔준다.
+			m_class_labels.add("\""+(String)map.get("class_name")+"\""); // 스크립트단에서 String로 인식하지 못하기때문에 String 앞뒤에 큰따옴표를 붙혀서 넣는다.
+			m_class_data.add((Long)map.get("class_like"));
+		}
+		for(HashMap map : m_guild) {
+			m_guild_labels.add("\""+(String)map.get("guild_name")+"\"");
+			m_guild_data.add((Long)map.get("guild_like"));
+		}
+		for(HashMap map : m_review) {
+			m_review_labels.add("\""+(String)map.get("title")+"\"");
+			m_review_data.add((Long)map.get("review_like"));
+		}
+		for(HashMap map : cate_class) {
+			cate_class_labels.add("\""+(String)map.get("category_name")+"\"");
+			cate_class_data.add((Long)map.get("num_of_class"));
+		}
+		for(HashMap map : hashtag) {
+			hashtag_labels.add("\""+(String)map.get("hashtag_name")+"\"");
+			hashtag_data.add((Long)map.get("num_of_hashtag"));
+		}
+		
+		model.addAttribute("m_class_labels", m_class_labels);
+		model.addAttribute("m_class_data", m_class_data);
+		model.addAttribute("m_guild_labels", m_guild_labels);
+		model.addAttribute("m_guild_data", m_guild_data);
+		model.addAttribute("m_review_labels", m_review_labels);
+		model.addAttribute("m_review_data", m_review_data);
+		model.addAttribute("cate_class_labels", cate_class_labels);
+		model.addAttribute("cate_class_data", cate_class_data);
+		model.addAttribute("hashtag_labels", hashtag_labels);
+		model.addAttribute("hashtag_data", hashtag_data);
 		
 		
 		return "charts";

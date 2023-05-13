@@ -78,9 +78,9 @@
 		WHERE like_state = 1
 		AND DATE_FORMAT(like_date,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m'))  
 		GROUP BY class_number
-		ORDER BY class_like DESC LIMIT 20) l 
+		ORDER BY class_like DESC LIMIT 8) l 
 		ON c.class_number = l.class_number 
-		ORDER BY class_like DESC;
+		ORDER BY class_like DESC LIMIT 8
 	</select>
 	
 	<select id="selectGuildByMonthlyLike" resultType="HashMap">
@@ -94,9 +94,9 @@
 		WHERE like_state = 1  
 		AND DATE_FORMAT(like_date,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m')) 
 		GROUP BY guild_number
-		ORDER BY guild_like DESC LIMIT 20) l 
+		ORDER BY guild_like DESC LIMIT 8) l 
 		ON g.guild_number = l.guild_number 
-		ORDER BY guild_like DESC
+		ORDER BY guild_like DESC LIMIT 8
 	</select>
 	
 	<select id="selectReviewByMonthlyLike" resultType="HashMap">
@@ -110,9 +110,9 @@
 		WHERE like_state = 1 
 		AND DATE_FORMAT(like_date,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m')) 
 		GROUP BY review_number
-		ORDER BY review_like DESC LIMIT 20) l 
+		ORDER BY review_like DESC LIMIT 8) l 
 		ON r.review_number = l.review_number 
-		ORDER BY review_like DESC
+		ORDER BY review_like DESC LIMIT 8
 	</select>
 	
 	<select id="selectMonthlyClassNumOfCate" resultType="HashMap">
@@ -123,7 +123,7 @@
 		ON c.category_number = g.category_number
 		WHERE DATE_FORMAT(c.writing_date ,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m')) 
 		AND c.class_state = 1
-		GROUP BY c.category_number;
+		GROUP BY c.category_number
 	</select>
 	
 	<select id="selectNumOfHashtagByCate" resultType="HashMap" parameterType="int">
@@ -134,7 +134,7 @@
 		WHERE c.class_state = 1 
 		AND h.category_number = #{category_number}
 		GROUP BY hashtag_name
-		ORDER BY num_of_hashtag DESC;
+		ORDER BY num_of_hashtag DESC
 	</select>
 	
 	

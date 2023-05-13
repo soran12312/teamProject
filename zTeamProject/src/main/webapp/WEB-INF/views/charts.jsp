@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,21 +22,23 @@
 
     <!-- Custom styles for this template-->
     <link href="resources/userlist/css/sb-admin-2.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script type="text/javascript">
 $(function(){
-
-	// Bar Chart Example
+	
+	
+	// 이달의 좋아요 상위 커뮤니티
 	var ctx = document.getElementById("m_guild");
 	var myBarChart = new Chart(ctx, {
 	  type: 'bar',
 	  data: {
-	    labels: ["January", "February", "March", "April", "May", "June"],
+	    labels: ${m_guild_labels},
 	    datasets: [{
-	      label: "Revenue",
+	      label: "좋아요 수",
 	      backgroundColor: "#4e73df",
 	      hoverBackgroundColor: "#2e59d9",
 	      borderColor: "#4e73df",
-	      data: [4215, 5312, 6251, 7841, 9821, 14984],
+	      data: ${m_guild_data},
 	    }],
 	  },
 	  options: {
@@ -66,12 +68,12 @@ $(function(){
 	      yAxes: [{
 	        ticks: {
 	          min: 0,
-	          max: 15000,
+	          max: 20,
 	          maxTicksLimit: 5,
 	          padding: 10,
 	          // Include a dollar sign in the ticks
 	          callback: function(value, index, values) {
-	            return '$' + number_format(value);
+	            return number_format(value);
 	          }
 	        },
 	        gridLines: {
@@ -101,14 +103,300 @@ $(function(){
 	      callbacks: {
 	        label: function(tooltipItem, chart) {
 	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-	          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+	          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+	        }
+	      }
+	    },
+	  }
+	});
+	
+	// 이달의 좋아요 상위 리뷰
+	var ctx = document.getElementById("m_review");
+	var myBarChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ${m_review_labels},
+	    datasets: [{
+	      label: "좋아요 수",
+	      backgroundColor: "#4e73df",
+	      hoverBackgroundColor: "#2e59d9",
+	      borderColor: "#4e73df",
+	      data: ${m_review_data},
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    layout: {
+	      padding: {
+	        left: 10,
+	        right: 25,
+	        top: 25,
+	        bottom: 0
+	      }
+	    },
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'month'
+	        },
+	        gridLines: {
+	          display: false,
+	          drawBorder: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 6
+	        },
+	        maxBarThickness: 25,
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 20,
+	          maxTicksLimit: 5,
+	          padding: 10,
+	          // Include a dollar sign in the ticks
+	          callback: function(value, index, values) {
+	            return number_format(value);
+	          }
+	        },
+	        gridLines: {
+	          color: "rgb(234, 236, 244)",
+	          zeroLineColor: "rgb(234, 236, 244)",
+	          drawBorder: false,
+	          borderDash: [2],
+	          zeroLineBorderDash: [2]
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    },
+	    tooltips: {
+	      titleMarginBottom: 10,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 14,
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	      callbacks: {
+	        label: function(tooltipItem, chart) {
+	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+	          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+	        }
+	      }
+	    },
+	  }
+	});
+	
+	// 이달의 좋아요 상위 강좌
+	var ctx = document.getElementById("m_class");
+	var myBarChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ${m_class_labels},
+	    datasets: [{
+	      label: "좋아요 수",
+	      backgroundColor: "#4e73df",
+	      hoverBackgroundColor: "#2e59d9",
+	      borderColor: "#4e73df",
+	      data: ${m_class_data},
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    layout: {
+	      padding: {
+	        left: 10,
+	        right: 25,
+	        top: 25,
+	        bottom: 0
+	      }
+	    },
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'month'
+	        },
+	        gridLines: {
+	          display: false,
+	          drawBorder: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 6
+	        },
+	        maxBarThickness: 25,
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 20,
+	          maxTicksLimit: 5,
+	          padding: 10,
+	          // Include a dollar sign in the ticks
+	          callback: function(value, index, values) {
+	            return number_format(value);
+	          }
+	        },
+	        gridLines: {
+	          color: "rgb(234, 236, 244)",
+	          zeroLineColor: "rgb(234, 236, 244)",
+	          drawBorder: false,
+	          borderDash: [2],
+	          zeroLineBorderDash: [2]
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    },
+	    tooltips: {
+	      titleMarginBottom: 10,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 14,
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	      callbacks: {
+	        label: function(tooltipItem, chart) {
+	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+	          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+	        }
+	      }
+	    },
+	  }
+	});
+	
+	// 카테고리별 이달 작성된 게시글 수
+	var ctx = document.getElementById("cate_class");
+	var myBarChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ${cate_class_labels},
+	    datasets: [{
+	      label: "좋아요 수",
+	      backgroundColor: "#4e73df",
+	      hoverBackgroundColor: "#2e59d9",
+	      borderColor: "#4e73df",
+	      data: ${cate_class_data},
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    layout: {
+	      padding: {
+	        left: 10,
+	        right: 25,
+	        top: 25,
+	        bottom: 0
+	      }
+	    },
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'month'
+	        },
+	        gridLines: {
+	          display: false,
+	          drawBorder: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 6
+	        },
+	        maxBarThickness: 25,
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 20,
+	          maxTicksLimit: 5,
+	          padding: 10,
+	          // Include a dollar sign in the ticks
+	          callback: function(value, index, values) {
+	            return number_format(value);
+	          }
+	        },
+	        gridLines: {
+	          color: "rgb(234, 236, 244)",
+	          zeroLineColor: "rgb(234, 236, 244)",
+	          drawBorder: false,
+	          borderDash: [2],
+	          zeroLineBorderDash: [2]
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    },
+	    tooltips: {
+	      titleMarginBottom: 10,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 14,
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	      callbacks: {
+	        label: function(tooltipItem, chart) {
+	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+	          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
 	        }
 	      }
 	    },
 	  }
 	});
 
+	var ctx = document.getElementById("hashtag");
+	var myPieChart = new Chart(ctx, {
+	  type: 'doughnut',
+	  data: {
+	    labels: ${hashtag_labels},
+	    datasets: [{
+	      data: ${hashtag_data},
+	      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+	      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+	      hoverBorderColor: "rgba(234, 236, 244, 1)",
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    tooltips: {
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	    },
+	    legend: {
+	      display: false
+	    },
+	    cutoutPercentage: 80,
+	  },
+	});
 	
+	$("#cate").change(function(){
+		var category_number = $(this).val();
+		//alert(category_number);
+		if(category_number != 0){
+			location.href = '/zTeamProject/admin_chart?category_number='+category_number;
+		}
+	});
 	
 }); // end of $
 </script>
@@ -463,10 +751,10 @@ $(function(){
                     <!-- Content Row -->
                     <div class="row">       
 
-                            <!-- 일별 좋아요 상위 커뮤니티 -->
+                            <!-- 이달의 좋아요 상위 커뮤니티 -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">월별 좋아요 상위 커뮤니티</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">이달의 좋아요 상위 커뮤니티</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -475,12 +763,12 @@ $(function(){
                                     <hr>
 
                                 </div>
-                            </div>
+                            </div><hr class="sidebar-divider"/>
 
-                            <!-- 일별 좋아요 상위 리뷰 -->
+                            <!-- 이달의 좋아요 상위 리뷰 -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">월별 좋아요 상위 리뷰</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">이달의 좋아요 상위 리뷰</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -489,12 +777,12 @@ $(function(){
                                     <hr>
 
                                 </div>
-                            </div>
+                            </div><hr class="sidebar-divider"/>
                                                    
-                            <!-- 일별 좋아요 상위 강좌 -->
+                            <!-- 이달의 좋아요 상위 강좌 -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">월별 좋아요 상위 강좌</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">이달의 좋아요 상위 강좌</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
@@ -503,7 +791,7 @@ $(function(){
                                     <hr>
 
                                 </div>
-                            </div>
+                            </div><hr class="sidebar-divider"/>
 
                             <!-- 카테고리별 오늘 작성된 게시글 수 그래프 -->
                             <div class="card shadow mb-4">
@@ -517,7 +805,7 @@ $(function(){
                                     <hr>
  
                                 </div>
-                            </div>
+                            </div><hr class="sidebar-divider"/>
                       
 
                         <!-- 카테고리별 사용 태그 수 비율 그래프  -->
@@ -526,6 +814,18 @@ $(function(){
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">카테고리별 사용 태그 수 비율</h6>
+                                    <select name="cate" id="cate">
+        								<option value="0">카테고리</option>
+            							<option value="1">요리</option>
+            							<option value="2">운동</option>
+            							<option value="3">공예</option>
+            							<option value="4">IT</option>
+            							<option value="5">게임</option>
+            							<option value="6">음악</option>
+            							<option value="7">교육</option>
+            							<option value="8">인테리어</option>
+            							<option value="9">기타</option>
+        							</select> 
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
