@@ -90,11 +90,11 @@
                      <form id="loginForm" class="row" name="contactform" method="post">
                         <fieldset class="row-fluid">
                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"></a>
+                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.41:8080/zTeamProject/member_join_form.do&response_type=code"></a>
                            </div>
                            <br/>
                            <div class="text-center">
-                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
+                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.41:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>

@@ -26,5 +26,8 @@ public interface AdminService {
 	
 	// 질문목록
     public List<QuestionVO> listQuestion(QuestionVO qvo);
+    
+    // 선택한 질문
+    public QuestionVO getQuestionByNumber(int qno);
 
 }

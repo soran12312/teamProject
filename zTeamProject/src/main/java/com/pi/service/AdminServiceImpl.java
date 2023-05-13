@@ -58,6 +58,12 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.listQuestion(qvo);
 		
 	}
+
+	@Override
+	public QuestionVO getQuestionByNumber(int qno) {
+		// TODO Auto-generated method stub
+		return adminDAO.getQuestionByNumber(qno);
+	}
 	
 	
 	

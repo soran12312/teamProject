@@ -1,7 +1,6 @@
 package com.pi.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -47,6 +48,7 @@ public class AdminController {
 			System.out.println(mv);
 		}
 		
+		model.addAttribute("memberList", memberList);
 		return "admin";
 	}
 	
@@ -105,18 +107,23 @@ public class AdminController {
 	}
 	
 
-	// 
+	// 차트
+	// 일별 좋아요수 상위 모임 20개의 모임번호, 모임명, 당일 좋아요 수 검색 막대형
 	@GetMapping("/admin_chart")
-	public String adminChart()
+	public String adminChart(Model model)
 	{
+		
+//		List<ChartData> chartDataList = adminService.getChartData();
+//        model.addAttribute("chartDataList", chartDataList);
+		
 		return "charts";
 	}
 	
 	
 	
 	// 모든 문의 리스트
-	@GetMapping("/admin_answer")
-	public String adminAnswer(QuestionVO qvo, Model model)
+	@GetMapping("/admin_question")
+	public String adminQuestion(QuestionVO qvo, Model model)
 	{
 		List<QuestionVO> questionList = adminService.listQuestion(qvo);
 		
@@ -125,7 +132,28 @@ public class AdminController {
 			System.out.println(q);
 		}
 		
+		
+		model.addAttribute("questionList", questionList);
 		return "admin_answer";
+	}
+	
+	
+	// 선택한 문의 답변페이지 이동
+	@RequestMapping(value = "/admin_answer", method = RequestMethod.GET)
+	public String showAnswerPage(@RequestParam("question_number") int questionNumber, Model model) {
+		        
+		        
+		// 질문 번호를 사용하여 선택한 질문의 세부 정보를 데이터베이스에서 가져옴
+		QuestionVO selectedQuestion = adminService.getQuestionByNumber(questionNumber);
+		        
+		System.out.println(questionNumber);
+		
+		System.out.println(selectedQuestion);
+		        
+		// 선택한 질문 세부 정보를 모델에 추가
+		model.addAttribute("selectedQuestion", selectedQuestion);
+		
+		return "answer"; // 뷰 페이지 이름
 	}
 
 }
