@@ -42,9 +42,7 @@
    $(function(){
 	   
 	   $("div.gradeDiv").hover(function(){
-       	
-       	$(this).css('cursor','pointer');
-       	
+       		$(this).css('cursor','pointer');
 	   });
         
         
@@ -105,16 +103,17 @@
 	       	 // 수정버튼 클릭
 	       	$('.updateBtn').on('click',function(){
                 
-	       		let param = {"member_grade" :selectedValue
-                        , "email" : emailValue
-                     };
+	       		let param = {
+	       						"member_grade" :selectedValue,
+                         		"email" : emailValue
+                     		};
            
 	       			console.log(param);
 	       		
 		             $.ajax({
 		               type: "post", // post 방식으로 요청
 		               url: "./updategrade",
-		               data: param, // 요청하면서 함께 줄 데이터 (GET 요청시엔 비워두세요)
+		               data: param, // 요청하면서 함께 줄 데이터
 		              dataType : 'json',
 		               success: function(response){ // 서버에서 준 결과를 response라는 변수에 담음
 		                 console.log(response) // 서버에서 준 결과
@@ -135,14 +134,14 @@
         });// end
         
         
-    //  제재상태 클릭 체크박스 생성
+    //  제재상태 마우스 hover 
     	$("div.stateDiv").hover(function(){
        	
        		$(this).css('cursor','pointer');
 	   });
     
     
-    
+    // 제재상태 클릭
         $("div.stateDiv").on('click',function() {
            
            //alert(0);
@@ -166,7 +165,7 @@
              
              
              $(this).empty();
-             // 체크박스와 레이블을 버튼 아래에 추가
+             // 체크박스와 레이블을 추가
              //$("div.stateDiv").after(label);
              $(this).after(label);
             
@@ -182,9 +181,10 @@
                     let emailValue = $(this).closest("tr").find(".m_email").text(); // 선택된 행에서 이메일 값을 가져옴
                     console.log(emailValue);
                     
-                    let param = {"member_state" :checkedValue
-                         , "email" : emailValue
-                      };
+                    let param = { 
+                    			  "member_state" :checkedValue,
+		                          "email" : emailValue
+		                        };
             
                  console.log(param);
 
@@ -211,18 +211,12 @@
         
      	
      	
-     	
-        $("div.noNumDiv").hover(function(){
-       		$(this).css('cursor','pointer');
-	   }); 
-     	
-     	
-     	$("div.numDiv").hover(function(){
+        $("div.numDiv").parent().hover(function(){
        		$(this).css('cursor','pointer');
 	   });
      	
      	// 사업자등록번호 클릭할 때 실행되는 함수
-        $("div.numDiv").on('click',function() {
+        $("div.numDiv").parent().on('click',function() {
         	//alert(0);
         	
             // 텍스트박스 생성
@@ -233,11 +227,11 @@
         	}); //end  텍스트박스 생성
         	
         	
-            // 텍스트박스를 버튼 아래에 추가
+            // 텍스트박스 추가
             //$("#textbox-btn").after(textBox);
             
-            $(this).after(textBox);
-            $(this).hide();
+        	$(this).after(textBox);
+        	$(this).hide();
             
             
             // 텍스트박스 클릭시
@@ -255,7 +249,7 @@
    	       	 // 수정버튼 클릭
    	       	$('.updateBtn').on('click',function(){
    	       	
-   	       		//alert('update');
+   	       		  //alert('update');
 	   	       	  let textValue = $('.numDiv-text').val(); // 텍스트박스의 입력값을 가져옴
 	   	       	  console.log("textValue: " + textValue);
 	   	       	  
@@ -281,11 +275,11 @@
 	   			            	   // 수정이 완료되면 다시 div.numDiv를 보여줌
 	   			            	   $(updateBtn).remove();
 		   			               $('.numDiv-text').remove();
-		   			               $('div.numDiv').text(textValue);
+		   			               $('div.numDiv').html(textValue);
 		   			               $('div.numDiv').show();
 	   			            	}
 	   				               
-	   				            ,error: function(err){
+	   				             ,error: function(err){
 	   				            	console.log(err);
 	   				            }
 	   		               
@@ -294,9 +288,21 @@
                    
                }); // end 수정버튼 클릭
             	
-            });
+            }); // end 텍스트박스 클릭
             
        });// end 사업자등록번호 클릭
+       
+       
+       
+       /*  let table = $('#dataTable').DataTable({
+            "searching": false, // 검색 기능 사용 안 함
+        }); */
+
+        // 검색
+        $('#dataTable_filter').on('keyup', function() {
+          let keyword = $(this).val();
+          table.search(keyword).draw();
+        });
 	   
 });  // end of function
         
@@ -410,7 +416,7 @@
 			</a></li>
 
 			<!-- Nav Item - Tables -->
-			<li class="nav-item"><a class="nav-link" href="./admin_answer">
+			<li class="nav-item"><a class="nav-link" href="./admin_question">
 					<i class="fas fa-fw fa-table"></i> <span>answer</span>
 			</a></li>
 
@@ -646,8 +652,7 @@
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">DataTables
-								Example</h6>
+							<h6 class="m-0 font-weight-bold text-primary">회원관리</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
@@ -688,13 +693,7 @@
 													<div class='stateDiv'>${m.member_state}</div>
 												</td>
 												<td>
-													
-													<c:if test="${not empty m.business_number}">
-													    <!-- 조건식이 참일 경우 수행할 코드 -->
-														<div class='numDiv'>${m.business_number}</div>
-													</c:if>
-													
-													<div class='noNumDiv'></div>
+													<div class='numDiv'>${m.business_number}</div>
 												</td>
 
 											</tr>

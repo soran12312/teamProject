@@ -69,6 +69,15 @@ public class AdminDAOImpl implements AdminDAO {
 		return mybatis.selectList("AdminMapper.selectAllQuestion", qvo);
 	}
 
+
+	@Override
+	public QuestionVO getQuestionByNumber(int qno) {
+		// TODO Auto-generated method stub
+		System.out.println("===> Mybatis getQuestionByNumber() 호출");
+		
+		return mybatis.selectOne("AdminMapper.getQuestionByNumber", qno);
+	}
+
 }
 
 

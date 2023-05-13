@@ -25,4 +25,8 @@ public interface AdminDAO {
     
     // 질문목록
     public List<QuestionVO> listQuestion(QuestionVO qvo);
+    
+    
+    // 클릭한 질문
+    public QuestionVO getQuestionByNumber(int qno);
 }

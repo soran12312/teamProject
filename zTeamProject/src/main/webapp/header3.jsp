@@ -15,7 +15,7 @@
    <link rel="shortcut icon" href="resources/images/favicon.png" type="image/x-icon" />
    <link rel="apple-touch-icon" href="resources/images/apple-touch-icon.png">
    <!-- Bootstrap CSS -->
-   <link rel="stylesheet" href="resources/css /bootstrap.min.css">
+   <link rel="stylesheet" href="resources/css/bootstrap.min.css">
    <!-- Site CSS -->
    <link rel="stylesheet" href="resources/style.css">
    <!-- Colors CSS -->

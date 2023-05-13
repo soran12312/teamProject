@@ -139,7 +139,7 @@
             
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/admin_answer">
+                <a class="nav-link" href="./admin_question">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Answer</span></a>
             </li>
