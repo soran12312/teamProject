@@ -79,7 +79,7 @@ public class MainController {
 			
 			session.setAttribute("locList", mainService.selectAllLocationNumberByEmail((String)map.get("email"))); // 세션에 로그인한 회원의 관심지역정보를 담는다.
 			
-			return "main_view"; // 메인화면으로 넘어간다.(세션에 담긴 정보로 메인화면 형태가 바뀐다.)
+			return "redirect:main_view.do"; // 메인화면으로 넘어간다.(세션에 담긴 정보로 메인화면 형태가 바뀐다.)
 		}
 		
 	}
@@ -170,6 +170,41 @@ public class MainController {
 		return "redirect:main_view.do"; // 메인페이지로 리다이렉팅
 	}
 	
+	@RequestMapping("/main_view.do")
+	public void main_view(Model m, HttpSession session) {
+		
+		InterestLocationVO vo = new InterestLocationVO();
+		List<HashMap> list = (List<HashMap>)session.getAttribute("locList");
+		
+		if(list != null) {
+		for(int i = 0 ; i<3 ; i++ ) {
+			HashMap temp = new HashMap();
+			temp = list.get(i);
+			switch (i) {
+			case 0:
+				vo.setLocation_number1((int)temp.get("location_number"));
+				break;
+			case 1:
+				vo.setLocation_number2((int)temp.get("location_number"));
+				break;
+			case 2:
+				vo.setLocation_number3((int)temp.get("location_number"));
+				break;
+			}
+		}
+		}
+		
+		List<HashMap> dailyFreeClass = mainService.selectDailyFreeClass(vo);
+		List<HashMap> dailyRecomClass = mainService.selectDailyRecomClass(vo);
+		List<HashMap> dailyClass = mainService.selectDailyClass(vo);
+		List<HashMap> dailyReview = mainService.selectDailyReview();
+		
+		m.addAttribute("DailyFreeClass", dailyFreeClass);
+		m.addAttribute("dailyRecomClass", dailyRecomClass);
+		m.addAttribute("dailyClass", dailyClass);
+		m.addAttribute("dailyReview", dailyReview);
+		
+	}
 	
 	@RequestMapping("/{step}.do")
 	public String viewPage(@PathVariable String step, Model m, HttpSession session) { // 페이지 이동(DB접속없는경우)

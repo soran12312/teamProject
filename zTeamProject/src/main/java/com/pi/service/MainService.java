@@ -25,4 +25,8 @@ public interface MainService {
 	public int selectLocNumByAddr(LocationVO vo);
 	public void insertQuestion(QuestionVO qvo, ImageVO ivo);
 	public List<HashMap> selectAllLocationNumberByEmail(String email);
+	public List<HashMap> selectDailyFreeClass(InterestLocationVO vo);
+	public List<HashMap> selectDailyRecomClass(InterestLocationVO vo);
+	public List<HashMap> selectDailyClass(InterestLocationVO vo);
+	public List<HashMap> selectDailyReview();
 }

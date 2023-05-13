@@ -19,4 +19,8 @@ public interface MainDAO {
 	public void insertQuestion(QuestionVO qvo);
 	public void insertQImage(ImageVO ivo);
 	public List<HashMap> selectAllLocationNumberByEmail(String email);
+	public List<HashMap> selectDailyFreeClass(InterestLocationVO vo);
+	public List<HashMap> selectDailyRecomClass(InterestLocationVO vo);
+	public List<HashMap> selectDailyClass(InterestLocationVO vo);
+	public List<HashMap> selectDailyReview();
 }

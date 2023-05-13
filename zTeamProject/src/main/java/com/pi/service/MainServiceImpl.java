@@ -196,13 +196,30 @@ public class MainServiceImpl implements MainService {
 		return mainDAO.selectAllLocationNumberByEmail(email);
 	}
 
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public List<HashMap> selectDailyFreeClass(InterestLocationVO vo) {
+		
+		return mainDAO.selectDailyFreeClass(vo);
+	}
+
+	@Override
+	public List<HashMap> selectDailyRecomClass(InterestLocationVO vo) {
+		
+		return mainDAO.selectDailyRecomClass(vo);
+	}
+
+	@Override
+	public List<HashMap> selectDailyClass(InterestLocationVO vo) {
+		
+		return mainDAO.selectDailyClass(vo);
+	}
+
+	@Override
+	public List<HashMap> selectDailyReview() {
+		
+		return mainDAO.selectDailyReview();
+	}
+
 	
 
 }

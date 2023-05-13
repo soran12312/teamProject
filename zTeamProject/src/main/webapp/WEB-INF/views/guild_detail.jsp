@@ -134,7 +134,7 @@
         <ul class="bo_v_com">
            <!-- 좋아요 버튼 -->
            <li><a href="/zTeamProject/insertGuildLike.do?guild_number=${map.guild_number}&email=${sessionScope.email}" class="btn_b01"><i class="fa-regular fa-heart"></i> ${map.guild_like}</a></li>
-           <c:if test="${sessionScope.email eq map.email}">
+           <c:if test="${sessionScope.email eq map.email or sessionScope.member_grade eq 4}">
            <!-- 삭제하기 버튼 -->
            <li><a id="guild_delete" class="btn_b01">삭제하기</a></li>
            </c:if>

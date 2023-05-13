@@ -68,5 +68,102 @@
 		ON l.location_number = i.location_number
 	</select>
 	
+	
+	<select id="selectDailyFreeClass" resultType="HashMap" parameterType="com.pi.domain.InterestLocationVO">
+		SELECT 
+		IFNULL(l.class_like,0) class_like 
+		, c.class_number class_number 
+		, c.class_name class_name 
+		, i.path path 
+		FROM class c LEFT OUTER JOIN
+		(SELECT IFNULL(COUNT(like_state=1),0) class_like , class_number 
+		FROM `like` 
+		WHERE like_date=(SELECT DATE_FORMAT(NOW(),'%Y%m%d')) 
+		GROUP BY class_number) l 
+		ON c.class_number = l.class_number 
+		INNER JOIN 
+		(SELECT path, class_number 
+		FROM image GROUP BY class_number 
+		ORDER BY image_number DESC) i 
+		ON c.class_number = i.class_number 
+		WHERE c.price = 0 
+		<if test="location_number1 != null">
+		AND ( c.location_number = #{location_number1} 
+		OR c.location_number = #{location_number2} 
+		OR c.location_number = #{location_number3} )
+		</if>
+		ORDER BY class_like DESC LIMIT 10
+	</select>
+	
+	<select id="selectDailyRecomClass" resultType="HashMap" parameterType="com.pi.domain.InterestLocationVO">
+		SELECT 
+		IFNULL(l.class_like,0) class_like 
+		, c.class_number class_number 
+		, c.class_name class_name 
+		, i.path path 
+		FROM class c LEFT OUTER JOIN
+		(SELECT IFNULL(COUNT(like_state=1),0) class_like , class_number 
+		FROM `like` 
+		WHERE like_date=(SELECT DATE_FORMAT(NOW(),'%Y%m%d')) 
+		GROUP BY class_number) l 
+		ON c.class_number = l.class_number 
+		INNER JOIN (SELECT path, class_number 
+		FROM image GROUP BY class_number 
+		ORDER BY image_number DESC) i 
+		ON c.class_number = i.class_number 
+		INNER JOIN member m ON c.email = m.email
+		WHERE m.member_grade = 3 
+		<if test="location_number1 != null">
+		AND ( c.location_number = #{location_number1} 
+		OR c.location_number = #{location_number2} 
+		OR c.location_number = #{location_number3} )
+		</if>
+		ORDER BY class_like DESC LIMIT 10
+	</select>
+	
+	<select id="selectDailyClass" resultType="HashMap" parameterType="com.pi.domain.InterestLocationVO">
+		SELECT 
+		IFNULL(l.class_like,0) class_like 
+		, c.class_number class_number 
+		, c.class_name class_name 
+		, i.path path 
+		FROM class c LEFT OUTER JOIN
+		(SELECT IFNULL(COUNT(like_state=1),0) class_like , class_number 
+		FROM `like` 
+		WHERE like_date=(SELECT DATE_FORMAT(NOW(),'%Y%m%d')) 
+		GROUP BY class_number) l 
+		ON c.class_number = l.class_number 
+		INNER JOIN (SELECT path, class_number 
+		FROM image GROUP BY class_number 
+		ORDER BY image_number DESC) i 
+		ON c.class_number = i.class_number 
+		INNER JOIN member m ON c.email = m.email
+		<if test="location_number1 != null">
+		WHERE ( c.location_number = #{location_number1} 
+		OR c.location_number = #{location_number2} 
+		OR c.location_number = #{location_number3} )
+		</if>
+		ORDER BY class_like DESC LIMIT 10
+	</select>
+	
+	<select id="selectDailyReview" resultType="HashMap">
+		SELECT 
+		IFNULL(l.review_like,0) review_like 
+		, r.review_number review_number 
+		, r.title title 
+		, i.path path 
+		FROM review r LEFT OUTER JOIN
+		(SELECT IFNULL(COUNT(like_state=1),0) review_like , review_number 
+		FROM `like` 
+		WHERE like_date=(SELECT DATE_FORMAT(NOW(),'%Y%m%d')) 
+		GROUP BY review_number) l 
+		ON r.review_number = l.review_number 
+		INNER JOIN (SELECT path, review_number 
+		FROM image GROUP BY review_number 
+		ORDER BY image_number DESC) i 
+		ON r.review_number = i.review_number 
+		INNER JOIN member m ON r.email = m.email
+		ORDER BY review_like DESC LIMIT 10
+	</select>
 
 </mapper>

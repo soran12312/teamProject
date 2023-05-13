@@ -146,7 +146,7 @@
  	  		<li><strong class="if_date2"><span class="sound_only">강좌기간</span><i class="fa fa-clock-o" aria-hidden="true"></i>기간 : ${map.start_date} ~ ${map.end_date} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong></li>
            <!-- 좋아요 버튼 -->
            <li><a href="/zTeamProject/insertLike.do?class_number=${map.class_number}&email=${sessionScope.email}" class="btn_b01"><i class="fa-regular fa-heart"></i> ${map.class_like}</a></li>
-           <c:if test="${sessionScope.email eq map.email}">
+           <c:if test="${sessionScope.email eq map.email or sessionScope.member_grade eq 4}">
            <!-- 삭제하기 버튼 -->
            <li><a id="class_delete" class="btn_b01">삭제하기</a></li>
            </c:if>

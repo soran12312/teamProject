@@ -71,4 +71,28 @@ public class MainDAOImpl implements MainDAO {
 		return mybatis.selectList("MainMapper.selectAllLocationNumberByEmail",email);
 	}
 
+	@Override
+	public List<HashMap> selectDailyFreeClass(InterestLocationVO vo) {
+		System.out.println("===> Mybatis selectDailyFreeClass() 호출");
+		return mybatis.selectList("MainMapper.selectDailyFreeClass",vo);
+	}
+
+	@Override
+	public List<HashMap> selectDailyRecomClass(InterestLocationVO vo) {
+		System.out.println("===> Mybatis selectDailyRecomClass() 호출");
+		return mybatis.selectList("MainMapper.selectDailyRecomClass",vo);
+	}
+
+	@Override
+	public List<HashMap> selectDailyClass(InterestLocationVO vo) {
+		System.out.println("===> Mybatis selectDailyClass() 호출");
+		return mybatis.selectList("MainMapper.selectDailyClass",vo);
+	}
+
+	@Override
+	public List<HashMap> selectDailyReview() {
+		System.out.println("===> Mybatis selectDailyReview() 호출");
+		return mybatis.selectList("MainMapper.selectDailyReview");
+	}
+
 }
