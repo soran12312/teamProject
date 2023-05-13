@@ -406,7 +406,7 @@
 				</div></li>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item"><a class="nav-link" href="./admin_chart">
+			<li class="nav-item"><a class="nav-link" href="./admin_chart?category_number=1">
 					<i class="fas fa-fw fa-chart-area"></i> <span>Charts</span>
 			</a></li>
 

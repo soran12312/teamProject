@@ -1,5 +1,6 @@
 package com.pi.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.pi.domain.MemberVO;
@@ -29,4 +30,12 @@ public interface AdminDAO {
     
     // 클릭한 질문
     public QuestionVO getQuestionByNumber(int qno);
+    
+    // 통계
+    public List<HashMap> selectClassByMonthlyLike();
+    public List<HashMap> selectGuildByMonthlyLike();
+    public List<HashMap> selectReviewByMonthlyLike();
+    public List<HashMap> selectMonthlyClassNumOfCate();
+    public List<HashMap> selectNumOfHashtagByCate(int category_number);
+    
 }

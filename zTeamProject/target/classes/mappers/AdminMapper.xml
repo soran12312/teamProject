@@ -67,5 +67,77 @@
     </select>
 	
 	
+	<select id="selectClassByMonthlyLike" resultType="HashMap">
+		SELECT c.class_number class_number
+		, ifnull(l.class_like,0) class_like
+		, c.class_name class_name
+		FROM class c LEFT OUTER JOIN 
+		(SELECT COUNT(*) class_like
+		, class_number
+		FROM `like`
+		WHERE like_state = 1
+		AND DATE_FORMAT(like_date,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m'))  
+		GROUP BY class_number
+		ORDER BY class_like DESC LIMIT 20) l 
+		ON c.class_number = l.class_number 
+		ORDER BY class_like DESC;
+	</select>
+	
+	<select id="selectGuildByMonthlyLike" resultType="HashMap">
+		SELECT g.guild_number guild_number
+		, ifnull(l.guild_like,0) guild_like
+		, g.guild_name guild_name
+		FROM guild g LEFT OUTER JOIN 
+		(SELECT COUNT(*) guild_like
+		, guild_number
+		FROM `like`
+		WHERE like_state = 1  
+		AND DATE_FORMAT(like_date,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m')) 
+		GROUP BY guild_number
+		ORDER BY guild_like DESC LIMIT 20) l 
+		ON g.guild_number = l.guild_number 
+		ORDER BY guild_like DESC
+	</select>
+	
+	<select id="selectReviewByMonthlyLike" resultType="HashMap">
+		SELECT r.review_number review_number
+		, ifnull(l.review_like,0) review_like
+		, r.title title
+		FROM review r LEFT OUTER JOIN 
+		(SELECT COUNT(*) review_like
+		, review_number
+		FROM `like`
+		WHERE like_state = 1 
+		AND DATE_FORMAT(like_date,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m')) 
+		GROUP BY review_number
+		ORDER BY review_like DESC LIMIT 20) l 
+		ON r.review_number = l.review_number 
+		ORDER BY review_like DESC
+	</select>
+	
+	<select id="selectMonthlyClassNumOfCate" resultType="HashMap">
+		SELECT c.category_number category_number
+		, COUNT(*) num_of_class
+		, g.category_name category_name
+		FROM class c LEFT OUTER JOIN category g
+		ON c.category_number = g.category_number
+		WHERE DATE_FORMAT(c.writing_date ,'%Y%m') = (SELECT DATE_FORMAT(NOW(),'%Y%m')) 
+		AND c.class_state = 1
+		GROUP BY c.category_number;
+	</select>
+	
+	<select id="selectNumOfHashtagByCate" resultType="HashMap" parameterType="int">
+		SELECT COUNT(*) num_of_hashtag
+		, h.hashtag_name hashtag_name
+		FROM hashtag h INNER JOIN 
+		class c ON h.class_number = c.class_number
+		WHERE c.class_state = 1 
+		AND h.category_number = #{category_number}
+		GROUP BY hashtag_name
+		ORDER BY num_of_hashtag DESC;
+	</select>
+	
+	
+	
 	
 </mapper>

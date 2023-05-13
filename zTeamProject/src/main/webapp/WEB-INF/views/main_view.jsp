@@ -91,11 +91,11 @@
                      <form id="loginForm" class="row" name="contactform" method="post">
                         <fieldset class="row-fluid">
                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.41:8080/zTeamProject/member_join_form.do&response_type=code"></a>
+                              <a id="login" class="btn kakao-login" href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"></a>
                            </div>
                            <br/>
                            <div class="text-center">
-                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.41:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
+                                 <a href="https://kauth.kakao.com/oauth/authorize?client_id=3ce0aad34a9acc02c24c9294a3cfc537&redirect_uri=http://192.168.0.68:8080/zTeamProject/member_join_form.do&response_type=code"><br/>카카오톡으로 1초만에 회원되기</a>
                            </div>
                         </fieldset>
                      </form>
@@ -107,7 +107,7 @@
          <!-- end container -->
       </div>
       </c:if>
-      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3 or sessionScope.member_grade eq 4}">
       <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('resources/uploads/MainBack.png');">
          <div class="container">
             <div class="row">
@@ -158,7 +158,7 @@
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 		<c:forEach var="map" items="${dailyRecomClass}">
 					<div class="prodLatRELcon">
-					<a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
+					<a class=".owl-carousel .owl-item img" href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
 					<i>
 					<c:if test="${not empty map.path}">
 					<img src="${map.path}" >
@@ -233,7 +233,7 @@ $('.prodLat_product_gallery').owlCarousel({
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 		<c:forEach var="map" items="${dailyClass}">
 					<div class="prodLatRELcon">
-					<a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
+					<a class=".owl-carousel .owl-item img" href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
 					<i>
 					<c:if test="${not empty map.path}">
 					<img src="${map.path}" >
@@ -307,7 +307,7 @@ $('.prodLat_product_gallery').owlCarousel({
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 		<c:forEach var="map" items="${DailyFreeClass}">
 					<div class="prodLatRELcon">
-					<a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
+					<a class=".owl-carousel .owl-item img" href="/zTeamProject/class_detail.do?class_number=${map.class_number}">
 					<i>
 					<c:if test="${not empty map.path}">
 					<img src="${map.path}" >
@@ -380,7 +380,7 @@ $('.prodLat_product_gallery').owlCarousel({
 		<div class="prodLatREL owl-carousel prodLat_product_gallery">
 		<c:forEach var="map" items="${dailyReview}">
 					<div class="prodLatRELcon">
-					<a href="/zTeamProject/review_detail.do?review_number=${map.review_number}">
+					<a class=".owl-carousel .owl-item img" href="/zTeamProject/review_detail.do?review_number=${map.review_number}">
 					<i>
 					<c:if test="${not empty map.path}">
 					<img src="${map.path}" >

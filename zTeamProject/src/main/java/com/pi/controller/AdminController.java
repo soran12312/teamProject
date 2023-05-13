@@ -1,5 +1,6 @@
 package com.pi.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -110,11 +111,21 @@ public class AdminController {
 	// 차트
 	// 일별 좋아요수 상위 모임 20개의 모임번호, 모임명, 당일 좋아요 수 검색 막대형
 	@GetMapping("/admin_chart")
-	public String adminChart(Model model)
+	public String adminChart(Model model , int category_number)
 	{
 		
-//		List<ChartData> chartDataList = adminService.getChartData();
-//        model.addAttribute("chartDataList", chartDataList);
+		List<HashMap> m_class = adminService.selectClassByMonthlyLike();
+		List<HashMap> m_guild = adminService.selectGuildByMonthlyLike();
+		List<HashMap> m_review = adminService.selectReviewByMonthlyLike();
+		List<HashMap> cate_class = adminService.selectMonthlyClassNumOfCate();
+		List<HashMap> hashtag = adminService.selectNumOfHashtagByCate(category_number);
+		
+		model.addAttribute("m_class", m_class);
+		model.addAttribute("m_guild", m_guild);
+		model.addAttribute("m_review", m_review);
+		model.addAttribute("cate_class", cate_class);
+		model.addAttribute("hashtag", hashtag);
+		
 		
 		return "charts";
 	}

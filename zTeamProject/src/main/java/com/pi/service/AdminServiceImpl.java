@@ -1,6 +1,7 @@
 package com.pi.service;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,36 @@ public class AdminServiceImpl implements AdminService{
 	public QuestionVO getQuestionByNumber(int qno) {
 		// TODO Auto-generated method stub
 		return adminDAO.getQuestionByNumber(qno);
+	}
+
+	@Override
+	public List<HashMap> selectClassByMonthlyLike() {
+		// TODO Auto-generated method stub
+		return adminDAO.selectClassByMonthlyLike();
+	}
+
+	@Override
+	public List<HashMap> selectGuildByMonthlyLike() {
+		// TODO Auto-generated method stub
+		return adminDAO.selectGuildByMonthlyLike();
+	}
+
+	@Override
+	public List<HashMap> selectReviewByMonthlyLike() {
+		// TODO Auto-generated method stub
+		return adminDAO.selectReviewByMonthlyLike();
+	}
+
+	@Override
+	public List<HashMap> selectMonthlyClassNumOfCate() {
+		// TODO Auto-generated method stub
+		return adminDAO.selectMonthlyClassNumOfCate();
+	}
+
+	@Override
+	public List<HashMap> selectNumOfHashtagByCate(int category_number) {
+		// TODO Auto-generated method stub
+		return adminDAO.selectNumOfHashtagByCate(category_number);
 	}
 	
 	

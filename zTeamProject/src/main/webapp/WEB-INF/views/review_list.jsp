@@ -175,16 +175,16 @@
     
     
 <nav class="pg_wrap">
-    <span class="pg"><a href="/zTeamProject/class_list.do?currentPage=1" class="pg_page">&#60;</a>
+    <span class="pg"><a href="/zTeamProject/review_list.do?currentPage=1" class="pg_page">&#60;</a>
     <c:forEach var="i" begin="${startPage}" end="${endPage}">
     <c:if test="${currentPage eq i}">
 	    <span class="sound_only">열린</span><strong class="pg_current">${i}</strong><span class="sound_only">페이지</span>
 	</c:if>
 	<c:if test="${currentPage ne i}">
-		<a href="/zTeamProject/class_list.do?currentPage=${i}" class="pg_page">${i}<span class="sound_only">페이지</span></a>
+		<a href="/zTeamProject/review_list.do?currentPage=${i}" class="pg_page">${i}<span class="sound_only">페이지</span></a>
 	</c:if>
 	</c:forEach>
-		<a href="/zTeamProject/class_list.do?currentPage=${maxPage}" class="pg_page">&#62;</a>
+		<a href="/zTeamProject/review_list.do?currentPage=${maxPage}" class="pg_page">&#62;</a>
 	</span>
 </nav>
 

@@ -1,5 +1,6 @@
 package com.pi.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,5 +30,12 @@ public interface AdminService {
     
     // 선택한 질문
     public QuestionVO getQuestionByNumber(int qno);
+    
+    // 통계
+    public List<HashMap> selectClassByMonthlyLike();
+    public List<HashMap> selectGuildByMonthlyLike();
+    public List<HashMap> selectReviewByMonthlyLike();
+    public List<HashMap> selectMonthlyClassNumOfCate();
+    public List<HashMap> selectNumOfHashtagByCate(int category_number);
 
 }

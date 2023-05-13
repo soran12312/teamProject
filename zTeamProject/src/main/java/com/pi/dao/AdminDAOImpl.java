@@ -1,5 +1,6 @@
 package com.pi.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,6 +77,46 @@ public class AdminDAOImpl implements AdminDAO {
 		System.out.println("===> Mybatis getQuestionByNumber() 호출");
 		
 		return mybatis.selectOne("AdminMapper.getQuestionByNumber", qno);
+	}
+
+
+	@Override
+	public List<HashMap> selectClassByMonthlyLike() {
+		System.out.println("===> Mybatis selectClassByMonthlyLike() 호출");
+		
+		return mybatis.selectList("AdminMapper.selectClassByMonthlyLike");
+	}
+
+
+	@Override
+	public List<HashMap> selectGuildByMonthlyLike() {
+		System.out.println("===> Mybatis selectGuildByMonthlyLike() 호출");
+		
+		return mybatis.selectList("AdminMapper.selectGuildByMonthlyLike");
+	}
+
+
+	@Override
+	public List<HashMap> selectReviewByMonthlyLike() {
+		System.out.println("===> Mybatis selectReviewByMonthlyLike() 호출");
+		
+		return mybatis.selectList("AdminMapper.selectReviewByMonthlyLike");
+	}
+
+
+	@Override
+	public List<HashMap> selectMonthlyClassNumOfCate() {
+		System.out.println("===> Mybatis selectMonthlyClassNumOfCate() 호출");
+		
+		return mybatis.selectList("AdminMapper.selectMonthlyClassNumOfCate");
+	}
+
+
+	@Override
+	public List<HashMap> selectNumOfHashtagByCate(int category_number) {
+		System.out.println("===> Mybatis selectNumOfHashtagByCate() 호출");
+		
+		return mybatis.selectList("AdminMapper.selectNumOfHashtagByCate", category_number);
 	}
 
 }

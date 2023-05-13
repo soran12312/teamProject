@@ -22,6 +22,96 @@
 
     <!-- Custom styles for this template-->
     <link href="resources/userlist/css/sb-admin-2.min.css" rel="stylesheet">
+<script type="text/javascript">
+$(function(){
+
+	// Bar Chart Example
+	var ctx = document.getElementById("m_guild");
+	var myBarChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ["January", "February", "March", "April", "May", "June"],
+	    datasets: [{
+	      label: "Revenue",
+	      backgroundColor: "#4e73df",
+	      hoverBackgroundColor: "#2e59d9",
+	      borderColor: "#4e73df",
+	      data: [4215, 5312, 6251, 7841, 9821, 14984],
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    layout: {
+	      padding: {
+	        left: 10,
+	        right: 25,
+	        top: 25,
+	        bottom: 0
+	      }
+	    },
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'month'
+	        },
+	        gridLines: {
+	          display: false,
+	          drawBorder: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 6
+	        },
+	        maxBarThickness: 25,
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          min: 0,
+	          max: 15000,
+	          maxTicksLimit: 5,
+	          padding: 10,
+	          // Include a dollar sign in the ticks
+	          callback: function(value, index, values) {
+	            return '$' + number_format(value);
+	          }
+	        },
+	        gridLines: {
+	          color: "rgb(234, 236, 244)",
+	          zeroLineColor: "rgb(234, 236, 244)",
+	          drawBorder: false,
+	          borderDash: [2],
+	          zeroLineBorderDash: [2]
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    },
+	    tooltips: {
+	      titleMarginBottom: 10,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 14,
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	      callbacks: {
+	        label: function(tooltipItem, chart) {
+	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+	          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+	        }
+	      }
+	    },
+	  }
+	});
+
+	
+	
+}); // end of $
+</script>
 
 </head>
 
@@ -125,7 +215,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item active">
-                <a class="nav-link" href="./admin_chart">
+                <a class="nav-link" href="./admin_chart?category_number=1">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Charts</span></a>
             </li>
@@ -139,7 +229,7 @@
             
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="./admin_question">
+                <a class="nav-link" href="/admin_answer">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Answer</span></a>
             </li>
@@ -370,70 +460,86 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Charts</h1>
-                    <p class="mb-4">Chart.js is a third party plugin that is used to generate the charts in this theme.
-                        The charts below have been customized - for further customization options, please visit the <a
-                            target="_blank" href="https://www.chartjs.org/docs/latest/">official Chart.js
-                            documentation</a>.</p>
-
                     <!-- Content Row -->
-                    <div class="row">
+                    <div class="row">       
 
-                        <div class="col-xl-8 col-lg-7">
-
-                            <!-- Area Chart -->
+                            <!-- 일별 좋아요 상위 커뮤니티 -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    Styling for the area chart can be found in the
-                                    <code>/js/demo/chart-area-demo.js</code> file.
-                                </div>
-                            </div>
-
-                            <!-- Bar Chart -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">월별 좋아요 상위 커뮤니티</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
-                                        <canvas id="myBarChart"></canvas>
+                                        <canvas id="m_guild"></canvas>
                                     </div>
                                     <hr>
-                                    Styling for the bar chart can be found in the
-                                    <code>/js/demo/chart-bar-demo.js</code> file.
+
                                 </div>
                             </div>
 
-                        </div>
+                            <!-- 일별 좋아요 상위 리뷰 -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">월별 좋아요 상위 리뷰</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="m_review"></canvas>
+                                    </div>
+                                    <hr>
 
-                        <!-- Donut Chart -->
-                        <div class="col-xl-4 col-lg-5">
+                                </div>
+                            </div>
+                                                   
+                            <!-- 일별 좋아요 상위 강좌 -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">월별 좋아요 상위 강좌</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="m_class"></canvas>
+                                    </div>
+                                    <hr>
+
+                                </div>
+                            </div>
+
+                            <!-- 카테고리별 오늘 작성된 게시글 수 그래프 -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">카테고리별 이달 작성된 게시글 수</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="cate_class"></canvas>
+                                    </div>
+                                    <hr>
+ 
+                                </div>
+                            </div>
+                      
+
+                        <!-- 카테고리별 사용 태그 수 비율 그래프  -->
+                        <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">카테고리별 사용 태그 수 비율</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
+                                        <canvas id="hashtag"></canvas>
                                     </div>
                                     <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
+
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </div>
-                <!-- /.container-fluid -->
+               
 
             </div>
             <!-- End of Main Content -->
