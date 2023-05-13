@@ -103,8 +103,9 @@
 		, m.business_number business_number
 		, h.class_hashtag class_hashtag
 		FROM class c LEFT OUTER JOIN (SELECT 
-		class_number, COUNT(like_state=1) class_like 
+		class_number, COUNT(*) class_like 
 		FROM `like` 
+		WHERE like_state=1
 		GROUP BY class_number) l
 		ON c.class_number = l.class_number
 		LEFT OUTER JOIN (SELECT 

@@ -104,7 +104,7 @@
                 </div>
                 <div class="gall_con">
                     <div class="gall_boxa">
-                        <a href="http://sample.paged.kr/purewhite/bbs/board.php?bo_table=product_webzine&amp;wr_id=21">
+                        <a href="/zTeamProject/guild_detail.do?guild_number=${map.guild_number}">
                   <em class="iconPs bo_tit"></em>
                   
                   

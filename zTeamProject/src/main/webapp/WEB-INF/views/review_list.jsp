@@ -30,18 +30,7 @@
 <script src="resources/js/jquery.shuffleLetters.min.js"></script>
 <script src="resources/js/featherlight.min.js"></script>
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
-$(function(){
-   	
-	$('#cate').change(function(){ // 카테고리 셀렉트태그 변경 시
-		
-		location.href = '/zTeamProject/cate_review_list.do?category_number='+$(this).val(); // 카테고리검색으로 리다이렉팅
-		
-	});
-	
-	
-}); // end of $
-</script>
+
 </head>
 <body style="">
 <a id="topID"></a>
@@ -143,10 +132,10 @@ $(function(){
                         <a href="/zTeamProject/review_detail.do?review_number=${map.review_number}">
 						<em class="iconPs bo_tit"></em>
 						<i class="imgAr">
-						<c:if test="${not empty map.path}">
-						<img src="${map.path}">
+						<c:if test="${not empty map.review_img_path}">
+						<img src="${map.review_img_path}">
 						</c:if>
-						<c:if test="${empty map.path}">
+						<c:if test="${empty map.review_img_path}">
 						<img src="http://localhost:8080/zTeamProject/resources/uploads/no_pic.jpg">
 						</c:if>
 						</i><em class="gall_info">
@@ -179,7 +168,7 @@ $(function(){
             <option value="r.title">제목</option>
         </select>
         <input type="text" name="keyword" id="stx" class="sch_input" size="25" maxlength="20" placeholder="검색어를 입력해주세요">
-        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i><span class="sound_only">검색</span></button>
+        <button type="submit" value="검색" class="sch_btn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
     </fieldset>
     		

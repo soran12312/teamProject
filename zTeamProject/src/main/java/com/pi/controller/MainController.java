@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -86,6 +87,7 @@ public class MainController {
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) { // 로그아웃
 		
+		
 		session.removeAttribute("email");
 		session.removeAttribute("nickname");
 		session.removeAttribute("member_grade");
@@ -98,8 +100,8 @@ public class MainController {
 		session.removeAttribute("option");
 		session.removeAttribute("keyword"); // 페이징&검색용 세션값도 모두 지운다.
 		
-		return "main_view"; // 메인화면으로 넘어간다.
-	}
+		return "redirect:https://kauth.kakao.com/oauth/logout?client_id=3ce0aad34a9acc02c24c9294a3cfc537&logout_redirect_uri=http://192.168.0.68:8080/zTeamProject/main_view.do"; // 메인화면으로 넘어간다.
+	} // 카카오로그아웃
 	
 	@RequestMapping("/selectAddr1.do")
 	@ResponseBody

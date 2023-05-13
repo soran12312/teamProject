@@ -86,4 +86,11 @@ public class GuildDAOImpl implements GuildDAO {
 		
 		return mybatis.insert("GuildMapper.insert_guild_join", vo);
 	}
+
+	@Override
+	public void inc_guild_member(GuildJoinVO vo) {
+		System.out.println("===> Mybatis inc_guild_member() 호출");
+		
+		mybatis.update("GuildMapper.inc_guild_member", vo);
+	}
 }

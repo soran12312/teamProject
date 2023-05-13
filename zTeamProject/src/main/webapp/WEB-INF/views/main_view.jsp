@@ -54,6 +54,7 @@
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
 <script src="resources/js/modernizer.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="resources/js/main_view.js"></script>
 </head>
    
    <!--[if lt IE 9]>

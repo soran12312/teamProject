@@ -49,164 +49,7 @@
 <script src="https://kit.fontawesome.com/d3610539ab.js" crossorigin="anonymous"></script>
 <script src="resources/js/modernizer.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-<script type="text/javascript">
-$(function(){
-	
-	$(".loc").hover(function(){
-		$(this).css('cursor','pointer');
-	});
-	
-	$(".locDiv").on('click','a',function(){ // 관심지역 클릭 시
-		
-		var clk = $(this);
-		
-		$.ajax({
-			type	: 'post'
-			,dataType : 'json'
-			,url	: '/zTeamProject/selectAddr1.do'
-			,success	: function(result){
-				//alert(result);
-				//console.log(result);
-				
-				var select = $('<select class = "addr1" name = "addr1" />')
-				var opt = $('<option value = "시,도" />')
-				opt.text('시,도');
-				select.append(opt);
-				for( row of result ){
-					console.log(row['addr1']);
-					var option = $('<option value = "'+row['addr1']+'" />');
-					option.text(row['addr1']);
-					select.append(option);
-				} // end of for
-				clk.parent().append(select); // DB에서 시,도 정보 셀렉트박스 옵션에 담아 화면에 출력
-				clk.remove(); // 원래 존재하던 관심지역 요소제거
-			}
-			,error	: function(err){
-				alert('error');
-				console.log(err);
-			}
-}); // end of ajax
-		
-		
-	}); // end of on(지역 a태그 최초 클릭 시)
-	
-	$(".locDiv").on('change',".addr1",function(){
-		//alert($(this).val());
-		if($(this).val()!="시,도"){
-			
-			var sel = $(this);
-			var param = { addr1 : $(this).val().trim() };
-			
-			$.ajax({
-				type	: 'post'
-				,data	: param
-				,dataType : 'json'
-				,url	: '/zTeamProject/selectAddr2.do'
-				,success	: function(result){
-					//alert(result);
-					//console.log(result);
-					
-					sel.nextAll().remove()
-					
-					var select = $('<select class = "addr2" name = "addr2" />')
-					var opt = $('<option value = "시,군,구" />')
-					opt.text('시,군,구');
-					select.append(opt);
-					for( row of result ){
-						console.log(row['addr2']);
-						var option = $('<option value = "'+row['addr2']+'" />');
-						option.text(row['addr2']);
-						select.append(option);
-					} // end of for
-					sel.parent().append(select);
-					
-				}
-				,error	: function(err){
-					alert('error');
-					console.log(err);
-				}
-	}); // end of ajax
-			
-		} // end of if
-		
-	});//end of on(지역1 셀렉트시 이벤트)
-	
-	$(".locDiv").on('change','.addr2',function(){
-		//alert($(this).val());
-		if($(this).val()!="시,군,구"){
-			var sel = $(this);
-			var param = { addr2 : $(this).val().trim() };
-			
-			$.ajax({
-				type	: 'post'
-				,data	: param
-				,dataType : 'json'
-				,url	: '/zTeamProject/selectAddr3.do'
-				,success	: function(result){
-					//alert(result);
-					//console.log(result);
-					var num = sel.parent().next().attr("name").replace('location_number','');
-					//alert(num);
-					sel.nextAll().remove()
-					
-					var select = $('<select class = "addr3" name = "addr3" />')
-					var opt = $('<option value = "법정동명" />')
-					opt.text('법정동명');
-					select.append(opt);
-					for( row of result ){
-						console.log(row['addr3']);
-						var option = $('<option value = "'+row['addr3']+'" />');
-						option.text(row['addr3']);
-						select.append(option);
-					} // end of for
-					sel.parent().append(select);
-					
-				}
-				,error	: function(err){
-					alert('error');
-					console.log(err);
-				}
-	}); // end of ajax
-			
-		} // end of if
-		
-	});//end of on(지역2 셀렉트시 이벤트)
-	
-	$(".locDiv").on('change','.addr3',function(){
-		//alert($(this).val());
-		if($(this).val()!="시,군,구"){
-			var sel = $(this);
-			var param = { 
-					addr1 : $(this).prev().prev().val().trim()
-					,addr2 : $(this).prev().val().trim()
-					,addr3 : $(this).val().trim() };
-			
-			$.ajax({
-				type	: 'post'
-				,data	: param
-				,dataType : 'json'
-				,url	: '/zTeamProject/selectLocNumByAddr.do'
-				,success	: function(result){
-					//alert(result);
-					//console.log(result);
-					
-					sel.parent().next().next().val(result);
-					
-				}
-				,error	: function(err){
-					alert('error');
-					console.log(err);
-				}
-	}); // end of ajax
-			
-		} // end of if
-		
-	});//end of on(지역3 셀렉트시 이벤트)
-	
-	
-	
-}); // end of $
-</script>
+<script src="resources/js/mypage.js"></script>
 </head>
 <body>
 <body class="realestate_version">
@@ -228,10 +71,12 @@ $(function(){
 </div>
       
  <div class="section-MyPage min-height-50vh flex flex-ai-c ">
-        <form name="form" action="modify_member.do" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="email" value="${sessionScope.email}">
+        
 
-          <div class="flex flex-jc-c">           
+          
+          <form name="form" action="modify_member.do" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="email" value="${sessionScope.email}">   
+          <div class="flex flex-jc-c">        
               <div class=MyPage_cell__title>
               	<div>
               	<c:if test="${empty sessionScope.path}">
@@ -283,54 +128,282 @@ $(function(){
                 </c:forEach>
               </div>
               <div class="section-MyPage-body__option flex flex-jc-fe flex-ai-fe">
-                <button class="submitModifyBtn btn btn-go" type="submit" onclick="if(confirm('정말 변경하시겠습니까?') == false) {return false;}"><i class="far fa-edit"></i> 변경</button>
+                <button class="submitModifyBtn btn btn-go" type="submit" onclick="if(confirm('정말 변경하시겠습니까?') == false) {return false;}else{alert('수정되었습니다. 다시 로그인 해주세요')}"><i class="far fa-edit"></i> 변경</button>
                 <button class="cleModifyBtn btn btn-back" type="button" onclick="history.back();"><i class="fas fa-undo"></i> 취소</button>
               </div>
             </div>
-		
+            </div>
+		</form>
             <div class="section-MyPage-body__cell">
              <div class="container"></div>
      		  <div id="Tab" class="container">	
 			   <ul class="nav nav-tabs">
 				<li class="active">
-        		 <a href="#1" data-toggle="tab">강좌이용정보</a>
+        		 <a value="#1" data-toggle="tab">강좌이용정보</a>
 				</li>
 				<li>
-				 <a href="#2" data-toggle="tab">커뮤니티</a>
+				 <a value="#2" data-toggle="tab">커뮤니티</a>
 				</li>
 				<li>
-				 <a href="#3" data-toggle="tab">리뷰</a>
+				 <a value="#3" data-toggle="tab">리뷰</a>
 				</li>
 				<li>
-				 <a href="#4" data-toggle="tab">나의문의</a>
+				 <a value="#4" data-toggle="tab">나의문의</a>
 				</li>
 			   </ul>
 
 				<div class="tab-content ">
-		 			<div class="tab-pane active" id="1">
-          				<h3>&#62;내가 개설한 강좌</h3><br/>
-          				<table>
+		 			<div class="tab-pane active" id="1"><br/>
+          				<h3>&#62; 내가 개설한 강좌</h3><br/>
+          				<table id="my_class">
           					<thead>
           						<tr>
-          							<td>No.</td><td>작성일</td><td>강좌명</td>
+          							<td style="padding:2px 10px 2px 10px;">No.</td><td style="padding:2px 10px 2px 10px;">작성일</td><td style="padding:2px 10px 2px 10px;">강좌명</td>
           						</tr>
           					</thead>
+          					<tbody>
+          					<c:forEach var="ClassVO" items="${my_class}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;">${ClassVO.writing_date}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/class_detail.do?class_number=${ClassVO.class_number}">${ClassVO.class_name}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="delete_my_class btn">삭제하기</button>
+          								<input type="hidden" value="${ClassVO.class_number}">
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
+          				<br/>
+          				<h3>&#62; 관심강좌(좋아요)</h3><br/>
+          				<table id="my_like">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td><td style="padding:2px 10px 2px 10px;">좋아요 한 날짜</td><td style="padding:2px 10px 2px 10px;">강좌명</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="map" items="${my_like}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;">${map.like_date}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">${map.class_name}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="cancel_like btn">좋아요취소</button>
+          								<input type="hidden" value="${map.like_number}">
+          							</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="class_join btn">강좌신청</button>
+          								<input type="hidden" value="${map.class_number}">
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
+          				<br/>
+          				<h3>&#62; 내가 수강신청한 강좌</h3><br/>
+          				<table id="prev_class">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td><td style="padding:2px 10px 2px 10px;">기간</td><td style="padding:2px 10px 2px 10px;">강좌명</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="map" items="${prev_class}" varStatus="status">
+          					<c:if test="${map.class_state eq 1}">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;">${map.start_date} ~ ${map.end_date}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/class_detail.do?class_number=${map.class_number}">${map.class_name}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="cancel_join btn">수강취소</button>
+          								<input type="hidden" value="${map.class_join_number}">
+          								<input type="hidden" value="${map.class_number}">
+          							</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<a class="btn" href="/zTeamProject/review_form.do?class_number=${map.class_number}">리뷰작성</a>
+          							</td>
+          						</tr>
+          					</c:if>
+          					<c:if test="${map.class_state eq 0}">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;"><del>${map.start_date} ~ ${map.end_date}</del></td>
+          							<td style="padding:2px 10px 2px 10px;"><del>${map.class_name}</del></td>
+          						</tr>
+          					</c:if>
+          					</c:forEach>
+          					</tbody>
           				</table>
 					</div>
-					<div class="tab-pane" id="2">
-          				<h3>2</h3>
+					<div class="tab-pane" id="2"><br/>
+          				<h3>&#62; 내가 개설한 커뮤니티</h3><br/>
+          				<table id="my_guild">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td>
+          							<td style="padding:2px 10px 2px 10px;">커뮤니티명</td>
+          							<td style="padding:2px 10px 2px 10px;">인원</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="GuildVO" items="${my_guild}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/guild_detail.do?guild_number=${GuildVO.guild_number}">${GuildVO.guild_name}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">${GuildVO.current_member} / ${GuildVO.max_member}</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="delete_my_guild btn">삭제하기</button>
+          								<input type="hidden" value="${GuildVO.guild_number}">
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
+          				<br/>
+          				<h3>&#62; 관심커뮤니티(좋아요)</h3><br/>
+          				<table id="like_guild">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td>
+          							<td style="padding:2px 10px 2px 10px;">좋아요 한 날짜</td>
+          							<td style="padding:2px 10px 2px 10px;">커뮤니티명</td>
+          							<td style="padding:2px 10px 2px 10px;">인원</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="map" items="${like_guild}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;">${map.like_date}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/guild_detail.do?guild_number=${map.guild_number}">${map.guild_name}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">${map.current_member} / ${map.max_member}</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="cancel_guild_like btn">좋아요취소</button>
+          								<input type="hidden" value="${map.like_number}">
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
+          				<br/>
+          				<h3>&#62; 내가 가입한 커뮤니티</h3><br/>
+          				<table id="join_guild">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td>
+          							<td style="padding:2px 10px 2px 10px;">커뮤니티명</td>
+          							<td style="padding:2px 10px 2px 10px;">인원</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="map" items="${join_guild}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/guild_detail.do?guild_number=${map.guild_number}">${map.guild_name}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">${map.current_member} / ${map.max_member}</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="cancel_guild_join btn">탈퇴하기</button>
+          								<input type="hidden" value="${map.guild_join_number}">
+          								<input type="hidden" value="${map.guild_number}">
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
 					</div>
-         			<div class="tab-pane" id="3">
-          				<h3>3</h3>
+         			<div class="tab-pane" id="3"><br/>
+          				<h3>&#62; 내가 쓴 리뷰</h3><br/>
+          				<table id="my_review">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td>
+          							<td style="padding:2px 10px 2px 10px;">제목</td>
+          							<td style="padding:2px 10px 2px 10px;">작성일</td>
+          							<td style="padding:2px 10px 2px 10px;">조회수</td>
+          							<td style="padding:2px 10px 2px 10px;">좋아요</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="map" items="${my_review}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/review_detail.do?review_number=${map.review_number}">${map.title}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">${map.writing_date}</td>
+          							<td style="padding:2px 10px 2px 10px;">${map.view_number}</td>
+          							<td style="padding:2px 10px 2px 10px;">${map.review_like}</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="delete_review btn">삭제하기</button>
+          								<input type="hidden" value="${map.review_number}">
+          							</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<a class="btn" href="/zTeamProject/class_detail.do?class_number=${map.class_number}">강좌보러가기</a>
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
+          				<br/>
+          				<h3>&#62; 좋아요 누른 리뷰</h3><br/>
+          				<table id="like_review">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td>
+          							<td style="padding:2px 10px 2px 10px;">제목</td>
+          							<td style="padding:2px 10px 2px 10px;">작성일</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="map" items="${like_review}" varStatus="status">
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;"><a href="/zTeamProject/review_detail.do?review_number=${map.review_number}">${map.title}</a></td>
+          							<td style="padding:2px 10px 2px 10px;">${map.writing_date}</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<button class="cancel_like btn">좋아요취소</button>
+          								<input type="hidden" value="${map.like_number}">
+          							</td>
+          							<td style="padding:2px 10px 2px 10px;">
+          								<a class="btn" href="/zTeamProject/class_detail.do?class_number=${map.class_number}">강좌보러가기</a>
+          							</td>
+          						</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
 		 			</div>
-		 			<div class="tab-pane" id="4">
-          				<h3>4</h3>
+		 			<div class="tab-pane" id="4"><br/>
+          				<h3>&#62; 나의 문의</h3><br/>
+          				<table id="my_question">
+          					<thead>
+          						<tr>
+          							<td style="padding:2px 10px 2px 10px;">No.</td>
+          							<td style="padding:2px 10px 2px 10px;">카테고리</td>
+          							<td style="padding:2px 10px 2px 10px;">제목</td>
+          							<td style="padding:2px 10px 2px 10px;">작성일</td>
+          							<td style="padding:2px 10px 2px 10px;">답변상태</td>
+          						</tr>
+          					</thead>
+          					<tbody>
+          					<c:forEach var="QuestionVO" items="${my_question}" varStatus="status">
+          						<tr class='question'>
+          							<td style="padding:2px 10px 2px 10px;">${status.count}</td>
+          							<td style="padding:2px 10px 2px 10px;">${QuestionVO.question_category}</td>
+          							<td style="padding:2px 10px 2px 10px;">${QuestionVO.title}</td>
+          							<td style="padding:2px 10px 2px 10px;">${QuestionVO.writing_date}</td>
+          							<c:if test="${QuestionVO.answer_state eq 0}"><td style="padding:2px 10px 2px 10px;">처리중</td></c:if>
+          							<c:if test="${QuestionVO.answer_state eq 1}"><td style="padding:2px 10px 2px 10px;">답변완료</td></c:if>
+          						</tr>
+          						<tr hidden style="border:1px solid black;"><td style="padding:2px 10px 2px 10px;" colspan='5' >${QuestionVO.content}</tr>
+          					</c:forEach>
+          					</tbody>
+          				</table>
 		 			</div>
 	    		</div>
   			  </div>
             </div>
-          </div>
-        </form>
+          
+        
       </div>
       <!-- 회원정보 페이지 끝 -->
     </section>

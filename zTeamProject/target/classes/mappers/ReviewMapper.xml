@@ -68,8 +68,9 @@
 		, m.introduce introduce
 		, m.path member_img_path
 		FROM review r LEFT OUTER JOIN (SELECT 
-		review_number, COUNT(like_state=1) review_like 
+		review_number, COUNT(*) review_like 
 		FROM `like` 
+		WHERE like_state=1
 		GROUP BY review_number) l
 		ON r.review_number = l.review_number
 		LEFT OUTER JOIN (SELECT 

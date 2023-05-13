@@ -28,4 +28,6 @@ public interface GuildService {
 	public int guild_join(GuildJoinVO vo);
 	
 	public int  insert_guild_join(GuildJoinVO vo);
+	
+	public void inc_guild_member(GuildJoinVO vo);
 }
