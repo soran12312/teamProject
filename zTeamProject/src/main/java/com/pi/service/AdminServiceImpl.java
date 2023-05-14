@@ -95,6 +95,12 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		return adminDAO.selectNumOfHashtagByCate(category_number);
 	}
+
+	@Override
+	public void updateAnswer(int questionNumber, String content) {
+		// TODO Auto-generated method stub
+		adminDAO.updateAnswer(questionNumber, content);
+	}
 	
 	
 	

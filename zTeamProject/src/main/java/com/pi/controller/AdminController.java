@@ -38,10 +38,10 @@ public class AdminController {
 		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
 		
 		
-		// 
-//		if(member == null || member.getMember_grade()!= 4) { 
-//			   return "redirect:/main_view.do";
-//		}
+		// 비회원이거나 관리자아니면  홈으로 리다렉트
+		if(member == null || member.getMember_grade()!= 4) { 
+			   return "redirect:/main_view.do";
+		}
 	    
 		
 		List<MemberVO> memberList = adminService.listMember(params);
@@ -113,8 +113,16 @@ public class AdminController {
 	// 차트
 	// 일별 좋아요수 상위 모임 20개의 모임번호, 모임명, 당일 좋아요 수 검색 막대형
 	@GetMapping("/admin_chart")
-	public String adminChart(Model model , int category_number)
+	public String adminChart(Model model , int category_number, MemberVO params, HttpSession session)
 	{
+		
+		//Log.info("memberListGET");
+		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
+		
+		// 비회원이거나 관리자아니면  홈으로 리다렉트
+		if(member == null || member.getMember_grade()!= 4) { 
+			   return "redirect:/main_view.do";
+		}
 		
 		List<HashMap> m_class = adminService.selectClassByMonthlyLike();
 		List<HashMap> m_guild = adminService.selectGuildByMonthlyLike();
@@ -177,8 +185,17 @@ public class AdminController {
 	
 	// 모든 문의 리스트
 	@GetMapping("/admin_question")
-	public String adminQuestion(QuestionVO qvo, Model model)
+	public String adminQuestion(QuestionVO qvo, Model model, MemberVO params, HttpSession session)
 	{
+		
+		//Log.info("memberListGET");
+		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
+		
+		// 비회원이거나 관리자아니면  홈으로 리다렉트
+		if(member == null || member.getMember_grade()!= 4) { 
+			   return "redirect:/main_view.do";
+		}
+	
 		List<QuestionVO> questionList = adminService.listQuestion(qvo);
 		
 //		for(QuestionVO q : questionList)
@@ -188,6 +205,7 @@ public class AdminController {
 		System.out.println(questionList);
 		
 		model.addAttribute("questionList", questionList);
+		
 		return "admin_answer";
 	}
 	
@@ -198,7 +216,16 @@ public class AdminController {
 	
 	// 선택한 문의 답변페이지 이동
 	@RequestMapping(value = "/admin_answer", method = RequestMethod.GET)
-	public String showAnswerPage(@RequestParam("question_number") int questionNumber, Model model) {
+	public String showAnswerPage(@RequestParam("question_number") int questionNumber, Model model, MemberVO params, HttpSession session)
+	{
+		
+		//Log.info("memberListGET");
+		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
+		
+		// 비회원이거나 관리자아니면  홈으로 리다렉트
+		if(member == null || member.getMember_grade()!= 4) { 
+			   return "redirect:/main_view.do";
+		}
 		        
 		        
 		// 질문 번호를 사용하여 선택한 질문의 세부 정보를 데이터베이스에서 가져옴
@@ -214,18 +241,20 @@ public class AdminController {
 		return "answer"; // 뷰 페이지 이름
 	}
 	
-	@RequestMapping(value = "/question/edit", method = RequestMethod.GET)
-	public String showEditQuestionForm(Model model, @RequestParam("questionNumber") int questionNumber) {
-	    // 질문 수정 폼을 보여주기 위한 로직 작성
+	
+	// 수정한 답변 
+	@PostMapping("/saveAnswer")
+	public String saveAnswer(@RequestParam("questionNumber") int questionNumber,
+	                         @RequestParam("content") String content) {
+	    // questionNumber와 content를 사용하여 DB 업데이트 로직 수행
+	    // ...
+		adminService.updateAnswer(questionNumber, content);
 
-	    // questionNumber에 해당하는 질문 정보를 가져오는 코드 작성
-	    // 예시: Question question = questionService.getQuestionByNumber(questionNumber);
-
-	    // 가져온 질문 정보를 모델에 담아서 전달
-	    // 예시: model.addAttribute("question", question);
-
-	    return "edit-question"; // 수정 폼으로 이동하는 뷰 이름 반환
+	    return "redirect:/admin_question"; // 업데이트가 완료된 후, 다시 목록 페이지로 이동
 	}
+	
+	
+	
 
 	@RequestMapping(value = "/question/edit", method = RequestMethod.POST)
 	public String editQuestion(@ModelAttribute("question") QuestionVO question) {

@@ -119,6 +119,22 @@ public class AdminDAOImpl implements AdminDAO {
 		return mybatis.selectList("AdminMapper.selectNumOfHashtagByCate", category_number);
 	}
 
+
+	@Override
+	public void updateAnswer(int questionNumber, String content) {
+		// TODO Auto-generated method stub
+		System.out.println("===> Mybatis updateAnswer 호출");
+		
+		
+		QuestionVO questionVO = new QuestionVO();
+	    questionVO.setQuestion_number(questionNumber);
+	    questionVO.setContent(content);
+		
+		mybatis.update("AdminMapper.updateAnswer", questionVO);
+	}
+
+
+	
 }
 
 

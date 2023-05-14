@@ -37,5 +37,9 @@ public interface AdminDAO {
     public List<HashMap> selectReviewByMonthlyLike();
     public List<HashMap> selectMonthlyClassNumOfCate();
     public List<HashMap> selectNumOfHashtagByCate(int category_number);
+
+	public void updateAnswer(int questionNumber, String content);
+
+
     
 }

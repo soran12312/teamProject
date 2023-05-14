@@ -70,8 +70,21 @@
 		</h2>
 	</div>
 </div>
+
+
+
+	
+
+
      
 <table id="question">
+	<select name="sfl" id="sfl">
+		<option value="answer">답변완료</option>
+		<option value="reception">접수완료</option>
+	</select>
+
+
+
     <thead>
         <tr>
             <td style="padding:2px 10px 2px 10px;">No.</td>
@@ -95,16 +108,16 @@
                     <td style="padding:2px 10px 2px 10px;">답변완료</td>
                 </c:if>
                 <td style="padding:2px 10px 2px 10px;">
-                    <a href="javascript:void(0);" onclick="showContent(${status.index})">수정</a>
+                    <a href="javascript:void(0);" onclick="showContent(${status.index})">답변하기</a>
                 </td>
             </tr>
             <tr id="content_${status.index}" style="border:1px solid black; display:none;">
                 <td style="padding:2px 10px 2px 10px;" colspan='6'>
-                    <form action="edit" method="post">
+                    <form action="saveAnswer" method="post">
                         <input type="hidden" name="questionNumber" value="${question.question_number}">
                         <textarea name="content">${question.content}</textarea>
                         <button type="submit">저장</button>
-                        <button type="button" onclick="hideContent(${status.index})">취소</button>
+                        <%-- <button type="button" onclick="hideContent(${status.index})">취소</button> --%>
                     </form>
                 </td>
             </tr>
@@ -121,7 +134,7 @@
     <label for="editContent">내용</label>
     <textarea id="editContent"></textarea>
     <button type="button" onclick="saveQuestion()">저장</button>
-    <button type="button" onclick="cancelEdit()">취소</button>
+    <!-- <button type="button" onclick="cancelEdit()">취소</button> -->
   </form>
 </div>
       <!-- 회원정보 페이지 끝 -->
@@ -129,7 +142,7 @@
    
    
 <body class="realestate_version">
-<div class="copyrights"><!-- ===========================================================================================카테고리 연결해야함 -->
+<div class="copyrights" ><!-- ===========================================================================================카테고리 연결해야함 -->
          <div class="container">
             <div class="footer-distributed">
                <div class="footer-left">

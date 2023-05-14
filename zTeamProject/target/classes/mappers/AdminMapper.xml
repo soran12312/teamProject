@@ -137,7 +137,12 @@
 		ORDER BY num_of_hashtag DESC
 	</select>
 	
+	<update id="updateAnswer" parameterType="com.pi.domain.QuestionVO">
 	
+			UPDATE question SET 
+			content = #{content}, answer_state = 1 
+			WHERE question_number = #{question_number}
+	</update>
 	
 	
 </mapper>
