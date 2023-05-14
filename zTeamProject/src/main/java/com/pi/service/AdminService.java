@@ -40,4 +40,6 @@ public interface AdminService {
 
 	public void updateAnswer(int questionNumber, String content);
 
+	public List<QuestionVO> getQuestionListByFilter(String filter);
+
 }

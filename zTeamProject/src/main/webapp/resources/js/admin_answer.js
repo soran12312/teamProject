@@ -8,19 +8,114 @@ $(function(){
 		$(this).css("cursor","pointer");
 	});
 	
-	$('.question').on('click', function() {
-	  $(this).next('.answer').toggle();
-	});
-	
-	// 수정 폼 제출 시 질문 상태 업데이트
-	$('#edit-form').on('submit', function(e) {
-	  e.preventDefault();
-	  // 폼 데이터를 가져와서 서버로 전송하는 로직 작성
-	  // 예시: AJAX 요청을 통해 서버에 수정된 질문 정보 전송
-	
-	  // 수정 완료 후 화면 갱신 또는 메시지 표시 등의 로직 작성
-	});
+	$(".question").on("click", ".edit-btn", function() {
+		  var questionRow = $(this).closest(".question");
+		  var questionContent = questionRow.find(".question-content").text();
+		
+		  // 수정 폼 생성
+		  var editForm = $("<form>").addClass("edit-form");
+		  var textarea = $("<textarea>").val(questionContent);
+		  var saveBtn = $("<button>").text("저장").addClass("save-btn");
+		  
+		  // 폼에 요소 추가
+		  editForm.append(textarea);
+		  editForm.append(saveBtn);
+		  questionRow.after(editForm);
+		
+		  // 저장 버튼 클릭 시 수정 내용 전송
+		  saveBtn.on("click", function(e) {
+		    e.preventDefault();
+		
+		    // 수정한 내용 가져오기
+		    var editedContent = textarea.val();
+		
+		    // 서버에 Ajax 요청 보내기
+		    $.ajax({
+		      url: "/updateQuestion", // 수정을 처리할 URL로 변경해야 합니다.
+		      type: "POST",
+		      data: {
+		        questionNumber: questionNumber,
+		        content: editedContent
+		      },
+		      success: function(response) {
+		        // 수정이 성공적으로 완료되면 답변 상태를 업데이트합니다.
+		        questionRow.find(".answer-state").text("답변완료");
+		        // 수정 폼 제거
+		        editForm.remove();
+		      },
+		      error: function() {
+		        alert("수정 실패");
+		      }
+		    });
+		  });
+		});
 	
 	
 }); // end of $
+
+
+// 셀렉트박스 클릭시 db에서 가져오는 값 바뀌게 구현
+$(function() {
+    $("#answerStateFilter").on("change", handleChange);
+   
+});
+
+
+
+// 셀렉트박스 클릭시 db에서 값 가져오는 함수
+function handleChange() {
+    const filter = $(this).val();
+    
+    console.log(filter);
+
+    $.ajax({
+      url: "./get-data",
+      data: { filter: filter },
+      dataType: "json",
+      success: function(data) {
+        // 받아온 데이터를 처리함
+        console.log(data);
+        
+        
+	      // 예시: 받아온 데이터를 테이블에 렌더링함
+		   const table = $("#question tbody");
+		   table.empty();
+		      
+		   data.forEach(function(item) {
+		      
+		    const row = $("<tr></tr>");
+	        row.append(`<td style="padding:2px 10px 2px 10px;">${item.question_number}</td>`);
+	        row.append(`<td style="padding:2px 10px 2px 10px;">${item.question_category}</td>`);
+	        row.append(`<td style="padding:2px 10px 2px 10px;">${item.title}</td>`);
+	        row.append(`<td style="padding:2px 10px 2px 10px;">${item.writing_date}</td>`);
+	        
+	        if(item.answer_state == 0)
+	        {
+	        
+	        	row.append(`<td style="padding:2px 10px 2px 10px;">처리중</td>`);
+	        }
+	        if(item.answer_state == 1)
+	        {
+	        
+	        	row.append(`<td style="padding:2px 10px 2px 10px;">답변완료</td>`);
+	        }
+	       
+	       row.append(`<td style="padding:2px 10px 2px 10px;">
+                    <a href="javascript:void(0);" onclick="showContent(${status.index})">답변하기</a>
+                </td>`);
+	       
+	        table.append(row);
+	      });
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+}  
+
+
+
+
+
+
 

@@ -38,12 +38,6 @@ public class AdminController {
 		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
 		
 		
-		// 비회원이거나 관리자아니면  홈으로 리다렉트
-		if(member == null || member.getMember_grade()!= 4) { 
-			   return "redirect:/main_view.do";
-		}
-	    
-		
 		List<MemberVO> memberList = adminService.listMember(params);
 		
 		for(MemberVO mv : memberList)
@@ -119,11 +113,6 @@ public class AdminController {
 		//Log.info("memberListGET");
 		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
 		
-		// 비회원이거나 관리자아니면  홈으로 리다렉트
-		if(member == null || member.getMember_grade()!= 4) { 
-			   return "redirect:/main_view.do";
-		}
-		
 		List<HashMap> m_class = adminService.selectClassByMonthlyLike();
 		List<HashMap> m_guild = adminService.selectGuildByMonthlyLike();
 		List<HashMap> m_review = adminService.selectReviewByMonthlyLike();
@@ -191,11 +180,6 @@ public class AdminController {
 		//Log.info("memberListGET");
 		MemberVO  member =(MemberVO) session.getAttribute(SessionConstants.loginMember);
 		
-		// 비회원이거나 관리자아니면  홈으로 리다렉트
-		if(member == null || member.getMember_grade()!= 4) { 
-			   return "redirect:/main_view.do";
-		}
-	
 		List<QuestionVO> questionList = adminService.listQuestion(qvo);
 		
 //		for(QuestionVO q : questionList)
@@ -252,6 +236,20 @@ public class AdminController {
 
 	    return "redirect:/admin_question"; // 업데이트가 완료된 후, 다시 목록 페이지로 이동
 	}
+	
+	
+	
+	// 질문리스트 셀렉트 박스 클릭한 값으로 DB에서 데이터를 검색하여 JSON 형태로 반환
+	@GetMapping("/get-data")
+    @ResponseBody
+    public List<QuestionVO> getData(@RequestParam("filter") String filter) {
+        
+		
+		// TODO: filter를 사용하여 DB 검색 로직 수행
+		List<QuestionVO> questionList = adminService.getQuestionListByFilter(filter);
+		return questionList;
+       
+    }
 	
 	
 	

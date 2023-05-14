@@ -71,9 +71,7 @@
 </div>
       
  <div class="section-MyPage min-height-50vh flex flex-ai-c ">
-        
 
-          
           <form name="form" action="modify_member.do" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="email" value="${sessionScope.email}">   
           <div class="flex flex-jc-c">        
@@ -402,7 +400,6 @@
 	    		</div>
   			  </div>
             </div>
-          
         
       </div>
       <!-- 회원정보 페이지 끝 -->

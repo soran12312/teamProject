@@ -12,6 +12,7 @@ import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
 import com.pi.domain.LikeVO;
+import com.pi.domain.QuestionVO;
 
 
 @Repository("classDAO")
@@ -116,6 +117,5 @@ public class ClassDAOImpl implements ClassDAO {
 		
 		mybatis.update("ClassMapper.class_delete", class_number);
 	}
-	
 	
 }

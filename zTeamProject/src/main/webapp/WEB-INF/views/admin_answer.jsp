@@ -51,6 +51,7 @@
 <script src="resources/js/modernizer.js"></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script src="resources/js/admin_answer.js"></script>
+
 </head>
 <body>
 <body class="realestate_version">
@@ -78,10 +79,14 @@
 
      
 <table id="question">
-	<select name="sfl" id="sfl">
-		<option value="answer">답변완료</option>
-		<option value="reception">접수완료</option>
+
+	<!-- 셀렉트 박스 -->
+	<select name="sfl" id="answerStateFilter">
+	    <option value="all">전체</option>
+	    <option value="answered">답변완료</option>
+	    <option value="processing">처리중</option>
 	</select>
+
 
 
 
@@ -142,7 +147,7 @@
    
    
 <body class="realestate_version">
-<div class="copyrights" ><!-- ===========================================================================================카테고리 연결해야함 -->
+<div class="copyrights footer" ><!-- ===========================================================================================카테고리 연결해야함 -->
          <div class="container">
             <div class="footer-distributed">
                <div class="footer-left">

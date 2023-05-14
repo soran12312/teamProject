@@ -101,6 +101,12 @@ public class AdminServiceImpl implements AdminService{
 		// TODO Auto-generated method stub
 		adminDAO.updateAnswer(questionNumber, content);
 	}
+
+	@Override
+	public List<QuestionVO> getQuestionListByFilter(String filter) {
+		// TODO Auto-generated method stub
+		return adminDAO.getQuestionListByFilter(filter);
+	}
 	
 	
 	

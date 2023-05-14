@@ -8,6 +8,7 @@ import com.pi.domain.ClassVO;
 import com.pi.domain.HashtagVO;
 import com.pi.domain.ImageVO;
 import com.pi.domain.LikeVO;
+import com.pi.domain.QuestionVO;
 
 public interface ClassDAO {
 
@@ -38,4 +39,6 @@ public interface ClassDAO {
 	public void inc_class_member(int class_number);
 	
 	public void class_delete(int class_number);
+	
+	
 }

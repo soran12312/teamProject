@@ -134,6 +134,21 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 
+
+	@Override
+	public List<QuestionVO> getQuestionListByFilter(String filter) {
+	    System.out.println("===> Mybatis selectQuestion 호출");
+
+	    Map<String, Object> paramMap = new HashMap<>();
+	    if ("answered".equals(filter)) {
+	        paramMap.put("answerState", 1);
+	    } else if ("processing".equals(filter)) {
+	        paramMap.put("answerState", 0);
+	    }
+
+	    return mybatis.selectList("AdminMapper.selectQuestionAnswer", paramMap);
+	}
+
 	
 }
 

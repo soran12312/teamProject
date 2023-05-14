@@ -2322,8 +2322,14 @@ select.mobile-device {
 
 
 
-
-
-
+/* 푸터 하단 고정 */
+div.footer{
+	
+	position : fixed;
+	bottom : 0;
+	width : 100%; 
+	
+	
+}
 
 

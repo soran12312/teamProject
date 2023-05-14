@@ -137,12 +137,32 @@
 		ORDER BY num_of_hashtag DESC
 	</select>
 	
+	
+	<!-- 답변수정  -->
 	<update id="updateAnswer" parameterType="com.pi.domain.QuestionVO">
 	
 			UPDATE question SET 
 			content = #{content}, answer_state = 1 
 			WHERE question_number = #{question_number}
 	</update>
+	
+	
+	
+	<select id="selectQuestionAnswer" parameterType="com.pi.domain.QuestionVO"
+    resultType="com.pi.domain.QuestionVO">
+	    SELECT * FROM question
+	    <where>
+	        <if test="answerState == 0">
+	            answer_state = 0
+	        </if>
+	        <if test="answerState == 1">
+	            answer_state = 1
+	        </if>
+	    </where>
+	    
+	    
+	    ORDER BY question_number DESC
+	</select>
 	
 	
 </mapper>

@@ -69,13 +69,13 @@ public class ReviewController {
 		String option = null;
 		String keyword = null;
 		
-		if(session.getAttribute("category_number")!=null) {
-			category_number = (int)session.getAttribute("category_number");
-		}
-		if(session.getAttribute("option")!=null) {
-			option = (String)session.getAttribute("option");
-			keyword = (String)session.getAttribute("keyword");
-		}
+//		if(session.getAttribute("category_number")!=null) {
+//			category_number = (int)session.getAttribute("category_number");
+//		}
+//		if(session.getAttribute("option")!=null) {
+//			option = (String)session.getAttribute("option");
+//			keyword = (String)session.getAttribute("keyword");
+//		}
 		
 		//System.out.println(category_number);
 		//System.out.println(option);
@@ -100,14 +100,14 @@ public class ReviewController {
 		}
 		
 		
-		if(category_number!=0) {
-			map.put("category_number", category_number); // 카테고리번호가 있을 경우 해쉬맵에 카테고리번호를 넣는다.
-		}
+//		if(category_number!=0) {
+//			map.put("category_number", category_number); // 카테고리번호가 있을 경우 해쉬맵에 카테고리번호를 넣는다.
+//		}
 		
-		if(option != null) {
-			map.put("option", option);
-			map.put("keyword", keyword); // 검색옵션이 있을 경우 해쉬맵에 검색옵션과 키워드를 넣는다.
-		}
+//		if(option != null) {
+//			map.put("option", option);
+//			map.put("keyword", keyword); // 검색옵션이 있을 경우 해쉬맵에 검색옵션과 키워드를 넣는다.
+//		}
 			
 			
 			//총 게시글 수

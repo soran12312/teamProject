@@ -64,22 +64,22 @@ $(function(){
 			</div>
             <ul id="gnb_1dul">
                 <li class="gnb_1dli" style="z-index:999">
-                    <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME<u></u></a>
-                </li>
-                <li class="gnb_1dli" style="z-index:998">
-                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티<u></u></a>
+                    <a href="/zTeamProject/main_view.do" target="_self" class="gnb_1da">HOME</a>
                 </li>
                 <li class="gnb_1dli" style="z-index:997">
-                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌<u></u></a>
+                    <a href="/zTeamProject/class_list.do?currentPage=1" target="_self" class="gnb_1da">강좌게시판</a>
+                </li>
+                <li class="gnb_1dli" style="z-index:998">
+                    <a href="/zTeamProject/guild_list.do?currentPage=1" target="_self" class="gnb_1da">커뮤니티게시판</a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996">
-                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰<u></u></a>
+                    <a href="/zTeamProject/review_list.do?currentPage=1" target="_self" class="gnb_1da">리뷰게시판</a>
                 </li>
                 <li class="gnb_1dli" style="z-index:996"> 
-                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지<u></u></a>
+                    <a href="/zTeamProject/mypage.do" target="_self" class="gnb_1da">마이페이지</a>
                 </li> 
                 <li class="gnb_1dli" style="z-index:996">
-                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃<u></u></a>
+                	<a data-scroll href="/zTeamProject/logout.do" target="_self" class="gnb_1da">로그아웃</a>
                 </li>
             </ul>
         </div>
@@ -117,8 +117,8 @@ $(function(){
     </header>
 
     <section id="bo_v_info">
-        <span class="sound_only">조회수</span><strong><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
-        <strong class="if_date"><span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
+        <strong class="if_date2"><i class="fa fa-eye" aria-hidden="true"></i> ${map.view_number}회</strong>
+        <strong class="if_date2"><i class="fa fa-clock-o" aria-hidden="true"></i> ${map.writing_date}</strong>
     </section>
 
     <section id="bo_v_atc">
