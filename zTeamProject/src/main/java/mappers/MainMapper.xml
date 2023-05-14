@@ -68,7 +68,7 @@
 		ON l.location_number = i.location_number
 	</select>
 	
-	
+	<!-- 메인화면 인기 무료강좌 -->
 	<select id="selectDailyFreeClass" resultType="HashMap" parameterType="com.pi.domain.InterestLocationVO">
 		SELECT 
 		IFNULL(l.class_like,0) class_like 
@@ -95,6 +95,7 @@
 		ORDER BY class_like DESC LIMIT 10
 	</select>
 	
+	<!-- 메인화면 추천강좌 -->
 	<select id="selectDailyRecomClass" resultType="HashMap" parameterType="com.pi.domain.InterestLocationVO">
 		SELECT 
 		IFNULL(l.class_like,0) class_like 
@@ -121,6 +122,7 @@
 		ORDER BY class_like DESC LIMIT 10
 	</select>
 	
+	<!-- 메인화면 인기강좌 -->
 	<select id="selectDailyClass" resultType="HashMap" parameterType="com.pi.domain.InterestLocationVO">
 		SELECT 
 		IFNULL(l.class_like,0) class_like 
@@ -146,6 +148,7 @@
 		ORDER BY class_like DESC LIMIT 10
 	</select>
 	
+	<!-- 메인화면 인기리뷰 -->
 	<select id="selectDailyReview" resultType="HashMap">
 		SELECT 
 		IFNULL(l.review_like,0) review_like 

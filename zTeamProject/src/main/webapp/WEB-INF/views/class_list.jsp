@@ -153,7 +153,8 @@
 						<c:if test="${not empty map.class_hashtag}">
 						<u><span class="sound_only">해쉬 태그 </span> #${map.class_hashtag}</u>
 						</c:if>
-							<i class="fa fa-eye" aria-hidden="true"></i>      ${map.view_number}      <span class="gall_date"><span class="sound_only">작성일 </span><i class="fa fa-clock-o" aria-hidden="true"></i>${map.writing_date}</span>
+							<i class="fa fa-eye" aria-hidden="true"></i>      ${map.view_number}      <span class="gall_date"><span class="sound_only">작성일 </span>
+							<i class="fa fa-clock-o" aria-hidden="true"></i>${map.writing_date}</span>
 							<u>${map.nickname}</u>
 						</em>
                         </a>

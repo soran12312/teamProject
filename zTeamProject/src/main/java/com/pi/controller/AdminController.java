@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -180,15 +181,19 @@ public class AdminController {
 	{
 		List<QuestionVO> questionList = adminService.listQuestion(qvo);
 		
-		for(QuestionVO q : questionList)
-		{
-			System.out.println(q);
-		}
-		
+//		for(QuestionVO q : questionList)
+//		{
+//			System.out.println(q);
+//		}
+		System.out.println(questionList);
 		
 		model.addAttribute("questionList", questionList);
 		return "admin_answer";
 	}
+	
+	
+	
+	
 	
 	
 	// 선택한 문의 답변페이지 이동
@@ -207,6 +212,29 @@ public class AdminController {
 		model.addAttribute("selectedQuestion", selectedQuestion);
 		
 		return "answer"; // 뷰 페이지 이름
+	}
+	
+	@RequestMapping(value = "/question/edit", method = RequestMethod.GET)
+	public String showEditQuestionForm(Model model, @RequestParam("questionNumber") int questionNumber) {
+	    // 질문 수정 폼을 보여주기 위한 로직 작성
+
+	    // questionNumber에 해당하는 질문 정보를 가져오는 코드 작성
+	    // 예시: Question question = questionService.getQuestionByNumber(questionNumber);
+
+	    // 가져온 질문 정보를 모델에 담아서 전달
+	    // 예시: model.addAttribute("question", question);
+
+	    return "edit-question"; // 수정 폼으로 이동하는 뷰 이름 반환
+	}
+
+	@RequestMapping(value = "/question/edit", method = RequestMethod.POST)
+	public String editQuestion(@ModelAttribute("question") QuestionVO question) {
+	    // 질문 수정 로직 작성
+
+	    // question.answer_state를 1로 업데이트하는 코드 작성
+	    // 예시: questionService.updateAnswerState(question.getQuestionNumber(), 1);
+
+	    return "redirect:/question"; // 수정 후 목록 페이지로 리다이렉트
 	}
 
 }

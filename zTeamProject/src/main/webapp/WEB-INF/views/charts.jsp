@@ -28,17 +28,17 @@ $(function(){
 	
 	
 	// 이달의 좋아요 상위 커뮤니티
-	var ctx = document.getElementById("m_guild");
+	var ctx = document.getElementById("m_guild"); // 차트 띄울 위치
 	var myBarChart = new Chart(ctx, {
-	  type: 'bar',
+	  type: 'bar', // 막대그래프
 	  data: {
-	    labels: ${m_guild_labels},
+	    labels: ${m_guild_labels}, // 라벨값
 	    datasets: [{
 	      label: "좋아요 수",
 	      backgroundColor: "#4e73df",
 	      hoverBackgroundColor: "#2e59d9",
 	      borderColor: "#4e73df",
-	      data: ${m_guild_data},
+	      data: ${m_guild_data}, // 라벨별 데이터값
 	    }],
 	  },
 	  options: {
@@ -390,11 +390,11 @@ $(function(){
 	  },
 	});
 	
-	$("#cate").change(function(){
+	$("#cate").change(function(){ // 카테고리 셀렉트박스 변경 시
 		var category_number = $(this).val();
 		//alert(category_number);
 		if(category_number != 0){
-			location.href = '/zTeamProject/admin_chart?category_number='+category_number;
+			location.href = '/zTeamProject/admin_chart?category_number='+category_number; // 카테고리번호를 이용해 새로운 차트 데이터를 가져온다.
 		}
 	});
 	
@@ -752,6 +752,7 @@ $(function(){
                     <div class="row">       
 
                             <!-- 이달의 좋아요 상위 커뮤니티 -->
+                           <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">이달의 좋아요 상위 커뮤니티</h6>
@@ -763,9 +764,11 @@ $(function(){
                                     <hr>
 
                                 </div>
-                            </div><hr class="sidebar-divider"/>
+                            </div>    
+                           </div><hr class="sidebar-divider"/>
 
                             <!-- 이달의 좋아요 상위 리뷰 -->
+                           <div class="col-xl-8 col-lg-7"> 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">이달의 좋아요 상위 리뷰</h6>
@@ -777,9 +780,11 @@ $(function(){
                                     <hr>
 
                                 </div>
+                               </div> 
                             </div><hr class="sidebar-divider"/>
                                                    
                             <!-- 이달의 좋아요 상위 강좌 -->
+                           <div class="col-xl-8 col-lg-7"> 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">이달의 좋아요 상위 강좌</h6>
@@ -791,9 +796,11 @@ $(function(){
                                     <hr>
 
                                 </div>
+                              </div> 
                             </div><hr class="sidebar-divider"/>
 
                             <!-- 카테고리별 오늘 작성된 게시글 수 그래프 -->
+                           <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">카테고리별 이달 작성된 게시글 수</h6>
@@ -805,6 +812,7 @@ $(function(){
                                     <hr>
  
                                 </div>
+                              </div>  
                             </div><hr class="sidebar-divider"/>
                       
 
