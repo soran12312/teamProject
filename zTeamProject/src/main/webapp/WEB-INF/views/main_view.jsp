@@ -64,10 +64,10 @@
   
    <body class="realestate_version">
       <!-- header -->
-      <c:if test="${empty sessionScope.member_grade}">
+      <c:if test="${empty sessionScope.member_grade and sessionScope.member_state eq 1}">
       <jsp:include page="../../header.jsp"></jsp:include>
       </c:if>
-      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3}">
+      <c:if test="${sessionScope.member_grade eq 1 or sessionScope.member_grade eq 2 or sessionScope.member_grade eq 3 and sessionScope.member_state ne 1}">
       <jsp:include page="../../header2.jsp"></jsp:include>
       </c:if>
       <c:if test="${sessionScope.member_grade eq 4}">
@@ -129,7 +129,7 @@
 <!-- section 1 -->	  
 <div id="today_money"></div>
 <section class="mainContents">
-	<c:if test="${empty sessionScope.member_grade}">
+	<c:if test="${empty sessionScope.member_grade and sessionScope.member_state eq 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼추천강좌▼▼▼<u></u></h2>
@@ -151,7 +151,7 @@
 	</div>
 </div>
 </c:if>
-<c:if test="${not empty sessionScope.member_grade}">
+<c:if test="${not empty sessionScope.member_grade and sessionScope.member_state ne 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼추천강좌▼▼▼<u></u></h2>
@@ -204,7 +204,7 @@ $('.prodLat_product_gallery').owlCarousel({
 <!-- section 2 -->	 
 <div id="today_review"/> 
 <section class="mainContents">
-	<c:if test="${empty sessionScope.member_grade}">
+	<c:if test="${empty sessionScope.member_grade and sessionScope.member_state eq 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼오늘의 강좌▼▼▼<u></u></h2>
@@ -226,7 +226,7 @@ $('.prodLat_product_gallery').owlCarousel({
 	</div>
 </div>
 </c:if>
-<c:if test="${not empty sessionScope.member_grade}">
+<c:if test="${not empty sessionScope.member_grade and sessionScope.member_state ne 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼오늘의 강좌▼▼▼<u></u></h2>
@@ -278,7 +278,7 @@ $('.prodLat_product_gallery').owlCarousel({
 <!-- section 3 -->	
 <div id="today_notmoney"></div>
 <section class="mainContents">
-<c:if test="${empty sessionScope.member_grade}">
+<c:if test="${empty sessionScope.member_grade and sessionScope.member_state eq 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼오늘의 무료강좌▼▼▼<u></u></h2>
@@ -300,7 +300,7 @@ $('.prodLat_product_gallery').owlCarousel({
 	</div>
 </div>
 </c:if>
-<c:if test="${not empty sessionScope.member_grade}">
+<c:if test="${not empty sessionScope.member_grade and sessionScope.member_state ne 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼오늘의 무료강좌▼▼▼<u></u></h2>
@@ -351,7 +351,7 @@ $('.prodLat_product_gallery').owlCarousel({
 <!-- section 4 -->	
 <div id="today_lesson"></div>  
 <section class="mainContents">
-	<c:if test="${empty sessionScope.member_grade}">
+	<c:if test="${empty sessionScope.member_grade and sessionScope.member_state eq 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼오늘의 리뷰▼▼▼<u></u></h2>
@@ -373,7 +373,7 @@ $('.prodLat_product_gallery').owlCarousel({
 	</div>
 </div>
 </c:if>
-<c:if test="${not empty sessionScope.member_grade}">
+<c:if test="${not empty sessionScope.member_grade and sessionScope.member_state ne 1}">
 	<div class="prodLatWR">
 	<div class="prodLat">
 		<h2 class="prodLatTit">▼▼▼오늘의 리뷰▼▼▼<u></u></h2>

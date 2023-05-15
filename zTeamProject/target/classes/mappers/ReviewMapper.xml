@@ -44,9 +44,6 @@
 		INNER JOIN class c 
 		ON r.class_number = c.class_number
 		WHERE r.review_state = 1 
-		<if test="category_number !=null ">
-		AND c.category_number = #{category_number}
-		</if>
 		<if test="keyword !=null">
 		AND ${option} LIKE CONCAT('%',#{keyword},'%')
 		</if>

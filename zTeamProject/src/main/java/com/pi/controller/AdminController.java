@@ -61,7 +61,7 @@ public class AdminController {
 		        //String email = vo.getEmail();
 		        
 		        // TODO: 이메일을 기반으로 회원 등급을 업데이트하는 로직을 구현합니다.
-		        adminService.updateMember(vo);;
+		        adminService.updateMember(vo);
 		        
 		        System.out.println(vo);
 		        
